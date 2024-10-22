@@ -65,40 +65,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post('/github-webhook', express.json(), (req, res) => {
-  const secret = process.env.GITHUB_WEBHOOK_SECRET;
 
-  // Verify the signature to ensure that the request is actually coming from GitHub
-  const signature = req.headers['x-hub-signature-256'];
-  const expectedSignature = `sha256=${crypto
-    .createHmac('sha256', secret)
-    .update(JSON.stringify(req.body))
-    .digest('hex')}`;
-
-  if (signature !== expectedSignature) {
-    return res.status(403).send('Forbidden');
-  }
-
-  // Handle the push event
-  if (req.body.ref === 'refs/heads/main') {
-    // Execute a shell command to pull the latest changes from GitHub
-    const exec = require('child_process').exec;
-    exec(
-      'git pull origin main',
-      { cwd: '/home/foivpro/blockly_unix' },
-      (err, stdout, stderr) => {
-        if (err) {
-          console.error(`Error pulling changes: ${stderr}`);
-          return res.status(500).send('Error pulling changes');
-        }
-        console.log(`Pulled latest changes: ${stdout}`);
-        res.status(200).send('Webhook received successfully');
-      }
-    );
-  } else {
-    res.status(200).send('Not a push to main branch, ignoring...');
-  }
-});
 
 app.listen(4000, () => {
   console.log('Listening for GitHub Webhooks on port 4000');
