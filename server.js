@@ -85,7 +85,7 @@ app.post('/github-webhook', express.json(), (req, res) => {
     const exec = require('child_process').exec;
     exec(
       'git pull origin main',
-      { cwd: '/path/to/your/app' },
+      { cwd: '/home/foivpro/blockly_unix' },
       (err, stdout, stderr) => {
         if (err) {
           console.error(`Error pulling changes: ${stderr}`);
