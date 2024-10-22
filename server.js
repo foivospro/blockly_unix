@@ -1,6 +1,7 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
+const crypto = require('crypto');
 const fs = require('fs');
 // Importing libraries installed with npm
 const { exec } = require('child_process');
