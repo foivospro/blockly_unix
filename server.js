@@ -67,9 +67,7 @@ app.use((req, res, next) => {
 
 
 
-app.listen(4000, () => {
-  console.log('Listening for GitHub Webhooks on port 4000');
-});
+
 // Middleware to add auth token
 function addAuthToken(req, res, next) {
   if (req.isAuthenticated()) {
