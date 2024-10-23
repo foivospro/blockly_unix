@@ -86,6 +86,20 @@
     <script src="blocks/conditionActionBlock.js"></script>
     <script src="blocks/conditionBlock.js"></script>
     <script src="blocks/arrayCreateBlock.js"></script>
+    <script src="blocks/atan2Block.js"></script>
+    <script src="blocks/cosineBlock.js"></script>
+    <script src="blocks/sineBlock.js"></script>
+    <script src="blocks/exponentBlock.js"></script>
+    <script src="blocks/logarithmBlock.js"></script>
+    <script src="blocks/sqrtBlock.js"></script>
+    <script src="blocks/lengthBlock.js"></script>
+    <script src="blocks/randBlock.js"></script>
+    <script src="blocks/setSeedBlock.js"></script>
+    <script src="blocks/toIntBlock.js"></script>
+    <script src="blocks/indexBlock.js"></script>
+    <script src="blocks/matchBlock.js"></script>
+    <script src="blocks/toLowerBlock.js"></script>
+    <script src="blocks/toUpperBlock.js"></script>
     <!-- END OF BLOCK DEFINITION -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -268,6 +282,11 @@
           colourSecondary: '#ff0000',
           colourTertiary: '#C5EAFF'
         },
+        'String Functions': {
+          colourPrimary: '#9E9E10', // Primary color: yellowish-grey
+          colourSecondary: '#B0B030', // A lighter yellowish-grey for contrast
+          colourTertiary: '#D0D080' // A soft yellowish-grey for accents
+        },
         'Text output': {
           colourPrimary: '#FF5733',
           colourSecondary: '#ff0000',
@@ -293,7 +312,7 @@
           colourSecondary: '#ff0000',
           colourTertiary: '#C5EAFF'
         },
-        Tables: {
+        Lists: {
           colourPrimary: '#260',
           colourSecondary: '#ff0000',
           colourTertiary: '#C5EAFF'
@@ -488,6 +507,18 @@
               },
               {
                 kind: 'category',
+                name: [MSG.STRING_FUNCTIONS],
+                colour: '#9E9E10',
+                contents: [
+                  { kind: 'block', type: 'length' },
+                  { kind: 'block', type: 'index' },
+                  { kind: 'block', type: 'match' },
+                  { kind: 'block', type: 'toLower' },
+                  { kind: 'block', type: 'toUpper' }
+                ]
+              },
+              {
+                kind: 'category',
                 name: [MSG.LOGIC],
                 colour: '210',
                 contents: [{ kind: 'block', type: 'controls_if' }]
@@ -499,7 +530,8 @@
                 contents: [
                   { kind: 'block', type: 'controls_whileUntil' },
                   { kind: 'block', type: 'controls_forEach' },
-                  { kind: 'block', type: 'controls_for' }
+                  { kind: 'block', type: 'controls_for' },
+                  { kind: 'block', type: 'controls_flow_statements' }
                 ]
               },
               {
@@ -529,7 +561,16 @@
                         }
                       }
                     }
-                  }
+                  },
+                  { kind: 'block', type: 'atan2' },
+                  { kind: 'block', type: 'cos' },
+                  { kind: 'block', type: 'sin' },
+                  { kind: 'block', type: 'exp' },
+                  { kind: 'block', type: 'log' },
+                  { kind: 'block', type: 'sqrt' },
+                  { kind: 'block', type: 'rand' },
+                  { kind: 'block', type: 'seed' },
+                  { kind: 'block', type: 'int' }
                 ]
               },
               {

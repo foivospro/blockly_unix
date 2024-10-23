@@ -1,6 +1,6 @@
 // Global replacement map
 const replacementMap = new Map([
-  ['and', '&&'],
+  //['and', '&&'], conflict with random block
   ['window.alert', 'print']
 ]);
 
@@ -271,7 +271,21 @@ function handleSpecificBlocks(currentBlock) {
     NR: NRBlock,
     NF: NFBlock,
     column: columnBlock,
-    condition: conditionBlock
+    condition: conditionBlock,
+    atan2: atan2Block,
+    cos: cosineBlock,
+    exp: exponentBlock,
+    log: logarithmBlock,
+    sin: sineBlock,
+    sqrt: sqrtBlock,
+    length: lengthBlock,
+    rand: randomBlock,
+    seed: setSeedBlock,
+    int: intBlock,
+    index: indexBlock,
+    match: matchBlock,
+    toLower: toLowerBlock,
+    toUpper: toUpperBlock
   };
 
   if (blockTypesWithCommand[currentBlock.type]) {
@@ -562,6 +576,19 @@ function handleBuiltInBlocks(currentBlock) {
       generatedCommand = `print ${textValue};`;
       break;
     }
+
+    case 'controls_flow_statements': {
+      const flowStatement = currentBlock.getFieldValue('FLOW');
+      switch (flowStatement) {
+        case 'BREAK':
+          generatedCommand = 'break;';
+          break;
+        case 'CONTINUE':
+          generatedCommand = 'continue;';
+          break;
+      }
+      break;
+    }
   }
   return generatedCommand;
 }
@@ -583,7 +610,8 @@ function handleBlockByType(currentBlock) {
     'controls_whileUntil',
     'controls_for',
     'text',
-    'text_print'
+    'text_print',
+    'controls_flow_statements'
   ];
   if (builtInBlockTypes.includes(currentBlock.type)) {
     return handleBuiltInBlocks(currentBlock); // Use built-in handler
