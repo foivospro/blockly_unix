@@ -31,7 +31,10 @@ var conditionActionBlock = {
     var action = block.getInputTargetBlock('DO');
     actionCommand = '';
     if (action !== null) {
-      actionCommand = handleBlockByType(action);
+      while (action) {
+        actionCommand += handleBlockByType(action) + ' ';
+        action = action.getNextBlock();
+      }
     }
     return condCommand + ' {' + actionCommand + '}';
   }

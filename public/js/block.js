@@ -321,7 +321,7 @@ function handleBuiltInBlocks(currentBlock) {
         currentBlock.getInputTargetBlock('VALUE')
       );
       const variableName = getVariableName(variableId);
-      generatedCommand = `${variableName} = ${variableSetTo}`;
+      generatedCommand = `${variableName} = ${variableSetTo};`;
       break;
     }
 
@@ -329,6 +329,18 @@ function handleBuiltInBlocks(currentBlock) {
     case 'variables_get': {
       const variableId = currentBlock.getFieldValue('VAR');
       generatedCommand = getVariableName(variableId);
+      break;
+    }
+
+    // Variables change
+    case 'math_change': {
+      const variableId = currentBlock.getFieldValue('VAR');
+      const variableName = getVariableName(variableId);
+      console.log('variableName:', variableName);
+      const changeBy = handleBlockByType(
+        currentBlock.getInputTargetBlock('DELTA')
+      );
+      generatedCommand = `${variableName} += ${changeBy};`;
       break;
     }
 
@@ -385,7 +397,7 @@ function handleBuiltInBlocks(currentBlock) {
       let actionBlock = currentBlock.getInputTargetBlock('DO0');
       while (actionBlock) {
         let actionCode = handleBlockByType(actionBlock);
-        blockCode += actionCode + '; ';
+        blockCode += actionCode + ' ';
         actionBlock = actionBlock.getNextBlock();
       }
       blockCode += '}'; // Close the if block
@@ -403,7 +415,7 @@ function handleBuiltInBlocks(currentBlock) {
         );
         while (elseIfActionBlock) {
           let actionCode = handleBlockByType(elseIfActionBlock);
-          blockCode += actionCode + '; ';
+          blockCode += actionCode + ' ';
           elseIfActionBlock = elseIfActionBlock.getNextBlock();
         }
         blockCode += '}'; // Close the else if block
@@ -421,7 +433,7 @@ function handleBuiltInBlocks(currentBlock) {
         let elseActionBlock = elseBlock;
         while (elseActionBlock) {
           const actionCode = handleBlockByType(elseActionBlock);
-          blockCode += actionCode + '; ';
+          blockCode += actionCode + ' ';
           elseActionBlock = elseActionBlock.getNextBlock(); // Move to the next block in ELSE
         }
 
@@ -437,9 +449,15 @@ function handleBuiltInBlocks(currentBlock) {
       const variableName = getVariableName(variableId);
       const listBlock = currentBlock.getInputTargetBlock('LIST');
       const listName = handleBlockByType(listBlock);
-      const actionBlock = currentBlock.getInputTargetBlock('DO');
-      const actionCode = handleBlockByType(actionBlock);
-      generatedCommand = `for(${variableName} in ${listName} ) { ${actionCode} }`;
+      var action = currentBlock.getInputTargetBlock('DO');
+      actionCommand = '';
+      if (action !== null) {
+        while (action) {
+          actionCommand += handleBlockByType(action) + ' ';
+          action = action.getNextBlock();
+        }
+      }
+      generatedCommand = `for(${variableName} in ${listName} ) { ${actionCommand} }`;
       break;
     }
 
@@ -448,12 +466,18 @@ function handleBuiltInBlocks(currentBlock) {
       const mode = currentBlock.getFieldValue('MODE');
       const conditionBlock = currentBlock.getInputTargetBlock('BOOL');
       const conditionCode = handleBlockByType(conditionBlock);
-      const actionBlock = currentBlock.getInputTargetBlock('DO');
-      const actionCode = handleBlockByType(actionBlock);
+      var action = currentBlock.getInputTargetBlock('DO');
+      actionCommand = '';
+      if (action !== null) {
+        while (action) {
+          actionCommand += handleBlockByType(action) + ' ';
+          action = action.getNextBlock();
+        }
+      }
       if (mode === 'WHILE') {
-        generatedCommand = `while (${conditionCode}) { ${actionCode} }`;
+        generatedCommand = `while (${conditionCode}) { ${actionCommand} }`;
       } else {
-        generatedCommand = `do { ${actionCode} } while (${conditionCode})`;
+        generatedCommand = `do { ${actionCommand} } while (${conditionCode})`;
       }
       break;
     }
@@ -467,9 +491,15 @@ function handleBuiltInBlocks(currentBlock) {
       const toValue = handleBlockByType(toBlock);
       const byBlock = currentBlock.getInputTargetBlock('BY');
       const byValue = handleBlockByType(byBlock);
-      const actionBlock = currentBlock.getInputTargetBlock('DO');
-      const actionCode = handleBlockByType(actionBlock);
-      generatedCommand = `for( ${variableName}=${fromValue}; ${variableName} <= ${toValue}; ${variableName}+=${byValue} ) { ${actionCode} }`;
+      var action = currentBlock.getInputTargetBlock('DO');
+      actionCommand = '';
+      if (action !== null) {
+        while (action) {
+          actionCommand += handleBlockByType(action) + ' ';
+          action = action.getNextBlock();
+        }
+      }
+      generatedCommand = `for( ${variableName}=${fromValue}; ${variableName} <= ${toValue}; ${variableName}+=${byValue} ) { ${actionCommand} }`;
       break;
     }
 
@@ -529,7 +559,7 @@ function handleBuiltInBlocks(currentBlock) {
     case 'text_print': {
       const textBlock = currentBlock.getInputTargetBlock('TEXT');
       const textValue = handleBlockByType(textBlock);
-      generatedCommand = `print ${textValue}`;
+      generatedCommand = `print ${textValue};`;
       break;
     }
   }
@@ -540,6 +570,7 @@ function handleBlockByType(currentBlock) {
   const builtInBlockTypes = [
     'variables_set',
     'variables_get',
+    'math_change',
     'math_number',
     'math_arithmetic',
     'logic_compare',
@@ -554,7 +585,6 @@ function handleBlockByType(currentBlock) {
     'text',
     'text_print'
   ];
-
   if (builtInBlockTypes.includes(currentBlock.type)) {
     return handleBuiltInBlocks(currentBlock); // Use built-in handler
   } else {
