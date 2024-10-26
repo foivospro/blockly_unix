@@ -11,6 +11,26 @@
     <link rel="stylesheet" href="/css/homePage.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/img/favicon.png">
+    <script>
+      (function() {
+          var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+          function loadStylesheet(href) {
+              var link = document.createElement("link");
+              link.rel = "stylesheet";
+              link.type = "text/css";
+              link.href = href;
+              document.head.appendChild(link);
+          }
+
+          if (isMobile) {
+              loadStylesheet("/css/mobile.css");
+          } else {
+              loadStylesheet("/css/homePage.css");
+              //loadStylesheet("/css/mobileHomePage.css");
+          }
+      })();
+  </script>
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -84,28 +104,37 @@
     </nav>
 
     <!-- ======= Hero Section ======= -->
+    <!-- Hero Section -->
     <section id="hero">
-
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg- d-flex flex-column justify-content-center" data-aos="fade-up">
-              <div>
-                <h1>Build complex <span class="highlight"> Unix pipelines</span>, block by block</h1>
-                <h2>This platform allows you to construct powerful data processing pipelines visually. By dragging and dropping blocks, you can easily create Unix-based workflows for your data processing needs.</h2>
-                <a href="/blockly_unix" class="btn-get-started scrollto" id="getStartedButton" style="display: none;">Get Started</a>
-                <a href="/register" id="registerSecondButtonHomePage" class="btn-get-login" style="display: none;">Register</a>
-              </div>
-            </div>
-            <div class="col-lg-10 order-2 order-lg-2 hero-img" data-aos="fade-left">
-              <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+      <div class="container">
+        <div class="row align-items-center flex-column-reverse flex-lg-row">
+          <!-- Text Column -->
+          <div class="col-12 col-lg-6 text-content d-flex flex-column justify-content-center" data-aos="fade-up">
+            <h1>Build complex <span class="highlight">Unix pipelines</span>, block by block</h1>
+            <h2>This platform allows you to construct powerful data processing pipelines visually. By dragging and dropping blocks, you can easily create Unix-based workflows for your data processing needs.</h2>
+            <div class="button-group">
+              <a href="/blockly_unix" class="btn-get-started scrollto" id="getStartedButton">Get Started</a>
+              <a href="/register" id="registerSecondButtonHomePage" class="btn-get-login">Register</a>
             </div>
           </div>
+          <!-- Image Column -->
+          <div class="col-12 col-lg-6 hero-img text-center" data-aos="fade-left">
+            <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+          </div>
         </div>
+      </div>
+    </section>
+    <!-- End Hero -->
+    <!-- Mobile Hero-->
+    <section id="hero">
+      <div class="container">
 
-      </section><!-- End Hero -->
+      </div>
+    </section>
 
 
-        <!-- ======= About Section ======= -->
+    <!-- Mobile Hero End-->
+    <!-- ======= About Section ======= -->
     <section id="about" class="about">
         <div class="container">
 

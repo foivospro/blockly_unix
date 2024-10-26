@@ -28,6 +28,26 @@ a:focus {
   color: #007bff; /* Consistent link color */
 }
 
+/* Flex and Container Adjustments */
+.container {
+  max-width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* FAQ Section Mobile Adjustments */
+.faq .faq-list .question {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Footer adjustments for small screens */
+#footer .footer-top .social-links a {
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+}
+
 /* Navbar button color */
 .btn-outline-primary {
   color: #007bff; /* Text color for buttons */
@@ -40,7 +60,7 @@ a:focus {
   z-index: 1040;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  height: 60px;
+  height: auto;
   padding: 10px 20px;
 }
 
