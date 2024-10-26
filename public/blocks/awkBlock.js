@@ -37,6 +37,11 @@ var awkBlock = {
     var conditionAction = handleConditionActionBlocks(block);
     awkCommand += conditionAction;
     awkCommand += " '";
+    let previousBlock = block.getPreviousBlock();
+    if (previousBlock && previousBlock.type === 'filenamesCreate') {
+      const filenames = handleFilenamesBlocks(previousBlock);
+      awkCommand += ` ${filenames}`;
+    }
     return awkCommand;
   }
 };

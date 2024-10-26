@@ -210,7 +210,7 @@ Blockly.Msg['MV_PROMPT_CONFIRMATION'] =
 Blockly.Msg['MV_NOT_OVERWRITE'] = 'Μη αντικατάσταση αρχείου %1';
 Blockly.Msg['MV_SOURCE'] = 'Αρχείο προέλευσης';
 Blockly.Msg['MV_DEST'] = 'Τοποθεσία προορισμού';
-Blockly.Msg['RECORD_NUMBER'] = 'Τρέχων εγγραφή';
+Blockly.Msg['RECORD_NUMBER'] = 'Τρέχουσα εγγραφή';
 Blockly.Msg['RECORD_NUMBER_TOOLTIP'] =
   'Αντιπροσωπεύει τον τρέχοντα αριθμό εγγραφής (γραμμής)';
 Blockly.Msg['RECORD_NUMBER_HELPURL'] = 'https://www.google.com/';
@@ -299,6 +299,13 @@ Blockly.Msg['CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL'] =
 Blockly.Msg['CONTROLS_WHILEUNTIL_TOOLTIP_WHILE'] =
   'Ενώ μια τιμή είναι αληθής, τότε κάντε κάποιες δηλώσεις.';
 Blockly.Msg['DELETE_ALL_BLOCKS'] = 'Διαγραφή όλων των %1 μπλοκ;';
+Blockly.Msg['DELETE_LIST'] = 'Διαγραφή λίστας %1';
+Blockly.Msg['DELETE_LIST_TOOLTIP'] = 'Διαγράψτε την επιλεγμένη λίστα.';
+Blockly.Msg['DELETE_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['DELETE_LIST_ELEMENT'] = 'Διαγραφή στοιχείου λίστας %1';
+Blockly.Msg['DELETE_LIST_ELEMENT_TOOLTIP'] =
+  'Διαγράψτε το επιλεγμένο στοιχείο από τη λίστα.';
+Blockly.Msg['DELETE_LIST_ELEMENT_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['DELETE_BLOCK'] = 'Διαγραφή μπλοκ';
 Blockly.Msg['DELETE_VARIABLE'] = "Διαγραφή της μεταβλητής '%1'";
 Blockly.Msg['DELETE_VARIABLE_CONFIRMATION'] =
@@ -310,6 +317,9 @@ Blockly.Msg['DISABLE_BLOCK'] = 'Απενεργοποίηση μπλοκ';
 Blockly.Msg['DUPLICATE_BLOCK'] = 'Αντίγραφο';
 Blockly.Msg['DUPLICATE_COMMENT'] = 'Αντίγραφο σχολίου';
 Blockly.Msg['ENABLE_BLOCK'] = 'Ενεργοποίηση μπλοκ';
+Blockly.Msg['EXIT'] = 'Έξοδος από το πρόγραμμα %1';
+Blockly.Msg['EXIT_TOOLTIP'] = 'Έξοδος από το πρόγραμμα.';
+Blockly.Msg['EXIT_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['EXPAND_ALL'] = 'Επέκταση μπλοκ';
 Blockly.Msg['EXPAND_BLOCK'] = 'Επέκταση μπλοκ';
 Blockly.Msg['EXTERNAL_INPUTS'] = 'Εξωτερικές εισροές';
@@ -624,6 +634,15 @@ Blockly.Msg['NEW_STRING_VARIABLE'] = 'Δημιουργία μεταβλητής 
 Blockly.Msg['NEW_VARIABLE'] = 'Δημιουργία μεταβλητής...';
 Blockly.Msg['NEW_VARIABLE_TITLE'] = 'Νέο όνομα μεταβλητής:';
 Blockly.Msg['NEW_VARIABLE_TYPE_TITLE'] = 'Νέος τύπος μεταβλητής:';
+Blockly.Msg['NEXT'] = 'Παράλειψε τα υπόλοιπα μοτίβα της τρέχουσας γραμμής';
+Blockly.Msg['NEXT_TOOLTIP'] =
+  'Παράλειψη των υπόλοιπων μοτίβων της τρέχουσας γραμμής.';
+Blockly.Msg['NEXT_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['NEXT_FILE'] =
+  'Παράλειψη του υπόλοιπου αρχείου και μετάβαση στο επόμενο';
+Blockly.Msg['NEXT_FILE_TOOLTIP'] =
+  'Παράλειψη του υπόλοιπου αρχείου και μετάβαση στο επόμενο.';
+Blockly.Msg['NEXT_FILE_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['ORDINAL_NUMBER_SUFFIX'] = '';
 Blockly.Msg['PRINT_CREATE_WITH'] = 'Πολλαπλές εκτυπώσεις';
 Blockly.Msg['PRINT_CREATE_WITH_TOOLTIP'] = 'Προσθήκη επιλογής εκτύπωσης';
@@ -689,6 +708,10 @@ Blockly.Msg['RANDOM_HELPURL'] =
   'https://en.wikipedia.org/wiki/Random_number_generation';
 Blockly.Msg['RANDOM_TOOLTIP'] =
   'Επιστρέφει τυχαίο αριθμό μεταξύ 0.0 (συμπεριλαμβανομένου) και 1.0 (εξαιρουμένου).';
+Blockly.Msg['RETURN'] = 'Επίστρεψε %1';
+Blockly.Msg['RETURN_HELPURL'] =
+  'https://en.wikipedia.org/wiki/Return_statement';
+Blockly.Msg['RETURN_TOOLTIP'] = 'Επιστρέφει την τιμή.';
 Blockly.Msg['SETSEED'] = 'Ορισμός σπόρου για τον τυχαίο αριθμό %1';
 Blockly.Msg['SET_SEED_HELPURL'] = 'https://en.wikipedia.org/wiki/Random_seed';
 Blockly.Msg['SET_SEED_TOOLTIP'] = 'Ορίζει τον σπόρο για τον τυχαίο αριθμό.';

@@ -100,6 +100,12 @@
     <script src="blocks/matchBlock.js"></script>
     <script src="blocks/toLowerBlock.js"></script>
     <script src="blocks/toUpperBlock.js"></script>
+    <script src="blocks/returnBlock.js"></script>
+    <script src="blocks/nextBlock.js"></script>
+    <script src="blocks/nextFileBlock.js"></script>
+    <script src="blocks/exitBlock.js"></script>
+    <script src="blocks/deleteListBlock.js"></script>
+    <script src="blocks/deleteListElementBlock.js"></script>
     <!-- END OF BLOCK DEFINITION -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -482,6 +488,10 @@
               { kind: 'block', type: 'NF' },
               // { kind: 'block', type: 'xargs' },
               { kind: 'block', type: 'condition' },
+              { kind: 'block', type: 'return' },
+              { kind: 'block', type: 'next' },
+              { kind: 'block', type: 'nextFile' },
+              { kind: 'block', type: 'exit' },
               {
                 kind: 'category',
                 name: [MSG.TEXT_OUTPUT],
@@ -595,7 +605,16 @@
                   {
                     kind: 'block',
                     type: 'lists_setIndex' // Block for setting an item in a list
+                  },
+                  {
+                    kind: 'block',
+                    type: 'deleteList' // Block for deleting a list
+                  },
+                  {
+                    kind: 'block',
+                    type: 'deleteListElement' // Block for deleting an element from a list
                   }
+
                   //{
                   //  kind: 'block',
                   //  type: 'lists_getSublist' // Block for getting a sublist from a list

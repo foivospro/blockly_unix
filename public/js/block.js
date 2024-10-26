@@ -285,7 +285,13 @@ function handleSpecificBlocks(currentBlock) {
     index: indexBlock,
     match: matchBlock,
     toLower: toLowerBlock,
-    toUpper: toUpperBlock
+    toUpper: toUpperBlock,
+    return: returnBlock,
+    next: nextBlock,
+    nextFile: nextFileBlock,
+    exit: exitBlock,
+    deleteList: deleteListBlock,
+    deleteListElement: deleteListElementBlock
   };
 
   if (blockTypesWithCommand[currentBlock.type]) {
