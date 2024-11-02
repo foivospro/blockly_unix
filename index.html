@@ -104,8 +104,21 @@
     <script src="blocks/nextBlock.js"></script>
     <script src="blocks/nextFileBlock.js"></script>
     <script src="blocks/exitBlock.js"></script>
-    <script src="blocks/deleteListBlock.js"></script>
-    <script src="blocks/deleteListElementBlock.js"></script>
+    <script src="blocks/deleteArrayBlock.js"></script>
+    <script src="blocks/deleteArrayElementBlock.js"></script>
+    <script src="blocks/beginBlock.js"></script>
+    <script src="blocks/endBlock.js"></script>
+    <script src="blocks/arrayGetIndexBlock.js"></script>
+    <script src="blocks/arraySetIndexBlock.js"></script>
+    <script src="blocks/filenameVariableBlock.js"></script>
+    <script src="blocks/argumentCountBlock.js"></script>
+    <script src="blocks/argumentArrayBlock.js"></script>
+    <script src="blocks/environmentVariablesBlock.js"></script>
+    <script src="blocks/FNRBlock.js"></script>
+    <script src="blocks/FSBlock.js"></script>
+    <script src="blocks/OFSBlock.js"></script>
+    <script src="blocks/RLENGTHBlock.js"></script>
+    <script src="blocks/RSTARTBlock.js"></script>
     <!-- END OF BLOCK DEFINITION -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -318,7 +331,12 @@
           colourSecondary: '#ff0000',
           colourTertiary: '#C5EAFF'
         },
-        Lists: {
+        'Special Variables': {
+          colourPrimary: '295',
+          colourSecondary: '295',
+          colourTertiary: '295'
+        },
+        Arrays: {
           colourPrimary: '#260',
           colourSecondary: '#ff0000',
           colourTertiary: '#C5EAFF'
@@ -480,12 +498,11 @@
             name: [MSG.FIELD_PROCESSING],
             colour: '#3B7C09',
             contents: [
-              //{ kind: 'block', type: 'beginEnd' },
+              { kind: 'block', type: 'begin' },
+              { kind: 'block', type: 'end' },
               { kind: 'block', type: 'awk' },
               { kind: 'block', type: 'conditionAction' },
               { kind: 'block', type: 'column' },
-              { kind: 'block', type: 'NR' },
-              { kind: 'block', type: 'NF' },
               // { kind: 'block', type: 'xargs' },
               { kind: 'block', type: 'condition' },
               { kind: 'block', type: 'return' },
@@ -591,28 +608,42 @@
               },
               {
                 kind: 'category',
-                name: 'Lists', // Reference to the translated message for "Lists"
+                name: [MSG.SPECIAL_VARIABLES],
+                colour: '295',
+                contents: [
+                  { kind: 'block', type: 'NR' },
+                  { kind: 'block', type: 'NF' },
+                  { kind: 'block', type: 'FILENAME' },
+                  { kind: 'block', type: 'ARGC' },
+                  { kind: 'block', type: 'ARGV' },
+                  { kind: 'block', type: 'ENVIRON' },
+                  { kind: 'block', type: 'FNR' },
+                  { kind: 'block', type: 'FS' },
+                  { kind: 'block', type: 'OFS' },
+                  { kind: 'block', type: 'RLENGTH' },
+                  { kind: 'block', type: 'RSTART' }
+                ]
+              },
+              {
+                kind: 'category',
+                name: 'Arrays', // Reference to the translated message for "Lists"
                 colour: '260',
                 contents: [
                   {
                     kind: 'block',
-                    type: 'lists_create_with' // Block for creating a list with items
+                    type: 'arrayGetIndex' // Block for getting an item from a list
                   },
                   {
                     kind: 'block',
-                    type: 'lists_getIndex' // Block for getting an item from a list
+                    type: 'arraySetIndex' // Block for setting an item in a list
                   },
                   {
                     kind: 'block',
-                    type: 'lists_setIndex' // Block for setting an item in a list
+                    type: 'deleteArray' // Block for deleting a list
                   },
                   {
                     kind: 'block',
-                    type: 'deleteList' // Block for deleting a list
-                  },
-                  {
-                    kind: 'block',
-                    type: 'deleteListElement' // Block for deleting an element from a list
+                    type: 'deleteArrayElement' // Block for deleting an element from a list
                   }
 
                   //{

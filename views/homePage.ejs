@@ -62,6 +62,14 @@
           });
       });
     </script>
+    <script>
+      // Check if the alert has already been shown
+      if (!localStorage.getItem('mobileAlertShown')) {
+          alert('This application is not optimized for mobile devices. Please use a PC for the best experience.');
+          // Set the flag in local storage
+          localStorage.setItem('mobileAlertShown', 'true');
+      }
+    </script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -69,7 +77,6 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <span class="navbar-brand d-flex align-items-center">
-                <img src="img/blockly_72.png" alt=""  class="me-2">
                 <a class="navbar-brand" href="/">Ublocks</a>
             </span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

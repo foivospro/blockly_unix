@@ -36,6 +36,7 @@ var awkBlock = {
     awkCommand += "' ";
     var conditionAction = handleConditionActionBlocks(block);
     awkCommand += conditionAction;
+    console.log('awkCommand:', awkCommand);
     awkCommand += " '";
     let previousBlock = block.getPreviousBlock();
     if (previousBlock && previousBlock.type === 'filenamesCreate') {

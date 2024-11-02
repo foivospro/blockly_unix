@@ -13,7 +13,7 @@ var NRBlock = {
       name: 'recordNumber'
     }
   ],
-  style: 'Field Processing',
+  style: 'Special Variables',
   output: null,
   tooltip: '%{BKY_RECORD_NUMBER_TOOLTIP}',
   helpUrl: '%{BKY_RECORD_NUMBER_HELPURL}', // URL to further information or documentation.

@@ -1,6 +1,6 @@
-var deleteListBlock = {
-  type: 'deleteList',
-  message0: '%{BKY_DELETE_LIST}',
+var deleteArrayBlock = {
+  type: 'deleteArray',
+  message0: '%{BKY_DELETE_ARRAY}',
   args0: [
     {
       type: 'input_value',
@@ -11,8 +11,8 @@ var deleteListBlock = {
   previousStatement: true,
   nextStatement: true,
   style: 'list_blocks',
-  tooltip: '%{BKY_DELETE_LIST_TOOLTIP}',
-  helpUrl: '%{BKY_DELETE_LIST_HELPURL}',
+  tooltip: '%{BKY_DELETE_ARRAY_TOOLTIP}',
+  helpUrl: '%{BKY_DELETE_ARRAY_HELPURL}',
 
   generateCommand: function (block) {
     var x = handleBlockByType(block.getInputTargetBlock('X'));
@@ -20,4 +20,4 @@ var deleteListBlock = {
   }
 };
 
-Blockly.defineBlocksWithJsonArray([deleteListBlock]);
+Blockly.defineBlocksWithJsonArray([deleteArrayBlock]);

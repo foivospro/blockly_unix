@@ -13,7 +13,7 @@ var NFBlock = {
       name: 'FieldNumber'
     }
   ],
-  style: 'Field Processing',
+  style: 'Special Variables',
   output: null,
   tooltip: '%{BKY_FIELD_NUMBER_TOOLTIP}',
   helpUrl: '%{BKY_FIELD_NUMBER_HELPURL}', // URL to further information or documentation.

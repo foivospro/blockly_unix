@@ -290,8 +290,22 @@ function handleSpecificBlocks(currentBlock) {
     next: nextBlock,
     nextFile: nextFileBlock,
     exit: exitBlock,
-    deleteList: deleteListBlock,
-    deleteListElement: deleteListElementBlock
+    deleteArray: deleteArrayBlock,
+    deleteArrayElement: deleteArrayElementBlock,
+    begin: beginBlock,
+    end: endBlock,
+    arrayGetIndex: arrayGetIndexBlock,
+    arraySetIndex: arraySetIndexBlock,
+    multiplePrint: multiplePrintBlock,
+    FILENAME: filenameVariableBlock,
+    ARGC: argumentCountBlock,
+    ARGV: argumentArrayBlock,
+    ENVIRON: environBlock,
+    FNR: FNRBlock,
+    FS: FSBlock,
+    OFS: OFSBlock,
+    RLENGTH: RLENGTHBlock,
+    RSTART: RSTARTBlock
   };
 
   if (blockTypesWithCommand[currentBlock.type]) {
@@ -609,9 +623,6 @@ function handleBlockByType(currentBlock) {
     'logic_compare',
     'logic_operation',
     'controls_if',
-    'lists_create_with',
-    'lists_getIndex',
-    'lists_setIndex',
     'controls_forEach',
     'controls_whileUntil',
     'controls_for',
@@ -650,7 +661,8 @@ function handleArgumentsBlocks(block) {
 function handleConditionActionBlocks(block) {
   var conditionAction = '';
   var block = block.getInputTargetBlock('awkConditionAction');
-  if (block && block.type === 'conditionAction') {
+  var blockTypes = ['conditionAction', 'begin', 'end'];
+  if (block && blockTypes.includes(block.type)) {
     while (block) {
       console.log('block:', block);
       conditionAction += handleBlockByType(block) + ' ';
@@ -901,51 +913,6 @@ function getFileNames(block) {
   return fileNames.join(' ');
 }
 
-function getMultiplePrints(block) {
-  let prints = [];
-  for (let i = 0; i < block.itemCount_; i++) {
-    let inputBlock = block.getInputTargetBlock('ADD' + i);
-    //console.log("getMultiplePrints - inputBlock Type: ", inputBlock.type);
-    if (inputBlock) {
-      let singlePrint;
-      var blockDefinition = window[inputBlock.type + 'Block'];
-      if (inputBlock.type == 'column') {
-        singlePrint = blockDefinition.unix_description[0]['TEXT'].replace(
-          'str',
-          inputBlock.getFieldValue('TEXT')
-        );
-      } else if (inputBlock.type == 'NR') {
-        singlePrint = blockDefinition.unix_description[0]['recordNumber'];
-      } else if (inputBlock.type == 'NF') {
-        singlePrint = blockDefinition.unix_description[0]['FieldNumber'];
-      } else if (inputBlock.type == 'regPattern') {
-        singlePrint = inputBlock.getFieldValue('regPattern');
-      } else if (inputBlock.type == 'variables_get') {
-        // Retrieve the variable ID from the block
-        var variableId = inputBlock.getFieldValue('VAR');
-
-        // Get the variable model from the workspace
-        var variableModel =
-          Blockly.getMainWorkspace().getVariableById(variableId);
-
-        if (variableModel) {
-          // Get the name of the variable
-          singlePrint = variableModel.name;
-        } else {
-        }
-      } else if (inputBlock.type == 'math_arithmetic') {
-        singlePrint = generator.blockToCode(inputBlock);
-      } else {
-        singlePrint = '"' + inputBlock.getFieldValue('TEXT') + '"';
-      }
-      if (singlePrint) {
-        prints.push(singlePrint);
-      }
-    }
-  }
-  return prints.join(',');
-}
-
 generator.forBlock['text'] = function (block) {
   var textValue = block.getFieldValue('TEXT');
   var code = '"' + textValue + '"';
@@ -968,7 +935,13 @@ generator.forBlock['arrayCreate'] = function (block) {
 
 Blockly.Blocks['lists_getIndex'] = {
   init: function () {
-    this.appendValueInput('VALUE').setCheck('Array').appendField('in list');
+    if (Blockly.getMainWorkspace().selectedLanguage === 'en') {
+      this.appendValueInput('VALUE').setCheck('Array').appendField('in array');
+    } else {
+      this.appendValueInput('VALUE')
+        .setCheck('Array')
+        .appendField('στον πίνακα');
+    }
 
     // Customize the dropdown to remove unwanted options
     this.whereField = new Blockly.FieldDropdown(
@@ -1003,13 +976,26 @@ Blockly.Blocks['lists_getIndex'] = {
 Blockly.Blocks['lists_setIndex'] = {
   init: function () {
     // Create the input for the list
-    this.appendValueInput('LIST').setCheck('Array').appendField('in list');
+    if (selectedLanguage === 'en') {
+      this.appendValueInput('LIST').setCheck('Array').appendField('in array');
+      // Input for the index where the value should be set
+      this.appendValueInput('AT')
+        .setCheck('Number')
+        .appendField('set in index');
 
-    // Input for the index where the value should be set
-    this.appendValueInput('AT').setCheck('Number').appendField('set in index');
-
-    // Input for the value to set
-    this.appendValueInput('TO').appendField('to');
+      // Input for the value to set
+      this.appendValueInput('TO').appendField('to');
+    } else {
+      this.appendValueInput('LIST')
+        .setCheck('Array')
+        .appendField('στον πίνακα');
+      // Input for the index where the value should be set
+      this.appendValueInput('AT')
+        .setCheck('Number')
+        .appendField('όρισε στη θέση');
+      // Input for the value to set
+      this.appendValueInput('TO').appendField('σε');
+    }
 
     // Make this block able to connect to other blocks
     this.setPreviousStatement(true);

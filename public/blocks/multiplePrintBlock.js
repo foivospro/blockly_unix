@@ -4,7 +4,7 @@ var multiplePrintBlock = {
   message0: '%{BKY_PRINT_CREATE_WITH} %1',
   args0: [
     {
-      type: 'input_dummy',
+      type: 'input_value',
       name: 'EMPTY'
     }
   ],
@@ -12,7 +12,34 @@ var multiplePrintBlock = {
   style: 'text_blocks',
   helpUrl: '%{BKY_PRINT_CREATE_WITH_HELPURL}',
   tooltip: '%{BKY_PRINT_CREATE_WITH_TOOLTIP}',
-  mutator: 'new_list_create_with_mutator'
+  mutator: 'new_list_create_with_mutator',
+
+  generateCommand: function (block) {
+    var command = '';
+    var index = 0;
+    var inputName = 'ADD' + index; // Start with ADD0
+    var inputBlock;
+
+    // Loop through all dynamic inputs and generate the command
+    while (block.getInputTargetBlock(inputName)) {
+      inputBlock = block.getInputTargetBlock(inputName);
+      if (inputBlock) {
+        // Generate command for the block
+        command += ' ' + handleBlockByType(inputBlock);
+      }
+
+      // Move to the next input
+      index++;
+      inputName = 'ADD' + index; // Update to ADD1, ADD2, etc.
+
+      // If there's another input, append a comma
+      if (block.getInputTargetBlock(inputName)) {
+        command += ',';
+      }
+    }
+
+    return command;
+  }
 };
 
 Blockly.defineBlocksWithJsonArray([multiplePrintBlock]);
