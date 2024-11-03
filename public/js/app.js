@@ -331,14 +331,14 @@ function loadLanguageFile(language) {
     document.head.appendChild(script);
   });
 }
-
+var selectedLanguage;
 function loadInitialLanguage() {
-  var selectedLanguage = 'en';
+  selectedLanguage = 'en';
   loadLanguageFile(selectedLanguage).then(initBlockly);
 }
 
 function handleLanguageChange(event) {
-  var selectedLanguage = event.target.value;
+  selectedLanguage = event.target.value;
   loadLanguageFile(selectedLanguage).then(function () {
     Blockly.getMainWorkspace().clear();
     initBlockly();

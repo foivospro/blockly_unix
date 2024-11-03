@@ -11,7 +11,7 @@ window.MSG = {
   NETWORK_OPERATIONS: 'Network Operations',
   TEXT_OUTPUT: 'Text Output',
   STRING_FUNCTIONS: 'String Functions',
-  SPECIAL_VARIABLES: 'Special Meaning Variables',
+  SPECIAL_VARIABLES: 'Special Variables',
   LOGIC: 'Logic',
   LOOPS: 'Loops',
   MATH: 'Math',
