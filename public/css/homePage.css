@@ -225,7 +225,6 @@ body {
   margin: 0;
   background-color: rgb(232, 240, 254);
 }
-
 #hero .container {
   position: relative;
   z-index: 3;
@@ -307,6 +306,18 @@ body {
   #hero h1 {
     font-size: 32px;
     line-height: 40px;
+  }
+
+  @media (max-width: 768px) {
+    #registerSecondButtonHomePage {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #hero {
+      background-image: none;
+    }
   }
 
   #hero h2 {
