@@ -521,6 +521,6 @@ app.get(
   }
 );
 
-app.listen(8443, () => {
-  console.log('Server is running on https://ublocks.balab.aueb.gr');
+app.listen(3000, 'localhost', () => {
+  console.log('Server is running on http://localhost:3000');
 });
