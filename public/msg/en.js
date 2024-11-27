@@ -1020,7 +1020,7 @@ Blockly.Msg['TOUCH_CHANGE_MODIFICATION_TIME'] =
 Blockly.Msg['TOUCH_SPECIFY_TIME_D'] =
   'Change the access and modification times to the specified time \n';
 Blockly.Msg['TOUCH_SPECIFY_TIME_FORMAT_D'] =
-  'Add date in YYYY-MM-DD hh:mm:SS[Z (UTC)] %1';
+  'Timestamp in YYYY-MM-DD hh:mm:SS[Z (UTC)] %1';
 Blockly.Msg['TOUCH_TOOLTIP'] =
   'Set the access and modification time of a file. If the file does not exist, it creates an empty file.' +
   'To insert timestamps you can use the ISO 8601 format: YYYY-MM-DD hh:mm:SS[Z (for UTC)], where:' +
