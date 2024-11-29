@@ -46,3 +46,5 @@ var catBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([catBlock]);
+
+window.unixGenerator.forBlock['cat'] = window.unixGenerator.forBlock.generic;

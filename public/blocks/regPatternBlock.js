@@ -28,3 +28,5 @@ var regPatternBlock = {
 
 // Ορισμός του block στο Blockly
 Blockly.defineBlocksWithJsonArray([regPatternBlock]);
+window.unixGenerator.forBlock['regPattern'] =
+  window.unixGenerator.forBlock.generic;

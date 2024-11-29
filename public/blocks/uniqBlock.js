@@ -9,7 +9,7 @@ var uniqBlock = {
       caseInsensitive: '-i',
       outputNonRepeatedLines: '-u',
       outputSingleCopyOfRepeatedLines: '-d',
-      skipChars: '-s str'
+      skipChars: (value) => '-s ' + value
     }
   ],
 
@@ -61,3 +61,5 @@ var uniqBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([uniqBlock]);
+
+window.unixGenerator.forBlock['uniq'] = window.unixGenerator.forBlock.generic;

@@ -50,3 +50,4 @@ var lsBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([lsBlock]);
+window.unixGenerator.forBlock['ls'] = window.unixGenerator.forBlock.generic;

@@ -51,3 +51,4 @@ var curlBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([curlBlock]);
+window.unixGenerator.forBlock['curl'] = window.unixGenerator.forBlock.generic;

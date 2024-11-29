@@ -9,7 +9,6 @@ var filenameBlock = {
       text: 'default.txt' // default text for the input
     }
   ],
-  extensions: ['restrict_filename_to_filenamesCreate'],
   output: 'filename',
   style: 'Function inputs',
   tooltip: '%{BKY_FILENAME_TOOLTIP}',

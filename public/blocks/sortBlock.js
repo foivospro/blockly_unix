@@ -6,8 +6,8 @@ var sortBlock = {
     {
       desc: '-r',
       numeric_sorting: '-n',
-      sort_delimiter: "-t'str'",
-      sort_column: '-k ',
+      sort_delimiter: (value) => "-t'" + value + "'",
+      sort_column: (value) => '-k ' + value,
       uniq_elements: '-u',
       ignore_nonPrintable: '-i',
       ignore_leading_blanks: '-b'
@@ -46,7 +46,7 @@ var sortBlock = {
     {
       type: 'field_number',
       name: 'sort_column',
-      value: '', // default number of column
+      value: '0', // default number of column
       //min: 1, // minimum value
       //max: 1000, // it should be the maximum of the length of the files columns
       precision: 1 // allow only integers
@@ -77,8 +77,6 @@ var sortBlock = {
     }
   ],
 
-  extensions: ['integer_validation'],
-
   style: 'Text Processing',
   previousStatement: 'Action',
   nextStatement: 'Action',
@@ -87,3 +85,5 @@ var sortBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([sortBlock]);
+
+window.unixGenerator.forBlock['sort'] = window.unixGenerator.forBlock.generic;

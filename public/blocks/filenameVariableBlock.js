@@ -16,11 +16,7 @@ var filenameVariableBlock = {
   style: 'Special Variables',
   output: null,
   tooltip: '%{BKY_FILENAME_TOOLTIP}',
-  helpUrl: '%{BKY_FILENAME_HELPURL}', // URL to further information or documentation.
-  generateCommand: function (block) {
-    var awkCommand = 'FILENAME';
-    return awkCommand;
-  }
+  helpUrl: '%{BKY_FILENAME_HELPURL}' // URL to further information or documentation.
 };
 
 Blockly.defineBlocksWithJsonArray([filenameVariableBlock]);

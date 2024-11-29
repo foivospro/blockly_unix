@@ -4,7 +4,7 @@ var appendBlock = {
   message0: '%{BKY_APPEND} %1',
   unix_description: [
     {
-      append_filename: '>> str'
+      append_filename: (value) => '>> ' + value
     }
   ],
   args0: [
@@ -21,3 +21,4 @@ var appendBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([appendBlock]);
+window.unixGenerator.forBlock['append'] = window.unixGenerator.forBlock.generic;

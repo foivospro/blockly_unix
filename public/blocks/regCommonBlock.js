@@ -35,3 +35,5 @@ var regCommonBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([regCommonBlock]);
+window.unixGenerator.forBlock['regCommon'] =
+  window.unixGenerator.forBlock.generic;

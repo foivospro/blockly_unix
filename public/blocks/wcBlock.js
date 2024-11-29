@@ -55,3 +55,4 @@ var wcBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([wcBlock]);
+window.unixGenerator.forBlock['wc'] = window.unixGenerator.forBlock.generic;

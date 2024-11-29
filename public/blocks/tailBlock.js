@@ -42,8 +42,9 @@ var tailBlock = {
   previousStatement: 'Action',
   nextStatement: 'Action',
   style: 'Text Processing',
-  extensions: ['integer_validation'],
   helpUrl: '%{BKY_TAIL_HELPURL}' // URL to further information or documentation.
 };
 
 Blockly.defineBlocksWithJsonArray([tailBlock]);
+
+window.unixGenerator.forBlock['tail'] = window.unixGenerator.forBlock.generic;

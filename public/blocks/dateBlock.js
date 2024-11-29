@@ -17,8 +17,6 @@ var dateBlock = {
     }
   ],
 
-  extensions: ['integer_validation'],
-
   style: 'System Monitoring',
   nextStatement: 'Action',
   tooltip: '%{BKY_DATE_TOOLTIP}',
@@ -26,3 +24,4 @@ var dateBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([dateBlock]);
+window.unixGenerator.forBlock['date'] = window.unixGenerator.forBlock.generic;

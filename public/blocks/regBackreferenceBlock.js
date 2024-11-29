@@ -40,3 +40,5 @@ var regBackreferenceBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([regBackreferenceBlock]);
+window.unixGenerator.forBlock['regBackreference'] =
+  window.unixGenerator.forBlock.generic;

@@ -14,7 +14,7 @@ var gzipBlock = {
       five: '-5',
       seven: '-7',
       eight: '-8',
-      suffix: '-S str'
+      suffix: (value) => '-S ' + value
     }
   ],
   message0: '%{BKY_GZIP_FILE}',
@@ -63,7 +63,7 @@ var gzipBlock = {
     }
   ],
   style: 'Other Commands',
-  extensions: ['integer_validation'],
+
   previousStatement: 'Action',
   nextStatement: 'Action',
   tooltip: '%{BKY_GZIP_TOOLTIP}',
@@ -71,3 +71,4 @@ var gzipBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([gzipBlock]);
+window.unixGenerator.forBlock['gzip'] = window.unixGenerator.forBlock.generic;

@@ -37,3 +37,5 @@ var regAlternationBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([regAlternationBlock]);
+window.unixGenerator.forBlock['regAlternation'] =
+  window.unixGenerator.forBlock.generic;

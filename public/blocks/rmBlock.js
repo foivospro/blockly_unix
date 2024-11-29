@@ -50,26 +50,10 @@ var rmBlock = {
       checked: false
     }
   ],
-  extensions: [],
   style: 'Filesystem Operations',
   tooltip: '%{BKY_RM_TOOLTIP}',
-  helpUrl: 'https://linux.die.net/man/1/rm',
-  generateCommand: function (block) {
-    let rmCommand = 'rm ';
-    const force = block.getFieldValue('force') === 'TRUE';
-    const requestConfirmation =
-      block.getFieldValue('request_confirmation') === 'TRUE';
-    const removeDirectory = block.getFieldValue('remove_directory') === 'TRUE';
-    const recursive = block.getFieldValue('recursive') === 'TRUE';
-    if (force) rmCommand += '-f ';
-    if (requestConfirmation) rmCommand += '-i ';
-    if (removeDirectory) rmCommand += '-d ';
-    if (recursive) rmCommand += '-R ';
-    const argumentBlock = block.getInputTargetBlock('ARGUMENT');
-    rmCommand += ' ' + handleArgumentsBlocks(argumentBlock);
-    generatedCommand = rmCommand;
-    return generatedCommand;
-  }
+  helpUrl: 'https://linux.die.net/man/1/rm'
 };
 
 Blockly.defineBlocksWithJsonArray([rmBlock]);
+window.unixGenerator.forBlock['rm'] = window.unixGenerator.forBlock.generic;

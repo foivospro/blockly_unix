@@ -21,3 +21,5 @@ var regCapturingGroupBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([regCapturingGroupBlock]);
+window.unixGenerator.forBlock['regCapturingGroup'] =
+  window.unixGenerator.forBlock.generic;

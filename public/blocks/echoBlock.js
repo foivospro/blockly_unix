@@ -22,3 +22,4 @@ var echoBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([echoBlock]);
+window.unixGenerator.forBlock['echo'] = window.unixGenerator.forBlock.generic;

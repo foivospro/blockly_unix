@@ -10,12 +10,12 @@ var grepBlock = {
       inverted: '-v',
       recursive: '-r',
       show_line_nums: '-n',
-      stop_after_num_matches: '-m ',
+      stop_after_num_matches: (value) => '-m ' + value,
       multiple_patterns: '-e',
       regPattern: "-E 'patt'",
       showFiles: '-H',
-      print_context_before_match: '-B ',
-      print_context_after_match: '-A '
+      print_context_before_match: (value) => '-B ' + value,
+      print_context_after_match: (value) => '-A ' + value
     }
   ],
   message0: '%{BKY_GREP}',
@@ -139,3 +139,4 @@ var grepBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([grepBlock]);
+window.unixGenerator.forBlock['grep'] = window.unixGenerator.forBlock.generic;

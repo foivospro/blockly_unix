@@ -4,9 +4,9 @@ var pingBlock = {
   unix_description: [
     {
       address: 'str',
-      count: '-c ',
-      interval: '-i ',
-      timeout: '-W ',
+      count: (value) => '-c ' + value,
+      interval: (value) => '-i ' + value,
+      timeout: (value) => '-W ' + value,
       host: 'str '
     }
   ],
@@ -53,3 +53,4 @@ var pingBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([pingBlock]);
+window.unixGenerator.forBlock['ping'] = window.unixGenerator.forBlock.generic;

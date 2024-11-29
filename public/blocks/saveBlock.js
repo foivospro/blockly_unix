@@ -4,7 +4,7 @@ var saveBlock = {
   category: 'I/O Redirection',
   unix_description: [
     {
-      save_filename: '> str'
+      save_filename: (value) => '> ' + value
     }
   ],
   args0: [
@@ -21,3 +21,4 @@ var saveBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([saveBlock]);
+window.unixGenerator.forBlock['save'] = window.unixGenerator.forBlock.generic;

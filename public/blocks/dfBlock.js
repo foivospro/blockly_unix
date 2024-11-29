@@ -46,8 +46,6 @@ var dfBlock = {
     }
   ],
 
-  extensions: ['integer_validation'],
-
   style: 'System Monitoring',
   nextStatement: 'Action',
   tooltip: '%{BKY_DF_TOOLTIP}',
@@ -55,3 +53,4 @@ var dfBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([dfBlock]);
+window.unixGenerator.forBlock['df'] = window.unixGenerator.forBlock.generic;

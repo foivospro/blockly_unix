@@ -32,8 +32,9 @@ var headBlock = {
   previousStatement: 'Action',
   nextStatement: 'Action',
   style: 'Text Processing',
-  extensions: ['integer_validation'],
   helpUrl: '' // URL to further information or documentation.
 };
 
 Blockly.defineBlocksWithJsonArray([headBlock]);
+
+window.unixGenerator.forBlock['head'] = window.unixGenerator.forBlock.generic;

@@ -20,3 +20,4 @@ var sleepBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([sleepBlock]);
+window.unixGenerator.forBlock['sleep'] = window.unixGenerator.forBlock.generic;

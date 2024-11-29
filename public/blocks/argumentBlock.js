@@ -9,7 +9,6 @@ var argumentBlock = {
       text: 'argument' // default text for the input
     }
   ],
-  extensions: ['restrict_args_block'],
   output: 'String',
   style: 'Function inputs',
   tooltip: '%{BKY_ARGUMENT_TOOLTIP}',

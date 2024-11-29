@@ -30,3 +30,4 @@ var mkdirBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([mkdirBlock]);
+window.unixGenerator.forBlock['mkdir'] = window.unixGenerator.forBlock.generic;

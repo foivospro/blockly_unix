@@ -31,3 +31,5 @@ var regAnyOneBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([regAnyOneBlock]);
+window.unixGenerator.forBlock['regAnyOne'] =
+  window.unixGenerator.forBlock.generic;

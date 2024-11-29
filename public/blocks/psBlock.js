@@ -6,9 +6,9 @@ var psBlock = {
     {
       desc: '-e',
       show_all_processes: '-e',
-      show_process_user: "-u'str'",
-      show_process_pid: "-p'str'",
-      format: '-o',
+      show_process_user: (value) => "-u '" + value + "'",
+      show_process_pid: (value) => "-p '" + value + "'",
+      format: (value) => "-o '" + value + "'",
       show_thread: '-L',
       sort_by: '--sort',
       filter_by: '--pid'
@@ -54,9 +54,6 @@ var psBlock = {
       checked: false // by default it's disabled
     }
   ],
-
-  extensions: ['integer_validation'],
-
   style: 'System Monitoring',
   nextStatement: 'Action',
   tooltip: '%{BKY_PS_TOOLTIP}',
@@ -64,3 +61,4 @@ var psBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([psBlock]);
+window.unixGenerator.forBlock['ps'] = window.unixGenerator.forBlock.generic;

@@ -53,8 +53,6 @@ var whoBlock = {
     }
   ],
 
-  extensions: ['integer_validation'],
-
   style: 'System Monitoring',
   nextStatement: 'Action',
   tooltip: '%{BKY_WHO_TOOLTIP}',
@@ -62,3 +60,4 @@ var whoBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([whoBlock]);
+window.unixGenerator.forBlock['who'] = window.unixGenerator.forBlock.generic;

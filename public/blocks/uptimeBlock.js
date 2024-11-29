@@ -36,8 +36,6 @@ var uptimeBlock = {
     }
   ],
 
-  extensions: ['integer_validation'],
-
   style: 'System Monitoring',
   nextStatement: 'Action',
   tooltip: '%{BKY_UPTIME_TOOLTIP}',
@@ -45,3 +43,4 @@ var uptimeBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([uptimeBlock]);
+window.unixGenerator.forBlock['uptime'] = window.unixGenerator.forBlock.generic;

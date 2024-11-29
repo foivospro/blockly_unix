@@ -20,3 +20,4 @@ var killBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([killBlock]);
+window.unixGenerator.forBlock['kill'] = window.unixGenerator.forBlock.generic;
