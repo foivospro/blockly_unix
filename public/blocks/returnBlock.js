@@ -1,5 +1,10 @@
 var returnBlock = {
   type: 'return',
+  unix_description: [
+    {
+      X: (value) => value + ';'
+    }
+  ],
   message0: '%{BKY_RETURN}',
   args0: [
     {
@@ -12,16 +17,8 @@ var returnBlock = {
   nextStatement: true,
   style: 'Field Processing',
   tooltip: '%{BKY_RETURN_TOOLTIP}',
-  helpUrl: '%{BKY_RETURN_HELPURL}',
-
-  generateCommand: function (block) {
-    try {
-      var x = handleBlockByType(block.getInputTargetBlock('X'));
-      return `return ${x};`;
-    } catch (e) {
-      return `return;`;
-    }
-  }
+  helpUrl: '%{BKY_RETURN_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([returnBlock]);
+window.unixGenerator.forBlock['return'] = window.unixGenerator.forBlock.generic;

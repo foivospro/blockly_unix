@@ -3,7 +3,8 @@ var columnBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      TEXT: '$str'
+      printName: 'False',
+      TEXT: (value) => '$' + value
     }
   ],
   message0: '%{BKY_COLUMN} %1',
@@ -16,11 +17,8 @@ var columnBlock = {
   output: null,
   style: 'Field Processing',
   tooltip: '%{BKY_COLUMN_TOOLTIP}',
-  helpUrl: '%{BKY_COLUMN_HELPURL}',
-  generateCommand: function (block) {
-    var text = block.getFieldValue('TEXT');
-    return '$' + text;
-  }
+  helpUrl: '%{BKY_COLUMN_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([columnBlock]);
+window.unixGenerator.forBlock['column'] = window.unixGenerator.forBlock.generic;

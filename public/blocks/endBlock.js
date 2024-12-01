@@ -1,6 +1,12 @@
 var endBlock = {
   type: 'end',
   category: 'Field Processing',
+  unix_description: [
+    {
+      printName: 'False',
+      DO: (value) => 'END { ' + value + ' }'
+    }
+  ],
   message0: '%{BKY_END}',
   message1: '%{BKY_END_ACTION} %1',
   args1: [
@@ -14,20 +20,8 @@ var endBlock = {
   nextStatement: null,
   style: 'Field Processing',
   tooltip: '%{BKY_END_TOOLTIP}',
-  helpUrl: '%{BKY_END_HELPURL}', // URL to further information or documentation.
-  generateCommand: function (block) {
-    var condCommand = 'END';
-    var action = block.getInputTargetBlock('DO');
-    console.log('action:', action);
-    actionCommand = '';
-    if (action !== null) {
-      while (action) {
-        actionCommand += handleBlockByType(action) + ' ';
-        action = action.getNextBlock();
-      }
-    }
-    return condCommand + ' {' + actionCommand + '}';
-  }
+  helpUrl: '%{BKY_END_HELPURL}' // URL to further information or documentation.
 };
 
 Blockly.defineBlocksWithJsonArray([endBlock]);
+window.unixGenerator.forBlock['end'] = window.unixGenerator.forBlock.generic;

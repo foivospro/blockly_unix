@@ -3,7 +3,8 @@ var awkBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      awkInput_delimiter: "-F 'str' " // Change to awk_delimiter
+      awkInput_delimiter: (value) => "-F '" + value + "'",
+      awkConditionAction: (value) => "' " + value + " '"
     }
   ],
   message0: '%{BKY_AWK_TEXT_DATA_PROCESSING}',
@@ -11,8 +12,7 @@ var awkBlock = {
   args1: [
     {
       type: 'field_input',
-      name: 'awkInput_delimiter', // Change to awk_delimiter
-      text: ''
+      name: 'awkInput_delimiter' // Change to awk_delimiter
     }
   ],
   message2: '%{BKY_AWK_CONDITION_ACTION} %1',
@@ -26,25 +26,8 @@ var awkBlock = {
   previousStatement: 'Action',
   nextStatement: 'Action',
   tooltip: '%{BKY_AWK_TOOLTIP}',
-  helpUrl: '%{BKY_AWK_HELPURL}', // URL to further information or documentation.
-  generateCommand: function (block) {
-    var awkCommand = 'awk ';
-    var delimiter = block.getFieldValue('awkInput_delimiter');
-    if (delimiter) {
-      awkCommand += "-F '" + delimiter + "' ";
-    }
-    awkCommand += "' ";
-    var conditionAction = handleConditionActionBlocks(block);
-    awkCommand += conditionAction;
-    console.log('awkCommand:', awkCommand);
-    awkCommand += " '";
-    let previousBlock = block.getPreviousBlock();
-    if (previousBlock && previousBlock.type === 'filenamesCreate') {
-      const filenames = handleFilenamesBlocks(previousBlock);
-      awkCommand += ` ${filenames}`;
-    }
-    return awkCommand;
-  }
+  helpUrl: '%{BKY_AWK_HELPURL}' // URL to further information or documentation.
 };
 
 Blockly.defineBlocksWithJsonArray([awkBlock]);
+window.unixGenerator.forBlock['awk'] = window.unixGenerator.forBlock.generic;

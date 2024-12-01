@@ -2,6 +2,8 @@ window.unixGenerator = new Blockly.Generator('Unix');
 
 window.ioGenerator = new Blockly.Generator('Io');
 
+window.awkGenerator = new Blockly.Generator('Awk');
+
 window.unixGenerator.scrub_ = function (block, code) {
   const nextBlock = block.getNextBlock();
   let nextCode = '';
@@ -23,10 +25,7 @@ window.unixGenerator.scrub_ = function (block, code) {
 window.unixGenerator.forBlock.generic = function (block) {
   const blockDefinition = window[block.type + 'Block'];
   const commandParts = handleBlocks(block, blockDefinition);
-  if (
-    block.styleName_ === 'I/O Redirection' ||
-    block.styleName_ === 'Regular Expressions'
-  ) {
+  if (blockDefinition.unix_description[0].printName == 'False') {
     return `${commandParts.join(' ')}`.trim();
   } else {
     return `${block.type} ${commandParts.join(' ')}`.trim();
