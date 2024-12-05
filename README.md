@@ -1,3 +1,7 @@
+# Visit UBlocks
+
+UBlocks is now available [here](https://ublocks.balab.aueb.gr/)
+
 # Visual development of data processing pipelines using Blockly
 
 This is a development environment based on **Blockly** where users can easily construct data processing pipelines
