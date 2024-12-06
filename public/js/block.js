@@ -40,15 +40,17 @@ function generateCommandFromWorkspace() {
 
 function handleBlocks(block, blockDefinition) {
   let commandParts = [];
+  const description = blockDefinition.unix_description[0];
   block.inputList.forEach((input) => {
     input.fieldRow.forEach((field) => {
       let value = '';
+
       if (field instanceof Blockly.FieldDropdown) {
-        value = blockDefinition.unix_description[0][field.getValue()] || '';
+        value = description[field.getValue()] || '';
       } else if (field instanceof Blockly.FieldCheckbox) {
         value =
           field.getValue() === 'TRUE'
-            ? blockDefinition.unix_description[0][field.name]
+            ? description[field.name]
             : '';
       } else if (
         field instanceof Blockly.FieldTextInput ||
@@ -58,21 +60,42 @@ function handleBlocks(block, blockDefinition) {
         const defaultText = field.text_;
         if (userInput && userInput !== defaultText) {
           if (
-            blockDefinition.unix_description[0][field.name] &&
-            typeof blockDefinition.unix_description[0][field.name] ===
-              'function'
+            description[field.name] &&
+            typeof description[field.name] === 'function'
           ) {
-            value = blockDefinition.unix_description[0][field.name](userInput);
+            value = description[field.name](userInput);
           } else {
             value = userInput;
           }
         }
       }
-
       if (value) {
         commandParts.push(value);
       }
     });
+
+    if (input.connection && input.connection.isConnected()) {
+      const childBlock = input.connection.targetBlock();
+      if (childBlock) {
+        const childCode = window.unixGenerator.blockToCode(childBlock);
+        if (childCode) {
+
+          if (!input.name) {
+            console.error("Input has no name:", input);
+            return;
+          }
+
+          const processingFn = description[input.name];
+
+          if (typeof processingFn === 'function') {
+            const processedChildCode = processingFn(childCode.trim());
+            commandParts.push(processedChildCode);
+          } else {
+            commandParts.push(childCode.trim());
+          }
+        }
+      }
+    }
   });
 
   return commandParts;

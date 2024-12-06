@@ -4,3 +4,4 @@ npm-debug.log
 .env
 .history
 bin/pre-commit
+.idea
