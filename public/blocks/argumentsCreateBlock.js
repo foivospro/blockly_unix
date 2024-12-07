@@ -1,5 +1,11 @@
 var argumentsCreateBlock = {
   type: 'argumentsCreate',
+  unix_description: [
+    {
+      printName: 'False',
+      EMPTY: (value) =>   value
+    }
+  ],
   category: 'Function inputs',
   message0: '%{BKY_ARGUMENTS_CREATE_WITH} %1',
   args0: [
@@ -15,3 +21,7 @@ var argumentsCreateBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([argumentsCreateBlock]);
+
+
+window.unixGenerator.forBlock['argumentsCreate'] =
+  window.unixGenerator.forBlock.concat;

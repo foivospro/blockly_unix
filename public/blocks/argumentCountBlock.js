@@ -24,3 +24,7 @@ var argumentCountBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([argumentCountBlock]);
+
+Blockly.defineBlocksWithJsonArray([argumentBlock]);
+window.unixGenerator.forBlock['argumentCount'] =
+  window.unixGenerator.forBlock.concat;

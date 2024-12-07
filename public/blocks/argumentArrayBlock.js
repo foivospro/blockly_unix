@@ -1,5 +1,11 @@
 var argumentArrayBlock = {
   type: 'ARGV',
+  unix_description: [
+    {
+      printName: 'False',
+      INDEX: (value) =>   value
+    }
+  ],
   message0: '%{BKY_ARGUMENT_ARRAY}',
   args0: [
     {
@@ -20,3 +26,7 @@ var argumentArrayBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([argumentArrayBlock]);
+
+window.unixGenerator.forBlock['argumentArray'] =
+  window.unixGenerator.forBlock.concat;
+
