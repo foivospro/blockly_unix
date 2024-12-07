@@ -2,7 +2,8 @@ var regCapturingGroupBlock = {
   type: 'regCapturingGroup',
   unix_description: [
     {
-      regPattern: '(stm)'
+      printName: 'False',
+      regPattern: (value) =>  "(" + value + ')'
     }
   ],
   category: 'Regular Expressions',
@@ -22,4 +23,4 @@ var regCapturingGroupBlock = {
 
 Blockly.defineBlocksWithJsonArray([regCapturingGroupBlock]);
 window.unixGenerator.forBlock['regCapturingGroup'] =
-  window.unixGenerator.forBlock.generic;
+  window.unixGenerator.forBlock.concat;

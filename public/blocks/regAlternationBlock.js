@@ -3,9 +3,9 @@ var regAlternationBlock = {
   category: 'Regular Expressions',
   unix_description: [
     {
-      LEFT_PATTERN: 'stm | ',
-
-      RIGHT_PATTERN: 'stm'
+      printName: 'False',
+      LEFT_PATTERN: (value) =>  value + ' |',
+      RIGHT_PATTERN: (value) =>  value
     }
   ],
   message0: '%1', // Μήνυμα που εμφανίζει το | ανάμεσα στις δύο εισόδους
@@ -38,4 +38,4 @@ var regAlternationBlock = {
 
 Blockly.defineBlocksWithJsonArray([regAlternationBlock]);
 window.unixGenerator.forBlock['regAlternation'] =
-  window.unixGenerator.forBlock.generic;
+  window.unixGenerator.forBlock.concat;

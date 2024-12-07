@@ -1,36 +1,51 @@
 window.unixGenerator = new Blockly.Generator('Unix');
 
-window.ioGenerator = new Blockly.Generator('Io');
-
 window.awkGenerator = new Blockly.Generator('Awk');
 
 window.unixGenerator.scrub_ = function (block, code) {
   const nextBlock = block.getNextBlock();
   let nextCode = '';
+
   if (nextBlock) {
-    if (
-      nextBlock.styleName_ === 'I/O Redirection' ||
-      nextBlock.styleName_ === 'Regular Expressions'
-    ) {
-      console.log(nextBlock.styleName_);
-      nextCode = window.unixGenerator.blockToCode(nextBlock);
+    const handlerFunction = window.unixGenerator.forBlock[nextBlock.type];
+
+    let connector = '';
+    if (handlerFunction === window.unixGenerator.forBlock.generic) {
+      connector = ' | ';
+    } else if (handlerFunction === window.unixGenerator.forBlock.concat) {
+      connector = '';
     } else {
-      nextCode = ' | ' + window.unixGenerator.blockToCode(nextBlock);
+      connector = ' ';
     }
+
+    nextCode = connector + handlerFunction(nextBlock);
   }
 
   return code + nextCode;
 };
 
+
 window.unixGenerator.forBlock.generic = function (block) {
   const blockDefinition = window[block.type + 'Block'];
   const commandParts = handleBlocks(block, blockDefinition);
   if (blockDefinition.unix_description[0].printName == 'False') {
-    return `${commandParts.join(' ')}`.trim();
+    return `${commandParts.join(' ')}`;
   } else {
     return `${block.type} ${commandParts.join(' ')}`.trim();
   }
 };
+
+window.unixGenerator.forBlock.concat = function (block) {
+  const blockDefinition = window[block.type + 'Block'];
+  const commandParts = handleBlocks(block, blockDefinition);
+  if (blockDefinition.unix_description[0].printName == 'False') {
+    return `${commandParts.join(' ')}`;
+  } else {
+    return `${block.type} ${commandParts.join(' ')}`.trim();
+  }
+};
+
+
 
 function generateCommandFromWorkspace() {
   const workspace = Blockly.getMainWorkspace();

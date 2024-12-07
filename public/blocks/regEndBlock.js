@@ -3,6 +3,7 @@ var regEndBlock = {
   category: 'Regular Expressions',
   unix_description: [
     {
+      printName: 'False',
       regEnd: '$'
     }
   ],
@@ -14,4 +15,4 @@ var regEndBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([regEndBlock]);
-window.unixGenerator.forBlock['regEnd'] = window.unixGenerator.forBlock.generic;
+window.unixGenerator.forBlock['regEnd'] = window.unixGenerator.forBlock.concat;

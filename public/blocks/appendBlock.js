@@ -5,7 +5,7 @@ var appendBlock = {
   unix_description: [
     {
       printName: 'False',
-      append_filename: (value) => '>> ' + value
+      append_filename: (value) => ' >> ' + value
     }
   ],
   args0: [

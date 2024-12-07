@@ -4,7 +4,7 @@ var teeBlock = {
   unix_description: [
     {
       append: '-a',
-      filename: (value) => ' tee ' + value
+      filename: (value) =>  value
     }
   ],
   message0: '%{BKY_TEE}',
@@ -34,4 +34,4 @@ var teeBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([teeBlock]);
-window.unixGenerator.forBlock['tee'] = window.unixGenerator.forBlock.generic;
+window.unixGenerator.forBlock['tee'] = window.unixGenerator.forBlock.concat;

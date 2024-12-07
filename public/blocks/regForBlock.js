@@ -4,8 +4,9 @@ var regForBlock = {
   message0: '%{BKY_REGFOR}',
   unix_description: [
     {
-      FROM: '{n',
-      TO: ',m}'
+      printName: 'False',
+      FROM:  (value) => '{' + value + ',',
+      TO: (value) =>  value + '}'
     }
   ],
   args0: [
@@ -34,4 +35,4 @@ var regForBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([regForBlock]);
-window.unixGenerator.forBlock['regFor'] = window.unixGenerator.forBlock.generic;
+window.unixGenerator.forBlock['regFor'] = window.unixGenerator.forBlock.concat;

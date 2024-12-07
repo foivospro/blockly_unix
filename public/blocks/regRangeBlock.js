@@ -3,6 +3,7 @@ var regRangeBlock = {
   category: 'Regular Expressions',
   unix_description: [
     {
+      printName: 'False',
       upper: '[[:upper:]]',
       lower: '[[:lower:]]',
       letters: '[[:alpha:]]',
@@ -56,4 +57,4 @@ var regRangeBlock = {
 
 Blockly.defineBlocksWithJsonArray([regRangeBlock]);
 window.unixGenerator.forBlock['regRange'] =
-  window.unixGenerator.forBlock.generic;
+  window.unixGenerator.forBlock.concat;

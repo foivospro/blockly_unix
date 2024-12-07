@@ -9,6 +9,7 @@ var regPatternBlock = {
   message0: '%{BKY_REGPATTERN}',
   unix_description: [
     {
+      printName: 'False',
       regPattern: 'patt'
     }
   ],
@@ -29,4 +30,4 @@ var regPatternBlock = {
 // Ορισμός του block στο Blockly
 Blockly.defineBlocksWithJsonArray([regPatternBlock]);
 window.unixGenerator.forBlock['regPattern'] =
-  window.unixGenerator.forBlock.generic;
+  window.unixGenerator.forBlock.concat;

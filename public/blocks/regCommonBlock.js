@@ -3,6 +3,7 @@ var regCommonBlock = {
   category: 'Regular Expressions',
   unix_description: [
     {
+      printName: 'False',
       email: '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Z|a-z]{2,4}',
       URL: '(?:https?://|www.)[^s]+',
       IP: '^((25[0-5]|(2[0-4]|1d|[1-9]|)d).?\b){4}$',
@@ -36,4 +37,4 @@ var regCommonBlock = {
 
 Blockly.defineBlocksWithJsonArray([regCommonBlock]);
 window.unixGenerator.forBlock['regCommon'] =
-  window.unixGenerator.forBlock.generic;
+  window.unixGenerator.forBlock.concat;

@@ -3,8 +3,9 @@ var regAnyOneBlock = {
   category: 'Regular Expressions',
   unix_description: [
     {
-      Pattern: '[patt]',
-      notMatch: '[^patt]'
+      printName: 'False',
+      Pattern:  (value) =>  "[" + value + ']',
+      notMatch:  (value) =>  "[^" + value + ']'
     }
   ],
 
@@ -32,4 +33,4 @@ var regAnyOneBlock = {
 
 Blockly.defineBlocksWithJsonArray([regAnyOneBlock]);
 window.unixGenerator.forBlock['regAnyOne'] =
-  window.unixGenerator.forBlock.generic;
+  window.unixGenerator.forBlock.concat;
