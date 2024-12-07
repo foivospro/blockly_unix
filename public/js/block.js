@@ -53,6 +53,14 @@ function generateCommandFromWorkspace() {
 function handleBlocks(block, blockDefinition) {
   let commandParts = [];
   const description = blockDefinition.unix_description[0];
+  const blockType = block.type;
+
+  // Check if the unix_description contains a key matching the block's type
+  if (description[blockType]) {
+    const commandName = description[blockType];
+    commandParts.push(commandName);
+  }
+
   block.inputList.forEach((input) => {
     input.fieldRow.forEach((field) => {
       let value = '';
@@ -86,6 +94,7 @@ function handleBlocks(block, blockDefinition) {
       const childBlock = input.connection.targetBlock();
       if (childBlock) {
         const childCode = window.unixGenerator.blockToCode(childBlock);
+        const inputDescription = description[input.name] || '';
         if (childCode) {
           if (!input.name) {
             console.error('Input has no name:', input);

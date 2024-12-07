@@ -1,8 +1,3 @@
-// Ορισμός του generator για τη γλώσσα JavaScript
-Blockly.JavaScript = new Blockly.Generator('JavaScript');
-var generator = Blockly.JavaScript;
-
-// Ορισμός του block regPattern
 var regPatternBlock = {
   type: 'regPattern',
   category: 'Regular Expressions',
@@ -10,7 +5,7 @@ var regPatternBlock = {
   unix_description: [
     {
       printName: 'False',
-      regPattern: 'patt'
+     
     }
   ],
   args0: [
@@ -27,7 +22,6 @@ var regPatternBlock = {
   helpUrl: '%{BKY_REGPATTERN_HELPURL}' // URL to further information or documentation.
 };
 
-// Ορισμός του block στο Blockly
 Blockly.defineBlocksWithJsonArray([regPatternBlock]);
 window.unixGenerator.forBlock['regPattern'] =
   window.unixGenerator.forBlock.concat;
