@@ -3,14 +3,14 @@ var lengthBlock = {
   unix_description: [
     {
       printName: 'False',
-      length: (value) => 'length(' + value + ')'
+      len: (value) => 'length(' + value + ')'
     }
   ],
   message0: '%{BKY_LENGTH}',
   args0: [
     {
       type: 'input_value',
-      name: 'length',
+      name: 'len',
       check: 'String'
     }
   ],
