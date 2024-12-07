@@ -1,5 +1,13 @@
 var arraySetIndexBlock = {
   type: 'arraySetIndex',
+  unix_description: [
+    {
+      printName: 'False',
+      ARRAY: (value) => value + '[',
+      INDEX: (value) => value + '] =',
+      VALUE: (value) => value + ';'
+    }
+  ],
   message0: '%{BKY_ARRAY_SET_INDEX}',
   args0: [
     {
@@ -28,14 +36,9 @@ var arraySetIndexBlock = {
   nextStatement: true,
   style: 'list_blocks',
   tooltip: '%{BKY_ARRAY_SET_INDEX_TOOLTIP}',
-  helpUrl: '%{BKY_ARRAY_SET_INDEX_HELPURL}',
-
-  generateCommand: function (block) {
-    var array = handleBlockByType(block.getInputTargetBlock('ARRAY'));
-    var index = handleBlockByType(block.getInputTargetBlock('INDEX'));
-    var value = handleBlockByType(block.getInputTargetBlock('VALUE'));
-    return `${array}[${index}] = ${value};`;
-  }
+  helpUrl: '%{BKY_ARRAY_SET_INDEX_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([arraySetIndexBlock]);
+window.unixGenerator.forBlock['arraySetIndex'] =
+  window.unixGenerator.forBlock.generic;

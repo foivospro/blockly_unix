@@ -112,14 +112,15 @@
     <script src="blocks/arrayGetIndexBlock.js"></script>
     <script src="blocks/arraySetIndexBlock.js"></script>
     <script src="blocks/filenameVariableBlock.js"></script>
-    <script src="blocks/argumentCountBlock.js"></script>
-    <script src="blocks/argumentArrayBlock.js"></script>
-    <script src="blocks/environmentVariablesBlock.js"></script>
+    <script src="blocks/ARGCBlock.js"></script>
+    <script src="blocks/ARGVBlock.js"></script>
+    <script src="blocks/ENVIRONBlock.js"></script>
     <script src="blocks/FNRBlock.js"></script>
     <script src="blocks/FSBlock.js"></script>
     <script src="blocks/OFSBlock.js"></script>
     <script src="blocks/RLENGTHBlock.js"></script>
     <script src="blocks/RSTARTBlock.js"></script>
+    <script src="blocks/builtinBlocks.js"></script>
     <!-- END OF BLOCK DEFINITION -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -242,8 +243,8 @@
 
         <label for="languageDropdown"></label>
         <select id="languageMenu" class="icon-dropdown">
-          <option value="en">🇬🇧 English</option>
-          <option value="el">🇬🇷 Ελληνικά</option>
+          <option value="en">English</option>
+          <option value="el">Ελληνικά</option>
         </select>
 
         <label for="savedWorkspaces"></label>
@@ -591,13 +592,13 @@
                     }
                   },
                   { kind: 'block', type: 'atan2' },
-                  { kind: 'block', type: 'cos' },
-                  { kind: 'block', type: 'sin' },
-                  { kind: 'block', type: 'exp' },
-                  { kind: 'block', type: 'log' },
+                  { kind: 'block', type: 'cosine' },
+                  { kind: 'block', type: 'sine' },
+                  { kind: 'block', type: 'exponent' },
+                  { kind: 'block', type: 'logarithm' },
                   { kind: 'block', type: 'sqrt' },
-                  { kind: 'block', type: 'rand' },
-                  { kind: 'block', type: 'seed' },
+                  { kind: 'block', type: 'random' },
+                  { kind: 'block', type: 'setSeed' },
                   { kind: 'block', type: 'int' }
                 ]
               },

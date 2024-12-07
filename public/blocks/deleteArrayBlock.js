@@ -1,5 +1,11 @@
 var deleteArrayBlock = {
   type: 'deleteArray',
+  unix_description: [
+    {
+      printName: 'False',
+      X: (value) => 'delete ' + value + ';'
+    }
+  ],
   message0: '%{BKY_DELETE_ARRAY}',
   args0: [
     {
@@ -12,12 +18,9 @@ var deleteArrayBlock = {
   nextStatement: true,
   style: 'list_blocks',
   tooltip: '%{BKY_DELETE_ARRAY_TOOLTIP}',
-  helpUrl: '%{BKY_DELETE_ARRAY_HELPURL}',
-
-  generateCommand: function (block) {
-    var x = handleBlockByType(block.getInputTargetBlock('X'));
-    return `delete ${x};`;
-  }
+  helpUrl: '%{BKY_DELETE_ARRAY_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([deleteArrayBlock]);
+window.unixGenerator.forBlock['deleteArray'] =
+  window.unixGenerator.forBlock.generic;

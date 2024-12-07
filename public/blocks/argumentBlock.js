@@ -3,7 +3,7 @@ var argumentBlock = {
   unix_description: [
     {
       printName: 'False',
-      ARGUMENT: (value) =>   value
+      ARGUMENT: (value) => value
     }
   ],
   category: 'Function inputs',
@@ -23,4 +23,3 @@ var argumentBlock = {
 Blockly.defineBlocksWithJsonArray([argumentBlock]);
 window.unixGenerator.forBlock['argument'] =
   window.unixGenerator.forBlock.concat;
-

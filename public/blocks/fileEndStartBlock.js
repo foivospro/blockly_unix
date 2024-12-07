@@ -4,9 +4,9 @@ var fileEndStartBlock = {
   unix_description: [
     {
       printName: 'False',
-      FILENAME: (value) =>   value,
+      FILENAME: (value) => value,
       starts: '*',
-      ends: '*' 
+      ends: '*'
     }
   ],
   message0:

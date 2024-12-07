@@ -1,22 +1,24 @@
 var intBlock = {
   type: 'int',
+  unix_description: [
+    {
+      printName: 'False',
+      int: (value) => 'int(' + value + ')'
+    }
+  ],
   message0: '%{BKY_TO_INT}',
   args0: [
     {
       type: 'input_value',
-      name: 'X',
+      name: 'int',
       check: 'Number'
     }
   ],
   output: 'Number',
   style: 'math_blocks',
   tooltip: '%{BKY_TO_INT_TOOLTIP}',
-  helpUrl: '%{BKY_TO_INT_HELPURL}',
-
-  generateCommand: function (block) {
-    var x = handleBlockByType(block.getInputTargetBlock('X'));
-    return `int(${x})`;
-  }
+  helpUrl: '%{BKY_TO_INT_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([intBlock]);
+window.unixGenerator.forBlock['int'] = window.unixGenerator.forBlock.generic;

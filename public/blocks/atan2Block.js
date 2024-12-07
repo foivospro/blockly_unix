@@ -1,5 +1,12 @@
 var atan2Block = {
   type: 'atan2',
+  unix_description: [
+    {
+      printName: 'False',
+      Y: (value) => 'atan2(' + value + ',',
+      X: (value) => value + ')'
+    }
+  ],
   message0: '%{BKY_ATAN2}',
   args0: [
     {
@@ -16,13 +23,8 @@ var atan2Block = {
   output: 'Number',
   style: 'math_blocks',
   tooltip: '%{BKY_ATAN2_TOOLTIP}',
-  helpUrl: '%{BKY_ATAN2_HELPURL}',
-
-  generateCommand: function (block) {
-    var x = handleBlockByType(block.getInputTargetBlock('X'));
-    var y = handleBlockByType(block.getInputTargetBlock('Y'));
-    return `atan2(${y}, ${x})`;
-  }
+  helpUrl: '%{BKY_ATAN2_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([atan2Block]);
+window.unixGenerator.forBlock['atan2'] = window.unixGenerator.forBlock.generic;

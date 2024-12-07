@@ -4,7 +4,7 @@ var teeBlock = {
   unix_description: [
     {
       append: '-a',
-      filename: (value) =>  value
+      filename: (value) => value
     }
   ],
   message0: '%{BKY_TEE}',

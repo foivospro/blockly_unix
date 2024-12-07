@@ -4,8 +4,8 @@ var regAlternationBlock = {
   unix_description: [
     {
       printName: 'False',
-      LEFT_PATTERN: (value) =>  value + ' |',
-      RIGHT_PATTERN: (value) =>  value
+      LEFT_PATTERN: (value) => value + ' |',
+      RIGHT_PATTERN: (value) => value
     }
   ],
   message0: '%1', // Μήνυμα που εμφανίζει το | ανάμεσα στις δύο εισόδους

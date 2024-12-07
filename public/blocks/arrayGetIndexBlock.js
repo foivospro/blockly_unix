@@ -1,5 +1,12 @@
 var arrayGetIndexBlock = {
   type: 'arrayGetIndex',
+  unix_description: [
+    {
+      printName: 'False',
+      ARRAY: (value) => value + '[',
+      INDEX: (value) => value + ']'
+    }
+  ],
   message0: '%{BKY_ARRAY_GET_INDEX}',
   args0: [
     {
@@ -19,13 +26,9 @@ var arrayGetIndexBlock = {
   output: 'String',
   style: 'list_blocks',
   tooltip: '%{BKY_ARRAY_GET_INDEX_TOOLTIP}',
-  helpUrl: '%{BKY_ARRAY_GET_INDEX_HELPURL}',
-
-  generateCommand: function (block) {
-    var array = handleBlockByType(block.getInputTargetBlock('ARRAY'));
-    var index = handleBlockByType(block.getInputTargetBlock('INDEX'));
-    return `${array}[${index}]`;
-  }
+  helpUrl: '%{BKY_ARRAY_GET_INDEX_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([arrayGetIndexBlock]);
+window.unixGenerator.forBlock['arrayGetIndex'] =
+  window.unixGenerator.forBlock.generic;

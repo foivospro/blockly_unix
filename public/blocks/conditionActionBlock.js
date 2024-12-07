@@ -5,8 +5,8 @@ var conditionActionBlock = {
   unix_description: [
     {
       printName: 'False',
-      condition: (value) => value,
-      action: (value) => '{ ' + value + ' }'
+      COND: (value) => value,
+      DO: (value) => '{ ' + value + ' }'
     }
   ],
   args0: [
@@ -32,4 +32,4 @@ var conditionActionBlock = {
 
 Blockly.defineBlocksWithJsonArray([conditionActionBlock]);
 window.unixGenerator.forBlock['conditionAction'] =
-  window.unixGenerator.forBlock.generic;
+  window.unixGenerator.forBlock.concat;

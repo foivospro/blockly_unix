@@ -5,7 +5,15 @@ var conditionBlock = {
     {
       printName: 'False',
       leftPart: (value) => value,
-      operator: (value) => value,
+      equals: '==',
+      not_equals: '!=',
+      smaller: '<',
+      smaller_equals: '<=',
+      greater: '>',
+      greater_equals: '>=',
+      logical_and: '&&',
+      logical_or: '||',
+      logical_not: '!',
       rightPart: (value) => value
     }
   ],
@@ -23,15 +31,15 @@ var conditionBlock = {
       type: 'field_dropdown',
       name: 'operator',
       options: [
-        ['==', '=='],
-        ['!=', '!='],
-        ['<', '<'],
-        ['<=', '<='],
-        ['>', '>'],
-        ['>=', '>='],
-        ['&& (AND)', '&&'],
-        ['|| (OR)', '||'],
-        ['! (NOT)', '!']
+        ['==', 'equals'],
+        ['!=', 'not_equals'],
+        ['<', 'smaller'],
+        ['<=', 'smaller_equals'],
+        ['>', 'greater'],
+        ['>=', 'greater_equals'],
+        ['&& (AND)', 'logical_and'],
+        ['|| (OR)', 'logical_or'],
+        ['! (NOT)', 'logical_not']
       ]
     }
   ],

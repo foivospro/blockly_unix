@@ -1,5 +1,12 @@
 var deleteArrayElementBlock = {
   type: 'deleteArrayElement',
+  unix_description: [
+    {
+      printName: 'False',
+      X: (value) => 'delete ' + value + '[',
+      INDEX: (value) => value + '];'
+    }
+  ],
   message0: '%{BKY_DELETE_ARRAY_ELEMENT}',
   args0: [
     {
@@ -20,13 +27,9 @@ var deleteArrayElementBlock = {
   nextStatement: true,
   style: 'list_blocks',
   tooltip: '%{BKY_DELETE_ARRAY_ELEMENT_TOOLTIP}',
-  helpUrl: '%{BKY_DELETE_ARRAY_ELEMENT_HELPURL}',
-
-  generateCommand: function (block) {
-    var x = handleBlockByType(block.getInputTargetBlock('X'));
-    var index = handleBlockByType(block.getInputTargetBlock('INDEX'));
-    return `delete ${x}[${index}];`;
-  }
+  helpUrl: '%{BKY_DELETE_ARRAY_ELEMENT_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([deleteArrayElementBlock]);
+window.unixGenerator.forBlock['deleteArrayElement'] =
+  window.unixGenerator.forBlock.generic;

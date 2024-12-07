@@ -1,4 +1,4 @@
-var filenameVariableBlock = {
+var FILENAMEBlock = {
   type: 'FILENAME',
   category: 'Field Processing',
   unix_description: [
@@ -10,7 +10,7 @@ var filenameVariableBlock = {
   args0: [
     {
       type: 'input_dummy',
-      name: 'FieldNumber'
+      name: 'Filename'
     }
   ],
   style: 'Special Variables',
@@ -19,4 +19,6 @@ var filenameVariableBlock = {
   helpUrl: '%{BKY_FILENAME_HELPURL}' // URL to further information or documentation.
 };
 
-Blockly.defineBlocksWithJsonArray([filenameVariableBlock]);
+Blockly.defineBlocksWithJsonArray([FILENAMEBlock]);
+window.unixGenerator.forBlock['FILENAME'] =
+  window.unixGenerator.forBlock.generic;

@@ -3,7 +3,8 @@ var FNRBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      FNR: 'FNR'
+      printName: 'False',
+      FieldNumber: 'FNR'
     }
   ],
   message0: '%{BKY_FNR} %1\n',
@@ -16,11 +17,8 @@ var FNRBlock = {
   style: 'Special Variables',
   output: null,
   tooltip: '%{BKY_FNR_TOOLTIP}',
-  helpUrl: '%{BKY_FNR_HELPURL}', // URL to further information or documentation.
-  generateCommand: function (block) {
-    var awkCommand = 'FNR';
-    return awkCommand;
-  }
+  helpUrl: '%{BKY_FNR_HELPURL}' // URL to further information or documentation.
 };
 
 Blockly.defineBlocksWithJsonArray([FNRBlock]);
+window.unixGenerator.forBlock['FNR'] = window.unixGenerator.forBlock.generic;

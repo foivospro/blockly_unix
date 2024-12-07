@@ -24,7 +24,6 @@ window.unixGenerator.scrub_ = function (block, code) {
   return code + nextCode;
 };
 
-
 window.unixGenerator.forBlock.generic = function (block) {
   const blockDefinition = window[block.type + 'Block'];
   const commandParts = handleBlocks(block, blockDefinition);
@@ -45,8 +44,6 @@ window.unixGenerator.forBlock.concat = function (block) {
   }
 };
 
-
-
 function generateCommandFromWorkspace() {
   const workspace = Blockly.getMainWorkspace();
   const code = window.unixGenerator.workspaceToCode(workspace);
@@ -59,14 +56,10 @@ function handleBlocks(block, blockDefinition) {
   block.inputList.forEach((input) => {
     input.fieldRow.forEach((field) => {
       let value = '';
-
       if (field instanceof Blockly.FieldDropdown) {
         value = description[field.getValue()] || '';
       } else if (field instanceof Blockly.FieldCheckbox) {
-        value =
-          field.getValue() === 'TRUE'
-            ? description[field.name]
-            : '';
+        value = field.getValue() === 'TRUE' ? description[field.name] : '';
       } else if (
         field instanceof Blockly.FieldTextInput ||
         field instanceof Blockly.FieldNumber
@@ -94,12 +87,10 @@ function handleBlocks(block, blockDefinition) {
       if (childBlock) {
         const childCode = window.unixGenerator.blockToCode(childBlock);
         if (childCode) {
-
           if (!input.name) {
-            console.error("Input has no name:", input);
+            console.error('Input has no name:', input);
             return;
           }
-
           const processingFn = description[input.name];
 
           if (typeof processingFn === 'function') {

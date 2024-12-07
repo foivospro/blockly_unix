@@ -5,8 +5,8 @@ var regForBlock = {
   unix_description: [
     {
       printName: 'False',
-      FROM:  (value) => '{' + value + ',',
-      TO: (value) =>  value + '}'
+      FROM: (value) => '{' + value + ',',
+      TO: (value) => value + '}'
     }
   ],
   args0: [

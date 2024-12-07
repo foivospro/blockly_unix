@@ -1,22 +1,25 @@
 var logarithmBlock = {
-  type: 'log',
+  type: 'logarithm',
+  unix_description: [
+    {
+      printName: 'False',
+      log: (value) => 'log(' + value + ')'
+    }
+  ],
   message0: '%{BKY_LOGARITHM}',
   args0: [
     {
       type: 'input_value',
-      name: 'X',
+      name: 'log',
       check: 'Number'
     }
   ],
   output: 'Number',
   style: 'math_blocks',
   tooltip: '%{BKY_LOGARITHM_TOOLTIP}',
-  helpUrl: '%{BKY_LOGARITHM_HELPURL}',
-
-  generateCommand: function (block) {
-    var x = handleBlockByType(block.getInputTargetBlock('X'));
-    return `log(${x})`;
-  }
+  helpUrl: '%{BKY_LOGARITHM_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([logarithmBlock]);
+window.unixGenerator.forBlock['logarithm'] =
+  window.unixGenerator.forBlock.generic;

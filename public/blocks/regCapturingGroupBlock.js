@@ -3,7 +3,7 @@ var regCapturingGroupBlock = {
   unix_description: [
     {
       printName: 'False',
-      regPattern: (value) =>  "(" + value + ')'
+      regPattern: (value) => '(' + value + ')'
     }
   ],
   category: 'Regular Expressions',

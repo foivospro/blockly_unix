@@ -3,7 +3,8 @@ var OFSBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      FieldSeparator: 'OFS'
+      printName: 'False',
+      FieldSeparator: (value) => 'OFS = "' + value + '"'
     }
   ],
   message0: '%{BKY_OUTPUT_FIELD_SEPARATOR}',
@@ -16,11 +17,8 @@ var OFSBlock = {
   style: 'Special Variables',
   output: null,
   tooltip: '%{BKY_OUTPUT_FIELD_SEPARATOR_TOOLTIP}',
-  helpUrl: '%{BKY_OUTPUT_FIELD_SEPARATOR_HELPURL}', // URL to further information or documentation.
-  generateCommand: function (block) {
-    var fieldSeparator = block.getFieldValue('FieldSeparator');
-    return 'OFS = "' + fieldSeparator + '"';
-  }
+  helpUrl: '%{BKY_OUTPUT_FIELD_SEPARATOR_HELPURL}' // URL to further information or documentation.
 };
 
 Blockly.defineBlocksWithJsonArray([OFSBlock]);
+window.unixGenerator.forBlock['OFS'] = window.unixGenerator.forBlock.generic;
