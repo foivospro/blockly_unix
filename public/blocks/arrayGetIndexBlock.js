@@ -2,7 +2,7 @@ var arrayGetIndexBlock = {
   type: 'arrayGetIndex',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       ARRAY: (value) => value + '[',
       INDEX: (value) => value + ']'
     }

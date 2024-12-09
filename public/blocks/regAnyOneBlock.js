@@ -3,7 +3,7 @@ var regAnyOneBlock = {
   category: 'Regular Expressions',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       Pattern: (value) => '[' + value + ']',
       notMatch: (value) => '[^' + value + ']'
     }

@@ -2,7 +2,7 @@ var logarithmBlock = {
   type: 'logarithm',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       log: (value) => 'log(' + value + ')'
     }
   ],

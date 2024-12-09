@@ -2,7 +2,7 @@ var exponentBlock = {
   type: 'exponent',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       exp: (value) => 'exp(' + value + ')'
     }
   ],

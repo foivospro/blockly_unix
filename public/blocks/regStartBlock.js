@@ -3,7 +3,7 @@ var regStartBlock = {
   category: 'Regular Expressions',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       regStart: '^'
     }
   ],

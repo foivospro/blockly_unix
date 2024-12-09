@@ -4,7 +4,7 @@ var appendBlock = {
   message0: '%{BKY_APPEND} %1',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       append_filename: (value) => ' >> ' + value
     }
   ],

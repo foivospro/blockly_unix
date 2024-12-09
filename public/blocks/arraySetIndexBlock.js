@@ -2,7 +2,7 @@ var arraySetIndexBlock = {
   type: 'arraySetIndex',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       ARRAY: (value) => value + '[',
       INDEX: (value) => value + '] =',
       VALUE: (value) => value + ';'

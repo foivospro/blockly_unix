@@ -2,8 +2,8 @@ var lengthBlock = {
   type: 'length',
   unix_description: [
     {
-      printName: 'False',
-      len: (value) => 'length(' + value + ')'
+      printName: false,
+      length: (value) => 'length(' + value + ')'
     }
   ],
   message0: '%{BKY_LENGTH}',

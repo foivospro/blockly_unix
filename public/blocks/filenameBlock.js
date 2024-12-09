@@ -2,7 +2,7 @@ var filenameBlock = {
   type: 'filename',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       FILENAME: (value) => value
     }
   ],

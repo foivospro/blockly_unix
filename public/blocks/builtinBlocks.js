@@ -169,6 +169,16 @@ window.unixGenerator.forBlock['controls_if'] = function (block) {
   return blockCode;
 };
 
+window.unixGenerator.forBlock['text'] = function (block) {
+  return '"' + block.getFieldValue('TEXT') + '"';
+};
+
+window.unixGenerator.forBlock['text_print'] = function (block) {
+  const textBlock = block.getInputTargetBlock('TEXT');
+  const textValue = window.unixGenerator.blockToCode(textBlock);
+  return `print ${textValue};`;
+};
+
 const getVariableName = (variableId) => {
   const variableModel = Blockly.getMainWorkspace().getVariableById(variableId);
   return variableModel ? variableModel.name : '';

@@ -3,7 +3,6 @@ var FNRBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      printName: 'False',
       FieldNumber: 'FNR'
     }
   ],

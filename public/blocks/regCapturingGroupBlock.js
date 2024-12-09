@@ -2,7 +2,7 @@ var regCapturingGroupBlock = {
   type: 'regCapturingGroup',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       regPattern: (value) => '(' + value + ')'
     }
   ],

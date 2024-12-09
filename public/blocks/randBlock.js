@@ -2,7 +2,7 @@ var randomBlock = {
   type: 'random',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       rand: 'rand()'
     }
   ],

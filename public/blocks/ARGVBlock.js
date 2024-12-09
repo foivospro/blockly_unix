@@ -2,7 +2,7 @@ var ARGVBlock = {
   type: 'ARGV',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       INDEX: (value) => 'ARGV[' + value + ']'
     }
   ],

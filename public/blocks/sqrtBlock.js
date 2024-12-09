@@ -2,7 +2,7 @@ var sqrtBlock = {
   type: 'sqrt',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       sqrt: (value) => 'sqrt(' + value + ')'
     }
   ],

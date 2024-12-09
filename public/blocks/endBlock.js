@@ -3,7 +3,7 @@ var endBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       DO: (value) => 'END { ' + value + ' }'
     }
   ],

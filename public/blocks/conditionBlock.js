@@ -3,7 +3,7 @@ var conditionBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       leftPart: (value) => value,
       equals: '==',
       not_equals: '!=',

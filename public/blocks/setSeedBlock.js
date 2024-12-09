@@ -2,7 +2,7 @@ var setSeedBlock = {
   type: 'setSeed',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       seed: (value) => 'srand(' + value + ')'
     }
   ],

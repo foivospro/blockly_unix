@@ -3,7 +3,7 @@ var FSBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       FieldSeparator: (value) => "FS = '" + value + "'"
     }
   ],

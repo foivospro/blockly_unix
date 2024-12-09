@@ -2,7 +2,7 @@ var deleteArrayBlock = {
   type: 'deleteArray',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       X: (value) => 'delete ' + value + ';'
     }
   ],

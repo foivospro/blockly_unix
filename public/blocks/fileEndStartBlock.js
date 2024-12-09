@@ -3,7 +3,7 @@ var fileEndStartBlock = {
   category: 'Function inputs',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       FILENAME: (value) => value,
       starts: '*',
       ends: '*'

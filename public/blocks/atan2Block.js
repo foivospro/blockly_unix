@@ -2,7 +2,7 @@ var atan2Block = {
   type: 'atan2',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       Y: (value) => 'atan2(' + value + ',',
       X: (value) => value + ')'
     }

@@ -2,7 +2,7 @@ var sineBlock = {
   type: 'sine',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       sine: (value) => 'sin(' + value + ')'
     }
   ],

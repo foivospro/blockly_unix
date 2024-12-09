@@ -3,7 +3,7 @@ var regAlternationBlock = {
   category: 'Regular Expressions',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       LEFT_PATTERN: (value) => value + ' |',
       RIGHT_PATTERN: (value) => value
     }

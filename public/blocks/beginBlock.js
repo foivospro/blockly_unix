@@ -3,7 +3,7 @@ var beginBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       DO: (value) => 'BEGIN { ' + value + ' }'
     }
   ],

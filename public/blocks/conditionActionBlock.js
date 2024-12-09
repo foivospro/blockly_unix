@@ -4,7 +4,7 @@ var conditionActionBlock = {
   message0: '%{BKY_CONDITION_ACTION_COND} %1',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       COND: (value) => value,
       DO: (value) => '{ ' + value + ' }'
     }

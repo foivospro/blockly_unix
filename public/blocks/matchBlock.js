@@ -2,7 +2,7 @@ var matchBlock = {
   type: 'match',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       X: (value) => 'match(' + value + ',',
       Y: (value) => value + ')'
     }

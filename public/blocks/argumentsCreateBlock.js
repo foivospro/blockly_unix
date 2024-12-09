@@ -2,7 +2,7 @@ var argumentsCreateBlock = {
   type: 'argumentsCreate',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       EMPTY: (value) => value
     }
   ],

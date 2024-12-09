@@ -27,7 +27,7 @@ window.unixGenerator.scrub_ = function (block, code) {
 window.unixGenerator.forBlock.generic = function (block) {
   const blockDefinition = window[block.type + 'Block'];
   const commandParts = handleBlocks(block, blockDefinition);
-  if (blockDefinition.unix_description[0].printName == 'False') {
+  if (!blockDefinition.unix_description[0].printName) {
     return `${commandParts.join(' ')}`;
   } else {
     return `${block.type} ${commandParts.join(' ')}`.trim();
@@ -37,7 +37,7 @@ window.unixGenerator.forBlock.generic = function (block) {
 window.unixGenerator.forBlock.concat = function (block) {
   const blockDefinition = window[block.type + 'Block'];
   const commandParts = handleBlocks(block, blockDefinition);
-  if (blockDefinition.unix_description[0].printName == 'False') {
+  if (!blockDefinition.unix_description[0].printName) {
     return `${commandParts.join(' ')}`;
   } else {
     return `${block.type} ${commandParts.join(' ')}`.trim();
@@ -46,7 +46,9 @@ window.unixGenerator.forBlock.concat = function (block) {
 
 function generateCommandFromWorkspace() {
   const workspace = Blockly.getMainWorkspace();
-  const code = window.unixGenerator.workspaceToCode(workspace);
+  blocks = workspace.getTopBlocks(true);
+  topBlock = blocks[0];
+  const code = window.unixGenerator.blockToCode(topBlock);
   return code;
 }
 

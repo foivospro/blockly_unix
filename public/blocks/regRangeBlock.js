@@ -3,7 +3,7 @@ var regRangeBlock = {
   category: 'Regular Expressions',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       upper: '[[:upper:]]',
       lower: '[[:lower:]]',
       letters: '[[:alpha:]]',

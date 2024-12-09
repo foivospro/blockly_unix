@@ -3,7 +3,7 @@ var RLENGTHBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       RLENGTH: 'RLENGTH'
     }
   ],

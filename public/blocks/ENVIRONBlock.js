@@ -3,7 +3,7 @@ var ENVIRONBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       HOME: 'ENVIRON["HOME"]',
       PATH: 'ENVIRON["PATH"]',
       USER: 'ENVIRON["USER"]',

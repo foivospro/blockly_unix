@@ -2,7 +2,7 @@ var intBlock = {
   type: 'int',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       int: (value) => 'int(' + value + ')'
     }
   ],

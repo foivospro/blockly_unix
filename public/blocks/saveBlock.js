@@ -4,7 +4,7 @@ var saveBlock = {
   category: 'I/O Redirection',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       save_filename: (value) => ' > ' + value
     }
   ],

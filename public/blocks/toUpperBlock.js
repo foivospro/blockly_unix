@@ -2,7 +2,7 @@ var toUpperBlock = {
   type: 'toUpper',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       toUpper: (value) => 'toupper(' + value + ')'
     }
   ],

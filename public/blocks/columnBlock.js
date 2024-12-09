@@ -3,7 +3,7 @@ var columnBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       TEXT: (value) => '$' + value
     }
   ],

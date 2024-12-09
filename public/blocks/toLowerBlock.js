@@ -2,7 +2,7 @@ var toLowerBlock = {
   type: 'toLower',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       toLower: (value) => 'tolower(' + value + ')'
     }
   ],

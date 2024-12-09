@@ -2,7 +2,7 @@ var argumentBlock = {
   type: 'argument',
   unix_description: [
     {
-      printName: 'False',
+      printName: false,
       ARGUMENT: (value) => value
     }
   ],
