@@ -3,16 +3,10 @@ var RSTARTBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      FieldName: 'RSTART'
+      RSTART: 'RSTART'
     }
   ],
-  message0: '%{BKY_RSTART} %1\n',
-  args0: [
-    {
-      type: 'input_dummy',
-      name: 'FieldName'
-    }
-  ],
+  message0: '%{BKY_RSTART}',
   style: 'Special Variables',
   output: null,
   tooltip: '%{BKY_RSTART_TOOLTIP}',

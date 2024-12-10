@@ -3,16 +3,11 @@ var NRBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      recordNumber: 'NR'
+      printName: false,
+      NR: 'NR'
     }
   ],
-  message0: '%{BKY_RECORD_NUMBER} %1\n',
-  args0: [
-    {
-      type: 'input_dummy',
-      name: 'recordNumber'
-    }
-  ],
+  message0: '%{BKY_RECORD_NUMBER}',
   style: 'Special Variables',
   output: null,
   tooltip: '%{BKY_RECORD_NUMBER_TOOLTIP}',

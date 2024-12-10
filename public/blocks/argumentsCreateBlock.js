@@ -17,7 +17,8 @@ var argumentsCreateBlock = {
   output: 'String',
   style: 'Function inputs',
   helpUrl: '%{BKY_ARGUMENTS_CREATE_WITH_HELPURL}',
-  tooltip: '%{BKY_ARGUMENTS_CREATE_WITH_TOOLTIP}'
+  tooltip: '%{BKY_ARGUMENTS_CREATE_WITH_TOOLTIP}',
+  mutator: 'arguments_create_with_mutator'
 };
 
 Blockly.defineBlocksWithJsonArray([argumentsCreateBlock]);

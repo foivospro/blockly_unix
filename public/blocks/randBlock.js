@@ -3,11 +3,10 @@ var randomBlock = {
   unix_description: [
     {
       printName: false,
-      rand: 'rand()'
+      random: 'rand()'
     }
   ],
   message0: '%{BKY_RANDOM}',
-  args0: [],
   output: 'Number',
   style: 'math_blocks',
   tooltip: '%{BKY_RANDOM_TOOLTIP}',

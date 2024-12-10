@@ -3,16 +3,11 @@ var NFBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      FieldNumber: 'NF'
+      printName: false,
+      NF: 'NF'
     }
   ],
-  message0: '%{BKY_FIELD_NUMBER} %1\n',
-  args0: [
-    {
-      type: 'input_dummy',
-      name: 'FieldNumber'
-    }
-  ],
+  message0: '%{BKY_FIELD_NUMBER}',
   style: 'Special Variables',
   output: null,
   tooltip: '%{BKY_FIELD_NUMBER_TOOLTIP}',

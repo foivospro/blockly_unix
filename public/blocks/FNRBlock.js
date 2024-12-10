@@ -3,16 +3,11 @@ var FNRBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      FieldNumber: 'FNR'
+      printName: false,
+      FNR: 'FNR'
     }
   ],
-  message0: '%{BKY_FNR} %1\n',
-  args0: [
-    {
-      type: 'input_dummy',
-      name: 'FieldNumber'
-    }
-  ],
+  message0: '%{BKY_FNR}',
   style: 'Special Variables',
   output: null,
   tooltip: '%{BKY_FNR_TOOLTIP}',

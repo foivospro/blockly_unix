@@ -16,3 +16,5 @@ var multiplePrintBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([multiplePrintBlock]);
+window.unixGenerator.forBlock['multiplePrint'] =
+  window.unixGenerator.forBlock.concat;

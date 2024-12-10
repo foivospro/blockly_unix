@@ -3,16 +3,10 @@ var FILENAMEBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      Filename: 'FILENAME'
+      FILENAME: 'FILENAME'
     }
   ],
-  message0: '%{BKY_FILENAME_VARIABLE} %1\n',
-  args0: [
-    {
-      type: 'input_dummy',
-      name: 'Filename'
-    }
-  ],
+  message0: '%{BKY_FILENAME_VARIABLE}',
   style: 'Special Variables',
   output: null,
   tooltip: '%{BKY_FILENAME_TOOLTIP}',

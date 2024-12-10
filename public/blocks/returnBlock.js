@@ -2,7 +2,8 @@ var returnBlock = {
   type: 'return',
   unix_description: [
     {
-      X: (value) => value + ';'
+      printName: false,
+      X: (value) => 'return ' + value + ';'
     }
   ],
   message0: '%{BKY_RETURN}',
