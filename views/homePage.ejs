@@ -11,80 +11,68 @@
     <link rel="stylesheet" href="/css/homePage.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/img/favicon.png">
-    <style>
-        #mobileAlert {
-          display: none;
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 1050; /* Higher than default Bootstrap modals */
-          background-color: red;
-          color: white;
-          padding: 10px 40px 10px 10px; /* Extra right padding for the close button */
-          font-size: 16px;
-          text-align: center;
-      }
-
-      #closeAlertBtn {
-          position: absolute;
-          top: 50%;
-          right: 10px;
-          transform: translateY(-50%);
-          background: none;
-          border: none;
-          color: white;
-          font-size: 20px;
-          cursor: pointer;
-      }
-    </style>
     <script>
+      (function() {
+          var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-        // Function to load stylesheets dynamically
-        function loadStylesheet(href) {
-            var link = document.createElement("link");
-            link.rel = "stylesheet";
-            link.type = "text/css";
-            link.href = href;
-            document.head.appendChild(link);
-        }
+          function loadStylesheet(href) {
+              var link = document.createElement("link");
+              link.rel = "stylesheet";
+              link.type = "text/css";
+              link.href = href;
+              document.head.appendChild(link);
+          }
 
-        // Check screen size on load
-        function checkScreenSize() {
-            if (window.innerWidth <= 768) {
-                loadStylesheet("/css/mobile.css");
-                
-                // Show the mobile alert if user is on a mobile device and has not dismissed the alert
-                if (!sessionStorage.getItem("mobileAlertDismissed")) {
-                    document.getElementById("mobileAlert").style.display = "block";
-                }
+          if (isMobile) {
+              loadStylesheet("/css/mobile.css");
+          } else {
+              loadStylesheet("/css/homePage.css");
+              //loadStylesheet("/css/mobileHomePage.css");
+          }
+      })();
+  </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        fetch('/auth-token')
+          .then((response) => response.json())
+          .then((data) => {
+            const token = data.authToken;
+            const user = data.user;
+            if (!token) {
+              // User is authenticated
+              document.getElementById('loginHomePageButton').style.display = 'block';
+              document.getElementById('registerHomePageButton').style.display = 'block';
+              document.getElementById('registerSecondButtonHomePage').style.display = 'inline-block';
+              document.getElementById('getStartedButton').style.display = 'inline-block';
+              console.log('Token:', token);
             } else {
-                loadStylesheet("/css/homePage.css");
+              document.getElementById('continueWithBlocklyButton').style.display = 'block';
+              document.getElementById('logoutHomePageButton').style.display = 'block';
+              document
+                .getElementById('logoutHomePageButton')
+                .addEventListener('click', () => {
+                  event.preventDefault();
+                  document.getElementById('logoutForm').submit();
+                });
             }
-        }
-
-        // Close the mobile alert
-        function closeMobileAlert() {
-            document.getElementById("mobileAlert").style.display = "none";
-            sessionStorage.setItem("mobileAlertDismissed", true);
-        }
-
-        // Run the function on page load
-        document.addEventListener("DOMContentLoaded", checkScreenSize);
-
-        // Run the function again on window resize, but only show the alert if it hasn't been dismissed
-        window.addEventListener("resize", () => {
-            if (window.innerWidth > 768) {
-                document.getElementById("mobileAlert").style.display = "none";
-            }
-        });
+          })
+          .catch((error) => {
+            console.error('Error fetching the token:', error);
+          });
+      });
+    </script>
+    <script>
+      // Check if the alert has already been shown
+      if (!localStorage.getItem('mobileAlertShown')) {
+          alert('This application is not optimized for mobile devices. Please use a PC for the best experience.');
+          // Set the flag in local storage
+          localStorage.setItem('mobileAlertShown', 'true');
+      }
     </script>
 </head>
 <body class="d-flex flex-column min-vh-100">
-    <div id="mobileAlert">
-        <span>This application is not optimized for mobile devices. Please use a PC for the best experience.</span>
-        <button id="closeAlertBtn" onclick="closeMobileAlert()">&times;</button>
-    </div>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
