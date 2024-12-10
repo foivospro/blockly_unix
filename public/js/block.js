@@ -1,7 +1,5 @@
 window.unixGenerator = new Blockly.Generator('Unix');
 
-window.awkGenerator = new Blockly.Generator('Awk');
-
 window.unixGenerator.scrub_ = function (block, code) {
   const nextBlock = block.getNextBlock();
   let nextCode = '';

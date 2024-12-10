@@ -1,5 +1,11 @@
 var multiplePrintBlock = {
   type: 'multiplePrint',
+  unix_description: [
+    {
+      printName: false,
+      EMPTY: (value) => value
+    }
+  ],
   category: 'Text output',
   message0: '%{BKY_PRINT_CREATE_WITH} %1',
   args0: [
