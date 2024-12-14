@@ -3,6 +3,7 @@ var cutBlock = {
   category: 'Text Processing',
   unix_description: [
     {
+      printName: true,
       delimiter: (value) => "-d '" + value + "'", // Wrap value in -d 'value'
       columns: (value) => '-f ' + value, // Format for specific columns
       colsStart: (value) => '-f ' + value, // Starting column

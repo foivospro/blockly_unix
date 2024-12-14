@@ -22,4 +22,4 @@ var saveBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([saveBlock]);
-window.unixGenerator.forBlock['save'] = window.unixGenerator.forBlock.generic;
+window.unixGenerator.forBlock['save'] = window.unixGenerator.forBlock.concat;

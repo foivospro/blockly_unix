@@ -3,6 +3,7 @@ var ARGCBlock = {
   category: 'Field Processing',
   unix_description: [
     {
+      printName: true,
       ARGC: 'ARGC'
     }
   ],

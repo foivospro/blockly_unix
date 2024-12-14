@@ -3,6 +3,7 @@ var RSTARTBlock = {
   category: 'Field Processing',
   unix_description: [
     {
+      printName: true,
       RSTART: 'RSTART'
     }
   ],

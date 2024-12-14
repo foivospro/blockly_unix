@@ -3,6 +3,7 @@ var pingBlock = {
 
   unix_description: [
     {
+      printName: true,
       address: 'str',
       count: (value) => '-c ' + value,
       interval: (value) => '-i ' + value,

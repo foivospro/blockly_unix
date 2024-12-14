@@ -2,6 +2,7 @@ var nextFileBlock = {
   type: 'nextFile',
   unix_description: [
     {
+      printName: true,
       nextFile: 'nextfile;'
     }
   ],

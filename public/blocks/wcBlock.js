@@ -4,6 +4,7 @@ var wcBlock = {
   category: 'Text Processing',
   unix_description: [
     {
+      printName: true,
       lines: '-l',
       words: '-w',
       bytes: '-c',

@@ -4,6 +4,7 @@ var hostnameBlock = {
   category: 'System Monitoring',
   unix_description: [
     {
+      printName: true,
       desc: "Show or set the system's hostname",
       show_hostname: '',
       set_hostname: (value) => "-s '" + value + "'",

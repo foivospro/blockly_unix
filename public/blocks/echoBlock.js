@@ -4,6 +4,7 @@ var echoBlock = {
   category: 'Text Processing',
   unix_description: [
     {
+      printName: true,
       command: 'str'
     }
   ],

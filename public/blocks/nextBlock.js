@@ -2,6 +2,7 @@ var nextBlock = {
   type: 'next',
   unix_description: [
     {
+      printName: true,
       dummy: () => ';'
     }
   ],

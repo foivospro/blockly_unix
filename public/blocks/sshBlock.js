@@ -4,6 +4,7 @@ var sshBlock = {
   category: 'Network Operations',
   unix_description: [
     {
+      printName: true,
       KEY: (value) => '-i ' + value,
       PORT: (value) => '-p ' + value,
       USER: (value) => value + '@',

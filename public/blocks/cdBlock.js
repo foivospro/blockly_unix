@@ -3,6 +3,7 @@ var cdBlock = {
   category: 'Filesystem Operations',
   unix_description: [
     {
+      printName: true,
       directory: (value) => value
     }
   ],

@@ -3,6 +3,7 @@ var catBlock = {
   category: 'Text Processing',
   unix_description: [
     {
+      printName: true,
       lineNumbers: '-n',
       nonBlank_lineNumbers: '-b',
       squeezeEmptyLines: '-s',

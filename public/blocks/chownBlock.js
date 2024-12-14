@@ -4,6 +4,7 @@ var chownBlock = {
   message0: 'chown %1 %2',
   unix_description: [
     {
+      printName: true,
       command: 'chown %OWNER %FILE'
     }
   ],

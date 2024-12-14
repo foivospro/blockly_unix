@@ -4,6 +4,7 @@ var sortBlock = {
   category: 'Text Processing',
   unix_description: [
     {
+      printName: true,
       desc: '-r',
       numeric_sorting: '-n',
       sort_delimiter: (value) => "-t'" + value + "'",

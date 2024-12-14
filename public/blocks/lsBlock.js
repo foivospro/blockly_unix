@@ -4,6 +4,7 @@ var lsBlock = {
   category: 'Filesystem Operations',
   unix_description: [
     {
+      printName: true,
       detailed: '-l',
       recursively: '-R',
       hidden: '-a',

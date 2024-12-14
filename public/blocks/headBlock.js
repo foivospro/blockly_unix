@@ -4,6 +4,7 @@ var headBlock = {
   category: 'Text Processing',
   unix_description: [
     {
+      printName: true, 
       bytes: '-c',
       lines: '-n'
     }

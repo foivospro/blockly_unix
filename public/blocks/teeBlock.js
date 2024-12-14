@@ -3,6 +3,7 @@ var teeBlock = {
   category: 'I/O redirection',
   unix_description: [
     {
+      printName: true,
       append: '-a',
       filename: (value) => value
     }
@@ -34,4 +35,4 @@ var teeBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([teeBlock]);
-window.unixGenerator.forBlock['tee'] = window.unixGenerator.forBlock.concat;
+window.unixGenerator.forBlock['tee'] = window.unixGenerator.forBlock.generic;

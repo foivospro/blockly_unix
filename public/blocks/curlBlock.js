@@ -3,6 +3,7 @@ var curlBlock = {
   message0: '%{BKY_CURL} %1',
   unix_description: [
     {
+      printName: true,
       GET: '-X GET',
       POST: '-X POST',
       PUT: '-X PUT',

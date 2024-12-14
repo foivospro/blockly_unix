@@ -4,6 +4,7 @@ var uniqBlock = {
   category: 'Text Processing',
   unix_description: [
     {
+      printName: true,
       none: '',
       occurencies: '-c',
       caseInsensitive: '-i',

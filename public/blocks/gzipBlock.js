@@ -3,6 +3,7 @@ var gzipBlock = {
   category: 'Filesystem Operations',
   unix_description: [
     {
+      printName: true,
       keep: '-k',
       decompress: '-d',
       fast: '-1',

@@ -3,6 +3,7 @@ var findBlock = {
   category: 'Filesystem Operations',
   unix_description: [
     {
+      printName: true,
       path: 'str',
       mtime: '-mtime -',
       mmin: '-mmin -',

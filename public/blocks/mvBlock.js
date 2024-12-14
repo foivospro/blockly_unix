@@ -4,6 +4,7 @@ var mvBlock = {
   message0: '%{BKY_MV_MESSAGE}', // Correctly references %1 (SOURCE) and %2 (DEST)
   unix_description: [
     {
+      printName: true,
       not_prompt_confirmation: '-f',
       prompt_confirmation: '-i',
       not_overwrite: '-n'

@@ -3,6 +3,7 @@ var FILENAMEBlock = {
   category: 'Field Processing',
   unix_description: [
     {
+      printName: true,
       FILENAME: 'FILENAME'
     }
   ],

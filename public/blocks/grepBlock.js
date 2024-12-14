@@ -3,6 +3,7 @@ var grepBlock = {
   category: 'Text Processing',
   unix_description: [
     {
+      printName: true,
       regex: '-E',
       case_ins: '-i',
       whole_word: '-w',

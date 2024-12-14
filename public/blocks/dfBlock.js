@@ -4,6 +4,7 @@ var dfBlock = {
   category: 'System Commands',
   unix_description: [
     {
+      printName: true,
       desc: '-h',
       show_fs_type: '-T',
       show_total_blocks: '-B',

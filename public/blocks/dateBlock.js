@@ -4,6 +4,7 @@ var dateBlock = {
   category: 'System Monitoring',
   unix_description: [
     {
+      printName: true,
       desc: 'Display or set the system date and time',
       utc_time: '-u'
     }

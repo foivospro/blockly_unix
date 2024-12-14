@@ -5,7 +5,7 @@ var regPatternBlock = {
   unix_description: [
     {
       printName: false,
-      regPattern: 'patt'
+
     }
   ],
   args0: [

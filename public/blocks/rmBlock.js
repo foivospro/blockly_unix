@@ -3,6 +3,7 @@ var rmBlock = {
   category: 'Filesystem Operations',
   unix_description: [
     {
+      printName: true,
       force: '-f',
       request_confirmation: '-i',
       remove_directory: '-d',

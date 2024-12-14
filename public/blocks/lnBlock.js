@@ -4,6 +4,7 @@ var lnBlock = {
   message0: '%{BKY_LN_MESSAGE}',
   unix_description: [
     {
+      printName: true,
       command: 'ln',
       symbolic: '-s',
       force: '-f',

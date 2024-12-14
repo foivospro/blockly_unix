@@ -4,6 +4,7 @@ var psBlock = {
   category: 'System Commands',
   unix_description: [
     {
+      printName: true,
       desc: '-e',
       show_all_processes: '-e',
       show_process_user: (value) => "-u '" + value + "'",

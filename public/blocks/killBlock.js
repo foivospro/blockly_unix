@@ -4,6 +4,7 @@ var killBlock = {
   message0: '%{BKY_KILL} %1',
   unix_description: [
     {
+      printName: true,
       command: 'kill %PID'
     }
   ],

@@ -3,6 +3,7 @@ var exitBlock = {
   message0: '%{BKY_EXIT}',
   args0: [
     {
+      printName: true,
       type: 'input_value',
       name: 'X',
       check: ['String', 'Number']

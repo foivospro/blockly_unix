@@ -4,6 +4,7 @@ var sleepBlock = {
   category: 'Other Commands',
   unix_description: [
     {
+      printName: true,
       time: 'sleep %TIME'
     }
   ],

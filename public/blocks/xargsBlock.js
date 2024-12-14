@@ -3,6 +3,7 @@ var xargsBlock = {
   category: 'Field Processing',
   unix_description: [
     {
+      printName: true,
       placeholder: '-I{}'
     }
   ],

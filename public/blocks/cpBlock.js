@@ -4,6 +4,7 @@ var cpBlock = {
   message0: 'cp %1 %2',
   unix_description: [
     {
+      printName: true,
       command: 'cp %SOURCE %DEST'
     }
   ],

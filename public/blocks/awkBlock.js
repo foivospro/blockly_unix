@@ -3,6 +3,7 @@ var awkBlock = {
   category: 'Field Processing',
   unix_description: [
     {
+      printName: true,
       awkInput_delimiter: (value) => "-F '" + value + "'",
       awkConditionAction: (value) => "' " + value + " '"
     }

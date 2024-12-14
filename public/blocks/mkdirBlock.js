@@ -3,6 +3,7 @@ var mkdirBlock = {
   category: 'Filesystem Operations',
   unix_description: [
     {
+      printName: true,
       parents: '-p'
     }
   ],

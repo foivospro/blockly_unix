@@ -4,6 +4,7 @@ var touchBlock = {
   category: 'Filesystem Operations',
   unix_description: [
     {
+      printName: true,
       argument: 'arg',
       not_create_file: '-c',
       change_time_t: (value) => '-t ' + value,

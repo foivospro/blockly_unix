@@ -4,6 +4,7 @@ var whoBlock = {
   category: 'System Monitoring',
   unix_description: [
     {
+      printName: true,
       desc: 'Display who is logged in and related information',
       show_heading: '-H',
       show_all: '-a',
