@@ -4,8 +4,7 @@ var regPatternBlock = {
   message0: '%{BKY_REGPATTERN}',
   unix_description: [
     {
-      printName: false,
-
+      printName: false
     }
   ],
   args0: [

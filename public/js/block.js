@@ -1,10 +1,10 @@
 window.unixGenerator = new Blockly.Generator('Unix');
 
 window.unixGenerator.scrub_ = function (block, code) {
-  const nextBlock = block.getNextBlock();
+  let nextBlock = block.getNextBlock();
   let nextCode = '';
 
-  if (nextBlock) {
+  while (nextBlock) {
     const handlerFunction = window.unixGenerator.forBlock[nextBlock.type];
 
     let connector = '';
@@ -16,7 +16,8 @@ window.unixGenerator.scrub_ = function (block, code) {
       connector = ' ';
     }
 
-    nextCode = connector + handlerFunction(nextBlock);
+    nextCode += connector + handlerFunction(nextBlock);
+    nextBlock = nextBlock.getNextBlock();
   }
 
   return code + nextCode;

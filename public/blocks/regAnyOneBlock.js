@@ -4,7 +4,8 @@ var regAnyOneBlock = {
   unix_description: [
     {
       printName: false,
-      Pattern: (value, notMatch) => notMatch.checked ? '[^' + value + ']' : '[' + value + ']',
+      Pattern: (value, notMatch) =>
+        notMatch.checked ? '[^' + value + ']' : '[' + value + ']'
     }
   ],
 
