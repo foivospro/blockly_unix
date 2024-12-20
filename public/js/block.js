@@ -3,6 +3,7 @@ window.unixGenerator = new Blockly.Generator('Unix');
 window.unixGenerator.scrub_ = function (block, code) {
   let nextBlock = block.getNextBlock();
   let nextCode = '';
+  let isFilenameHandled = false;
 
   while (nextBlock) {
     const handlerFunction = window.unixGenerator.forBlock[nextBlock.type];
@@ -16,11 +17,16 @@ window.unixGenerator.scrub_ = function (block, code) {
       connector = ' ';
     }
 
-    nextCode += connector + handlerFunction(nextBlock);
+    if (block.type === 'filenamesCreate' && !isFilenameHandled) {
+      nextCode += handlerFunction(nextBlock) + ' ' + code;
+      isFilenameHandled = true;
+    } else {
+      nextCode += connector + handlerFunction(nextBlock);
+    }
+
     nextBlock = nextBlock.getNextBlock();
   }
-
-  return code + nextCode;
+  return isFilenameHandled ? nextCode : code;
 };
 
 window.unixGenerator.forBlock.generic = function (block) {
@@ -53,6 +59,8 @@ function generateCommandFromWorkspace() {
 
 function handleBlocks(block, blockDefinition) {
   let commandParts = [];
+  let metadata = [];
+
   const description = blockDefinition.unix_description[0];
   const blockType = block.type;
 
@@ -60,6 +68,7 @@ function handleBlocks(block, blockDefinition) {
   if (description[blockType]) {
     const commandName = description[blockType];
     commandParts.push(commandName);
+    metadata.push({ value: commandName, type: blockType });
   }
 
   block.inputList.forEach((input) => {
@@ -88,6 +97,7 @@ function handleBlocks(block, blockDefinition) {
       }
       if (value) {
         commandParts.push(value);
+        metadata.push({ value, type: block.type });
       }
     });
 
@@ -106,13 +116,29 @@ function handleBlocks(block, blockDefinition) {
           if (typeof processingFn === 'function') {
             const processedChildCode = processingFn(childCode.trim());
             commandParts.push(processedChildCode);
+            metadata.push({ value: processedChildCode, type: childBlock.type });
           } else {
             commandParts.push(childCode.trim());
+            metadata.push({ value: childCode.trim(), type: childBlock.type });
           }
         }
       }
     }
   });
 
-  return commandParts;
+  const reorderedCommandParts = [];
+  const argumentParts = [];
+
+  metadata.forEach((part) => {
+    if (part.type === 'argument' || part.type === 'argumentsCreate') {
+      argumentParts.push(part.value);
+    } else {
+      reorderedCommandParts.push(part.value);
+    }
+  });
+
+  // Append argument parts at the end
+  const finalCommandParts = [...reorderedCommandParts, ...argumentParts];
+
+  return finalCommandParts;
 }
