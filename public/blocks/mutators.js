@@ -306,3 +306,91 @@ Blockly.Extensions.registerMutator(
   },
   listCreateHelper
 );
+
+function registerConnectionRestrictionExtension(
+  extensionName,
+  parentBlockTypes, // Array of allowed parent block types
+  inputFieldNamesMap, // Object to map block types to their input field names
+  allowedBlockType,
+  restrictedInputField // New parameter for the restricted input field
+) {
+  Blockly.Extensions.register(extensionName, function () {
+    this.setOnChange(function (changeEvent) {
+      if (
+        changeEvent.type === Blockly.Events.BLOCK_MOVE &&
+        this.id === changeEvent.blockId
+      ) {
+        var parentBlock = this.getParent();
+
+        if (parentBlock && parentBlockTypes.includes(parentBlock.type)) {
+          // Get the input field name based on the parent block type
+          var inputFieldName = inputFieldNamesMap[parentBlock.type];
+
+          // Check connection to the correct input field
+          if (inputFieldName) {
+            // Check the restricted connection (e.g., SOURCE)
+            var restrictedConnection = parentBlock
+              .getInput(restrictedInputField)
+              .connection.targetBlock();
+            if (restrictedConnection && restrictedConnection === this) {
+              // Disconnect if connected to the restricted input
+              if (this.outputConnection.targetConnection) {
+                this.outputConnection.disconnect();
+              }
+            }
+
+            // If the connected block is not this block, or if it's not the allowed block type, disconnect
+            if (allowedBlockType && this.type !== allowedBlockType) {
+              if (this.outputConnection.targetConnection) {
+                this.outputConnection.disconnect();
+              }
+            }
+          } else {
+            // No valid input field for this parent block
+            if (this.outputConnection.targetConnection) {
+              this.outputConnection.disconnect();
+            }
+          }
+        } else {
+          // If the parent block is not of the expected type, disconnect
+          if (this.outputConnection.targetConnection) {
+            this.outputConnection.disconnect();
+          }
+        }
+      }
+    });
+  });
+}
+
+registerConnectionRestrictionExtension(
+  'restrict_args_block',
+  ['argumentsCreate', 'mv', 'ln'],
+  {
+    argumentsCreate: 'EMPTY',
+    mv: 'DEST',
+    ln: 'TARGET'
+  },
+  'argument',
+  'SOURCE'
+);
+
+registerConnectionRestrictionExtension(
+  'restrict_filename_to_filenamesCreate',
+  ['filenamesCreate'],
+  { filenamesCreate: 'EMPTY' },
+  'filename'
+);
+
+registerConnectionRestrictionExtension(
+  'restrict_fileEndStart_to_filenamesCreate',
+  ['filenamesCreate'],
+  { filenamesCreate: 'EMPTY' },
+  'fileEndStart'
+);
+
+registerConnectionRestrictionExtension(
+  'restrict_touch_to_argumentsCreate',
+  ['argumentsCreate'],
+  { argumentsCreate: 'EMPTY' },
+  'touch'
+);

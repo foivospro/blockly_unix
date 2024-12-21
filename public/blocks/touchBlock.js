@@ -55,7 +55,7 @@ var touchBlock = {
       check: 'String'
     }
   ],
-
+  extensions: ['restrict_touch_to_argumentsCreate'],
   style: 'Filesystem Operations',
   tooltip: '%{BKY_TOUCH_TOOLTIP}',
   helpUrl: '%{BKY_TOUCH_HELPURL}' // URL to further information or documentation.
