@@ -10,7 +10,9 @@ var uniqBlock = {
       caseInsensitive: '-i',
       outputNonRepeatedLines: '-u',
       outputSingleCopyOfRepeatedLines: '-d',
-      skipChars: (value) => '-s ' + value
+      skipChars: (fieldValues) => {
+        return '-s ' + fieldValues['skipChars'] ;
+      }
     }
   ],
 

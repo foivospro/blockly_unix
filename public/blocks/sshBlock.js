@@ -5,9 +5,15 @@ var sshBlock = {
   unix_description: [
     {
       printName: true,
-      KEY: (value) => '-i ' + value,
-      PORT: (value) => '-p ' + value,
-      USER: (value) => value + '@',
+      KEY: (fieldValues) => {
+        return '-i ' + fieldValues['KEY'];
+      },
+      PORT: (fieldValues) => {
+        return '-p ' + fieldValues['PORT'];
+      },
+      USER: (fieldValues) => {
+        return fieldValues['USER'] + '@';
+      },
       HOST: 'str'
     }
   ],

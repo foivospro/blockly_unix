@@ -4,7 +4,10 @@ var FSBlock = {
   unix_description: [
     {
       printName: false,
-      FieldSeparator: (value) => "FS = '" + value + "'"
+      FieldSeparator: (fieldValues) => {
+        return "FS = '" + fieldValues['FieldSeparator'] + "'";
+      }
+
     }
   ],
   message0: '%{BKY_FIELD_SEPARATOR}',

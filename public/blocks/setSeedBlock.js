@@ -3,7 +3,10 @@ var setSeedBlock = {
   unix_description: [
     {
       printName: false,
-      seed: (value) => 'srand(' + value + ')'
+      seed: (fieldValues) => {
+        return 'srand(' + fieldValues['seed'] + ')';
+      }
+
     }
   ],
   message0: '%{BKY_SETSEED}',

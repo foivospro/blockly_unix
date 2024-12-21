@@ -3,8 +3,13 @@ var arrayGetIndexBlock = {
   unix_description: [
     {
       printName: false,
-      ARRAY: (value) => value + '[',
-      INDEX: (value) => value + ']'
+      ARRAY: (fieldValues) => {
+        return fieldValues['ARRAY'] + '[';
+      },
+      INDEX: (fieldValues) => {
+        return fieldValues['INDEX'] + ']';
+      }
+
     }
   ],
   message0: '%{BKY_ARRAY_GET_INDEX}',

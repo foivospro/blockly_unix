@@ -3,7 +3,6 @@ var argumentsCreateBlock = {
   unix_description: [
     {
       printName: false,
-      EMPTY: (value) => value
     }
   ],
   category: 'Function inputs',

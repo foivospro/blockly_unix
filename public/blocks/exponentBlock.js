@@ -3,7 +3,10 @@ var exponentBlock = {
   unix_description: [
     {
       printName: false,
-      exp: (value) => 'exp(' + value + ')'
+      exp: (fieldValues) => {
+        return 'exp(' + fieldValues['exp'] + ')';
+      }
+
     }
   ],
   message0: '%{BKY_EXPONENT}',

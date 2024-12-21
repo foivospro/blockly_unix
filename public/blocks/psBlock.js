@@ -7,9 +7,15 @@ var psBlock = {
       printName: true,
       desc: '-e',
       show_all_processes: '-e',
-      show_process_user: (value) => "-u '" + value + "'",
-      show_process_pid: (value) => "-p '" + value + "'",
-      format: (value) => "-o '" + value + "'",
+      show_process_user: (fieldValues) => {
+        return "-u '" + fieldValues['show_process_user'] + "'";
+      },
+      show_process_pid: (fieldValues) => {
+        return "-p '" + fieldValues['show_process_pid'] + "'";
+      },
+      format: (fieldValues) => {
+        return "-o '" + fieldValues['format'] + "'";
+      },
       show_thread: '-L',
       sort_by: '--sort',
       filter_by: '--pid'

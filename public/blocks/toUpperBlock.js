@@ -3,7 +3,10 @@ var toUpperBlock = {
   unix_description: [
     {
       printName: false,
-      toUpper: (value) => 'toupper(' + value + ')'
+      toUpper: (fieldValues) => {
+        return 'toupper(' + fieldValues['toUpper'] + ')';
+      }
+
     }
   ],
   message0: '%{BKY_TO_UPPER}',

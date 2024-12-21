@@ -1,18 +1,22 @@
 var regAlternationBlock = {
-  type: 'regAlternation', // Ορισμός του τύπου του block
+  type: 'regAlternation',
   category: 'Regular Expressions',
   unix_description: [
     {
       printName: false,
-      LEFT_PATTERN: (value) => value + ' |',
-      RIGHT_PATTERN: (value) => value
+      LEFT_PATTERN: (fieldValues) => {
+        return fieldValues['LEFT_PATTERN'] + ' |';
+      },
+      RIGHT_PATTERN: (fieldValues) => {
+        return fieldValues['RIGHT_PATTERN'];
+      }
     }
   ],
-  message0: '%1', // Μήνυμα που εμφανίζει το | ανάμεσα στις δύο εισόδους
+  message0: '%1',
   args0: [
     {
       type: 'input_statement',
-      name: 'LEFT_PATTERN', // Πρώτη εσοχή για την αριστερή έκφραση
+      name: 'LEFT_PATTERN',
       check: 'String'
     }
   ],
@@ -23,7 +27,7 @@ var regAlternationBlock = {
   args2: [
     {
       type: 'input_statement',
-      name: 'RIGHT_PATTERN', // Δεύτερη εσοχή για τη δεξιά έκφραση
+      name: 'RIGHT_PATTERN',
       check: 'String'
     }
   ],

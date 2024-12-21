@@ -3,7 +3,9 @@ var sqrtBlock = {
   unix_description: [
     {
       printName: false,
-      sqrt: (value) => 'sqrt(' + value + ')'
+      sqrt: (fieldValues) => {
+        return 'sqrt(' + fieldValues['sqrt'] + ')';
+      }
     }
   ],
   message0: '%{BKY_SQUARE_ROOT}',

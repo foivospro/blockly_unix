@@ -3,7 +3,9 @@ var logarithmBlock = {
   unix_description: [
     {
       printName: false,
-      log: (value) => 'log(' + value + ')'
+      log: (fieldValues) => {
+        return 'log(' + fieldValues['log'] + ')';
+      }
     }
   ],
   message0: '%{BKY_LOGARITHM}',

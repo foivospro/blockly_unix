@@ -3,8 +3,13 @@ var matchBlock = {
   unix_description: [
     {
       printName: false,
-      X: (value) => 'match(' + value + ',',
-      Y: (value) => value + ')'
+      X: (fieldValues) => {
+        return 'match(' + fieldValues['X'] + ',';
+      },
+      Y: (fieldValues) => {
+        return fieldValues['Y'] + ')';
+      }
+
     }
   ],
   message0: '%{BKY_MATCH}',

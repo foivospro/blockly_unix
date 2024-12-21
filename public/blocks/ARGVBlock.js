@@ -3,7 +3,10 @@ var ARGVBlock = {
   unix_description: [
     {
       printName: false,
-      INDEX: (value) => 'ARGV[' + value + ']'
+      INDEX: (fieldValues) => {
+        return '${ARGV[' + fieldValues['INDEX'] + ']}';
+      }
+
     }
   ],
   message0: '%{BKY_ARGUMENT_ARRAY}',

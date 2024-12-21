@@ -3,7 +3,10 @@ var sineBlock = {
   unix_description: [
     {
       printName: false,
-      sine: (value) => 'sin(' + value + ')'
+      sine: (fieldValues) => {
+        return 'sin(' + fieldValues['sine'] + ')';
+      }
+
     }
   ],
   message0: '%{BKY_SINE}',

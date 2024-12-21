@@ -7,8 +7,12 @@ var sortBlock = {
       printName: true,
       desc: '-r',
       numeric_sorting: '-n',
-      sort_delimiter: (value) => "-t'" + value + "'",
-      sort_column: (value) => '-k ' + value,
+      sort_delimiter: (fieldValues) => {
+        return "-t'" + fieldValues['sort_delimiter'] + "'";
+      },
+      sort_column: (fieldValues) => {
+        return '-k ' + fieldValues['sort_column'];
+      },
       uniq_elements: '-u',
       ignore_nonPrintable: '-i',
       ignore_leading_blanks: '-b'

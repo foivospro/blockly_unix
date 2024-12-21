@@ -4,7 +4,9 @@ var conditionBlock = {
   unix_description: [
     {
       printName: false,
-      leftPart: (value) => value,
+      leftPart: (fieldValues) => {
+        return fieldValues['leftPart'];
+      },
       equals: '==',
       not_equals: '!=',
       smaller: '<',
@@ -14,7 +16,10 @@ var conditionBlock = {
       logical_and: '&&',
       logical_or: '||',
       logical_not: '!',
-      rightPart: (value) => value
+      rightPart: (fieldValues) => {
+        return fieldValues['rightPart'];
+      }
+
     }
   ],
   message0: '%1', // First message line for left_part

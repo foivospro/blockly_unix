@@ -3,7 +3,10 @@ var intBlock = {
   unix_description: [
     {
       printName: false,
-      int: (value) => 'int(' + value + ')'
+      int: (fieldValues) => {
+        return 'int(' + fieldValues['int'] + ')';
+      }
+
     }
   ],
   message0: '%{BKY_TO_INT}',

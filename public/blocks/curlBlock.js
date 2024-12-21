@@ -39,7 +39,7 @@ var curlBlock = {
     {
       type: 'field_checkbox',
       name: 'follow_redirects',
-      checked: true
+      checked: false
     }
   ],
 

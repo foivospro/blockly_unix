@@ -15,7 +15,9 @@ var gzipBlock = {
       five: '-5',
       seven: '-7',
       eight: '-8',
-      suffix: (value) => '-S ' + value
+      suffix: (fieldValues) => {
+        return '-S ' + fieldValues['suffix'];
+      }
     }
   ],
   message0: '%{BKY_GZIP_FILE}',

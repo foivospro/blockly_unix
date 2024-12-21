@@ -4,13 +4,27 @@ var cutBlock = {
   unix_description: [
     {
       printName: true,
-      delimiter: (value) => "-d '" + value + "'", // Wrap value in -d 'value'
-      columns: (value) => '-f ' + value, // Format for specific columns
-      colsStart: (value) => '-f ' + value, // Starting column
-      colsEnd: (value) => '-f ' + value, // Ending column
-      individualChars: (value) => "-c '" + value + "'", // Specific characters
-      charsStart: (value) => "-c '" + value + "'", // Starting characters
-      charsEnd: (value) => "-c '" + value + "'" // Ending characters
+      delimiter: (fieldValues) => {
+        return "-d '" + fieldValues['delimiter'] + "'";
+      }, // Wrap value in -d 'value'
+      columns: (fieldValues) => {
+        return '-f ' + fieldValues['columns'];
+      }, // Format for specific columns
+      colsStart: (fieldValues) => {
+        return '-f ' + fieldValues['colsStart'];
+      }, // Starting column
+      colsEnd: (fieldValues) => {
+        return '-f ' + fieldValues['colsEnd'];
+      }, // Ending column
+      individualChars: (fieldValues) => {
+        return "-c '" + fieldValues['individualChars'] + "'";
+      }, // Specific characters
+      charsStart: (fieldValues) => {
+        return "-c '" + fieldValues['charsStart'] + "'";
+      }, // Starting characters
+      charsEnd: (fieldValues) => {
+        return "-c '" + fieldValues['charsEnd'] + "'";
+      } // Ending characters
     }
   ],
   message0: '%{BKY_CUT}\n',

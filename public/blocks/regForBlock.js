@@ -5,8 +5,17 @@ var regForBlock = {
   unix_description: [
     {
       printName: false,
-      FROM: (value) => '{' + value + ',',
-      TO: (value) => value + '}'
+      FROM: (fieldValues) => {
+        return fieldValues['INFINITE'] === 'TRUE'
+        ? '{' + fieldValues['FROM'] + ',}'
+        : '{' + fieldValues['FROM'] + ',';
+      },
+      TO: (fieldValues) => {
+        return fieldValues['INFINITE'] === 'TRUE'
+        ? ''
+        :  fieldValues['TO'] + '}';
+      },
+
     }
   ],
   args0: [

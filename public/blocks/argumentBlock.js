@@ -3,7 +3,6 @@ var argumentBlock = {
   unix_description: [
     {
       printName: false,
-      ARGUMENT: (value) => value
     }
   ],
   category: 'Function inputs',

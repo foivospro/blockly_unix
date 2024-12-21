@@ -5,7 +5,10 @@ var appendBlock = {
   unix_description: [
     {
       printName: false,
-      append_filename: (value) => ' >> ' + value
+      append_filename: (fieldValues) => {
+        const userInput = fieldValues['append_filename'] || '';
+        return ' >> ' + userInput;
+      }
     }
   ],
   args0: [

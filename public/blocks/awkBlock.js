@@ -4,8 +4,12 @@ var awkBlock = {
   unix_description: [
     {
       printName: true,
-      awkInput_delimiter: (value) => "-F '" + value + "'",
-      awkConditionAction: (value) => "' " + value + " '"
+      awkInput_delimiter: (fieldValues) => {
+        return "-F '" + fieldValues['awkInput_delimiter'] + "'";
+      },
+      awkConditionAction: (fieldValues) => {
+        return "' " + fieldValues['awkConditionAction'] + " '";
+      },
     }
   ],
   message0: '%{BKY_AWK_TEXT_DATA_PROCESSING}',

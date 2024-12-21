@@ -3,7 +3,10 @@ var lengthBlock = {
   unix_description: [
     {
       printName: false,
-      length: (value) => 'length(' + value + ')'
+      length: (fieldValues) => {
+        return 'length(' + fieldValues['length'] + ')';
+      }
+
     }
   ],
   message0: '%{BKY_LENGTH}',

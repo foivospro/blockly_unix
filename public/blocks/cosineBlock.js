@@ -3,7 +3,9 @@ var cosineBlock = {
   unix_description: [
     {
       printName: false,
-      X: (value) => 'cos(' + value + ')'
+      X: (fieldValues) => {
+        return 'cos(' + fieldValues['X'] + ')';
+      }
     }
   ],
   message0: '%{BKY_COSINE}',

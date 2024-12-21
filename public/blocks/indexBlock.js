@@ -3,8 +3,12 @@ var indexBlock = {
   unix_description: [
     {
       printName: false,
-      X: (value) => 'index(' + value + ',',
-      Y: (value) => value + ')'
+      X: (fieldValues) => {
+        return 'index(' + fieldValues['X'] + ',';
+      },
+      Y: (fieldValues) => {
+        return fieldValues['Y'] + ')';
+      }
     }
   ],
   message0: '%{BKY_INDEX}',

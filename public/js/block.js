@@ -1,5 +1,14 @@
+/************************************************************
+ * block.js
+ ************************************************************/
+
+// Initialize the Unix generator
 window.unixGenerator = new Blockly.Generator('Unix');
 
+/**
+ * The scrub_ function is responsible for chaining blocks together,
+ * adding the appropriate connectors/transitions (e.g., "|").
+ */
 window.unixGenerator.scrub_ = function (block, code) {
   let nextBlock = block.getNextBlock();
   let nextCode = '';
@@ -29,6 +38,9 @@ window.unixGenerator.scrub_ = function (block, code) {
   return isFilenameHandled ? nextCode : code;
 };
 
+/**
+ * Basic implementation for generic blocks (e.g., most Unix commands).
+ */
 window.unixGenerator.forBlock.generic = function (block) {
   const blockDefinition = window[block.type + 'Block'];
   const commandParts = handleBlocks(block, blockDefinition);
@@ -39,6 +51,9 @@ window.unixGenerator.forBlock.generic = function (block) {
   }
 };
 
+/**
+ * Implementation for blocks that are concatenated (e.g., no extra connectors like "|").
+ */
 window.unixGenerator.forBlock.concat = function (block) {
   const blockDefinition = window[block.type + 'Block'];
   const commandParts = handleBlocks(block, blockDefinition);
@@ -49,14 +64,20 @@ window.unixGenerator.forBlock.concat = function (block) {
   }
 };
 
+/**
+ * Function that generates the code (command) from the workspace.
+ */
 function generateCommandFromWorkspace() {
   const workspace = Blockly.getMainWorkspace();
-  blocks = workspace.getTopBlocks(true);
-  topBlock = blocks[0];
+  const blocks = workspace.getTopBlocks(true);
+  const topBlock = blocks[0];
   const code = window.unixGenerator.blockToCode(topBlock);
   return code;
 }
 
+/**
+ * handleBlocks: Processes the fields and connected blocks to produce the final Unix command.
+ */
 function handleBlocks(block, blockDefinition) {
   let commandParts = [];
   let metadata = [];
@@ -71,13 +92,30 @@ function handleBlocks(block, blockDefinition) {
     metadata.push({ value: commandName, type: blockType });
   }
 
+  // Collect all field values from the block in an object
+  const fieldValues = {};
+  block.inputList.forEach((input) => {
+    input.fieldRow.forEach((field) => {
+      if (field.name) {
+        fieldValues[field.name] = field.getValue();
+      }
+    });
+  });
+
+  // Iterate again to build the command parts
   block.inputList.forEach((input) => {
     input.fieldRow.forEach((field) => {
       let value = '';
       if (field instanceof Blockly.FieldDropdown) {
         value = description[field.getValue()] || '';
       } else if (field instanceof Blockly.FieldCheckbox) {
-        value = field.getValue() === 'TRUE' ? description[field.name] : '';
+        if (description[field.name] && typeof description[field.name] === 'function') {
+          value = field.getValue() === 'TRUE'
+            ? description[field.name](fieldValues)
+            : '';
+        } else {
+          value = field.getValue() === 'TRUE' ? description[field.name] : '';
+        }
       } else if (
         field instanceof Blockly.FieldTextInput ||
         field instanceof Blockly.FieldNumber
@@ -85,11 +123,9 @@ function handleBlocks(block, blockDefinition) {
         const userInput = field.getValue();
         const defaultText = field.text_;
         if (userInput && userInput !== defaultText) {
-          if (
-            description[field.name] &&
-            typeof description[field.name] === 'function'
-          ) {
-            value = description[field.name](userInput);
+          if (description[field.name] && typeof description[field.name] === 'function') {
+
+            value = description[field.name](fieldValues);
           } else {
             value = userInput;
           }
@@ -101,18 +137,17 @@ function handleBlocks(block, blockDefinition) {
       }
     });
 
+    // If there's a connected block, generate code for that as well
     if (input.connection && input.connection.isConnected()) {
       const childBlock = input.connection.targetBlock();
       if (childBlock) {
         const childCode = window.unixGenerator.blockToCode(childBlock);
-        const inputDescription = description[input.name] || '';
         if (childCode) {
           if (!input.name) {
             console.error('Input has no name:', input);
             return;
           }
           const processingFn = description[input.name];
-
           if (typeof processingFn === 'function') {
             const processedChildCode = processingFn(childCode.trim());
             commandParts.push(processedChildCode);
@@ -126,6 +161,7 @@ function handleBlocks(block, blockDefinition) {
     }
   });
 
+  // Example logic to handle 'arguments' blocks or reorder parts if needed
   const reorderedCommandParts = [];
   const argumentParts = [];
 

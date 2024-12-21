@@ -3,8 +3,13 @@ var deleteArrayElementBlock = {
   unix_description: [
     {
       printName: false,
-      X: (value) => 'delete ' + value + '[',
-      INDEX: (value) => value + '];'
+      X: (fieldValues) => {
+        return 'delete ' + fieldValues['X'] + '[';
+      },
+      INDEX: (fieldValues) => {
+        return fieldValues['INDEX'] + '];';
+      }
+
     }
   ],
   message0: '%{BKY_DELETE_ARRAY_ELEMENT}',

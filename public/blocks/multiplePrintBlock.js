@@ -3,7 +3,7 @@ var multiplePrintBlock = {
   unix_description: [
     {
       printName: false,
-      EMPTY: (value) => value
+
     }
   ],
   category: 'Text output',

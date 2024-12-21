@@ -4,7 +4,6 @@ var cdBlock = {
   unix_description: [
     {
       printName: true,
-      directory: (value) => value
     }
   ],
   message0: '%{BKY_CD} %1',

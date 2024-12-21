@@ -7,8 +7,12 @@ var touchBlock = {
       printName: true,
       argument: 'arg',
       not_create_file: '-c',
-      change_time_t: (value) => '-t ' + value,
-      change_time_d: (value) => '-d ' + value,
+      change_time_t: (fieldValues) => {
+        return '-t ' + fieldValues['change_time_t'];
+      },
+      change_time_d: (fieldValues) => {
+        return '-d ' + fieldValues['change_time_d'];
+      },
       access_time: '-a',
       modification_time: '-m'
     }

@@ -4,7 +4,7 @@ var filenamesCreateBlock = {
   unix_description: [
     {
       printName: false,
-      EMPTY: (value) => value
+      
     }
   ],
   message0: '%{BKY_FILES_CREATE_WITH} %1',

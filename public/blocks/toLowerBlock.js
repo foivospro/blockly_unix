@@ -3,7 +3,9 @@ var toLowerBlock = {
   unix_description: [
     {
       printName: false,
-      toLower: (value) => 'tolower(' + value + ')'
+      toLower: (fieldValues) => {
+        return 'tolower(' + fieldValues['toLower'] + ')';
+      }
     }
   ],
   message0: '%{BKY_TO_LOWER}',

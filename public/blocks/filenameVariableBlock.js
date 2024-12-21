@@ -4,7 +4,7 @@ var FILENAMEBlock = {
   unix_description: [
     {
       printName: true,
-      FILENAME: 'FILENAME'
+      
     }
   ],
   message0: '%{BKY_FILENAME_VARIABLE}',

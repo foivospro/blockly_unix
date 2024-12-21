@@ -3,8 +3,13 @@ var atan2Block = {
   unix_description: [
     {
       printName: false,
-      Y: (value) => 'atan2(' + value + ',',
-      X: (value) => value + ')'
+      Y: (fieldValues) => {
+        return 'atan2(' + fieldValues['Y'] + ',';
+      },
+      X: (fieldValues) => {
+        return fieldValues['X'] + ')';
+      }
+
     }
   ],
   message0: '%{BKY_ATAN2}',

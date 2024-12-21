@@ -5,7 +5,6 @@ var teeBlock = {
     {
       printName: true,
       append: '-a',
-      filename: (value) => value
     }
   ],
   message0: '%{BKY_TEE}',

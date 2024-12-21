@@ -4,7 +4,10 @@ var OFSBlock = {
   unix_description: [
     {
       printName: false,
-      FieldSeparator: (value) => 'OFS = "' + value + '"'
+      FieldSeparator: (fieldValues) => {
+        return 'OFS = "' + fieldValues['FieldSeparator'] + '"';
+      }
+
     }
   ],
   message0: '%{BKY_OUTPUT_FIELD_SEPARATOR}',

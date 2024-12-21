@@ -5,7 +5,9 @@ var saveBlock = {
   unix_description: [
     {
       printName: false,
-      save_filename: (value) => ' > ' + value
+      save_filename: (fieldValues) => {
+        return ' > ' + fieldValues['save_filename'];
+      }
     }
   ],
   args0: [

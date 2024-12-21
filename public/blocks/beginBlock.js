@@ -4,7 +4,9 @@ var beginBlock = {
   unix_description: [
     {
       printName: false,
-      DO: (value) => 'BEGIN { ' + value + ' }'
+      DO: (fieldValues) => {
+        return 'BEGIN { ' + fieldValues['DO'] + ' }';
+      }
     }
   ],
   message0: '%{BKY_BEGIN}',

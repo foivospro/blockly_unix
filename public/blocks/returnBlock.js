@@ -3,7 +3,9 @@ var returnBlock = {
   unix_description: [
     {
       printName: false,
-      X: (value) => 'return ' + value + ';'
+      X: (fieldValues) => {
+        return 'return ' + fieldValues['X'] + ';';
+      }
     }
   ],
   message0: '%{BKY_RETURN}',

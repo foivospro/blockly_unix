@@ -4,7 +4,9 @@ var columnBlock = {
   unix_description: [
     {
       printName: false,
-      TEXT: (value) => '$' + value
+      TEXT: (fieldValues) => {
+        return '$' + fieldValues['TEXT'];
+      }
     }
   ],
   message0: '%{BKY_COLUMN} %1',

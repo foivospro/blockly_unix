@@ -4,8 +4,13 @@ var regAnyOneBlock = {
   unix_description: [
     {
       printName: false,
-      Pattern: (value, notMatch) =>
-        notMatch.checked ? '[^' + value + ']' : '[' + value + ']'
+      // The function receives the entire fieldValues object
+      Pattern: (fieldValues) => {
+        const userInput = fieldValues['Pattern'] || '';
+        return fieldValues['notMatch'] === 'TRUE'
+          ? '[^' + userInput + ']'
+          : '[' + userInput + ']';
+      }
     }
   ],
 
@@ -16,7 +21,6 @@ var regAnyOneBlock = {
       name: 'Pattern',
       text: 'String'
     },
-
     {
       type: 'field_checkbox',
       name: 'notMatch',
@@ -28,9 +32,8 @@ var regAnyOneBlock = {
   previousStatement: null,
   nextStatement: null,
   style: 'Regular Expressions',
-  helpUrl: '%{BKY_REGANYONE_HELPURL}' // URL to further information or documentation.
+  helpUrl: '%{BKY_REGANYONE_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([regAnyOneBlock]);
-window.unixGenerator.forBlock['regAnyOne'] =
-  window.unixGenerator.forBlock.concat;
+window.unixGenerator.forBlock['regAnyOne'] = window.unixGenerator.forBlock.concat;

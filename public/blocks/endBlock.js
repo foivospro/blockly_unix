@@ -4,7 +4,9 @@ var endBlock = {
   unix_description: [
     {
       printName: false,
-      DO: (value) => 'END { ' + value + ' }'
+      DO: (fieldValues) => {
+        return 'END { ' + fieldValues['DO'] + ' }';
+      }
     }
   ],
   message0: '%{BKY_END}',

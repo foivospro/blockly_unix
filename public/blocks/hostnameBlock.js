@@ -7,7 +7,9 @@ var hostnameBlock = {
       printName: true,
       desc: "Show or set the system's hostname",
       show_hostname: '',
-      set_hostname: (value) => "-s '" + value + "'",
+      set_hostname: (fieldValues) => {
+        return "-s '" + fieldValues['set_hostname'] + "'";
+      },
       show_aliases: '-a',
       show_ip: '-i',
       show_fqdn: '-f'

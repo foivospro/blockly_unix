@@ -5,8 +5,12 @@ var conditionActionBlock = {
   unix_description: [
     {
       printName: false,
-      COND: (value) => value,
-      DO: (value) => '{ ' + value + ' }'
+      COND: (fieldValues) => {
+        return fieldValues['COND'];
+      },
+      DO: (fieldValues) => {
+        return '{ ' + fieldValues['DO'] + ' }';
+      },
     }
   ],
   args0: [

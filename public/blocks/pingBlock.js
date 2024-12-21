@@ -5,9 +5,15 @@ var pingBlock = {
     {
       printName: true,
       address: 'str',
-      count: (value) => '-c ' + value,
-      interval: (value) => '-i ' + value,
-      timeout: (value) => '-W ' + value,
+      count: (fieldValues) => {
+        return '-c ' + fieldValues['count'];
+      },
+      interval: (fieldValues) => {
+        return '-i ' + fieldValues['interval'];
+      },
+      timeout: (fieldValues) => {
+        return '-W ' + fieldValues['timeout'];
+      },
       host: 'str '
     }
   ],
@@ -25,7 +31,7 @@ var pingBlock = {
     {
       type: 'field_number',
       name: 'count',
-      value: 4
+      value: 1
     }
   ],
 
@@ -43,7 +49,7 @@ var pingBlock = {
     {
       type: 'field_number',
       name: 'timeout',
-      value: 5
+      value: 1
     }
   ],
 

@@ -11,12 +11,20 @@ var grepBlock = {
       inverted: '-v',
       recursive: '-r',
       show_line_nums: '-n',
-      stop_after_num_matches: (value) => '-m ' + value,
+      stop_after_num_matches: (fieldValues) => {
+        return '-m ' + fieldValues['stop_after_num_matches'];
+      },
       multiple_patterns: '-e',
-      regPattern: (value) => '-E ' + value,
+      regPattern: (fieldValues) => {
+        return '-E ' + fieldValues['regPattern'];
+      },
       showFiles: '-H',
-      print_context_before_match: (value) => '-B ' + value,
-      print_context_after_match: (value) => '-A ' + value
+      print_context_before_match: (fieldValues) => {
+        return '-B ' + fieldValues['print_context_before_match'];
+      },
+      print_context_after_match: (fieldValues) => {
+        return '-A ' + fieldValues['print_context_after_match'];
+      }
     }
   ],
   message0: '%{BKY_GREP}',

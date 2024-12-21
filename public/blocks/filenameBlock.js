@@ -3,7 +3,7 @@ var filenameBlock = {
   unix_description: [
     {
       printName: false,
-      FILENAME: (value) => value
+      
     }
   ],
   category: 'Function inputs',
