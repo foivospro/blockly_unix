@@ -6,7 +6,6 @@ var sineBlock = {
       sine: (fieldValues) => {
         return 'sin(' + fieldValues['sine'] + ')';
       }
-
     }
   ],
   message0: '%{BKY_SINE}',

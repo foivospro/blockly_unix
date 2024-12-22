@@ -6,7 +6,6 @@ var lengthBlock = {
       length: (fieldValues) => {
         return 'length(' + fieldValues['length'] + ')';
       }
-
     }
   ],
   message0: '%{BKY_LENGTH}',

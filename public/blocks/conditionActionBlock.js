@@ -10,7 +10,7 @@ var conditionActionBlock = {
       },
       DO: (fieldValues) => {
         return '{ ' + fieldValues['DO'] + ' }';
-      },
+      }
     }
   ],
   args0: [

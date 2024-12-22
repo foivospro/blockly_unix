@@ -9,7 +9,6 @@ var deleteArrayElementBlock = {
       INDEX: (fieldValues) => {
         return fieldValues['INDEX'] + '];';
       }
-
     }
   ],
   message0: '%{BKY_DELETE_ARRAY_ELEMENT}',

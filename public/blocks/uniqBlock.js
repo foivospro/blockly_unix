@@ -11,7 +11,7 @@ var uniqBlock = {
       outputNonRepeatedLines: '-u',
       outputSingleCopyOfRepeatedLines: '-d',
       skipChars: (fieldValues) => {
-        return '-s ' + fieldValues['skipChars'] ;
+        return '-s ' + fieldValues['skipChars'];
       }
     }
   ],

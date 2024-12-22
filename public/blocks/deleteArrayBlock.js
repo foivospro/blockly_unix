@@ -6,7 +6,6 @@ var deleteArrayBlock = {
       X: (fieldValues) => {
         return 'delete ' + fieldValues['X'] + ';';
       }
-
     }
   ],
   message0: '%{BKY_DELETE_ARRAY}',

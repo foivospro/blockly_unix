@@ -7,15 +7,14 @@ var regForBlock = {
       printName: false,
       FROM: (fieldValues) => {
         return fieldValues['INFINITE'] === 'TRUE'
-        ? '{' + fieldValues['FROM'] + ',}'
-        : '{' + fieldValues['FROM'] + ',';
+          ? '{' + fieldValues['FROM'] + ',}'
+          : '{' + fieldValues['FROM'] + ',';
       },
       TO: (fieldValues) => {
         return fieldValues['INFINITE'] === 'TRUE'
-        ? ''
-        :  fieldValues['TO'] + '}';
-      },
-
+          ? ''
+          : fieldValues['TO'] + '}';
+      }
     }
   ],
   args0: [

@@ -6,7 +6,6 @@ var setSeedBlock = {
       seed: (fieldValues) => {
         return 'srand(' + fieldValues['seed'] + ')';
       }
-
     }
   ],
   message0: '%{BKY_SETSEED}',

@@ -6,7 +6,6 @@ var exponentBlock = {
       exp: (fieldValues) => {
         return 'exp(' + fieldValues['exp'] + ')';
       }
-
     }
   ],
   message0: '%{BKY_EXPONENT}',

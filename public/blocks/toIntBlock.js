@@ -6,7 +6,6 @@ var intBlock = {
       int: (fieldValues) => {
         return 'int(' + fieldValues['int'] + ')';
       }
-
     }
   ],
   message0: '%{BKY_TO_INT}',

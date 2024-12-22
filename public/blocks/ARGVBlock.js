@@ -6,7 +6,6 @@ var ARGVBlock = {
       INDEX: (fieldValues) => {
         return '${ARGV[' + fieldValues['INDEX'] + ']}';
       }
-
     }
   ],
   message0: '%{BKY_ARGUMENT_ARRAY}',

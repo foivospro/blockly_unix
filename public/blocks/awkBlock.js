@@ -9,7 +9,7 @@ var awkBlock = {
       },
       awkConditionAction: (fieldValues) => {
         return "' " + fieldValues['awkConditionAction'] + " '";
-      },
+      }
     }
   ],
   message0: '%{BKY_AWK_TEXT_DATA_PROCESSING}',

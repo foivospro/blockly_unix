@@ -2,8 +2,7 @@ var filenameBlock = {
   type: 'filename',
   unix_description: [
     {
-      printName: false,
-      
+      printName: false
     }
   ],
   category: 'Function inputs',

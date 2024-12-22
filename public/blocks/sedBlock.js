@@ -5,10 +5,9 @@ var sedBlock = {
     {
       printName: true,
       regPattern: "'s/patt ",
-      regReplaceText: (fieldValues) =>
-      {
-      return fieldValues['regReplaceText'] + "/'";
-    },
+      regReplaceText: (fieldValues) => {
+        return fieldValues['regReplaceText'] + "/'";
+      },
       regex: '-E',
       globally: 'g'
     }

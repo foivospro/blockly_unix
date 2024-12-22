@@ -9,7 +9,6 @@ var matchBlock = {
       Y: (fieldValues) => {
         return fieldValues['Y'] + ')';
       }
-
     }
   ],
   message0: '%{BKY_MATCH}',

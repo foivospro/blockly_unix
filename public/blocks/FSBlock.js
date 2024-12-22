@@ -7,7 +7,6 @@ var FSBlock = {
       FieldSeparator: (fieldValues) => {
         return "FS = '" + fieldValues['FieldSeparator'] + "'";
       }
-
     }
   ],
   message0: '%{BKY_FIELD_SEPARATOR}',

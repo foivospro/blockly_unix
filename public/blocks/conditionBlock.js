@@ -19,7 +19,6 @@ var conditionBlock = {
       rightPart: (fieldValues) => {
         return fieldValues['rightPart'];
       }
-
     }
   ],
   message0: '%1', // First message line for left_part

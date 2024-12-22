@@ -3,8 +3,7 @@ var filenamesCreateBlock = {
   category: 'Function inputs',
   unix_description: [
     {
-      printName: false,
-      
+      printName: false
     }
   ],
   message0: '%{BKY_FILES_CREATE_WITH} %1',

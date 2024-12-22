@@ -2,7 +2,7 @@ var argumentsCreateBlock = {
   type: 'argumentsCreate',
   unix_description: [
     {
-      printName: false,
+      printName: false
     }
   ],
   category: 'Function inputs',
