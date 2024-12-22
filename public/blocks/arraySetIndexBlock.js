@@ -12,7 +12,6 @@ var arraySetIndexBlock = {
       VALUE: (fieldValues) => {
         return fieldValues['VALUE'] + ';';
       }
-
     }
   ],
   message0: '%{BKY_ARRAY_SET_INDEX}',

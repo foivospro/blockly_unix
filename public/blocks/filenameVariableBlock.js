@@ -3,8 +3,7 @@ var FILENAMEBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      printName: true,
-      
+      printName: true
     }
   ],
   message0: '%{BKY_FILENAME_VARIABLE}',

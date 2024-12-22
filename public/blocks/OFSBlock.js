@@ -7,7 +7,6 @@ var OFSBlock = {
       FieldSeparator: (fieldValues) => {
         return 'OFS = "' + fieldValues['FieldSeparator'] + '"';
       }
-
     }
   ],
   message0: '%{BKY_OUTPUT_FIELD_SEPARATOR}',

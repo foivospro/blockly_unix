@@ -36,4 +36,5 @@ var regAnyOneBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([regAnyOneBlock]);
-window.unixGenerator.forBlock['regAnyOne'] = window.unixGenerator.forBlock.concat;
+window.unixGenerator.forBlock['regAnyOne'] =
+  window.unixGenerator.forBlock.concat;

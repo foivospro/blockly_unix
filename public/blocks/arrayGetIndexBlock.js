@@ -9,7 +9,6 @@ var arrayGetIndexBlock = {
       INDEX: (fieldValues) => {
         return fieldValues['INDEX'] + ']';
       }
-
     }
   ],
   message0: '%{BKY_ARRAY_GET_INDEX}',

@@ -35,7 +35,7 @@ window.unixGenerator.scrub_ = function (block, code) {
 
     nextBlock = nextBlock.getNextBlock();
   }
-  return isFilenameHandled ? nextCode : code;
+  return isFilenameHandled ? nextCode : code + nextCode;
 };
 
 /**
@@ -109,10 +109,14 @@ function handleBlocks(block, blockDefinition) {
       if (field instanceof Blockly.FieldDropdown) {
         value = description[field.getValue()] || '';
       } else if (field instanceof Blockly.FieldCheckbox) {
-        if (description[field.name] && typeof description[field.name] === 'function') {
-          value = field.getValue() === 'TRUE'
-            ? description[field.name](fieldValues)
-            : '';
+        if (
+          description[field.name] &&
+          typeof description[field.name] === 'function'
+        ) {
+          value =
+            field.getValue() === 'TRUE'
+              ? description[field.name](fieldValues)
+              : '';
         } else {
           value = field.getValue() === 'TRUE' ? description[field.name] : '';
         }
@@ -123,8 +127,10 @@ function handleBlocks(block, blockDefinition) {
         const userInput = field.getValue();
         const defaultText = field.text_;
         if (userInput && userInput !== defaultText) {
-          if (description[field.name] && typeof description[field.name] === 'function') {
-
+          if (
+            description[field.name] &&
+            typeof description[field.name] === 'function'
+          ) {
             value = description[field.name](fieldValues);
           } else {
             value = userInput;

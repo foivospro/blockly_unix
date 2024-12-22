@@ -6,7 +6,6 @@ var toUpperBlock = {
       toUpper: (fieldValues) => {
         return 'toupper(' + fieldValues['toUpper'] + ')';
       }
-
     }
   ],
   message0: '%{BKY_TO_UPPER}',

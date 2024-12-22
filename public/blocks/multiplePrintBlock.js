@@ -2,8 +2,7 @@ var multiplePrintBlock = {
   type: 'multiplePrint',
   unix_description: [
     {
-      printName: false,
-
+      printName: false
     }
   ],
   category: 'Text output',

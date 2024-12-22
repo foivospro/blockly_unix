@@ -9,7 +9,6 @@ var atan2Block = {
       X: (fieldValues) => {
         return fieldValues['X'] + ')';
       }
-
     }
   ],
   message0: '%{BKY_ATAN2}',
