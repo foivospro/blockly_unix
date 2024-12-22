@@ -5,7 +5,6 @@ var killBlock = {
   unix_description: [
     {
       printName: true,
-      command: 'kill %PID'
     }
   ],
   args0: [

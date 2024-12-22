@@ -35,7 +35,7 @@ window.unixGenerator.scrub_ = function (block, code) {
 
     nextBlock = nextBlock.getNextBlock();
   }
-  return isFilenameHandled ? nextCode : code;
+  return isFilenameHandled ? nextCode : code + nextCode;
 };
 
 /**
@@ -121,15 +121,14 @@ function handleBlocks(block, blockDefinition) {
         field instanceof Blockly.FieldNumber
       ) {
         const userInput = field.getValue();
-        const defaultText = field.text_;
-        if (userInput && userInput !== defaultText) {
+
           if (description[field.name] && typeof description[field.name] === 'function') {
 
             value = description[field.name](fieldValues);
           } else {
             value = userInput;
           }
-        }
+        
       }
       if (value) {
         commandParts.push(value);
