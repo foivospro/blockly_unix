@@ -3,11 +3,11 @@ var indexBlock = {
   unix_description: [
     {
       printName: false,
-      X: (fieldValues) => {
-        return 'index(' + fieldValues['X'] + ',';
+      X: (childCode) => {
+        return 'index(' + childCode + ',';
       },
-      Y: (fieldValues) => {
-        return fieldValues['Y'] + ')';
+      Y: (childCode) => {
+        return childCode + ')';
       }
     }
   ],

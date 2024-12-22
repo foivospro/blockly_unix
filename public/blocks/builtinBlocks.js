@@ -2,7 +2,9 @@ window.unixGenerator.forBlock['variables_set'] = function (block) {
   var variableName = block.getFieldValue('VAR');
   var variableName = getVariableName(variableName);
   var value = block.getInputTargetBlock('VALUE');
+  console.log('value before', value);
   value = window.unixGenerator.blockToCode(value);
+  console.log('value after ', value);
   return `${variableName}=${value};`;
 };
 
@@ -61,10 +63,8 @@ window.unixGenerator.forBlock['controls_whileUntil'] = function (block) {
   var action = block.getInputTargetBlock('DO');
   actionCommand = '';
   if (action !== null) {
-    while (action) {
-      actionCommand += window.unixGenerator.blockToCode(action) + ' ';
-      action = action.getNextBlock();
-    }
+    actionCommand += window.unixGenerator.blockToCode(action) + ' ';
+    action = action.getNextBlock();
   }
   if (mode === 'WHILE') {
     generatedCommand = `while (${conditionCode}) { ${actionCommand} }`;
@@ -82,10 +82,8 @@ window.unixGenerator.forBlock['controls_forEach'] = function (block) {
   var action = block.getInputTargetBlock('DO');
   actionCommand = '';
   if (action !== null) {
-    while (action) {
-      actionCommand += window.unixGenerator.blockToCode(action) + ' ';
-      action = action.getNextBlock();
-    }
+    actionCommand += window.unixGenerator.blockToCode(action) + ' ';
+    action = action.getNextBlock();
   }
   return `for(${variableName} in ${listName} ) { ${actionCommand} }`;
 };
@@ -101,10 +99,7 @@ window.unixGenerator.forBlock['controls_for'] = function (block) {
   var action = block.getInputTargetBlock('DO');
   actionCommand = '';
   if (action !== null) {
-    while (action) {
-      actionCommand += window.unixGenerator.blockToCode(action) + ' ';
-      action = action.getNextBlock();
-    }
+    actionCommand += window.unixGenerator.blockToCode(action) + ' ';
   }
   return `for(${variableName}=${from}; ${variableName}<=${to}; ${variableName}+=${by}) { ${actionCommand} }`;
 };

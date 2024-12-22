@@ -2,7 +2,7 @@ var nextFileBlock = {
   type: 'nextFile',
   unix_description: [
     {
-      printName: true,
+      printName: false,
       nextFile: 'nextfile;'
     }
   ],
@@ -16,4 +16,4 @@ var nextFileBlock = {
 
 Blockly.defineBlocksWithJsonArray([nextFileBlock]);
 window.unixGenerator.forBlock['nextFile'] =
-  window.unixGenerator.forBlock.generic;
+  window.unixGenerator.forBlock.concat;

@@ -3,14 +3,14 @@ var arraySetIndexBlock = {
   unix_description: [
     {
       printName: false,
-      ARRAY: (fieldValues) => {
-        return fieldValues['ARRAY'] + '[';
+      ARRAY: (childCode) => {
+        return childCode + '[';
       },
-      INDEX: (fieldValues) => {
-        return fieldValues['INDEX'] + '] =';
+      INDEX: (childCode) => {
+        return childCode + '] =';
       },
-      VALUE: (fieldValues) => {
-        return fieldValues['VALUE'] + ';';
+      VALUE: (childCode) => {
+        return childCode + ';';
       }
     }
   ],
@@ -47,4 +47,4 @@ var arraySetIndexBlock = {
 
 Blockly.defineBlocksWithJsonArray([arraySetIndexBlock]);
 window.unixGenerator.forBlock['arraySetIndex'] =
-  window.unixGenerator.forBlock.generic;
+  window.unixGenerator.forBlock.concat;

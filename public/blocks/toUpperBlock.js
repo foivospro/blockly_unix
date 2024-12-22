@@ -3,8 +3,8 @@ var toUpperBlock = {
   unix_description: [
     {
       printName: false,
-      toUpper: (fieldValues) => {
-        return 'toupper(' + fieldValues['toUpper'] + ')';
+      to_upper: (childCode) => {
+        return 'toupper(' + childCode + ')';
       }
     }
   ],
@@ -12,7 +12,7 @@ var toUpperBlock = {
   args0: [
     {
       type: 'input_value',
-      name: 'toUpper',
+      name: 'to_upper',
       check: 'String'
     }
   ],

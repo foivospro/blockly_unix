@@ -7,8 +7,8 @@ var awkBlock = {
       awkInput_delimiter: (fieldValues) => {
         return "-F '" + fieldValues['awkInput_delimiter'] + "'";
       },
-      awkConditionAction: (fieldValues) => {
-        return "' " + fieldValues['awkConditionAction'] + " '";
+      awkConditionAction: (childCode) => {
+        return "' " + childCode + " '";
       }
     }
   ],

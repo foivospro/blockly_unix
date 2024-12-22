@@ -3,11 +3,11 @@ var atan2Block = {
   unix_description: [
     {
       printName: false,
-      Y: (fieldValues) => {
-        return 'atan2(' + fieldValues['Y'] + ',';
+      Y: (childCode) => {
+        return 'atan2(' + childCode + ',';
       },
-      X: (fieldValues) => {
-        return fieldValues['X'] + ')';
+      X: (childCode) => {
+        return childCode + ')';
       }
     }
   ],

@@ -3,8 +3,8 @@ var toLowerBlock = {
   unix_description: [
     {
       printName: false,
-      toLower: (fieldValues) => {
-        return 'tolower(' + fieldValues['toLower'] + ')';
+      to_lower: (childCode) => {
+        return 'tolower(' + childCode + ')';
       }
     }
   ],
@@ -12,7 +12,7 @@ var toLowerBlock = {
   args0: [
     {
       type: 'input_value',
-      name: 'toLower',
+      name: 'to_lower',
       check: 'String'
     }
   ],
