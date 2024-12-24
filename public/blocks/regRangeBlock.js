@@ -4,19 +4,14 @@ var regRangeBlock = {
   unix_description: [
     {
       printName: false,
-      upper: '[[:upper:]]',
-      lower: '[[:lower:]]',
-      letters: '[[:alpha:]]',
-      digit: '[[:digit:]]',
-      alphanumeric: '[[:alnum:]]',
-      punctuation: '[[:punct:]]',
-      whitespace: '[[:space:]]',
-      blanks: '[[:blank:]]',
-      printable: '[[:print:]]',
-      non_printable: '[[:cntrl:]]',
-      graphical: '[[:graph:]]',
-      hexadecimal: '[[:xdigit:]]'
+      reg_Range: (fieldValues) => {
+        return "[[:" +  fieldValues['reg_Range'] + ":]]";
+    },
+      not: (fieldValues) => {
+        return fieldValues['not'] === 'TRUE' ? '[^[:' + fieldValues['reg_Range'] + ":]]" : '[[:' + fieldValues['reg_Range'] + ":]]";
     }
+
+  }
   ],
   message0: '%{BKY_REGRANGE}',
   args0: [

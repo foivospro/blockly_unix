@@ -11,6 +11,7 @@ var grepBlock = {
       inverted: '-v',
       recursive: '-r',
       show_line_nums: '-n',
+      regPattern: '-e',
       stop_after_num_matches: (fieldValues) => {
         return '-m ' + fieldValues['stop_after_num_matches'];
       },

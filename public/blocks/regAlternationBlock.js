@@ -4,11 +4,11 @@ var regAlternationBlock = {
   unix_description: [
     {
       printName: false,
-      LEFT_PATTERN: (fieldValues) => {
-        return fieldValues['LEFT_PATTERN'] + ' |';
+      LEFT_PATTERN: (childCode) => {
+        return childCode + ' |';
       },
-      RIGHT_PATTERN: (fieldValues) => {
-        return fieldValues['RIGHT_PATTERN'];
+      RIGHT_PATTERN: (childCode) => {
+        return childCode;
       }
     }
   ],

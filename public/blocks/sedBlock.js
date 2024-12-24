@@ -4,12 +4,16 @@ var sedBlock = {
   unix_description: [
     {
       printName: true,
-      regPattern: "'s/patt ",
+      regPattern: (childCode) => {
+        return "-E \'s/" +childCode + "/";
+      },
       regReplaceText: (fieldValues) => {
-        return fieldValues['regReplaceText'] + "/'";
+        return  fieldValues['globally'] === 'TRUE'
+        ? fieldValues['regReplaceText'] + "/" + "g\'"
+        : fieldValues['regReplaceText'] + "/'";
       },
       regex: '-E',
-      globally: 'g'
+
     }
   ],
   message0: '%{BKY_SED}',
