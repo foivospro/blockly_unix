@@ -3,11 +3,11 @@ var deleteArrayElementBlock = {
   unix_description: [
     {
       printName: false,
-      X: (fieldValues) => {
-        return 'delete ' + fieldValues['X'] + '[';
+      X: (childCode) => {
+        return 'delete ' + childCode + '[';
       },
-      INDEX: (fieldValues) => {
-        return fieldValues['INDEX'] + '];';
+      INDEX: (childCode) => {
+        return childCode + '];';
       }
     }
   ],
@@ -36,4 +36,4 @@ var deleteArrayElementBlock = {
 
 Blockly.defineBlocksWithJsonArray([deleteArrayElementBlock]);
 window.unixGenerator.forBlock['deleteArrayElement'] =
-  window.unixGenerator.forBlock.generic;
+  window.unixGenerator.forBlock.concat;

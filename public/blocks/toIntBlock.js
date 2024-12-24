@@ -3,8 +3,8 @@ var intBlock = {
   unix_description: [
     {
       printName: false,
-      int: (fieldValues) => {
-        return 'int(' + fieldValues['int'] + ')';
+      to_int: (childCode) => {
+        return 'int(' + childCode + ')';
       }
     }
   ],
@@ -12,7 +12,7 @@ var intBlock = {
   args0: [
     {
       type: 'input_value',
-      name: 'int',
+      name: 'to_int',
       check: 'Number'
     }
   ],

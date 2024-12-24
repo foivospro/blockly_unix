@@ -32,7 +32,6 @@ window.unixGenerator.scrub_ = function (block, code) {
     } else {
       nextCode += connector + handlerFunction(nextBlock);
     }
-
     nextBlock = nextBlock.getNextBlock();
   }
   return isFilenameHandled ? nextCode : code + nextCode;
@@ -126,12 +125,14 @@ function handleBlocks(block, blockDefinition) {
       ) {
         const userInput = field.getValue();
 
-          if (description[field.name] && typeof description[field.name] === 'function') {
-            value = description[field.name](fieldValues);
-          } else {
-            value = userInput;
-          }
-
+        if (
+          description[field.name] &&
+          typeof description[field.name] === 'function'
+        ) {
+          value = description[field.name](fieldValues);
+        } else {
+          value = userInput;
+        }
       }
       if (value) {
         commandParts.push(value);

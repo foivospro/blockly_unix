@@ -3,11 +3,11 @@ var arrayGetIndexBlock = {
   unix_description: [
     {
       printName: false,
-      ARRAY: (fieldValues) => {
-        return fieldValues['ARRAY'] + '[';
+      ARRAY: (childCode) => {
+        return childCode + '[';
       },
-      INDEX: (fieldValues) => {
-        return fieldValues['INDEX'] + ']';
+      INDEX: (childCode) => {
+        return childCode + ']';
       }
     }
   ],

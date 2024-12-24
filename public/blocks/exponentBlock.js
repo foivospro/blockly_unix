@@ -3,8 +3,8 @@ var exponentBlock = {
   unix_description: [
     {
       printName: false,
-      exp: (fieldValues) => {
-        return 'exp(' + fieldValues['exp'] + ')';
+      exp: (childCode) => {
+        return 'exp(' + childCode + ')';
       }
     }
   ],

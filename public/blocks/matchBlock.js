@@ -3,11 +3,11 @@ var matchBlock = {
   unix_description: [
     {
       printName: false,
-      X: (fieldValues) => {
-        return 'match(' + fieldValues['X'] + ',';
+      X: (childCode) => {
+        return 'match(' + childCode + ',';
       },
-      Y: (fieldValues) => {
-        return fieldValues['Y'] + ')';
+      Y: (childCode) => {
+        return childCode + ')';
       }
     }
   ],

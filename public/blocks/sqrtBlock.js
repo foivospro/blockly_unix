@@ -3,8 +3,8 @@ var sqrtBlock = {
   unix_description: [
     {
       printName: false,
-      sqrt: (fieldValues) => {
-        return 'sqrt(' + fieldValues['sqrt'] + ')';
+      square_root: (childCode) => {
+        return 'sqrt(' + childCode + ')';
       }
     }
   ],
@@ -12,7 +12,7 @@ var sqrtBlock = {
   args0: [
     {
       type: 'input_value',
-      name: 'sqrt',
+      name: 'square_root',
       check: 'Number'
     }
   ],

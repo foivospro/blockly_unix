@@ -3,8 +3,8 @@ var sineBlock = {
   unix_description: [
     {
       printName: false,
-      sine: (fieldValues) => {
-        return 'sin(' + fieldValues['sine'] + ')';
+      sin: (childCode) => {
+        return 'sin(' + childCode + ')';
       }
     }
   ],
@@ -12,7 +12,7 @@ var sineBlock = {
   args0: [
     {
       type: 'input_value',
-      name: 'sine',
+      name: 'sin',
       check: 'Number'
     }
   ],

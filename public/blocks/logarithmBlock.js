@@ -3,8 +3,8 @@ var logarithmBlock = {
   unix_description: [
     {
       printName: false,
-      log: (fieldValues) => {
-        return 'log(' + fieldValues['log'] + ')';
+      log: (childCode) => {
+        return 'log(' + childCode + ')';
       }
     }
   ],

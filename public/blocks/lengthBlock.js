@@ -3,8 +3,8 @@ var lengthBlock = {
   unix_description: [
     {
       printName: false,
-      length: (fieldValues) => {
-        return 'length(' + fieldValues['length'] + ')';
+      len: (childCode) => {
+        return 'length(' + childCode + ')';
       }
     }
   ],

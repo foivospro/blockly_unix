@@ -24,4 +24,4 @@ var returnBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([returnBlock]);
-window.unixGenerator.forBlock['return'] = window.unixGenerator.forBlock.generic;
+window.unixGenerator.forBlock['return'] = window.unixGenerator.forBlock.concat;

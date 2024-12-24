@@ -4,8 +4,8 @@ var beginBlock = {
   unix_description: [
     {
       printName: false,
-      DO: (fieldValues) => {
-        return 'BEGIN { ' + fieldValues['DO'] + ' }';
+      DO: (childCode) => {
+        return 'BEGIN { ' + childCode + ' }';
       }
     }
   ],

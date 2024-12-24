@@ -4,8 +4,8 @@ var endBlock = {
   unix_description: [
     {
       printName: false,
-      DO: (fieldValues) => {
-        return 'END { ' + fieldValues['DO'] + ' }';
+      DO: (childCode) => {
+        return 'END { ' + childCode + ' }';
       }
     }
   ],
