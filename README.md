@@ -2,7 +2,7 @@
 
 This is a development environment based on **Blockly** where users can easily construct data processing pipelines
 by visually plugging together processing blocks. The pipeline will be implemented underneath using Unix tools.
-![Picture2](blockly_unix/public/img/README_cover.png)
+![Picture2](public/img/README_cover.png)
 
 # Summary
 
