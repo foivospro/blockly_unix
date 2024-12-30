@@ -29,8 +29,8 @@ To ensure that code is properly formatted before committing, set up the pre-comm
    `chmod +x .git/hooks/pre-commit bin/pre-commit`
 
 3. Format the code by running the following command:
-   
-   `npm run prettier-fix` 
+
+   `npm run prettier-fix`
 
 # Further information
 
