@@ -502,16 +502,6 @@ function resetWorkspace() {
   }
 }
 
-/**
- * Generates a command string from the current Blockly workspace.
- * @returns {string} The generated command.
- */
-function generateCommandFromWorkspace() {
-  // Implement your command generation logic here
-  // Placeholder implementation:
-  return 'Generated command based on workspace blocks.';
-}
-
 // Event Listeners
 
 // Clipboard copy button
