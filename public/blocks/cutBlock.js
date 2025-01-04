@@ -25,12 +25,12 @@ var cutBlock = {
         if (columns) {
           // If columns have values, append colsStart and colsEnd next to them
           return colsStart
-            ? `,${colsStart}${colsEnd ? `-${colsEnd}` : ''}`
+            ? `,${colsStart}${colsEnd ? `-${colsEnd}` : '-'}`
             : '';
         }
         // If columns were empty, start with '-f' and use colsStart and colsEnd
         return colsStart
-          ? `-f ${colsStart}${colsEnd ? `-${colsEnd}` : ''}`
+          ? `-f ${colsStart}${colsEnd ? `-${colsEnd}` : '-'}`
           : '';
       },
       individualChars: (fieldValues) => {
