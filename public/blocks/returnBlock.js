@@ -4,7 +4,9 @@ var returnBlock = {
     {
       printName: false,
       X: (childCode) => {
-        return (!childCode || childCode.trim() === '') ? 'return;' : 'return ' + childCode + ';';
+        return !childCode || childCode.trim() === ''
+          ? 'return;'
+          : 'return ' + childCode + ';';
       }
     }
   ],

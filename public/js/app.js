@@ -61,7 +61,7 @@ async function autoSaveWorkspace() {
       const response = await fetch('/autoSaveWorkspace', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ workspaceData: jsonState, userId: user.id }),
+        body: JSON.stringify({ workspaceData: jsonState, userId: user.id })
       });
 
       const result = await response.json();
@@ -170,7 +170,7 @@ async function saveGuestWorkspaceData() {
       await fetch('/saveGuestWorkspace', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ workspaceData: jsonState }),
+        body: JSON.stringify({ workspaceData: jsonState })
       });
     }
   } catch (error) {
@@ -289,8 +289,8 @@ async function handleSaveWorkspace(event) {
         body: JSON.stringify({
           workspaceData: jsonState,
           userId: user.id,
-          workspaceName: workspaceName.trim(),
-        }),
+          workspaceName: workspaceName.trim()
+        })
       });
 
       const result = await response.json();
@@ -427,11 +427,10 @@ function saveWorkspaceLocally() {
  */
 function copyToClipboard() {
   const text = document.getElementById('resultsArea').innerText;
-  navigator.clipboard.writeText(text)
-    .catch((err) => {
-      console.error('Unable to copy:', err);
-      alert('Failed to copy text.');
-    });
+  navigator.clipboard.writeText(text).catch((err) => {
+    console.error('Unable to copy:', err);
+    alert('Failed to copy text.');
+  });
 }
 
 /**
@@ -471,8 +470,8 @@ async function saveWorkspaceOnExecute(blockCount) {
           body: JSON.stringify({
             workspaceData: executedWorkspace,
             userId: user.id,
-            workspaceName: 'executedWorkspace',
-          }),
+            workspaceName: 'executedWorkspace'
+          })
         });
       } else {
         console.log(

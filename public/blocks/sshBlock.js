@@ -13,7 +13,7 @@ var sshBlock = {
       },
       USER: (fieldValues) => {
         return fieldValues['USER'] + '@' + fieldValues['HOST'];
-      },
+      }
     }
   ],
   message1: '%{BKY_SSH_KEY}%1',

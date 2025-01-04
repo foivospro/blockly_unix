@@ -8,15 +8,14 @@ class UnixGenerator extends Blockly.Generator {
     super('Unix');
     this.forBlock = {
       generic: this.handleBlock.bind(this, 'generic'),
-      concat: this.handleBlock.bind(this, 'concat'),
+      concat: this.handleBlock.bind(this, 'concat')
     };
     this.connectors = {
       generic: ' | ',
       concat: '',
-      default: ' ',
+      default: ' '
     };
   }
-
 
   /**
    * The scrub_ function is responsible for chaining blocks together,
@@ -31,7 +30,8 @@ class UnixGenerator extends Blockly.Generator {
     let isFilenameHandled = false;
 
     while (nextBlock) {
-      const handlerFunction = this.forBlock[nextBlock.type] || this.forBlock.generic;
+      const handlerFunction =
+        this.forBlock[nextBlock.type] || this.forBlock.generic;
       let connector = this.getConnector(handlerFunction);
 
       if (block.type === 'filenamesCreate' && !isFilenameHandled) {
@@ -69,7 +69,9 @@ class UnixGenerator extends Blockly.Generator {
   handleBlock(type, block) {
     const blockDefinition = window[`${block.type}Block`];
     const commandParts = this.handleBlocks(block, blockDefinition);
-    const commandPrefix = blockDefinition.unix_description[0].printName ? `${block.type} ` : '';
+    const commandPrefix = blockDefinition.unix_description[0].printName
+      ? `${block.type} `
+      : '';
     return `${commandPrefix}${commandParts.join(' ')}`;
   }
 
@@ -81,7 +83,11 @@ class UnixGenerator extends Blockly.Generator {
    */
   handleBlocks(block, blockDefinition) {
     const fieldValues = this.collectFieldValues(block);
-    const { commandParts, metadata } = this.buildCommandParts(block, blockDefinition, fieldValues);
+    const { commandParts, metadata } = this.buildCommandParts(
+      block,
+      blockDefinition,
+      fieldValues
+    );
     const description = blockDefinition.unix_description[0];
 
     this.processConnectedBlocks(block, description, commandParts, metadata);
@@ -95,7 +101,7 @@ class UnixGenerator extends Blockly.Generator {
    */
   collectFieldValues(block) {
     return block.inputList.reduce((fields, input) => {
-      input.fieldRow.forEach(field => {
+      input.fieldRow.forEach((field) => {
         if (field.name) {
           fields[field.name] = field.getValue();
         }
@@ -126,8 +132,8 @@ class UnixGenerator extends Blockly.Generator {
     }
 
     // Iterate through each input and field to build command parts
-    block.inputList.forEach(input => {
-      input.fieldRow.forEach(field => {
+    block.inputList.forEach((input) => {
+      input.fieldRow.forEach((field) => {
         const value = this.getFieldValue(field, description, fieldValues);
         if (value) {
           commandParts.push(value);
@@ -139,7 +145,6 @@ class UnixGenerator extends Blockly.Generator {
     return { commandParts, metadata };
   }
 
-
   /**
    * Retrieves the value of a field based on its type and description.
    * @param {Blockly.Field} field - The field to retrieve the value from.
@@ -148,10 +153,18 @@ class UnixGenerator extends Blockly.Generator {
    * @returns {string} - The processed value of the field.
    */
   getFieldValue(field, description, fieldValues) {
-    console.log('Field:', field.name, 'Value:', field.getValue(), 'Default:', field.DEFAULT_VALUE);
+    console.log(
+      'Field:',
+      field.name,
+      'Value:',
+      field.getValue(),
+      'Default:',
+      field.DEFAULT_VALUE
+    );
     const printDefaultValues = description.printDefaultValues;
     if (!printDefaultValues) {
-      const defaultValue = field.defaultValue !== undefined ? field.defaultValue : '';
+      const defaultValue =
+        field.defaultValue !== undefined ? field.defaultValue : '';
       const currentValue = field.getValue();
       if (currentValue === defaultValue) {
         return '';
@@ -164,14 +177,25 @@ class UnixGenerator extends Blockly.Generator {
       }
       return description[field.getValue()] || '';
     } else if (field instanceof Blockly.FieldCheckbox) {
-      if (description[field.name] && typeof description[field.name] === 'function') {
-        return field.getValue() === 'TRUE' ? description[field.name](fieldValues) : '';
+      if (
+        description[field.name] &&
+        typeof description[field.name] === 'function'
+      ) {
+        return field.getValue() === 'TRUE'
+          ? description[field.name](fieldValues)
+          : '';
       } else {
         return field.getValue() === 'TRUE' ? description[field.name] : '';
       }
-    } else if (field instanceof Blockly.FieldTextInput || field instanceof Blockly.FieldNumber) {
+    } else if (
+      field instanceof Blockly.FieldTextInput ||
+      field instanceof Blockly.FieldNumber
+    ) {
       const userInput = field.getValue();
-      if (description[field.name] && typeof description[field.name] === 'function') {
+      if (
+        description[field.name] &&
+        typeof description[field.name] === 'function'
+      ) {
         return description[field.name](fieldValues);
       } else {
         return userInput;
@@ -188,7 +212,7 @@ class UnixGenerator extends Blockly.Generator {
    * @param {Array<Object>} metadata - The metadata array.
    */
   processConnectedBlocks(block, description, commandParts, metadata) {
-    block.inputList.forEach(input => {
+    block.inputList.forEach((input) => {
       if (input.connection && input.connection.isConnected()) {
         const childBlock = input.connection.targetBlock();
         if (childBlock) {
@@ -199,9 +223,10 @@ class UnixGenerator extends Blockly.Generator {
               return;
             }
             const processingFn = description[input.name];
-            const processedChildCode = typeof processingFn === 'function'
-              ? processingFn(childCode.trim())
-              : childCode.trim();
+            const processedChildCode =
+              typeof processingFn === 'function'
+                ? processingFn(childCode.trim())
+                : childCode.trim();
             commandParts.push(processedChildCode);
             metadata.push({ value: processedChildCode, type: childBlock.type });
           } else {
@@ -241,7 +266,7 @@ class UnixGenerator extends Blockly.Generator {
     const reorderedCommandParts = [];
     const argumentParts = [];
 
-    metadata.forEach(part => {
+    metadata.forEach((part) => {
       if (part.type === 'argument' || part.type === 'argumentsCreate') {
         argumentParts.push(part.value);
       } else {
@@ -265,7 +290,7 @@ function generateCommandFromWorkspace() {
   const workspace = Blockly.getMainWorkspace();
   const blocks = workspace.getTopBlocks(true);
   const commands = blocks
-    .map(block => window.unixGenerator.blockToCode(block))
+    .map((block) => window.unixGenerator.blockToCode(block))
     .filter(Boolean);
   return commands.join(' && ');
 }
