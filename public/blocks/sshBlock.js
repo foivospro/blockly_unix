@@ -12,9 +12,8 @@ var sshBlock = {
         return '-p ' + fieldValues['PORT'];
       },
       USER: (fieldValues) => {
-        return fieldValues['USER'] + '@';
+        return fieldValues['USER'] + '@' + fieldValues['HOST'];
       },
-      HOST: 'str'
     }
   ],
   message1: '%{BKY_SSH_KEY}%1',
