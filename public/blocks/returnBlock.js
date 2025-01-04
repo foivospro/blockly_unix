@@ -3,8 +3,9 @@ var returnBlock = {
   unix_description: [
     {
       printName: false,
-      X: (fieldValues) => {
-        return 'return ' + fieldValues['X'] + ';';
+      X: (childCode) => {
+        console.log('childCode:', childCode);
+        return (!childCode || childCode.trim() === '') ? 'return;' : 'return ' + childCode + ';';
       }
     }
   ],

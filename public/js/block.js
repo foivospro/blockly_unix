@@ -204,7 +204,28 @@ class UnixGenerator extends Blockly.Generator {
               : childCode.trim();
             commandParts.push(processedChildCode);
             metadata.push({ value: processedChildCode, type: childBlock.type });
+          } else {
+            const processingFn = description[input.name];
+            if (typeof processingFn === 'function') {
+              const processedChildCode = processingFn(null);
+              commandParts.push(processedChildCode);
+              metadata.push({ value: processedChildCode, type: block.type });
+            }
           }
+        } else {
+          const processingFn = description[input.name];
+          if (typeof processingFn === 'function') {
+            const processedChildCode = processingFn(null);
+            commandParts.push(processedChildCode);
+            metadata.push({ value: processedChildCode, type: block.type });
+          }
+        }
+      } else {
+        const processingFn = description[input.name];
+        if (typeof processingFn === 'function') {
+          const processedChildCode = processingFn(null);
+          commandParts.push(processedChildCode);
+          metadata.push({ value: processedChildCode, type: block.type });
         }
       }
     });
