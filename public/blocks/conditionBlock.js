@@ -4,22 +4,14 @@ var conditionBlock = {
   unix_description: [
     {
       printName: false,
-      leftPart: (fieldValues) => {
-        return fieldValues['leftPart'];
+      left_part: (fieldValues, childCode) => {
+        return childCode + " " +fieldValues['operator'];
       },
-      equals: '==',
-      not_equals: '!=',
-      smaller: '<',
-      smaller_equals: '<=',
-      greater: '>',
-      greater_equals: '>=',
-      logical_and: '&&',
-      logical_or: '||',
-      logical_not: '!',
-      rightPart: (fieldValues) => {
-        return fieldValues['rightPart'];
+      right_part: (childCode) => {
+        return childCode;
       }
     }
+
   ],
   message0: '%1', // First message line for left_part
   args0: [
@@ -35,15 +27,15 @@ var conditionBlock = {
       type: 'field_dropdown',
       name: 'operator',
       options: [
-        ['==', 'equals'],
-        ['!=', 'not_equals'],
-        ['<', 'smaller'],
-        ['<=', 'smaller_equals'],
-        ['>', 'greater'],
-        ['>=', 'greater_equals'],
-        ['&& (AND)', 'logical_and'],
-        ['|| (OR)', 'logical_or'],
-        ['! (NOT)', 'logical_not']
+        ['==', '=='],
+        ['!=', '!='],
+        ['<', '<'],
+        ['<=', '<='],
+        ['>', '>'],
+        ['>=', '>='],
+        ['&& (AND)', '&&'],
+        ['|| (OR)', '||'],
+        ['! (NOT)', '!']
       ]
     }
   ],
