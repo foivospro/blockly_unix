@@ -5,6 +5,7 @@ var sortBlock = {
   unix_description: [
     {
       printName: true,
+      printDefaultValues: false,
       desc: '-r',
       numeric_sorting: '-n',
       sort_delimiter: (fieldValues) => {
@@ -51,7 +52,7 @@ var sortBlock = {
     {
       type: 'field_number',
       name: 'sort_column',
-      value: '0', // default number of column
+      value: 0, // default number of column
       //min: 1, // minimum value
       //max: 1000, // it should be the maximum of the length of the files columns
       precision: 1 // allow only integers

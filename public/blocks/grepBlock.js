@@ -4,20 +4,18 @@ var grepBlock = {
   unix_description: [
     {
       printName: true,
-      regex: '-E',
+      printDefaultValues: true,
       case_ins: '-i',
       whole_word: '-w',
       count_lines: '-c',
       inverted: '-v',
       recursive: '-r',
       show_line_nums: '-n',
-      regPattern: '-e',
       stop_after_num_matches: (fieldValues) => {
         return '-m ' + fieldValues['stop_after_num_matches'];
       },
-      multiple_patterns: '-e',
-      regPattern: (fieldValues) => {
-        return '-E ' + fieldValues['regPattern'];
+      regPattern: (childCode) => {
+        return '-E ' + childCode;
       },
       showFiles: '-H',
       print_context_before_match: (fieldValues) => {

@@ -70,7 +70,7 @@ class UnixGenerator extends Blockly.Generator {
     const blockDefinition = window[`${block.type}Block`];
     const commandParts = this.handleBlocks(block, blockDefinition);
     const commandPrefix = blockDefinition.unix_description[0].printName ? `${block.type} ` : '';
-    return `${commandPrefix}${commandParts.join(' ')}`.trim();
+    return `${commandPrefix}${commandParts.join(' ')}`;
   }
 
   /**
@@ -139,6 +139,7 @@ class UnixGenerator extends Blockly.Generator {
     return { commandParts, metadata };
   }
 
+
   /**
    * Retrieves the value of a field based on its type and description.
    * @param {Blockly.Field} field - The field to retrieve the value from.
@@ -147,7 +148,20 @@ class UnixGenerator extends Blockly.Generator {
    * @returns {string} - The processed value of the field.
    */
   getFieldValue(field, description, fieldValues) {
+    console.log('Field:', field.name, 'Value:', field.getValue(), 'Default:', field.DEFAULT_VALUE);
+    const printDefaultValues = description.printDefaultValues;
+    if (!printDefaultValues) {
+      const defaultValue = field.defaultValue !== undefined ? field.defaultValue : '';
+      const currentValue = field.getValue();
+      if (currentValue === defaultValue) {
+        return '';
+      }
+    }
+
     if (field instanceof Blockly.FieldDropdown) {
+      if (typeof description[field.name] === 'function') {
+        return description[field.name](fieldValues);
+      }
       return description[field.getValue()] || '';
     } else if (field instanceof Blockly.FieldCheckbox) {
       if (description[field.name] && typeof description[field.name] === 'function') {

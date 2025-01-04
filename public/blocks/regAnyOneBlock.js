@@ -4,7 +4,6 @@ var regAnyOneBlock = {
   unix_description: [
     {
       printName: false,
-      // The function receives the entire fieldValues object
       Pattern: (fieldValues) => {
         const userInput = fieldValues['Pattern'] || '';
         return fieldValues['notMatch'] === 'TRUE'
