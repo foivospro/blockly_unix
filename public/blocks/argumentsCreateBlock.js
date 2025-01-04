@@ -2,9 +2,8 @@ var argumentsCreateBlock = {
   type: 'argumentsCreate',
   unix_description: [
     {
-      printName: false,
-
-  }
+      printName: false
+    }
   ],
   category: 'Function inputs',
   message0: '%{BKY_ARGUMENTS_CREATE_WITH} %1',
@@ -16,8 +15,6 @@ var argumentsCreateBlock = {
   ],
   output: 'String',
   style: 'Function inputs',
-  previousStatement: null,
-  nextStatement: null,
   helpUrl: '%{BKY_ARGUMENTS_CREATE_WITH_HELPURL}',
   tooltip: '%{BKY_ARGUMENTS_CREATE_WITH_TOOLTIP}',
   mutator: 'arguments_create_with_mutator'
