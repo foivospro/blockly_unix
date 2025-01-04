@@ -5,9 +5,11 @@ var regRangeBlock = {
     {
       printName: false,
       reg_Range: (fieldValues) => {
-        return fieldValues['not'] === 'TRUE' ? '[^[:' + fieldValues['reg_Range'] + ":]]" : '[[:' + fieldValues['reg_Range'] + ":]]";
-    },
-  }
+        return fieldValues['not'] === 'TRUE'
+          ? '[^[:' + fieldValues['reg_Range'] + ':]]'
+          : '[[:' + fieldValues['reg_Range'] + ':]]';
+      }
+    }
   ],
   message0: '%{BKY_REGRANGE}',
   args0: [

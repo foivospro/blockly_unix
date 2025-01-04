@@ -8,23 +8,59 @@ var cutBlock = {
         return "-d '" + fieldValues['delimiter'] + "'";
       }, // Wrap value in -d 'value'
       columns: (fieldValues) => {
-        return '-f ' + fieldValues['columns'];
+        const columns = fieldValues['columns'] || '';
+
+        // Normalize by replacing any whitespace or multiple delimiters with a single comma
+        return (
+          '-f ' +
+          columns
+            .split(/[\s,]+/) // Split by any whitespace or commas
+            .filter((col) => col.trim()) // Remove empty entries
+            .join(',')
+        ); // Join with a comma
       }, // Format for specific columns
       colsStart: (fieldValues) => {
-        return '-f ' + fieldValues['colsStart'];
-      }, // Starting column
-      colsEnd: (fieldValues) => {
-        return '-f ' + fieldValues['colsEnd'];
-      }, // Ending column
+        const { columns, colsStart, colsEnd } = fieldValues;
+
+        if (columns) {
+          // If columns have values, append colsStart and colsEnd next to them
+          return colsStart
+            ? `,${colsStart}${colsEnd ? `-${colsEnd}` : ''}`
+            : '';
+        }
+        // If columns were empty, start with '-f' and use colsStart and colsEnd
+        return colsStart
+          ? `-f ${colsStart}${colsEnd ? `-${colsEnd}` : ''}`
+          : '';
+      },
       individualChars: (fieldValues) => {
-        return "-c '" + fieldValues['individualChars'] + "'";
-      }, // Specific characters
+        const individualChars = fieldValues['individualChars'] || '';
+
+        // Normalize by replacing any whitespace or multiple delimiters with a single comma
+        return (
+          '-c ' +
+          individualChars
+            .split(/[\s,]+/) // Split by any whitespace or commas
+            .filter((char) => char.trim()) // Remove empty entries
+            .join(',')
+        ); // Join with a comma
+      },
+
+      // Handle starting characters
       charsStart: (fieldValues) => {
-        return "-c '" + fieldValues['charsStart'] + "'";
-      }, // Starting characters
-      charsEnd: (fieldValues) => {
-        return "-c '" + fieldValues['charsEnd'] + "'";
-      } // Ending characters
+        const { individualChars, charsStart, charsEnd } = fieldValues;
+
+        if (individualChars) {
+          // If individualChars have values, append charsStart and charsEnd next to them
+          return charsStart
+            ? `,${charsStart}${charsEnd ? `-${charsEnd}` : ''}`
+            : '';
+        }
+        // If individualChars were empty, start with '-c' and use charsStart and charsEnd
+        return charsStart
+          ? `-c ${charsStart}${charsEnd ? `-${charsEnd}` : ''}`
+          : '';
+      }
     }
   ],
   message0: '%{BKY_CUT}\n',
