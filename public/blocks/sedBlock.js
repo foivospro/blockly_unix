@@ -5,15 +5,14 @@ var sedBlock = {
     {
       printName: true,
       regPattern: (childCode) => {
-        return "-E \'s/" +childCode + "/";
+        return (!childCode || childCode.trim() === '') ? '' : "-E \'s/" + childCode + "/";
       },
+
       regReplaceText: (fieldValues) => {
         return  fieldValues['globally'] === 'TRUE'
         ? fieldValues['regReplaceText'] + "/" + "g\'"
         : fieldValues['regReplaceText'] + "/'";
       },
-      regex: '-E',
-
     }
   ],
   message0: '%{BKY_SED}',

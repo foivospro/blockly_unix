@@ -15,7 +15,7 @@ var grepBlock = {
         return '-m ' + fieldValues['stop_after_num_matches'];
       },
       regPattern: (childCode) => {
-        return '-E ' + childCode;
+        return (childCode && childCode.trim() !== '') ? '-E ' + childCode : childCode+  'a';
       },
       showFiles: '-H',
       print_context_before_match: (fieldValues) => {

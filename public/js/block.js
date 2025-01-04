@@ -119,7 +119,7 @@ class UnixGenerator extends Blockly.Generator {
     const blockType = block.type;
 
     // Add the command name if it exists in the description
-    if (description[blockType]) {
+    if (description.printName && description[blockType]) {
       const commandName = description[blockType];
       commandParts.push(commandName);
       metadata.push({ value: commandName, type: blockType });
@@ -128,10 +128,20 @@ class UnixGenerator extends Blockly.Generator {
     // Iterate through each input and field to build command parts
     block.inputList.forEach(input => {
       input.fieldRow.forEach(field => {
-        const value = this.getFieldValue(field, description, fieldValues);
-        if (value) {
-          commandParts.push(value);
-          metadata.push({ value, type: block.type });
+        if (field instanceof Blockly.FieldTextInput) {
+          if (description.hasOwnProperty(field.name)) {
+            const value = this.getFieldValue(field, description, fieldValues);
+            if (value) {
+              commandParts.push(value);
+              metadata.push({ value, type: block.type });
+            }
+          }
+        } else {
+          const value = this.getFieldValue(field, description, fieldValues);
+          if (value) {
+            commandParts.push(value);
+            metadata.push({ value, type: block.type });
+          }
         }
       });
     });
