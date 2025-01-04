@@ -161,15 +161,6 @@ class UnixGenerator extends Blockly.Generator {
       'Default:',
       field.DEFAULT_VALUE
     );
-    const printDefaultValues = description.printDefaultValues;
-    if (!printDefaultValues) {
-      const defaultValue =
-        field.defaultValue !== undefined ? field.defaultValue : '';
-      const currentValue = field.getValue();
-      if (currentValue === defaultValue) {
-        return '';
-      }
-    }
 
     if (field instanceof Blockly.FieldDropdown) {
       if (typeof description[field.name] === 'function') {

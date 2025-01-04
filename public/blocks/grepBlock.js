@@ -4,7 +4,6 @@ var grepBlock = {
   unix_description: [
     {
       printName: true,
-      printDefaultValues: true,
       case_ins: '-i',
       whole_word: '-w',
       count_lines: '-c',
@@ -12,17 +11,20 @@ var grepBlock = {
       recursive: '-r',
       show_line_nums: '-n',
       stop_after_num_matches: (fieldValues) => {
-        return '-m ' + fieldValues['stop_after_num_matches'];
+        const value = fieldValues['stop_after_num_matches'];
+        return value ? '-m ' + value : ''; // Only include if value exists
       },
       regPattern: (childCode) => {
-        return '-E ' + childCode;
+        return childCode ? '-E ' + childCode : ''; // Only include if pattern is provided
       },
       showFiles: '-H',
       print_context_before_match: (fieldValues) => {
-        return '-B ' + fieldValues['print_context_before_match'];
+        const value = fieldValues['print_context_before_match'];
+        return value ? '-B ' + value : ''; // Only include if value exists
       },
       print_context_after_match: (fieldValues) => {
-        return '-A ' + fieldValues['print_context_after_match'];
+        const value = fieldValues['print_context_after_match'];
+        return value ? '-A ' + value : ''; // Only include if value exists
       }
     }
   ],

@@ -53,12 +53,12 @@ var cutBlock = {
         if (individualChars) {
           // If individualChars have values, append charsStart and charsEnd next to them
           return charsStart
-            ? `,${charsStart}${charsEnd ? `-${charsEnd}` : ''}`
+            ? `,${charsStart}${charsEnd ? `-${charsEnd}` : '-'}`
             : '';
         }
         // If individualChars were empty, start with '-c' and use charsStart and charsEnd
         return charsStart
-          ? `-c ${charsStart}${charsEnd ? `-${charsEnd}` : ''}`
+          ? `-c ${charsStart}${charsEnd ? `-${charsEnd}` : '-'}`
           : '';
       }
     }
