@@ -4,7 +4,10 @@ var teeBlock = {
   unix_description: [
     {
       printName: true,
-      append: '-a'
+      append: '-a',
+      filename: (fieldValues) => {
+        return fieldValues['filename'];
+      }
     }
   ],
   message0: '%{BKY_TEE}',

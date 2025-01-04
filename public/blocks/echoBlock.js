@@ -5,7 +5,9 @@ var echoBlock = {
   unix_description: [
     {
       printName: true,
-      command: 'str'
+      echoInput: (fieldValues) => {
+        return fieldValues['echoInput'];
+      }
     }
   ],
   message0: '%{BKY_ECHO} %1',

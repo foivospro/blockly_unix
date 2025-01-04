@@ -4,7 +4,10 @@ var regPatternBlock = {
   message0: '%{BKY_REGPATTERN}',
   unix_description: [
     {
-      printName: false
+      printName: false,
+      regPattern: (fieldValues) => {
+        return fieldValues['regPattern'];
+      }
     }
   ],
   args0: [
@@ -14,8 +17,8 @@ var regPatternBlock = {
       text: 'string' // default text for the input
     }
   ],
-  previousStatement: ['String', 'Action'],
-  nextStatement: 'Action',
+  previousStatement: null,
+  nextStatement: null,
   style: 'Regular Expressions',
   tooltip: '%{BKY_REGPATTERN_TOOLTIP}',
   helpUrl: '%{BKY_REGPATTERN_HELPURL}' // URL to further information or documentation.

@@ -14,8 +14,8 @@ var grepBlock = {
       stop_after_num_matches: (fieldValues) => {
         return '-m ' + fieldValues['stop_after_num_matches'];
       },
-      regPattern: (childCode) => {
-        return (childCode && childCode.trim() !== '') ? '-E ' + childCode : childCode+  'a';
+      regPattern: (fieldValues, childCode) => {
+        return (childCode && childCode.trim() !== '') ? '-E ' + childCode : '';
       },
       showFiles: '-H',
       print_context_before_match: (fieldValues) => {
@@ -112,7 +112,6 @@ var grepBlock = {
     {
       type: 'input_statement',
       name: 'regPattern',
-      check: 'String'
     }
   ],
   message12: '%{BKY_GREP_PRINT_CONTEXT_BEFORE_MATCH}',

@@ -4,14 +4,21 @@ var sedBlock = {
   unix_description: [
     {
       printName: true,
-      regPattern: (childCode) => {
-        return (!childCode || childCode.trim() === '') ? '' : "-E \'s/" + childCode + "/";
-      },
-
-      regReplaceText: (fieldValues) => {
-        return  fieldValues['globally'] === 'TRUE'
-        ? fieldValues['regReplaceText'] + "/" + "g\'"
-        : fieldValues['regReplaceText'] + "/'";
+      regPattern: (fieldValues, childCode) => {
+        const doGlobal = (fieldValues['globally'] === 'TRUE');
+        if (doGlobal) {
+          if (!childCode || childCode.trim() === '') {
+            return fieldValues['regReplaceText'] + "/g'";
+          } else {
+            return `-E 's/${childCode}/${fieldValues['regReplaceText']}/g'`;
+          }
+        } else {
+          if (!childCode || childCode.trim() === '') {
+            return fieldValues['regReplaceText'] + "/'";
+          } else {
+            return `-E 's/${childCode}/${fieldValues['regReplaceText']}/'`;
+          }
+        }
       },
     }
   ],

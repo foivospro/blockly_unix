@@ -163,14 +163,6 @@ class UnixGenerator extends Blockly.Generator {
    * @returns {string} - The processed value of the field.
    */
   getFieldValue(field, description, fieldValues) {
-    console.log(
-      'Field:',
-      field.name,
-      'Value:',
-      field.getValue(),
-      'Default:',
-      field.DEFAULT_VALUE
-    );
     const printDefaultValues = description.printDefaultValues;
     if (!printDefaultValues) {
       const defaultValue =
@@ -222,49 +214,63 @@ class UnixGenerator extends Blockly.Generator {
    * @param {Array<Object>} metadata - The metadata array.
    */
   processConnectedBlocks(block, description, commandParts, metadata) {
+    const fieldValues = this.collectFieldValues(block);
+    
     block.inputList.forEach((input) => {
       if (input.connection && input.connection.isConnected()) {
         const childBlock = input.connection.targetBlock();
         if (childBlock) {
-          const childCode = this.blockToCode(childBlock);
-          if (childCode) {
-            if (!input.name) {
-              console.error('Input has no name:', input);
-              return;
+          let childCode = '';
+          if (input.connection.type === Blockly.NEXT_STATEMENT) {
+            childCode = this.statementToCode(block, input.name);
+          } else {
+            childCode = this.valueToCode(block, input.name, Blockly.ORDER_NONE);
+          }
+          const processingFn = description[input.name];
+          if (typeof processingFn === 'function') {
+            let processedChildCode;
+            if (processingFn.length === 1) {
+              processedChildCode = processingFn(childCode.trim());
+            } else {
+              processedChildCode = processingFn(fieldValues, childCode.trim());
             }
-            const processingFn = description[input.name];
-            const processedChildCode =
-              typeof processingFn === 'function'
-                ? processingFn(childCode.trim())
-                : childCode.trim();
+
             commandParts.push(processedChildCode);
             metadata.push({ value: processedChildCode, type: childBlock.type });
-          } else {
-            const processingFn = description[input.name];
-            if (typeof processingFn === 'function') {
-              const processedChildCode = processingFn(null);
-              commandParts.push(processedChildCode);
-              metadata.push({ value: processedChildCode, type: block.type });
-            }
           }
+
         } else {
           const processingFn = description[input.name];
           if (typeof processingFn === 'function') {
-            const processedChildCode = processingFn(null);
+            let processedChildCode;
+            if (processingFn.length === 1) {
+              processedChildCode = processingFn(null);
+            } else {
+              processedChildCode = processingFn(fieldValues, null);
+            }
+
             commandParts.push(processedChildCode);
             metadata.push({ value: processedChildCode, type: block.type });
           }
         }
+
       } else {
         const processingFn = description[input.name];
         if (typeof processingFn === 'function') {
-          const processedChildCode = processingFn(null);
+          let processedChildCode;
+          if (processingFn.length === 1) {
+            processedChildCode = processingFn(null);
+          } else {
+            processedChildCode = processingFn(fieldValues, null);
+          }
+
           commandParts.push(processedChildCode);
           metadata.push({ value: processedChildCode, type: block.type });
         }
       }
     });
   }
+
 
   /**
    * Finalizes the command parts by reordering arguments if necessary.
