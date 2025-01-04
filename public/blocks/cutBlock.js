@@ -25,12 +25,12 @@ var cutBlock = {
         if (columns) {
           // If columns have values, append colsStart and colsEnd next to them
           return colsStart
-            ? `,${colsStart}${colsEnd ? `-${colsEnd}` : ''}`
+            ? `,${colsStart}${colsEnd ? `-${colsEnd}` : '-'}`
             : '';
         }
         // If columns were empty, start with '-f' and use colsStart and colsEnd
         return colsStart
-          ? `-f ${colsStart}${colsEnd ? `-${colsEnd}` : ''}`
+          ? `-f ${colsStart}${colsEnd ? `-${colsEnd}` : '-'}`
           : '';
       },
       individualChars: (fieldValues) => {
@@ -53,12 +53,12 @@ var cutBlock = {
         if (individualChars) {
           // If individualChars have values, append charsStart and charsEnd next to them
           return charsStart
-            ? `,${charsStart}${charsEnd ? `-${charsEnd}` : ''}`
+            ? `,${charsStart}${charsEnd ? `-${charsEnd}` : '-'}`
             : '';
         }
         // If individualChars were empty, start with '-c' and use charsStart and charsEnd
         return charsStart
-          ? `-c ${charsStart}${charsEnd ? `-${charsEnd}` : ''}`
+          ? `-c ${charsStart}${charsEnd ? `-${charsEnd}` : '-'}`
           : '';
       }
     }

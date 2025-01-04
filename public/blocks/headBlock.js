@@ -5,7 +5,6 @@ var headBlock = {
   unix_description: [
     {
       printName: true,
-      printDefaultValues: false,
       bytes: '-c',
       lines: '-n'
     }

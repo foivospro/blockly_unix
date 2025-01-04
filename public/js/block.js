@@ -215,7 +215,7 @@ class UnixGenerator extends Blockly.Generator {
    */
   processConnectedBlocks(block, description, commandParts, metadata) {
     const fieldValues = this.collectFieldValues(block);
-    
+
     block.inputList.forEach((input) => {
       if (input.connection && input.connection.isConnected()) {
         const childBlock = input.connection.targetBlock();
