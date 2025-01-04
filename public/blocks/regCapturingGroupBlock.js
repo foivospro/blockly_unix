@@ -4,7 +4,7 @@ var regCapturingGroupBlock = {
     {
       printName: false,
       regPattern: (childCode) => {
-        return '(' + childCode + ')';
+        return !childCode ? "" :'(' + childCode + ')' ;
       }
     }
   ],

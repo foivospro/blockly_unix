@@ -213,64 +213,89 @@ class UnixGenerator extends Blockly.Generator {
    * @param {Array<string>} commandParts - The array of command parts.
    * @param {Array<Object>} metadata - The metadata array.
    */
-  processConnectedBlocks(block, description, commandParts, metadata) {
-    const fieldValues = this.collectFieldValues(block);
-
+  processConnectedBlocks(block, description, commandParts, metadata, fieldValues = {}) {
+    fieldValues = this.collectFieldValues(block);
     block.inputList.forEach((input) => {
       if (input.connection && input.connection.isConnected()) {
         const childBlock = input.connection.targetBlock();
         if (childBlock) {
-          let childCode = '';
-          if (input.connection.type === Blockly.NEXT_STATEMENT) {
-            childCode = this.statementToCode(block, input.name);
-          } else {
-            childCode = this.valueToCode(block, input.name, Blockly.ORDER_NONE);
-          }
-          const processingFn = description[input.name];
-          if (typeof processingFn === 'function') {
+          const childCode = this.blockToCode(childBlock);
+          if (childCode) {
+            if (!input.name) {
+              console.error('Input has no name:', input);
+              return;
+            }
+            const processingFn = description[input.name];
             let processedChildCode;
-            if (processingFn.length === 1) {
-              processedChildCode = processingFn(childCode.trim());
+
+            if (typeof processingFn === 'function') {
+              if (processingFn.length === 2) {
+                processedChildCode = processingFn(fieldValues, childCode.trim());
+              } else {
+                processedChildCode = processingFn(childCode.trim());
+              }
             } else {
-              processedChildCode = processingFn(fieldValues, childCode.trim());
+              processedChildCode = childCode.trim();
             }
 
             commandParts.push(processedChildCode);
             metadata.push({ value: processedChildCode, type: childBlock.type });
+          } else {
+            if (!input.name) {
+              console.error('Input has no name:', input);
+              return;
+            }
+
+            const processingFn = description[input.name];
+            if (typeof processingFn === 'function') {
+              let processedChildCode;
+              if (processingFn.length === 2) {
+                processedChildCode = processingFn(fieldValues, null);
+              } else {
+                processedChildCode = processingFn(null);
+              }
+              commandParts.push(processedChildCode);
+              metadata.push({ value: processedChildCode, type: block.type });
+            }
+          }
+        } else {
+          if (!input.name) {
+            console.error('Input has no name:', input);
+            return;
           }
 
-        } else {
           const processingFn = description[input.name];
           if (typeof processingFn === 'function') {
             let processedChildCode;
-            if (processingFn.length === 1) {
-              processedChildCode = processingFn(null);
-            } else {
+            if (processingFn.length === 2) {
               processedChildCode = processingFn(fieldValues, null);
+            } else {
+              processedChildCode = processingFn(null);
             }
-
             commandParts.push(processedChildCode);
             metadata.push({ value: processedChildCode, type: block.type });
           }
         }
-
       } else {
+        if (!input.name) {
+          console.error('Input has no name:', input);
+          return;
+        }
+
         const processingFn = description[input.name];
         if (typeof processingFn === 'function') {
           let processedChildCode;
-          if (processingFn.length === 1) {
-            processedChildCode = processingFn(null);
-          } else {
+          if (processingFn.length === 2) {
             processedChildCode = processingFn(fieldValues, null);
+          } else {
+            processedChildCode = processingFn(null);
           }
-
           commandParts.push(processedChildCode);
           metadata.push({ value: processedChildCode, type: block.type });
         }
       }
     });
   }
-
 
   /**
    * Finalizes the command parts by reordering arguments if necessary.

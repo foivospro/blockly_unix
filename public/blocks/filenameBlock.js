@@ -2,7 +2,10 @@ var filenameBlock = {
   type: 'filename',
   unix_description: [
     {
-      printName: false
+      printName: false,
+      FILENAME: (fieldValues) => {
+        return fieldValues['FILENAME'];
+      }
     }
   ],
   category: 'Function inputs',

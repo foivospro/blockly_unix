@@ -14,7 +14,7 @@ var grepBlock = {
         const value = fieldValues['stop_after_num_matches'];
         return value ? '-m ' + value : ''; // Only include if value exists
       },
-      regPattern: (fieldValues, childCode) => {
+      regPattern: (childCode) => {
         return (childCode && childCode.trim() !== '') ? '-E ' + childCode : '';
       },
       showFiles: '-H',

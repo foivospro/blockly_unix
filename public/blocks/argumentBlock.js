@@ -2,7 +2,10 @@ var argumentBlock = {
   type: 'argument',
   unix_description: [
     {
-      printName: false
+      printName: false,
+      ARGUMENT: (fieldValues) => {
+        return fieldValues['ARGUMENT'];
+      }
     }
   ],
   category: 'Function inputs',
