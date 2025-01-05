@@ -4,8 +4,8 @@ var fileEndStartBlock = {
   unix_description: [
     {
       printName: false,
-      starts: '*',
-      ends: '*'
+      FILENAME: ({ metric_type, FILENAME }) =>
+        metric_type === 'starts' ? `${FILENAME}*` : `*${FILENAME}`
     }
   ],
   message0:

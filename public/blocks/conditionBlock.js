@@ -5,13 +5,12 @@ var conditionBlock = {
     {
       printName: false,
       left_part: (fieldValues, childCode) => {
-        return childCode + " " +fieldValues['operator'];
+        return childCode + ' ' + fieldValues['operator'];
       },
       right_part: (childCode) => {
         return childCode;
       }
     }
-
   ],
   message0: '%1', // First message line for left_part
   args0: [

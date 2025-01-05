@@ -293,7 +293,7 @@ Blockly.Msg['CONTROLS_FLOW_STATEMENTS_WARNING'] =
   'Warning: This block may only be used within a loop.';
 Blockly.Msg['CONTROLS_FOREACH_HELPURL'] =
   'https://github.com/google/blockly/wiki/Loops#for-each';
-Blockly.Msg['CONTROLS_FOREACH_TITLE'] = 'for each item %1 in list %2';
+Blockly.Msg['CONTROLS_FOREACH_TITLE'] = 'for each item %1 in array %2';
 Blockly.Msg['CONTROLS_FOREACH_TOOLTIP'] =
   "For each item in a list, set the variable '%1' to the item, and then do some statements.";
 Blockly.Msg['CONTROLS_FOR_HELPURL'] =
