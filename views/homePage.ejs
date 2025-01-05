@@ -11,27 +11,74 @@
     <link rel="stylesheet" href="/css/homePage.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/img/favicon.png">
+    <style>
+        #mobileAlert {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 1050; /* Higher than default Bootstrap modals */
+          background-color: red;
+          color: white;
+          padding: 10px 40px 10px 10px; /* Extra right padding for the close button */
+          font-size: 16px;
+          text-align: center;
+      }
+
+      #closeAlertBtn {
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          color: white;
+          font-size: 20px;
+          cursor: pointer;
+      }
+    </style>
     <script>
-      (function() {
-          var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-          function loadStylesheet(href) {
-              var link = document.createElement("link");
-              link.rel = "stylesheet";
-              link.type = "text/css";
-              link.href = href;
-              document.head.appendChild(link);
-          }
+        // Function to load stylesheets dynamically
+        function loadStylesheet(href) {
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.type = "text/css";
+            link.href = href;
+            document.head.appendChild(link);
+        }
 
-          if (isMobile) {
-              loadStylesheet("/css/mobile.css");
-          } else {
-              loadStylesheet("/css/homePage.css");
-              //loadStylesheet("/css/mobileHomePage.css");
-          }
-      })();
-  </script>
+        // Check screen size on load
+        function checkScreenSize() {
+            if (window.innerWidth <= 768) {
+                loadStylesheet("/css/mobile.css");
 
+                // Show the mobile alert if user is on a mobile device and has not dismissed the alert
+                if (!sessionStorage.getItem("mobileAlertDismissed")) {
+                    document.getElementById("mobileAlert").style.display = "block";
+                }
+            } else {
+                loadStylesheet("/css/homePage.css");
+            }
+        }
+
+        // Close the mobile alert
+        function closeMobileAlert() {
+            document.getElementById("mobileAlert").style.display = "none";
+            sessionStorage.setItem("mobileAlertDismissed", true);
+        }
+
+        // Run the function on page load
+        document.addEventListener("DOMContentLoaded", checkScreenSize);
+
+        // Run the function again on window resize, but only show the alert if it hasn't been dismissed
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 768) {
+                document.getElementById("mobileAlert").style.display = "none";
+            }
+        });
+    </script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         fetch('/auth-token')
@@ -62,17 +109,12 @@
           });
       });
     </script>
-    <script>
-      // Check if the alert has already been shown
-      if (!localStorage.getItem('mobileAlertShown')) {
-          alert('This application is not optimized for mobile devices. Please use a PC for the best experience.');
-          // Set the flag in local storage
-          localStorage.setItem('mobileAlertShown', 'true');
-      }
-    </script>
 </head>
 <body class="d-flex flex-column min-vh-100">
-
+    <div id="mobileAlert">
+        <span>This application is not optimized for mobile devices. Please use a PC for the best experience.</span>
+        <button id="closeAlertBtn" onclick="closeMobileAlert()">&times;</button>
+    </div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -97,7 +139,6 @@
                 <div class="d-flex align-items-center">
                     <a href="/login" class="btn btn-primary me-2" id="loginHomePageButton" style="display: none;">Login</a>
                     <a href="/register" class="btn btn-outline-primary me-2" id="registerHomePageButton" style="display: none;">Register</a>
-
                 </div>
                 <div class="d-flex align-items-center">
                   <a href="/blockly_unix" class="btn btn-primary me-2" id="continueWithBlocklyButton" style="display: none;">Continue Where You Left Off</a>
@@ -373,7 +414,7 @@
           <li><a href="https://github.com/simosathan9" target="_blank">Athanasiadis Simos - Undergraduate student</a></li>
           <li><a href="https://github.com/vcipi" target="_blank">Cipi Klenti - Graduate student</a></li>
           <li><a href="https://github.com/Pantelis325" target="_blank">Kakavas Pantelis - Graduate student</a></li>
-          <li><a href="https://github.com/foivospro" target="_blank">Proestakis Foivos - Undergraduate student</a></li>
+          <li><a href="https://github.com/foivospro" target="_blank">Proestakis Foivos Timotheos - Undergraduate student</a></li>
         </ul>
       </div>
       <div class="modal-footer">
