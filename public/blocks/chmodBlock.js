@@ -4,6 +4,7 @@ var chmodBlock = {
   message0: 'chmod %1 %2',
   unix_description: [
     {
+      printName: true,
       command: 'chmod %MODE %FILE'
     }
   ],
@@ -27,4 +28,3 @@ var chmodBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([chmodBlock]);
-//

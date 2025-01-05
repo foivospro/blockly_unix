@@ -4,7 +4,10 @@ var killBlock = {
   message0: '%{BKY_KILL} %1',
   unix_description: [
     {
-      command: 'kill %PID'
+      printName: true,
+      PID: (fieldValues) => {
+        return fieldValues['PID'];
+      }
     }
   ],
   args0: [
@@ -15,11 +18,9 @@ var killBlock = {
     }
   ],
   style: 'Other Commands',
-  previousStatement: 'Action',
-  nextStatement: 'Action',
   tooltip: '%{BKY_KILL_TOOLTIP}',
   helpUrl: '%{BKY_KILL_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([killBlock]);
-//
+window.unixGenerator.forBlock['kill'] = window.unixGenerator.forBlock.generic;

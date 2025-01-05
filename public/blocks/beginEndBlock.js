@@ -1,6 +1,6 @@
 var beginEndBlock = {
   type: 'beginEnd',
-  category: 'Data Processing',
+  category: 'Field Processing',
   message0: '%{BKY_BEGIN_END}',
   message1: '%1',
   args1: [
@@ -11,7 +11,7 @@ var beginEndBlock = {
   ],
   output: 'String',
   nextStatement: null,
-  style: 'Data Processing',
+  style: 'Field Processing',
   tooltip: '%{BKY_BEGIN_END_TOOLTIP}',
   helpUrl: '%{BKY_BEGIN_END_HELPURL}' // URL to further information or documentation.
 };

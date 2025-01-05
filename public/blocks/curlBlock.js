@@ -3,6 +3,7 @@ var curlBlock = {
   message0: '%{BKY_CURL} %1',
   unix_description: [
     {
+      printName: true,
       GET: '-X GET',
       POST: '-X POST',
       PUT: '-X PUT',
@@ -38,7 +39,7 @@ var curlBlock = {
     {
       type: 'field_checkbox',
       name: 'follow_redirects',
-      checked: true
+      checked: false
     }
   ],
 
@@ -51,3 +52,4 @@ var curlBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([curlBlock]);
+window.unixGenerator.forBlock['curl'] = window.unixGenerator.forBlock.generic;

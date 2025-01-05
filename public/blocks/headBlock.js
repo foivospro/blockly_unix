@@ -4,10 +4,9 @@ var headBlock = {
   category: 'Text Processing',
   unix_description: [
     {
+      printName: true,
       bytes: '-c',
-      lines: '-n',
-      QUIET: '--quiet',
-      VERBOSE: '--verbose'
+      lines: '-n'
     }
   ],
   message1: '%{BKY_HEAD_METRIC}',
@@ -34,8 +33,9 @@ var headBlock = {
   previousStatement: 'Action',
   nextStatement: 'Action',
   style: 'Text Processing',
-  extensions: ['integer_validation', 'disallow_multiple_filenames'],
   helpUrl: '' // URL to further information or documentation.
 };
 
 Blockly.defineBlocksWithJsonArray([headBlock]);
+
+window.unixGenerator.forBlock['head'] = window.unixGenerator.forBlock.generic;

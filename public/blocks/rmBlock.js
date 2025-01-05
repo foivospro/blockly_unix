@@ -1,16 +1,22 @@
 var rmBlock = {
   type: 'rm',
-  message0: '%{BKY_RM}',
-  category: 'File and Directory Operations',
+  category: 'Filesystem Operations',
   unix_description: [
     {
+      printName: true,
       force: '-f',
       request_confirmation: '-i',
       remove_directory: '-d',
       recursive: '-R',
-      verbose: '-v',
-      undelete: '-W',
-      no_cross_mount: '-x'
+      undelete: '-W'
+    }
+  ],
+  message0: '%{BKY_RM} %1',
+  args0: [
+    {
+      type: 'input_value',
+      name: 'ARGUMENT',
+      check: 'String'
     }
   ],
   message1: '%{BKY_RM_FORCE}',
@@ -45,28 +51,10 @@ var rmBlock = {
       checked: false
     }
   ],
-  message5: '%{BKY_RM_VERBOSE}',
-  args5: [
-    {
-      type: 'field_checkbox',
-      name: 'verbose',
-      checked: false
-    }
-  ],
-  message6: '%{BKY_RM_NO_CROSS_MOUNT}',
-  args6: [
-    {
-      type: 'field_checkbox',
-      name: 'no_cross_mount',
-      checked: false
-    }
-  ],
-  extensions: [],
-  style: 'File and Directory Operations',
-  previousStatement: 'Action',
-  nextStatement: 'Action',
+  style: 'Filesystem Operations',
   tooltip: '%{BKY_RM_TOOLTIP}',
   helpUrl: 'https://linux.die.net/man/1/rm'
 };
 
 Blockly.defineBlocksWithJsonArray([rmBlock]);
+window.unixGenerator.forBlock['rm'] = window.unixGenerator.forBlock.generic;

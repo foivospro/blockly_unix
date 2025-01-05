@@ -3,7 +3,11 @@ var teeBlock = {
   category: 'I/O redirection',
   unix_description: [
     {
-      append: '-a'
+      printName: true,
+      append: '-a',
+      filename: (fieldValues) => {
+        return fieldValues['filename'];
+      }
     }
   ],
   message0: '%{BKY_TEE}',
@@ -33,3 +37,4 @@ var teeBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([teeBlock]);
+window.unixGenerator.forBlock['tee'] = window.unixGenerator.forBlock.generic;

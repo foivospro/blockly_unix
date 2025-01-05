@@ -4,7 +4,10 @@ var sleepBlock = {
   category: 'Other Commands',
   unix_description: [
     {
-      time: 'sleep %TIME'
+      printName: true,
+      TIME: (fieldValues) => {
+        return fieldValues['TIME'];
+      }
     }
   ],
   args0: [
@@ -15,10 +18,9 @@ var sleepBlock = {
     }
   ],
   style: 'Other Commands',
-  previousStatement: 'Action',
-  nextStatement: 'Action',
   tooltip: '%{BKY_SLEEP_TOOLTIP}',
   helpUrl: 'https://linux.die.net/man/1/sleep'
 };
 
 Blockly.defineBlocksWithJsonArray([sleepBlock]);
+window.unixGenerator.forBlock['sleep'] = window.unixGenerator.forBlock.generic;

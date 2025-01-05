@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blockly Unix</title>
+    <title>Ublocks</title>
     <!-- Link to Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Link to custom CSS -->
-    <link rel="stylesheet" href="homePage.css">
+    <link rel="stylesheet" href="/css/homePage.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/favicon.png">
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -48,8 +49,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <span class="navbar-brand d-flex align-items-center">
-                <img src="img/blockly_72.png" alt=""  class="me-2">
-                Blockly Unix
+                Ublocks
             </span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -60,7 +60,7 @@
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/blockly_unix">Blockly</a>
+                        <a class="nav-link active" aria-current="page" href="/blockly_unix">Ublocks</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/tutorials">Tutorials</a>
@@ -95,19 +95,19 @@
 
             <ul class="faq-list ">
 
-                <li>
-                    <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Filter, Sort, Count, and Save Data Based on Specific Conditions<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                    <div id="faq1" class="collapse" data-bs-parent=".faq-list">
-                        <p>
-                            Filter lines from a file based on a specific condition, sort them, count unique occurrences, and save the top results to a new file.
-                        </p>
-                        <div class="image-container">
-                            <img src="img/blockly_photo.png" alt="Blockly Unix" class="img-fluid" style="width: 700px; height: auto;">
-                        </div>
-                        <p>
-                            The corresponding Unix command for this task is: <strong>awk -F';' ' $3 == "empt" ' test.txt | sort -r -k 2 | uniq -c | head -n 50 > newFile.txt</strong>
-                        </p>
+            <li>
+                <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Calculate Average Sales from a CSV File<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+                    <p>
+                        You have a CSV file (sales.csv) with columns: Date,Region,Sales. You want to calculate the average sales.
+                    </p>
+                    <div class="image-container">
+                        <img src="img/average_sales_from_csv.png" alt="Blockly Unix" class="img-fluid" style="width: 700px; height: auto;">
                     </div>
+                    <p>
+                        The corresponding Unix command for this task is: <strong>awk -F ',' ' {sum = sum + $3; count = count + 1; } END {print "Average Sales:", sum / count; } ' sales.csv</strong>
+                    </p>
+                </div>
             </li>
             <li>
                 <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Removing Duplicate Lines and Sorting<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
@@ -125,36 +125,6 @@
             </li>
 
             <li>
-                <div data-bs-toggle="collapse" href="#faq3" class="collapsed question"> Filter Rows Based on a Pattern<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq3" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                    Filter rows containing the word "error" in a log file. Then count the number of lines that contain the word "error."
-                </p>
-                <div class="image-container">
-                    <img src="img/filter_rows_and_count_lines.png" alt="Blockly Unix" class="img-fluid" style="width: 700px; height: auto;">
-                </div>
-                <p>
-                    The corresponding Unix command for this task is: <strong>grep "error" logFile.txt | wc -l</strong>
-                </p>
-                </div>
-            </li>
-
-            <li>
-                <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Validating Strings with Alphanumeric Start, Optional Patterns, and Digit End Using Regex<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-                <div id="faq4" class="collapse" data-bs-parent=".faq-list">
-                    <p>
-                        Use a regex pattern that matches strings starting with an alphanumeric character, followed by any character one or more times, includes zero or more occurrences of a specific pattern and ends with a digit.
-                    </p>
-                    <div class="image-container">
-                        <img src="img/validate_strings_with_regex.png" alt="Blockly Unix" class="img-fluid" style="width: 700px; height: auto;">
-                    </div>
-                    <p>
-                        The corresponding Unix command for this task is: <strong>^[[:alnum:]].*(example_pattern){0,}.*[[:digit:]]$</strong>
-                    </p>
-                </div>
-            </li>
-
-            <li>
                 <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Extract, Count, and Save Top Domain Names from a List of URLs<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
                 <div id="faq5" class="collapse" data-bs-parent=".faq-list">
                     <p>
@@ -164,7 +134,7 @@
                         <img src="img/convert_domains.png" alt="Blockly Unix" class="img-fluid" style="width: 700px; height: auto;">
                     </div>
                     <p>
-                        The corresponding Unix command for this task is: <strong>awk -F'/' ' -F'/' {print $3}}' ' urls.txt | sort | uniq -c | sort -r | head -n 15 > topdomains.txt</strong>
+                        The corresponding Unix command for this task is: <strong>awk -F '/' ' {print $3; } ' url.txt | sort | uniq -c | sort -r | head -n 15 > topDomains.txt</strong>
                     </p>
                 </div>
             </li>
@@ -192,7 +162,7 @@
                         <img src="img/extract_columns.png" alt="Blockly Unix" class="img-fluid" style="width: 700px; height: auto;">
                     </div>
                     <p>
-                        The corresponding Unix command for this task is: <strong>cut -d ',' -f 1,3 file.txt > extracted_columns.txt</strong>
+                        The corresponding Unix command for this task is: <strong>cut -d ',' -f 1,3 file1.txt > combinedFile.txt</strong>
                     </p>
                 </div>
             </li>
@@ -206,7 +176,35 @@
                         <img src="img/sum_annual_and_total_sales_awk.png" alt="Blockly Unix" class="img-fluid" style="width: 700px; height: auto;">
                     </div>
                     <p>
-                        The corresponding Unix command for this task is: <strong>awk -F';' ' BEGIN {total = 0; } {i = 1; while (i <= NR) { sum = 0; j = 1; while (j <= NF) { sum += $j; j ++; } total += sum; print("Sum of row",NR,":",sum); i ++; } } END {print("Total Sum:",total); } ' test.txt</strong>
+                        The corresponding Unix command for this task is: <strong>awk -F ';' ' BEGIN {total = 0; } {i = 1; while (i <= NR) { sum = 0; j = 1; while (j <= NF) { sum += $j; j += 1; } total += sum; print "Sum of row", NR, ":", sum; i += 1; } } END {print "Total sum:", total; } ' sales.txt</strong>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div data-bs-toggle="collapse" href="#faq9" class="collapsed question">Find Maximum and Minimum Values<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq9" class="collapse" data-bs-parent=".faq-list">
+                    <p>
+                        Find the highest and lowest temperatures from a weather log (weather.log) where temperatures are in the 3rd column.
+                    </p>
+                    <div class="image-container">
+                        <img src="img/find_min_max_values.png" alt="Blockly Unix" class="img-fluid" style="width: 700px; height: auto;">
+                    </div>
+                    <p>
+                        The corresponding Unix command for this task is: <strong>awk ' {if (NR == 1 || $3 > max) {max = $3; } if (NR == 1 || $3 < min) {min = $3; } } END {print "Max :", max, "Min :", min; } ' weather.log</strong>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div data-bs-toggle="collapse" href="#faq10" class="collapsed question">Modify timestamp in existing files<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                <div id="faq10" class="collapse" data-bs-parent=".faq-list">
+                    <p>
+                        Modify the last modification timestamp in existing files to the specified date and time. If the file does not exist, do not create a new file.
+                    </p>
+                    <div class="image-container">
+                        <img src="img/touch_command.png" alt="Blockly Unix" class="img-fluid" style="width: 700px; height: auto;">
+                    </div>
+                    <p>
+                        The corresponding Unix command for this task is: <strong>touch -c -m -d 2024-11-27T21:55:24 arg1 arg2 arg3</strong>
                     </p>
                 </div>
             </li>

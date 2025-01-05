@@ -1,11 +1,11 @@
-// TO DO
-// Fix issue with blockly Data Processing sub categories
-
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
-
+const crypto = require('crypto');
+const fs = require('fs');
 // Importing libraries installed with npm
+const { exec } = require('child_process');
+const https = require('https');
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -16,9 +16,10 @@ const flash = require('express-flash');
 const session = require('express-session');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+const favicon = require('serve-favicon');
 const sqlite3 = require('sqlite3').verbose();
 app.use(express.json());
-const db = new sqlite3.Database('blockly_unix_database.db', (err) => {
+const db = new sqlite3.Database('db/blockly_unix_database.db', (err) => {
   if (err) {
     console.error(err.message);
   }
@@ -64,11 +65,49 @@ app.use((req, res, next) => {
   next();
 });
 
+app.post('/github-webhook', express.json(), (req, res) => {
+  const secret = process.env.GITHUB_WEBHOOK_SECRET;
+
+  // Verify the signature to ensure that the request is actually coming from GitHub
+  const signature = req.headers['x-hub-signature-256'];
+  const expectedSignature = `sha256=${crypto
+    .createHmac('sha256', secret)
+    .update(JSON.stringify(req.body))
+    .digest('hex')}`;
+
+  if (signature !== expectedSignature) {
+    return res.status(403).send('Forbidden');
+  }
+
+  // Handle the push event
+  if (req.body.ref === 'refs/heads/main') {
+    // Execute a shell command to pull the latest changes from GitHub
+    const exec = require('child_process').exec;
+    exec(
+      'git pull origin main',
+      { cwd: '/home/foivpro/blockly_unix' },
+      (err, stdout, stderr) => {
+        if (err) {
+          console.error(`Error pulling changes: ${stderr}`);
+          return res.status(500).send('Error pulling changes');
+        }
+        console.log(`Pulled latest changes: ${stdout}`);
+        res.status(200).send('Webhook received successfully');
+      }
+    );
+  } else {
+    res.status(200).send('Not a push to main branch, ignoring...');
+  }
+});
+
+app.listen(4000, () => {
+  console.log('Listening for GitHub Webhooks on port 4000');
+});
 // Middleware to add auth token
 function addAuthToken(req, res, next) {
   if (req.isAuthenticated()) {
     const token = jwt.sign({ user: req.user.id }, process.env.SECRET_KEY, {
-      expiresIn: '20m'
+      expiresIn: '30m'
     }); // Token expires in 10 seconds for testing. When in production, set to 20 minutes
     req.authToken = token;
   } else {
@@ -264,27 +303,21 @@ app.post('/saveWorkspace', (req, res) => {
 
 app.post('/saveGuestWorkspace', (req, res) => {
   // Retrieve the workspace data and user ID from the request body
-  const { workspaceData, executionStatus, changesAfterExecution } = req.body;
+  const { workspaceData } = req.body;
   if (!workspaceData) {
     return res.status(400).json({ error: 'Missing workspace data.' });
   }
-  const query = `INSERT INTO guestsWorkspaces (workspaceData, executionStatus, changesAfterExecution) VALUES (?, ?, ?)`;
-  db.run(
-    query,
-    [workspaceData, executionStatus, changesAfterExecution],
-    function (err) {
-      if (err) {
-        console.error('Error inserting workspace data:', err.message);
-        return res
-          .status(500)
-          .json({ error: 'Failed to save workspace data.' });
-      }
-      res.status(200).json({
-        message: 'Workspace data saved successfully.',
-        workspaceId: this.lastID // Return the ID of the inserted workspace
-      });
+  const query = `INSERT INTO guestsWorkspaces (workspaceData) VALUES (?)`;
+  db.run(query, [workspaceData], function (err) {
+    if (err) {
+      console.error('Error inserting workspace data:', err.message);
+      return res.status(500).json({ error: 'Failed to save workspace data.' });
     }
-  );
+    res.status(200).json({
+      message: 'Workspace data saved successfully.',
+      workspaceId: this.lastID // Return the ID of the inserted workspace
+    });
+  });
 });
 
 app.post('/autoSaveWorkspace', (req, res) => {
@@ -389,7 +422,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: 'http://localhost:3000/auth/google/callback'
+      callbackURL: 'https://ublocks.balab.aueb.gr/auth/google/callback'
     },
     (accessToken, refreshToken, profile, done) => {
       // Check if user with the given Google ID exists
@@ -488,6 +521,12 @@ app.get(
   }
 );
 
-app.listen(3000, () => {
-  console.log('Server started on http://localhost:3000');
+/* To run on local server remove comment
+app.listen(3000, 'localhost', () => {
+  console.log('Server is running on http://localhost:3000');
+});
+*/
+
+app.listen(8443, () => {
+  console.log('Server is running on https://ublocks.balab.aueb.gr');
 });

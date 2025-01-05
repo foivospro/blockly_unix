@@ -1,12 +1,12 @@
 var mvBlock = {
   type: 'mv',
-  category: 'File and Directory Operations',
+  category: 'Filesystem Operations',
   message0: '%{BKY_MV_MESSAGE}', // Correctly references %1 (SOURCE) and %2 (DEST)
   unix_description: [
     {
+      printName: true,
       not_prompt_confirmation: '-f',
       prompt_confirmation: '-i',
-      verbose: '-v',
       not_overwrite: '-n'
     }
   ],
@@ -26,40 +26,31 @@ var mvBlock = {
       checked: false
     }
   ],
-  message3: '%{BKY_MV_VERBOSE}',
+  message3: '%{BKY_MV_NOT_OVERWRITE}',
   args3: [
-    {
-      type: 'field_checkbox',
-      name: 'verbose',
-      checked: false
-    }
-  ],
-  message4: '%{BKY_MV_NOT_OVERWRITE}',
-  args4: [
     {
       type: 'field_checkbox',
       name: 'not_overwrite',
       checked: false
     }
   ],
-  message5: '%{BKY_MV_SOURCE}: %1 %{BKY_MV_DEST}: %2',
-  args5: [
+  message4: '%{BKY_MV_SOURCE}: %1 %{BKY_MV_DEST}: %2',
+  args4: [
     {
-      type: 'field_input',
+      type: 'input_value',
       name: 'SOURCE',
       text: 'source'
     },
     {
-      type: 'field_input',
+      type: 'input_value',
       name: 'DEST',
       text: 'destination'
     }
   ],
-  style: 'File and Directory Operations',
-  previousStatement: 'Action',
-  nextStatement: 'Action',
-  tooltip: 'Μετακινεί ή μετονομάζει αρχεία.',
+  style: 'Filesystem Operations',
+  tooltip: '',
   helpUrl: 'https://linux.die.net/man/1/mv'
 };
 
 Blockly.defineBlocksWithJsonArray([mvBlock]);
+window.unixGenerator.forBlock['mv'] = window.unixGenerator.forBlock.generic;

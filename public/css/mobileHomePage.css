@@ -1,0 +1,87 @@
+/* Mobile Styles (max-width: 576px) */
+@media (max-width: 576px) {
+  /* Hero Section Adjustments */
+  #hero {
+    padding: 20px 15px;
+    text-align: center;
+  }
+
+  #hero h3 {
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  #hero p {
+    font-size: 15px;
+    margin: 10px 0 15px;
+    line-height: 1.4;
+    padding: 0 10px;
+  }
+
+  /* Button Adjustments */
+  #hero .btn-get-started,
+  #hero .btn-get-login {
+    font-size: 13px;
+    padding: 8px 16px;
+    margin: 8px 5px;
+  }
+
+  /* Center the buttons */
+  #hero .btn-get-started,
+  #hero .btn-get-login {
+    display: inline-block;
+  }
+
+  /* Hero Image Adjustments */
+  #hero .hero-img {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  #hero .hero-img img {
+    width: 90%;
+    height: auto;
+    border-radius: 8px;
+  }
+}
+
+/* Tablet and larger styles */
+@media (min-width: 768px) {
+  /* Align text and image side by side */
+  #hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 80px;
+  }
+
+  #hero h3 {
+    font-size: 32px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+
+  #hero p {
+    font-size: 18px;
+    margin: 20px 0;
+    line-height: 1.5;
+  }
+
+  #hero .btn-get-started,
+  #hero .btn-get-login {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  #hero .hero-img {
+    display: block;
+  }
+
+  #hero .hero-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+}

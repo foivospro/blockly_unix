@@ -4,6 +4,7 @@ var dateBlock = {
   category: 'System Monitoring',
   unix_description: [
     {
+      printName: true,
       desc: 'Display or set the system date and time',
       utc_time: '-u'
     }
@@ -17,13 +18,11 @@ var dateBlock = {
     }
   ],
 
-  extensions: ['integer_validation'],
-
   style: 'System Monitoring',
-  previousStatement: 'Action',
   nextStatement: 'Action',
   tooltip: '%{BKY_DATE_TOOLTIP}',
   helpUrl: '%{BKY_DATE_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([dateBlock]);
+window.unixGenerator.forBlock['date'] = window.unixGenerator.forBlock.generic;

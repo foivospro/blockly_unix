@@ -1,6 +1,6 @@
 var condOutputBlock = {
   type: 'condOutput',
-  category: 'Data Processing',
+  category: 'Field Processing',
   message0: '%{BKY_CONDITION_OUTPUT}',
   message1: '%1',
   args1: [
@@ -11,7 +11,7 @@ var condOutputBlock = {
   ],
   output: 'String',
   nextStatement: null,
-  style: 'Data Processing',
+  style: 'Field Processing',
   tooltip: '%{BKY_CONDITION_OUTPUT_TOOLTIP}',
   helpUrl: '%{BKY_CONDITION_OUTPUT_HELPURL}' // URL to further information or documentation.
 };

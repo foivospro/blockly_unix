@@ -3,18 +3,12 @@ var regRangeBlock = {
   category: 'Regular Expressions',
   unix_description: [
     {
-      upper: '[[:upper:]]',
-      lower: '[[:lower:]]',
-      letters: '[[:alpha:]]',
-      digit: '[[:digit:]]',
-      alphanumeric: '[[:alnum:]]',
-      punctuation: '[[:punct:]]',
-      whitespace: '[[:space:]]',
-      blanks: '[[:blank:]]',
-      printable: '[[:print:]]',
-      non_printable: '[[:cntrl:]]',
-      graphical: '[[:graph:]]',
-      hexadecimal: '[[:xdigit:]]'
+      printName: false,
+      reg_Range: (fieldValues) => {
+        return fieldValues['not'] === 'TRUE'
+          ? '[^[:' + fieldValues['reg_Range'] + ':]]'
+          : '[[:' + fieldValues['reg_Range'] + ':]]';
+      }
     }
   ],
   message0: '%{BKY_REGRANGE}',
@@ -48,10 +42,12 @@ var regRangeBlock = {
     }
   ],
   style: 'Regular Expressions',
-  previousStatement: 'Action',
+  previousStatement: ['String', 'Action'],
   nextStatement: 'Action',
   tooltip: '%{BKY_REGRANGE_TOOLTIP}',
   helpUrl: '%{BKY_REGRANGE_HELPURL}' // URL to further information or documentation.
 };
 
 Blockly.defineBlocksWithJsonArray([regRangeBlock]);
+window.unixGenerator.forBlock['regRange'] =
+  window.unixGenerator.forBlock.concat;

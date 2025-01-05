@@ -1,9 +1,10 @@
 var lsBlock = {
   type: 'ls',
   message0: '%{BKY_LS_MESSAGE}',
-  category: 'File and Directory Operations',
+  category: 'Filesystem Operations',
   unix_description: [
     {
+      printName: true,
       detailed: '-l',
       recursively: '-R',
       hidden: '-a',
@@ -43,11 +44,11 @@ var lsBlock = {
       checked: false // by default it's disabled
     }
   ],
-  style: 'File and Directory Operations',
-  previousStatement: 'Action',
+  style: 'Filesystem Operations',
   nextStatement: 'Action',
   tooltip: '%{BKY_LS_TOOLTIP}',
   helpUrl: '' // URL to further information or documentation.
 };
 
 Blockly.defineBlocksWithJsonArray([lsBlock]);
+window.unixGenerator.forBlock['ls'] = window.unixGenerator.forBlock.generic;

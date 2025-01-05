@@ -1,17 +1,36 @@
 var findBlock = {
   type: 'find',
-  category: 'File and Directory Operations',
+  category: 'Filesystem Operations',
   unix_description: [
     {
-      path: 'str',
-      mtime: '-mtime -',
-      mmin: '-mmin -',
-      atime: '-atime -',
-      amin: '-amin -',
-      ctime: '-ctime -',
-      cmin: '-cmin -',
-      sizeLarger: '-size +',
-      sizesmaller: '-size -',
+      printName: true,
+      path: (fieldValues) => {
+        return fieldValues['path'];
+      },
+      mtime: (fieldValues) => {
+        return '-mtime ' + fieldValues['mtime'];
+      },
+      mmin: (fieldValues) => {
+        return '-mmin ' + fieldValues['mmin'];
+      },
+      atime: (fieldValues) => {
+        return '-atime ' + fieldValues['atime'];
+      },
+      amin: (fieldValues) => {
+        return '-amin ' + fieldValues['amin'];
+      },
+      ctime: (fieldValues) => {
+        return '-ctime ' + fieldValues['ctime'];
+      },
+      cmin: (fieldValues) => {
+        return '-cmin ' + fieldValues['cmin'];
+      },
+      sizeLarger: (fieldValues) => {
+        return '-size +' + fieldValues['sizeLarger'];
+      },
+      sizesmaller: (fieldValues) => {
+        return '-size -' + fieldValues['sizesmaller'];
+      },
       reverse: '-r',
       Kbs: 'K',
       Mbs: 'M',
@@ -22,6 +41,9 @@ var findBlock = {
       subdirs: '-maxdepth 1',
       file: '-type f',
       directory: '-type d',
+      Pattern: (fieldValues) => {
+        return '-regex "' + fieldValues['Pattern'] + '"';
+      },
       both: ''
     }
   ],
@@ -149,9 +171,9 @@ var findBlock = {
   message9: '%{BKY_FIND_NAME_DEFINE}',
   args9: [
     {
-      type: 'input_value',
-      name: 'fileEndStart',
-      check: 'fileWildcard'
+      type: 'input_statement',
+      name: 'Pattern',
+      check: 'String'
     }
   ],
   message10: '%{BKY_FIND_EXECUTE_COMMAND}',
@@ -163,8 +185,8 @@ var findBlock = {
     }
   ],
 
-  style: 'File and Directory Operations',
-  nextStatement: 'Action',
+  style: 'Filesystem Operations',
+  nextStatement: true,
   tooltip: 'Find files in directories and subdirectories',
   helpUrl: '' // URL to further information or documentation.
 };

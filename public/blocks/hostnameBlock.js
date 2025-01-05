@@ -4,9 +4,12 @@ var hostnameBlock = {
   category: 'System Monitoring',
   unix_description: [
     {
+      printName: true,
       desc: "Show or set the system's hostname",
       show_hostname: '',
-      set_hostname: "-s'str'",
+      set_hostname: (fieldValues) => {
+        return "-s '" + fieldValues['set_hostname'] + "'";
+      },
       show_aliases: '-a',
       show_ip: '-i',
       show_fqdn: '-f'
@@ -53,13 +56,12 @@ var hostnameBlock = {
     }
   ],
 
-  extensions: ['integer_validation'],
-
   style: 'System Monitoring',
-  previousStatement: 'Action',
   nextStatement: 'Action',
   tooltip: '%{BKY_HOSTNAME_TOOLTIP}',
   helpUrl: '%{BKY_HOSTNAME_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([hostnameBlock]);
+window.unixGenerator.forBlock['hostname'] =
+  window.unixGenerator.forBlock.generic;
