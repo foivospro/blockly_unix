@@ -10,6 +10,8 @@ window.MSG = {
   SYSTEM_MONITORING: 'System Monitoring',
   NETWORK_OPERATIONS: 'Network Operations',
   TEXT_OUTPUT: 'Text Output',
+  STRING_FUNCTIONS: 'String Functions',
+  SPECIAL_VARIABLES: 'Special Variables',
   LOGIC: 'Logic',
   LOOPS: 'Loops',
   MATH: 'Math',
@@ -52,16 +54,41 @@ Blockly.Msg['APPEND'] = 'Append result to';
 Blockly.Msg['APPEND_TOOLTIP'] =
   'Appends the result into an already existing file';
 Blockly.Msg['APPEND_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['ARGUMENT_COUNT'] = 'Number of arguments';
+Blockly.Msg['ARGUMENT_COUNT_TOOLTIP'] = 'Return the number of arguments';
+Blockly.Msg['ARGUMENT_COUNT_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['ARGUMENT_ARRAY'] = 'Argument array in position %1';
+Blockly.Msg['ARGUMENT_ARRAY_TOOLTIP'] =
+  'Return the argument array in the specified position';
 Blockly.Msg['ARRAY_CREATE_WITH'] = 'Create array with';
 Blockly.Msg['ARRAY_CREATE_WITH_TOOLTIP'] = 'Add element to array';
 Blockly.Msg['ARRAY_CREATE_EMPTY_TITLE'] = 'Create list of elements';
 Blockly.Msg['ARRAY_CREATE_WITH_HELPURL'] = '';
+Blockly.Msg['ARRAY_GET_INDEX'] = 'From array %1';
+Blockly.Msg['ARRAY_GET_INDEX_INDEX'] = 'get element in index %1';
+Blockly.Msg['ARRAY_GET_INDEX_TOOLTIP'] =
+  'Get element in the specified position in array';
+Blockly.Msg['ARRAY_GET_INDEX_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['ARRAY_SET_INDEX'] = 'In array %1';
+Blockly.Msg['ARRAY_SET_INDEX_INDEX'] = 'set in index %1';
+Blockly.Msg['ARRAY_SET_INDEX_VALUE'] = 'to %1';
+Blockly.Msg['ARRAY_SET_INDEX_TOOLTIP'] =
+  'Set element in the specified position in array';
+Blockly.Msg['ARRAY_SET_INDEX_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['ATAN2'] = 'Arc tangent of %1 / %2 in radians';
+Blockly.Msg['ATAN2_TOOLTIP'] = 'Return the arc tangent of the two numbers';
+Blockly.Msg['ATAN2_HELPURL'] = 'https://en.wikipedia.org/wiki/Atan2';
 Blockly.Msg['AWK_TEXT_DATA_PROCESSING'] = 'Text data processing';
 Blockly.Msg['AWK_INPUT_DELIMITER'] = 'Input delimiter';
 Blockly.Msg['AWK_CONDITION_ACTION'] = 'Condition and action';
 Blockly.Msg['AWK_TOOLTIP'] =
   'pattern-directed scanning and processing language';
 Blockly.Msg['AWK_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['BEGIN'] = 'Begin of processing';
+Blockly.Msg['BEGIN_ACTION'] = 'Action';
+Blockly.Msg['BEGIN_TOOLTIP'] =
+  'Enter action to be executed before data processing';
+Blockly.Msg['BEGIN_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['BEGIN_END'] = 'Execute once\n before/after data processing';
 Blockly.Msg['BEGIN_END_TOOLTIP'] =
   'pattern-directed scanning and processing language';
@@ -87,6 +114,9 @@ Blockly.Msg['CONDITION_ACTION_COND'] = 'Condition';
 Blockly.Msg['CONDITION_ACTION_ACT'] = 'Action';
 Blockly.Msg['CONDITION_ACTION_TOOLTIP'] = 'Condition and action';
 Blockly.Msg['CONDITION_ACTION_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['COSINE'] = 'Cosine of %1 in radians';
+Blockly.Msg['COSINE_TOOLTIP'] = 'Return the cosine of a number';
+Blockly.Msg['COSINE_HELPURL'] = 'https://en.wikipedia.org/wiki/Sine_and_cosine';
 Blockly.Msg['CUT'] = 'Cut out in file or string';
 Blockly.Msg['CUT_DELIMITER'] = 'Delimiter';
 Blockly.Msg['CUT_DEFINE_COLUMNS'] = 'Specified columns';
@@ -97,7 +127,25 @@ Blockly.Msg['CUT_START'] = 'Substring start : ';
 Blockly.Msg['CUT_END'] = 'End : ';
 Blockly.Msg['CUT_TOOLTIP'] =
   'Cut out in a file or a string.\nFor consecutive cuts use comma(,) , for range cuts use hyphen (-)';
+Blockly.Msg['ENVIRONMENT_VARIABLE'] = 'Environment variable';
+Blockly.Msg['ENVIRON_TOOLTIP'] = 'Return the value of an environment variable';
+Blockly.Msg['ENVIRON_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['END'] = 'End of processing';
+Blockly.Msg['END_ACTION'] = 'Action';
+Blockly.Msg['END_TOOLTIP'] = 'Enter action to be executed after processing';
+Blockly.Msg['END_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['CUT_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['EXPONENT'] = 'Exponential of %1';
+Blockly.Msg['EXPONENT_TOOLTIP'] = 'Return the exponential of a number';
+Blockly.Msg['EXPONENT_HELPURL'] =
+  'https://en.wikipedia.org/wiki/Exponentiation';
+Blockly.Msg['FNR'] = 'Current record number in current file';
+Blockly.Msg['FNR_TOOLTIP'] =
+  'Return the ordinal number of the current record in the current file.';
+Blockly.Msg['FNR_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['FIELD_SEPARATOR'] = 'Set field separator to %1';
+Blockly.Msg['FIELD_SEPARATOR_TOOLTIP'] = 'Set the field separator';
+Blockly.Msg['FIELD_SEPARATOR_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['FIELD_NUMBER'] = 'Current field';
 Blockly.Msg['FIELD_NUMBER_TOOLTIP'] =
   'Represents the current field (column) number';
@@ -110,6 +158,10 @@ Blockly.Msg['FILE_END_START_WILDCHARS_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['FILENAME'] = 'Filename';
 Blockly.Msg['FILENAME_TOOLTIP'] = 'Represents a filename';
 Blockly.Msg['FILENAME_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['FILENAME_VARIABLE'] = 'Name of current input file';
+Blockly.Msg['FILENAME_VARIABLE_TOOLTIP'] =
+  'Represents the name of the current input file';
+Blockly.Msg['FILENAME_VARIABLE_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['FILES_CREATE_WITH'] = 'Input files';
 Blockly.Msg['FILES_CREATE_WITH_TOOLTIP'] = 'Add files';
 Blockly.Msg['FILES_CREATE_EMPTY_TITLE'] = 'Create list of files';
@@ -162,6 +214,10 @@ Blockly.Msg['HEAD_METRIC'] = 'Metric %1';
 Blockly.Msg['HEAD_NUMBER_OF'] = 'Number of %1';
 Blockly.Msg['HEAD_TOOLTIP'] = 'Output the first part of files';
 Blockly.Msg['HEAD_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['LENGTH'] = 'Length of %1';
+Blockly.Msg['LENGTH_TOOLTIP'] = 'Return the length of a string';
+Blockly.Msg['LENGTH_HELPURL'] =
+  'https://en.wikipedia.org/wiki/String_(computer_science)';
 Blockly.Msg['LS_MESSAGE'] = 'List files & directories';
 Blockly.Msg['LS_SHOW_DETAILS'] = 'Output details %1';
 Blockly.Msg['LS_SUBDIRECTORIES'] = 'Search in all subdirectories %1';
@@ -177,6 +233,9 @@ Blockly.Msg['LN_SOURCE'] = 'Source';
 Blockly.Msg['LN_TARGET'] = 'Target';
 Blockly.Msg['LN_TOOLTIP'] =
   'Creates file links. Supports symbolic links, force overwrite, and verbose output.';
+Blockly.Msg['LOGARITHM'] = 'Logarithm of %1';
+Blockly.Msg['LOGARITHM_TOOLTIP'] = 'Return the logarithm of a number';
+Blockly.Msg['LOGARITHM_HELPURL'] = 'https://en.wikipedia.org/wiki/Logarithm';
 Blockly.Msg['MKDIR_MESSAGE'] = 'Create directory';
 Blockly.Msg['MKDIR_CREATE_SUBDIRECTORIES'] =
   'Create also parent directories %1';
@@ -236,7 +295,7 @@ Blockly.Msg['CONTROLS_FLOW_STATEMENTS_WARNING'] =
   'Warning: This block may only be used within a loop.';
 Blockly.Msg['CONTROLS_FOREACH_HELPURL'] =
   'https://github.com/google/blockly/wiki/Loops#for-each';
-Blockly.Msg['CONTROLS_FOREACH_TITLE'] = 'for each item %1 in list %2';
+Blockly.Msg['CONTROLS_FOREACH_TITLE'] = 'for each item %1 in array %2';
 Blockly.Msg['CONTROLS_FOREACH_TOOLTIP'] =
   "For each item in a list, set the variable '%1' to the item, and then do some statements.";
 Blockly.Msg['CONTROLS_FOR_HELPURL'] =
@@ -276,6 +335,13 @@ Blockly.Msg['CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL'] =
 Blockly.Msg['CONTROLS_WHILEUNTIL_TOOLTIP_WHILE'] =
   'While a value is true, then do some statements.';
 Blockly.Msg['DELETE_ALL_BLOCKS'] = 'Delete all %1 blocks?';
+Blockly.Msg['DELETE_ARRAY'] = 'Delete array %1';
+Blockly.Msg['DELETE_ARRAY_TOOLTIP'] = 'Delete the array';
+Blockly.Msg['DELETE_ARRAY_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['DELETE_ARRAY_ELEMENT'] = 'Delete in array %1';
+Blockly.Msg['DELETE_ARRAY_ELEMENT_INDEX'] = 'element in index %1';
+Blockly.Msg['DELETE_LIST_ELEMENT_TOOLTIP'] = 'Delete the list element';
+Blockly.Msg['DELETE_LIST_ELEMENT_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['DELETE_BLOCK'] = 'Delete Block';
 Blockly.Msg['DELETE_VARIABLE'] = "Delete the '%1' variable";
 Blockly.Msg['DELETE_VARIABLE_CONFIRMATION'] =
@@ -287,10 +353,18 @@ Blockly.Msg['DISABLE_BLOCK'] = 'Disable Block';
 Blockly.Msg['DUPLICATE_BLOCK'] = 'Duplicate';
 Blockly.Msg['DUPLICATE_COMMENT'] = 'Duplicate Comment';
 Blockly.Msg['ENABLE_BLOCK'] = 'Enable Block';
+Blockly.Msg['EXIT'] = 'Exit program %1';
+Blockly.Msg['EXIT_TOOLTIP'] = 'Exit the program';
+Blockly.Msg['EXIT_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['EXPAND_ALL'] = 'Expand Blocks';
 Blockly.Msg['EXPAND_BLOCK'] = 'Expand Block';
 Blockly.Msg['EXTERNAL_INPUTS'] = 'External Inputs';
 Blockly.Msg['HELP'] = 'Help';
+Blockly.Msg['INDEX'] = 'Index of string %1 in string %2';
+Blockly.Msg['INDEX_TOOLTIP'] =
+  'Return the index of the first occurrence of the first string in the second string';
+Blockly.Msg['INDEX_HELPURL'] =
+  'https://en.wikipedia.org/wiki/String_(computer_science)';
 Blockly.Msg['INLINE_INPUTS'] = 'Inline Inputs';
 Blockly.Msg['LISTS'] = 'Lists';
 Blockly.Msg['LISTS_CREATE_EMPTY_HELPURL'] =
@@ -460,6 +534,11 @@ Blockly.Msg['LOGIC_TERNARY_IF_FALSE'] = 'if false';
 Blockly.Msg['LOGIC_TERNARY_IF_TRUE'] = 'if true';
 Blockly.Msg['LOGIC_TERNARY_TOOLTIP'] =
   "Check the condition in 'test'. If the condition is true, returns the 'if true' value; otherwise returns the 'if false' value.";
+Blockly.Msg['MATCH'] = 'Match pattern %1 in string %2';
+Blockly.Msg['MATCH_TOOLTIP'] =
+  'Return the position in s where the regular expression r occurs, or 0 if it does not.';
+Blockly.Msg['MATCH_HELPURL'] =
+  'https://en.wikipedia.org/wiki/Regular_expression';
 Blockly.Msg['MATH_ADDITION_SYMBOL'] = '+';
 Blockly.Msg['MATH_ARITHMETIC_HELPURL'] =
   'https://en.wikipedia.org/wiki/Arithmetic';
@@ -588,7 +667,17 @@ Blockly.Msg['NEW_STRING_VARIABLE'] = 'Create string variable...';
 Blockly.Msg['NEW_VARIABLE'] = 'Create variable...';
 Blockly.Msg['NEW_VARIABLE_TITLE'] = 'New variable name:';
 Blockly.Msg['NEW_VARIABLE_TYPE_TITLE'] = 'New variable type:';
+Blockly.Msg['NEXT'] = 'Skip remaining patterns on this input line';
+Blockly.Msg['NEXT_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['NEXT_TOOLTIP'] = 'Skip remaining patterns on this input line';
+Blockly.Msg['NEXT_FILE'] = 'Skip the rest of this file and open next';
+Blockly.Msg['NEXT_FILE_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['NEXT_FILE_TOOLTIP'] = 'Skip the rest of this file and open next';
 Blockly.Msg['ORDINAL_NUMBER_SUFFIX'] = '';
+Blockly.Msg['OUTPUT_FIELD_SEPARATOR_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['OUTPUT_FIELD_SEPARATOR'] = 'Set output field separator to %1';
+Blockly.Msg['OUTPUT_FIELD_SEPARATOR_TOOLTIP'] =
+  'Set the output field separator';
 Blockly.Msg['PRINT_CREATE_WITH'] = 'multiple prints';
 Blockly.Msg['PRINT_CREATE_WITH_TOOLTIP'] = 'Add print option';
 Blockly.Msg['PRINT_CREATE_EMPTY_TITLE'] = 'Create print option';
@@ -645,6 +734,33 @@ Blockly.Msg['RM_REMOVE_DIRECTORIES'] = 'Remove directories %1';
 Blockly.Msg['RM_RECURSIVE'] = 'Remove recursively %1';
 Blockly.Msg['RM_TOOLTIP'] =
   'Removes files and directories based on specified options.';
+Blockly.Msg['RANDOM'] = 'Random number between [0,1)';
+Blockly.Msg['RANDOM_HELPURL'] =
+  'https://en.wikipedia.org/wiki/Random_number_generation';
+Blockly.Msg['RANDOM_TOOLTIP'] = 'Returns a random number between 0 and 1.';
+Blockly.Msg['RETURN'] = 'Return %1';
+Blockly.Msg['RETURN_HELPURL'] =
+  'https://en.wikipedia.org/wiki/Return_statement';
+Blockly.Msg['RETURN_TOOLTIP'] = 'Returns the value of the expression.';
+Blockly.Msg['RLENGTH'] = 'Length of string matched by match pattern';
+Blockly.Msg['RLENGTH_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['RLENGTH_TOOLTIP'] =
+  'Returns the length of the string matched by the most recent match pattern.';
+Blockly.Msg['RSTART'] = 'Start position of string matched by match pattern';
+Blockly.Msg['RSTART_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['RSTART_TOOLTIP'] =
+  'Returns the starting position of the string matched by the most recent match pattern.';
+Blockly.Msg['SETSEED'] = 'Set seed for random number generator to %1';
+Blockly.Msg['SET_SEED_HELPURL'] = 'https://en.wikipedia.org/wiki/Random_seed';
+Blockly.Msg['SET_SEED_TOOLTIP'] =
+  'Sets the seed for the random number generator.';
+Blockly.Msg['SINE'] = 'Sine of %1 in radians';
+Blockly.Msg['SINE_TOOLTIP'] = 'Returns the sine of the given angle in radians.';
+Blockly.Msg['SINE_HELPURL'] = 'https://en.wikipedia.org/wiki/Sine_and_cosine';
+Blockly.Msg['SQUARE_ROOT'] = 'Square root of %1';
+Blockly.Msg['SQUARE_ROOT_HELPURL'] =
+  'https://en.wikipedia.org/wiki/Square_root';
+Blockly.Msg['SQUARE_ROOT_TOOLTIP'] = 'Returns the square root of a number.';
 Blockly.Msg['TEXT_APPEND_HELPURL'] =
   'https://github.com/google/blockly/wiki/Text#text-modification';
 Blockly.Msg['TEXT_APPEND_TITLE'] = 'to %1 append text %2';
@@ -744,6 +860,16 @@ Blockly.Msg['TEXT_TRIM_OPERATOR_LEFT'] = 'trim spaces from left side of';
 Blockly.Msg['TEXT_TRIM_OPERATOR_RIGHT'] = 'trim spaces from right side of';
 Blockly.Msg['TEXT_TRIM_TOOLTIP'] =
   'Return a copy of the text with spaces removed from one or both ends.';
+Blockly.Msg['TO_INT'] = 'Truncate %1 to an integer';
+Blockly.Msg['TO_INT_HELPURL'] =
+  'https://en.wikipedia.org/wiki/Integer_(computer_science)';
+Blockly.Msg['TO_INT_TOOLTIP'] = 'Truncates a number to an integer.';
+Blockly.Msg['TO_LOWER'] = 'Lowercase %1';
+Blockly.Msg['TO_LOWER_HELPURL'] = 'https://en.wikipedia.org/wiki/Letter_case';
+Blockly.Msg['TO_LOWER_TOOLTIP'] = 'Returns a copy of the text in lowercase.';
+Blockly.Msg['TO_UPPER'] = 'Uppercase %1';
+Blockly.Msg['TO_UPPER_HELPURL'] = 'https://en.wikipedia.org/wiki/Letter_case';
+Blockly.Msg['TO_UPPER_TOOLTIP'] = 'Returns a copy of the text in uppercase.';
 Blockly.Msg['TODAY'] = 'Today';
 Blockly.Msg['UNDO'] = 'Undo';
 Blockly.Msg['UNNAMED_KEY'] = 'unnamed';

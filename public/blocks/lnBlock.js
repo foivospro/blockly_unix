@@ -4,6 +4,7 @@ var lnBlock = {
   message0: '%{BKY_LN_MESSAGE}',
   unix_description: [
     {
+      printName: true,
       command: 'ln',
       symbolic: '-s',
       force: '-f',
@@ -54,24 +55,9 @@ var lnBlock = {
   ],
   style: 'Filesystem Operations',
   tooltip: '%{BKY_LN_TOOLTIP}',
-  helpUrl: 'https://linux.die.net/man/1/ln',
-  generateCommand: function (block) {
-    let lnCommand = 'ln ';
-    const symbolic = block.getFieldValue('symbolic') === 'TRUE';
-    const force = block.getFieldValue('force') === 'TRUE';
-    const interactive = block.getFieldValue('interactive') === 'TRUE';
-    if (symbolic) lnCommand += ' -s ';
-    if (force) lnCommand += ' -f ';
-    if (interactive) lnCommand += ' -i ';
-    const sourceArgsBlock = block.getInputTargetBlock('SOURCE');
-    const targetArgsBlock = block.getInputTargetBlock('TARGET');
-    lnCommand +=
-      handleArgumentsBlocks(sourceArgsBlock) +
-      ' ' +
-      handleArgumentsBlocks(targetArgsBlock);
-    generatedCommand = lnCommand;
-    return generatedCommand;
-  }
+  helpUrl: 'https://linux.die.net/man/1/ln'
 };
 
 Blockly.defineBlocksWithJsonArray([lnBlock]);
+
+window.unixGenerator.forBlock['ln'] = window.unixGenerator.forBlock.generic;

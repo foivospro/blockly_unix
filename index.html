@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" translate="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,6 +14,7 @@
     <script src="https://unpkg.com/@blockly/workspace-backpack@latest"></script>
     <script src="https://unpkg.com/@blockly/plugin-cross-tab-copy-paste@latest"></script>
     <script src="msg/en.js"></script>
+    <script src="js/block.js"></script>
 
     <!-- <script src="https://unpkg.com/@blockly/block-plus-minus"></script> -->
 
@@ -86,6 +87,41 @@
     <script src="blocks/conditionActionBlock.js"></script>
     <script src="blocks/conditionBlock.js"></script>
     <script src="blocks/arrayCreateBlock.js"></script>
+    <script src="blocks/atan2Block.js"></script>
+    <script src="blocks/cosineBlock.js"></script>
+    <script src="blocks/sineBlock.js"></script>
+    <script src="blocks/exponentBlock.js"></script>
+    <script src="blocks/logarithmBlock.js"></script>
+    <script src="blocks/sqrtBlock.js"></script>
+    <script src="blocks/lengthBlock.js"></script>
+    <script src="blocks/randBlock.js"></script>
+    <script src="blocks/setSeedBlock.js"></script>
+    <script src="blocks/toIntBlock.js"></script>
+    <script src="blocks/indexBlock.js"></script>
+    <script src="blocks/matchBlock.js"></script>
+    <script src="blocks/toLowerBlock.js"></script>
+    <script src="blocks/toUpperBlock.js"></script>
+    <script src="blocks/returnBlock.js"></script>
+    <script src="blocks/nextBlock.js"></script>
+    <script src="blocks/nextFileBlock.js"></script>
+    <script src="blocks/exitBlock.js"></script>
+    <script src="blocks/deleteArrayBlock.js"></script>
+    <script src="blocks/deleteArrayElementBlock.js"></script>
+    <script src="blocks/beginBlock.js"></script>
+    <script src="blocks/endBlock.js"></script>
+    <script src="blocks/arrayGetIndexBlock.js"></script>
+    <script src="blocks/arraySetIndexBlock.js"></script>
+    <script src="blocks/filenameVariableBlock.js"></script>
+    <script src="blocks/ARGCBlock.js"></script>
+    <script src="blocks/ARGVBlock.js"></script>
+    <script src="blocks/ENVIRONBlock.js"></script>
+    <script src="blocks/FNRBlock.js"></script>
+    <script src="blocks/FSBlock.js"></script>
+    <script src="blocks/OFSBlock.js"></script>
+    <script src="blocks/RLENGTHBlock.js"></script>
+    <script src="blocks/RSTARTBlock.js"></script>
+    <script src="blocks/builtinBlocks.js"></script>
+    <script src="blocks/mutators.js"></script>
     <!-- END OF BLOCK DEFINITION -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -208,8 +244,8 @@
 
         <label for="languageDropdown"></label>
         <select id="languageMenu" class="icon-dropdown">
-          <option value="en">🇬🇧 English</option>
-          <option value="el">🇬🇷 Ελληνικά</option>
+          <option value="en">English</option>
+          <option value="el">Ελληνικά</option>
         </select>
 
         <label for="savedWorkspaces"></label>
@@ -268,6 +304,11 @@
           colourSecondary: '#ff0000',
           colourTertiary: '#C5EAFF'
         },
+        'String Functions': {
+          colourPrimary: '#9E9E10', // Primary color: yellowish-grey
+          colourSecondary: '#B0B030', // A lighter yellowish-grey for contrast
+          colourTertiary: '#D0D080' // A soft yellowish-grey for accents
+        },
         'Text output': {
           colourPrimary: '#FF5733',
           colourSecondary: '#ff0000',
@@ -293,7 +334,12 @@
           colourSecondary: '#ff0000',
           colourTertiary: '#C5EAFF'
         },
-        Tables: {
+        'Special Variables': {
+          colourPrimary: '295',
+          colourSecondary: '295',
+          colourTertiary: '295'
+        },
+        Arrays: {
           colourPrimary: '#260',
           colourSecondary: '#ff0000',
           colourTertiary: '#C5EAFF'
@@ -380,7 +426,7 @@
               { kind: 'block', type: 'rm' },
               { kind: 'block', type: 'ls' },
               { kind: 'block', type: 'cd' },
-              { kind: 'block', type: 'find' },
+              //{ kind: 'block', type: 'find' },
               { kind: 'block', type: 'mkdir' }
             ]
           },
@@ -455,14 +501,17 @@
             name: [MSG.FIELD_PROCESSING],
             colour: '#3B7C09',
             contents: [
-              //{ kind: 'block', type: 'beginEnd' },
+              { kind: 'block', type: 'begin' },
+              { kind: 'block', type: 'end' },
               { kind: 'block', type: 'awk' },
               { kind: 'block', type: 'conditionAction' },
               { kind: 'block', type: 'column' },
-              { kind: 'block', type: 'NR' },
-              { kind: 'block', type: 'NF' },
               // { kind: 'block', type: 'xargs' },
               { kind: 'block', type: 'condition' },
+              { kind: 'block', type: 'return' },
+              { kind: 'block', type: 'next' },
+              { kind: 'block', type: 'nextFile' },
+              { kind: 'block', type: 'exit' },
               {
                 kind: 'category',
                 name: [MSG.TEXT_OUTPUT],
@@ -488,6 +537,18 @@
               },
               {
                 kind: 'category',
+                name: [MSG.STRING_FUNCTIONS],
+                colour: '#9E9E10',
+                contents: [
+                  { kind: 'block', type: 'length' },
+                  { kind: 'block', type: 'index' },
+                  { kind: 'block', type: 'match' },
+                  { kind: 'block', type: 'toLower' },
+                  { kind: 'block', type: 'toUpper' }
+                ]
+              },
+              {
+                kind: 'category',
                 name: [MSG.LOGIC],
                 colour: '210',
                 contents: [{ kind: 'block', type: 'controls_if' }]
@@ -499,7 +560,8 @@
                 contents: [
                   { kind: 'block', type: 'controls_whileUntil' },
                   { kind: 'block', type: 'controls_forEach' },
-                  { kind: 'block', type: 'controls_for' }
+                  { kind: 'block', type: 'controls_for' },
+                  { kind: 'block', type: 'controls_flow_statements' }
                 ]
               },
               {
@@ -529,7 +591,16 @@
                         }
                       }
                     }
-                  }
+                  },
+                  { kind: 'block', type: 'atan2' },
+                  { kind: 'block', type: 'cosine' },
+                  { kind: 'block', type: 'sine' },
+                  { kind: 'block', type: 'exponent' },
+                  { kind: 'block', type: 'logarithm' },
+                  { kind: 'block', type: 'sqrt' },
+                  { kind: 'block', type: 'random' },
+                  { kind: 'block', type: 'setSeed' },
+                  { kind: 'block', type: 'int' }
                 ]
               },
               {
@@ -540,21 +611,44 @@
               },
               {
                 kind: 'category',
-                name: 'Lists', // Reference to the translated message for "Lists"
+                name: [MSG.SPECIAL_VARIABLES],
+                colour: '295',
+                contents: [
+                  { kind: 'block', type: 'NR' },
+                  { kind: 'block', type: 'NF' },
+                  { kind: 'block', type: 'FILENAME' },
+                  { kind: 'block', type: 'ARGC' },
+                  { kind: 'block', type: 'ARGV' },
+                  { kind: 'block', type: 'ENVIRON' },
+                  { kind: 'block', type: 'FNR' },
+                  { kind: 'block', type: 'FS' },
+                  { kind: 'block', type: 'OFS' },
+                  { kind: 'block', type: 'RLENGTH' },
+                  { kind: 'block', type: 'RSTART' }
+                ]
+              },
+              {
+                kind: 'category',
+                name: 'Arrays', // Reference to the translated message for "Lists"
                 colour: '260',
                 contents: [
                   {
                     kind: 'block',
-                    type: 'lists_create_with' // Block for creating a list with items
+                    type: 'arrayGetIndex' // Block for getting an item from a list
                   },
                   {
                     kind: 'block',
-                    type: 'lists_getIndex' // Block for getting an item from a list
+                    type: 'arraySetIndex' // Block for setting an item in a list
                   },
                   {
                     kind: 'block',
-                    type: 'lists_setIndex' // Block for setting an item in a list
+                    type: 'deleteArray' // Block for deleting a list
+                  },
+                  {
+                    kind: 'block',
+                    type: 'deleteArrayElement' // Block for deleting an element from a list
                   }
+
                   //{
                   //  kind: 'block',
                   //  type: 'lists_getSublist' // Block for getting a sublist from a list
@@ -656,6 +750,5 @@
       ).weight = 3;
     </script>
     <script src="js/app.js"></script>
-    <script src="js/block.js"></script>
   </body>
 </html>

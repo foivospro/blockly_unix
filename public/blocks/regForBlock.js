@@ -4,8 +4,17 @@ var regForBlock = {
   message0: '%{BKY_REGFOR}',
   unix_description: [
     {
-      FROM: '{n',
-      TO: ',m}'
+      printName: false,
+      FROM: (fieldValues) => {
+        return fieldValues['INFINITE'] === 'TRUE'
+          ? '{' + fieldValues['FROM'] + ',}'
+          : '{' + fieldValues['FROM'] + ',';
+      },
+      TO: (fieldValues) => {
+        return fieldValues['INFINITE'] === 'TRUE'
+          ? ''
+          : fieldValues['TO'] + '}';
+      }
     }
   ],
   args0: [
@@ -34,3 +43,4 @@ var regForBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([regForBlock]);
+window.unixGenerator.forBlock['regFor'] = window.unixGenerator.forBlock.concat;

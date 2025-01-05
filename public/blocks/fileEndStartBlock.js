@@ -3,8 +3,9 @@ var fileEndStartBlock = {
   category: 'Function inputs',
   unix_description: [
     {
-      starts: 'str*',
-      ends: '*str'
+      printName: false,
+      FILENAME: ({ metric_type, FILENAME }) =>
+        metric_type === 'starts' ? `${FILENAME}*` : `*${FILENAME}`
     }
   ],
   message0:
@@ -31,3 +32,6 @@ var fileEndStartBlock = {
   helpUrl: '%{BKY_FILE_END_START_WILDCHARS_HELPURL} ' // URL to further information or documentation.
 };
 Blockly.defineBlocksWithJsonArray([fileEndStartBlock]);
+
+window.unixGenerator.forBlock['fileEndStart'] =
+  window.unixGenerator.forBlock.concat;

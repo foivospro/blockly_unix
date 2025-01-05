@@ -3,6 +3,7 @@ var catBlock = {
   category: 'Text Processing',
   unix_description: [
     {
+      printName: true,
       lineNumbers: '-n',
       nonBlank_lineNumbers: '-b',
       squeezeEmptyLines: '-s',
@@ -46,3 +47,5 @@ var catBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([catBlock]);
+
+window.unixGenerator.forBlock['cat'] = window.unixGenerator.forBlock.generic;

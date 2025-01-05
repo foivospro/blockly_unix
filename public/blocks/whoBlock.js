@@ -4,6 +4,7 @@ var whoBlock = {
   category: 'System Monitoring',
   unix_description: [
     {
+      printName: true,
       desc: 'Display who is logged in and related information',
       show_heading: '-H',
       show_all: '-a',
@@ -53,8 +54,6 @@ var whoBlock = {
     }
   ],
 
-  extensions: ['integer_validation'],
-
   style: 'System Monitoring',
   nextStatement: 'Action',
   tooltip: '%{BKY_WHO_TOOLTIP}',
@@ -62,3 +61,4 @@ var whoBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([whoBlock]);
+window.unixGenerator.forBlock['who'] = window.unixGenerator.forBlock.generic;

@@ -3,10 +3,17 @@ var pingBlock = {
 
   unix_description: [
     {
+      printName: true,
       address: 'str',
-      count: '-c ',
-      interval: '-i ',
-      timeout: '-W ',
+      count: (fieldValues) => {
+        return '-c ' + fieldValues['count'];
+      },
+      interval: (fieldValues) => {
+        return '-i ' + fieldValues['interval'];
+      },
+      timeout: (fieldValues) => {
+        return '-W ' + fieldValues['timeout'];
+      },
       host: 'str '
     }
   ],
@@ -24,7 +31,7 @@ var pingBlock = {
     {
       type: 'field_number',
       name: 'count',
-      value: 4
+      value: 1
     }
   ],
 
@@ -42,7 +49,7 @@ var pingBlock = {
     {
       type: 'field_number',
       name: 'timeout',
-      value: 5
+      value: 1
     }
   ],
 
@@ -53,3 +60,4 @@ var pingBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([pingBlock]);
+window.unixGenerator.forBlock['ping'] = window.unixGenerator.forBlock.generic;

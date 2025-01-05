@@ -1,6 +1,7 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
+const crypto = require('crypto');
 const fs = require('fs');
 // Importing libraries installed with npm
 const { exec } = require('child_process');
@@ -84,7 +85,7 @@ app.post('/github-webhook', express.json(), (req, res) => {
     const exec = require('child_process').exec;
     exec(
       'git pull origin main',
-      { cwd: '/path/to/your/app' },
+      { cwd: '/home/foivpro/blockly_unix' },
       (err, stdout, stderr) => {
         if (err) {
           console.error(`Error pulling changes: ${stderr}`);
@@ -520,6 +521,6 @@ app.get(
   }
 );
 
-app.listen(8443, () => {
-  console.log('Server is running on https://ublocks.balab.aueb.gr');
+app.listen(3000, 'localhost', () => {
+  console.log('Server is running on http://localhost:3000');
 });

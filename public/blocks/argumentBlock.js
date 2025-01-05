@@ -1,5 +1,13 @@
 var argumentBlock = {
   type: 'argument',
+  unix_description: [
+    {
+      printName: false,
+      ARGUMENT: (fieldValues) => {
+        return fieldValues['ARGUMENT'];
+      }
+    }
+  ],
   category: 'Function inputs',
   message0: '%{BKY_ARGUMENT} %1',
   args0: [
@@ -16,3 +24,5 @@ var argumentBlock = {
   helpUrl: '%{BKY_ARGUMENT_HELPURL}' // URL για περαιτέρω πληροφορίες ή τεκμηρίωση.
 };
 Blockly.defineBlocksWithJsonArray([argumentBlock]);
+window.unixGenerator.forBlock['argument'] =
+  window.unixGenerator.forBlock.concat;

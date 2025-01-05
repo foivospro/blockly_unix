@@ -4,6 +4,7 @@ var lsBlock = {
   category: 'Filesystem Operations',
   unix_description: [
     {
+      printName: true,
       detailed: '-l',
       recursively: '-R',
       hidden: '-a',
@@ -50,3 +51,4 @@ var lsBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([lsBlock]);
+window.unixGenerator.forBlock['ls'] = window.unixGenerator.forBlock.generic;

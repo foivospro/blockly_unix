@@ -4,6 +4,7 @@ var mvBlock = {
   message0: '%{BKY_MV_MESSAGE}', // Correctly references %1 (SOURCE) and %2 (DEST)
   unix_description: [
     {
+      printName: true,
       not_prompt_confirmation: '-f',
       prompt_confirmation: '-i',
       not_overwrite: '-n'
@@ -47,29 +48,9 @@ var mvBlock = {
     }
   ],
   style: 'Filesystem Operations',
-  tooltip: 'Μετακινεί ή μετονομάζει αρχεία.',
-  helpUrl: 'https://linux.die.net/man/1/mv',
-  generateCommand: function (block) {
-    let mvCommand = 'mv '; // Start the mv command
-    // Handle options
-    const notPromptConfirmation =
-      block.getFieldValue('not_prompt_confirmation') === 'TRUE';
-    const promptConfirmation =
-      block.getFieldValue('prompt_confirmation') === 'TRUE';
-    const notOverwrite = block.getFieldValue('not_overwrite') === 'TRUE';
-    if (notPromptConfirmation) mvCommand += '-f '; // Add -f for no prompt
-    if (promptConfirmation) mvCommand += '-i '; // Add -i for prompt
-    if (notOverwrite) mvCommand += '-n '; // Add -n for no overwrite
-    // Get source and destination blocks
-    const sourceArgsBlock = block.getInputTargetBlock('SOURCE');
-    const targetArgsBlock = block.getInputTargetBlock('DEST');
-    // Append arguments (source and destination paths)
-    mvCommand +=
-      handleArgumentsBlocks(sourceArgsBlock) +
-      ' ' +
-      handleArgumentsBlocks(targetArgsBlock);
-    return mvCommand; // Return the generated mv command
-  }
+  tooltip: '',
+  helpUrl: 'https://linux.die.net/man/1/mv'
 };
 
 Blockly.defineBlocksWithJsonArray([mvBlock]);
+window.unixGenerator.forBlock['mv'] = window.unixGenerator.forBlock.generic;

@@ -4,10 +4,16 @@ var sshBlock = {
   category: 'Network Operations',
   unix_description: [
     {
-      KEY: '-i str',
-      PORT: '-p str',
-      USER: 'str@',
-      HOST: 'str'
+      printName: true,
+      KEY: (fieldValues) => {
+        return '-i ' + fieldValues['KEY'];
+      },
+      PORT: (fieldValues) => {
+        return '-p ' + fieldValues['PORT'];
+      },
+      USER: (fieldValues) => {
+        return fieldValues['USER'] + '@' + fieldValues['HOST'];
+      }
     }
   ],
   message1: '%{BKY_SSH_KEY}%1',
@@ -45,9 +51,9 @@ var sshBlock = {
   style: 'Network Operations',
   previousStatement: 'Action',
   nextStatement: 'Action',
-  tooltip:
-    'Ανοίγει ασφαλείς συνδέσεις δικτύου με δυνατότητα καθορισμού private key.',
+  tooltip: '',
   helpUrl: 'https://linux.die.net/man/1/ssh'
 };
 
 Blockly.defineBlocksWithJsonArray([sshBlock]);
+window.unixGenerator.forBlock['ssh'] = window.unixGenerator.forBlock.generic;

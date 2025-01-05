@@ -9,6 +9,7 @@ window.MSG = {
   SYSTEM_MONITORING: 'Παρακολούθηση Συστήματος',
   NETWORK_OPERATIONS: 'Λειτουργίες Δικτύου',
   TEXT_OUTPUT: 'Έξοδος Κειμένου',
+  STRING_FUNCTIONS: 'Συναρτήσεις Κειμένου',
   LOGIC: 'Λογική',
   LOOPS: 'Βρόχοι',
   MATH: 'Μαθηματικά',
@@ -52,15 +53,38 @@ Blockly.Msg['APPEND'] = 'Προσθήκη αποτελέσματος στο';
 Blockly.Msg['APPEND_TOOLTIP'] =
   'Προσθέτει το αποτέλεσμα σε ένα ήδη υπάρχον αρχείο';
 Blockly.Msg['APPEND_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['ARGUMENT_COUNT'] = 'Αριθμός ορισμάτων';
+Blockly.Msg['ARGUMENT_COUNT_TOOLTIP'] = 'Επιστρέφει τον αριθμό των ορισμάτων';
+Blockly.Msg['ARGUMENT_COUNT_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['ARGUMENT_ARRAY'] = 'Όρισμα στην θέση %1';
 Blockly.Msg['ARRAY_CREATE_WITH'] = 'Δημιουργία πίνακα με';
 Blockly.Msg['ARRAY_CREATE_WITH_TOOLTIP'] = 'Προσθήκη στοιχείου στον πίνακα';
 Blockly.Msg['ARRAY_CREATE_EMPTY_TITLE'] = 'Δημιουργία λίστας στοιχείων';
 Blockly.Msg['ARRAY_CREATE_WITH_HELPURL'] = '';
+Blockly.Msg['ARRAY_GET_INDEX'] = 'Στον πίνακα %1';
+Blockly.Msg['ARRAY_GET_INDEX_INDEX'] = 'το στοιχείο στη θέση %1';
+Blockly.Msg['ARRAY_GET_INDEX_TOOLTIP'] =
+  'Επιστρέφει το στοιχείο στην θέση του πίνακα';
+Blockly.Msg['ARRAY_GET_INDEX_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['ARRAY_SET_INDEX'] = 'Στον πίνακα %1';
+Blockly.Msg['ARRAY_SET_INDEX_INDEX'] = 'όρισε στην θέση %1';
+Blockly.Msg['ARRAY_SET_INDEX_VALUE'] = 'σε %1';
+Blockly.Msg['ARRAY_SET_INDEX_TOOLTIP'] =
+  'Ορίζει το στοιχείο στην θέση του πίνακα';
+Blockly.Msg['ARRAY_SET_INDEX_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['ATAN2'] = 'Εφαπτομένη τόξου του %1 / %2 σε ακτίνια';
+Blockly.Msg['ATAN2_TOOLTIP'] =
+  'Επιστρέφει την εφαπτομένη του τόξου των δύο αριθμών';
+Blockly.Msg['ATAN2_HELPURL'] = 'https://en.wikipedia.org/wiki/Atan2';
 Blockly.Msg['AWK_TEXT_DATA_PROCESSING'] = 'Επεξεργασία δεδομένων κειμένου';
 Blockly.Msg['AWK_INPUT_DELIMITER'] = 'Διαχωριστής εισόδου';
 Blockly.Msg['AWK_CONDITION_ACTION'] = 'Τοποθετήστε συνθήκη και ενέργεια';
 Blockly.Msg['AWK_TOOLTIP'] = 'Γλώσσα σάρωσης και επεξεργασίας με βάση μοτίβα';
 Blockly.Msg['AWK_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['BEGIN'] = 'Αρχή επεξεργασίας';
+Blockly.Msg['BEGIN_ACTION'] = 'Ενέργεια';
+Blockly.Msg['BEGIN_TOOLTIP'] = 'Εκτέλεση μία φορά πριν την επεξεργασία';
+Blockly.Msg['BEGIN_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['BEGIN_END'] =
   'Εκτέλεση μία φορά\n πριν/μετά την επεξεργασία δεδομένων';
 Blockly.Msg['BEGIN_END_TOOLTIP'] =
@@ -87,6 +111,9 @@ Blockly.Msg['CONDITION_ACTION_COND'] = 'Συνθήκη';
 Blockly.Msg['CONDITION_ACTION_ACT'] = 'Ενέργεια';
 Blockly.Msg['CONDITION_ACTION_TOOLTIP'] = 'Δημιουργία συνθήκης και ενέργειας';
 Blockly.Msg['CONDITION_ACTION_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['COSINE'] = 'Συνημίτονο του %1 σε ακτίνια';
+Blockly.Msg['COSINE_TOOLTIP'] = 'Επιστρέφει το συνημίτονο του αριθμού';
+Blockly.Msg['COSINE_HELPURL'] = 'https://en.wikipedia.org/wiki/Sine_and_cosine';
 Blockly.Msg['CUT'] = 'Αποκοπή σε αρχείο ή συμβολοσειρά';
 Blockly.Msg['CUT_DELIMITER'] = 'Διαχωριστικό';
 Blockly.Msg['CUT_DEFINE_COLUMNS'] = 'Ορισμός στηλών';
@@ -98,6 +125,25 @@ Blockly.Msg['CUT_END'] = 'Τέλος : ';
 Blockly.Msg['CUT_TOOLTIP'] =
   'Αποκοπή σε ένα αρχείο ή μια συμβολοσειρά.\nΓια συνεχόμενες αποκοπές χρησιμοποιήστε κόμμα(,) , για αποκοπές εύρους χρησιμοποιήστε παύλα (-)';
 Blockly.Msg['CUT_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['END'] = 'Τέλος επεξεργασίας';
+Blockly.Msg['END_ACTION'] = 'Ενέργεια';
+Blockly.Msg['END_TOOLTIP'] = 'Εκτέλεση μία φορά μετά την επεξεργασία';
+Blockly.Msg['END_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['ENVIRONMENT_VARIABLE'] = 'Μεταβλητή περιβάλλοντος';
+Blockly.Msg['ENVIRONMENT_VARIABLE_TOOLTIP'] =
+  'Επιστρέφει την τιμή μιας μεταβλητής περιβάλλοντος';
+Blockly.Msg['ENVIRONMENT_VARIABLE_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['EXPONENT'] = 'Εκθετικό του %1';
+Blockly.Msg['EXPONENT_TOOLTIP'] = 'Επιστρέφει το εκθετικό του αριθμού';
+Blockly.Msg['EXPONENT_HELPURL'] =
+  'https://en.wikipedia.org/wiki/Exponentiation';
+Blockly.Msg['FNR'] = 'Αριθμός εγγραφής αρχείου στο τρέχον αρχείο';
+Blockly.Msg['FNR_TOOLTIP'] =
+  'Επιστρέφει τον αριθμό της τρέχουσας εγγραφής εντός του αρχείου';
+Blockly.Msg['FNR_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['FIELD_SEPARATOR'] = 'Ορισμός διαχωριστικού πεδίου σε %1';
+Blockly.Msg['FIELD_SEPARATOR_TOOLTIP'] = 'Ορίζει το διαχωριστικό πεδίου';
+Blockly.Msg['FIELD_SEPARATOR_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['FIELD_NUMBER'] = 'Τρέχων πεδίο';
 Blockly.Msg['FIELD_NUMBER_TOOLTIP'] =
   'Αντιπροσωπεύει τον τρέχοντα αριθμό πεδίου (στήλη)';
@@ -110,6 +156,10 @@ Blockly.Msg['FILE_END_START_WILDCHARS_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['FILENAME'] = 'Όνομα αρχείου';
 Blockly.Msg['FILENAME_TOOLTIP'] = 'Αντιπροσωπεύει ένα όνομα αρχείου';
 Blockly.Msg['FILENAME_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['FILENAME_VARIABLE'] = 'Όνομα τρέχοντος αρχείου';
+Blockly.Msg['FILENAME_VARIABLE_TOOLTIP'] =
+  'Αντιπροσωπεύει το όνομα του τρέχοντος αρχείου';
+Blockly.Msg['FILENAME_VARIABLE_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['FILES_CREATE_WITH'] = 'Εισαγωγή ονόματος αρχείου';
 Blockly.Msg['FILES_CREATE_WITH_TOOLTIP'] = 'Προσθήκη αρχείων';
 Blockly.Msg['FILES_CREATE_EMPTY_TITLE'] = 'Δημιουργία λίστας αρχείων';
@@ -163,6 +213,10 @@ Blockly.Msg['HEAD_METRIC'] = 'Μετρική %1';
 Blockly.Msg['HEAD_NUMBER_OF'] = 'Αριθμός %1';
 Blockly.Msg['HEAD_TOOLTIP'] = 'Έξοδος του πρώτου μέρους των αρχείων';
 Blockly.Msg['HEAD_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['LENGTH'] = 'Μήκος του αλφαριθμητικού %1';
+Blockly.Msg['LENGTH_TOOLTIP'] = 'Επιστρέφει το μήκος του αλφαριθμητικού';
+Blockly.Msg['LENGTH_HELPURL'] =
+  'https://en.wikipedia.org/wiki/String_(computer_science)';
 Blockly.Msg['LS_MESSAGE'] = 'Λίστα αρχείων & καταλόγων';
 Blockly.Msg['LS_SHOW_DETAILS'] = 'Έξοδος λεπτομερειών %1';
 Blockly.Msg['LS_SUBDIRECTORIES'] = 'Αναζήτηση σε όλους τους υποκαταλόγους %1';
@@ -178,6 +232,9 @@ Blockly.Msg['LN_FORCE'] = 'Επιβολή αντικατάστασης %1';
 Blockly.Msg['LN_INTERACTIVE'] = 'Προτροπή πριν από την αντικατάσταση %1';
 Blockly.Msg['LN_TOOLTIP'] =
   'Δημιουργεί συνδέσμους αρχείων. Υποστηρίζει συμβολικούς συνδέσμους, αναγκαστική αντικατάσταση και λεπτομερή έξοδο.';
+Blockly.Msg['LOGARITHM'] = 'Λογάριθμος του %1';
+Blockly.Msg['LOGARITHM_TOOLTIP'] = 'Επιστρέφει το λογάριθμο του αριθμού';
+Blockly.Msg['LOGARITHM_HELPURL'] = 'https://en.wikipedia.org/wiki/Logarithm';
 Blockly.Msg['MKDIR_MESSAGE'] = 'Δημιουργία καταλόγου';
 Blockly.Msg['MKDIR_CREATE_SUBDIRECTORIES'] =
   'Δημιουργήστε επίσης καταλόγους γονέων %1';
@@ -191,7 +248,7 @@ Blockly.Msg['MV_PROMPT_CONFIRMATION'] =
 Blockly.Msg['MV_NOT_OVERWRITE'] = 'Μη αντικατάσταση αρχείου %1';
 Blockly.Msg['MV_SOURCE'] = 'Αρχείο προέλευσης';
 Blockly.Msg['MV_DEST'] = 'Τοποθεσία προορισμού';
-Blockly.Msg['RECORD_NUMBER'] = 'Τρέχων εγγραφή';
+Blockly.Msg['RECORD_NUMBER'] = 'Τρέχουσα εγγραφή';
 Blockly.Msg['RECORD_NUMBER_TOOLTIP'] =
   'Αντιπροσωπεύει τον τρέχοντα αριθμό εγγραφής (γραμμής)';
 Blockly.Msg['RECORD_NUMBER_HELPURL'] = 'https://www.google.com/';
@@ -280,6 +337,14 @@ Blockly.Msg['CONTROLS_WHILEUNTIL_TOOLTIP_UNTIL'] =
 Blockly.Msg['CONTROLS_WHILEUNTIL_TOOLTIP_WHILE'] =
   'Ενώ μια τιμή είναι αληθής, τότε κάντε κάποιες δηλώσεις.';
 Blockly.Msg['DELETE_ALL_BLOCKS'] = 'Διαγραφή όλων των %1 μπλοκ;';
+Blockly.Msg['DELETE_ARRAY'] = 'Διαγραφή πίνακα %1';
+Blockly.Msg['DELETE_ARRAY_TOOLTIP'] = 'Διαγράψτε τον επιλεγμένο πίνακα.';
+Blockly.Msg['DELETE_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['DELETE_ARRAY_ELEMENT'] = 'Διαγραφή στον πίνακα %1';
+Blockly.Msg['DELETE_ARRAY_ELEMENT_INDEX'] = 'στη θέση %1';
+Blockly.Msg['DELETE_ARRAY_ELEMENT_TOOLTIP'] =
+  'Διαγράψτε το επιλεγμένο στοιχείο από τον πίνακα.';
+Blockly.Msg['DELETE_ARRAY_ELEMENT_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['DELETE_BLOCK'] = 'Διαγραφή μπλοκ';
 Blockly.Msg['DELETE_VARIABLE'] = "Διαγραφή της μεταβλητής '%1'";
 Blockly.Msg['DELETE_VARIABLE_CONFIRMATION'] =
@@ -291,10 +356,18 @@ Blockly.Msg['DISABLE_BLOCK'] = 'Απενεργοποίηση μπλοκ';
 Blockly.Msg['DUPLICATE_BLOCK'] = 'Αντίγραφο';
 Blockly.Msg['DUPLICATE_COMMENT'] = 'Αντίγραφο σχολίου';
 Blockly.Msg['ENABLE_BLOCK'] = 'Ενεργοποίηση μπλοκ';
+Blockly.Msg['EXIT'] = 'Έξοδος από το πρόγραμμα %1';
+Blockly.Msg['EXIT_TOOLTIP'] = 'Έξοδος από το πρόγραμμα.';
+Blockly.Msg['EXIT_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['EXPAND_ALL'] = 'Επέκταση μπλοκ';
 Blockly.Msg['EXPAND_BLOCK'] = 'Επέκταση μπλοκ';
 Blockly.Msg['EXTERNAL_INPUTS'] = 'Εξωτερικές εισροές';
 Blockly.Msg['HELP'] = 'Βοήθεια';
+Blockly.Msg['INDEX'] = 'Θέση του αλφαριθμητικού %1 στο %2';
+Blockly.Msg['INDEX_TOOLTIP'] =
+  'Επιστρέφει τη θέση του αλφαριθμητικού στο αλφαριθμητικό.';
+Blockly.Msg['INDEX_HELPURL'] =
+  'https://en.wikipedia.org/wiki/String_(computer_science)';
 Blockly.Msg['INLINE_INPUTS'] = 'Εσωτερικές εισροές';
 Blockly.Msg['LISTS_CREATE_EMPTY_HELPURL'] =
   'https://github.com/google/blockly/wiki/Lists#create-empty-list';
@@ -461,6 +534,11 @@ Blockly.Msg['LOGIC_TERNARY_IF_FALSE'] = 'αν ψευδές';
 Blockly.Msg['LOGIC_TERNARY_IF_TRUE'] = 'αν αληθές';
 Blockly.Msg['LOGIC_TERNARY_TOOLTIP'] =
   "Ελέγχει την συνθήκη 'έλεγχος'. Αν η συνθήκη είναι αληθής, επιστρέφει την τιμή 'αν αληθές'; διαφορετικά επιστρέφει την τιμή 'αν ψευδές'.";
+Blockly.Msg['MATCH'] = 'Ταίριασμα μοτίβου %1 με το αλφαριθμητικό %2';
+Blockly.Msg['MATCH_HELPURL'] =
+  'https://en.wikipedia.org/wiki/Regular_expression';
+Blockly.Msg['MATCH_TOOLTIP'] =
+  'Ταίριασμα μοτίβου αλφαριθμητικού με το αλφαριθμητικό.';
 Blockly.Msg['MATH_ADDITION_SYMBOL'] = '+';
 Blockly.Msg['MATH_ARITHMETIC_HELPURL'] =
   'https://en.wikipedia.org/wiki/Arithmetic';
@@ -595,7 +673,21 @@ Blockly.Msg['NEW_STRING_VARIABLE'] = 'Δημιουργία μεταβλητής 
 Blockly.Msg['NEW_VARIABLE'] = 'Δημιουργία μεταβλητής...';
 Blockly.Msg['NEW_VARIABLE_TITLE'] = 'Νέο όνομα μεταβλητής:';
 Blockly.Msg['NEW_VARIABLE_TYPE_TITLE'] = 'Νέος τύπος μεταβλητής:';
+Blockly.Msg['NEXT'] = 'Παράλειψε τα υπόλοιπα μοτίβα της τρέχουσας γραμμής';
+Blockly.Msg['NEXT_TOOLTIP'] =
+  'Παράλειψη των υπόλοιπων μοτίβων της τρέχουσας γραμμής.';
+Blockly.Msg['NEXT_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['NEXT_FILE'] =
+  'Παράλειψη του υπόλοιπου αρχείου και μετάβαση στο επόμενο';
+Blockly.Msg['NEXT_FILE_TOOLTIP'] =
+  'Παράλειψη του υπόλοιπου αρχείου και μετάβαση στο επόμενο.';
+Blockly.Msg['NEXT_FILE_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['ORDINAL_NUMBER_SUFFIX'] = '';
+Blockly.Msg['OUTPUT_FIELD_SEPARATOR'] =
+  'Ορισμός διαχωριστικού πεδίων εξόδου σε %1';
+Blockly.Msg['OUTPUT_FIELD_SEPARATOR_TOOLTIP'] =
+  'Ορίζει το διαχωριστικό των πεδίων εξόδου';
+Blockly.Msg['OUTPUT_FIELD_SEPARATOR_HELPURL'] = 'https://www.google.com/';
 Blockly.Msg['PRINT_CREATE_WITH'] = 'Πολλαπλές εκτυπώσεις';
 Blockly.Msg['PRINT_CREATE_WITH_TOOLTIP'] = 'Προσθήκη επιλογής εκτύπωσης';
 Blockly.Msg['PRINT_CREATE_EMPTY_TITLE'] = 'Δημιουργία επιλογής εκτύπωσης';
@@ -647,6 +739,14 @@ Blockly.Msg['REMOVE_COMMENT'] = 'Αφαίρεση σχολίου';
 Blockly.Msg['RENAME_VARIABLE'] = 'Μετονομασία μεταβλητής...';
 Blockly.Msg['RENAME_VARIABLE_TITLE'] =
   "Μετονομασία όλων των μεταβλητών '%1' σε:";
+Blockly.Msg['RLENGTH'] = 'Μήκος αλφαρηθμιτικού που ταιριάζει με το μοτίβο';
+Blockly.Msg['RLENGTH_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['RLENGTH_TOOLTIP'] =
+  'Επιστρέφει το μήκος του αλφαριθμητικού που ταιριάζει με το μοτίβο.';
+Blockly.Msg['RSTART'] = 'Θέση αλφαριθμητικού που ταιριάζει με το μοτίβο';
+Blockly.Msg['RSTART_HELPURL'] = 'https://www.google.com/';
+Blockly.Msg['RSTART_TOOLTIP'] =
+  'Επιστρέφει τη θέση του αλφαριθμητικού που ταιριάζει με το μοτίβο.';
 Blockly.Msg['RM'] = 'Αφαίρεση αρχείου(ων)';
 Blockly.Msg['RM_FORCE'] = 'Επιβολή αφαίρεσης χωρίς επιβεβαίωση %1';
 Blockly.Msg['RM_REQUEST_CONFIRMATION'] =
@@ -655,7 +755,26 @@ Blockly.Msg['RM_REMOVE_DIRECTORIES'] = 'Αφαίρεση καταλόγων %1';
 Blockly.Msg['RM_RECURSIVE'] = 'Αφαίρεση αναδρομικά %1';
 Blockly.Msg['RM_TOOLTIP'] =
   'Αφαιρεί αρχεία και καταλόγους με βάση τις καθορισμένες επιλογές.';
-
+Blockly.Msg['RANDOM'] = 'Τυχαίος αριθμός μεταξύ [0,1)';
+Blockly.Msg['RANDOM_HELPURL'] =
+  'https://en.wikipedia.org/wiki/Random_number_generation';
+Blockly.Msg['RANDOM_TOOLTIP'] =
+  'Επιστρέφει τυχαίο αριθμό μεταξύ 0.0 (συμπεριλαμβανομένου) και 1.0 (εξαιρουμένου).';
+Blockly.Msg['RETURN'] = 'Επίστρεψε %1';
+Blockly.Msg['RETURN_HELPURL'] =
+  'https://en.wikipedia.org/wiki/Return_statement';
+Blockly.Msg['RETURN_TOOLTIP'] = 'Επιστρέφει την τιμή.';
+Blockly.Msg['SETSEED'] = 'Ορισμός σπόρου για τον τυχαίο αριθμό %1';
+Blockly.Msg['SET_SEED_HELPURL'] = 'https://en.wikipedia.org/wiki/Random_seed';
+Blockly.Msg['SET_SEED_TOOLTIP'] = 'Ορίζει τον σπόρο για τον τυχαίο αριθμό.';
+Blockly.Msg['SINE'] = 'Ημίτονο του %1 σε ακτίνια';
+Blockly.Msg['SINE_TOOLTIP'] = 'Επιστρέφει το ημίτονο μιας γωνίας σε ακτίνια.';
+Blockly.Msg['SINE_HELPURL'] = 'https://en.wikipedia.org/wiki/Sine_and_cosine';
+Blockly.Msg['SQUARE_ROOT'] = 'Τετραγωνική ρίζα του %1';
+Blockly.Msg['SQUARE_ROOT_HELPURL'] =
+  'https://en.wikipedia.org/wiki/Square_root';
+Blockly.Msg['SQUARE_ROOT_TOOLTIP'] =
+  'Επιστρέφει την τετραγωνική ρίζα ενός αριθμού.';
 Blockly.Msg['TEXT_APPEND_HELPURL'] =
   'https://github.com/google/blockly/wiki/Text#text-modification';
 Blockly.Msg['TEXT_APPEND_TITLE'] = 'στο %1 προσθήκη κειμένου %2';
@@ -763,6 +882,16 @@ Blockly.Msg['TEXT_TRIM_OPERATOR_RIGHT'] =
   'περικοπή κενών διαστημάτων από τη δεξιά πλευρά του';
 Blockly.Msg['TEXT_TRIM_TOOLTIP'] =
   'Επιστρέφει ένα αντίγραφο του κειμένου με τα κενά διαστήματα αφαιρεμένα από τη μία ή και από τις δύο άκρες.';
+Blockly.Msg['TO_INT'] = 'Ακέραιο μέρος του %1';
+Blockly.Msg['TO_INT_HELPURL'] =
+  'https://en.wikipedia.org/wiki/Integer_(computer_science)';
+Blockly.Msg['TO_INT_TOOLTIP'] = 'Επιστρέφει το ακέραιο μέρος του αριθμού.';
+Blockly.Msg['TO_LOWER'] = 'Μετατροπή του %1 σε πεζά';
+Blockly.Msg['TO_LOWER_HELPURL'] = 'https://en.wikipedia.org/wiki/Letter_case';
+Blockly.Msg['TO_LOWER_TOOLTIP'] = 'Επιστρέφει το κείμενο σε πεζά.';
+Blockly.Msg['TO_UPPER'] = 'Μετατροπή του %1 σε κεφαλαία';
+Blockly.Msg['TO_UPPER_HELPURL'] = 'https://en.wikipedia.org/wiki/Letter_case';
+Blockly.Msg['TO_UPPER_TOOLTIP'] = 'Επιστρέφει το κείμενο σε κεφαλαία.';
 Blockly.Msg['TODAY'] = 'Σήμερα';
 Blockly.Msg['UNDO'] = 'Αναίρεση';
 Blockly.Msg['UNNAMED_KEY'] = 'ανώνυμο';

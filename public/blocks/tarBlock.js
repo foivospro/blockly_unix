@@ -4,6 +4,7 @@ var tarBlock = {
   message0: 'tar %1 %2',
   unix_description: [
     {
+      printName: true,
       command: 'tar %OPTIONS %FILE'
     }
   ],

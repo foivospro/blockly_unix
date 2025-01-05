@@ -3,19 +3,29 @@ var grepBlock = {
   category: 'Text Processing',
   unix_description: [
     {
-      regex: '-E',
+      printName: true,
       case_ins: '-i',
       whole_word: '-w',
       count_lines: '-c',
       inverted: '-v',
       recursive: '-r',
       show_line_nums: '-n',
-      stop_after_num_matches: '-m ',
-      multiple_patterns: '-e',
-      regPattern: "-E 'patt'",
+      stop_after_num_matches: (fieldValues) => {
+        const value = fieldValues['stop_after_num_matches'];
+        return value ? '-m ' + value : ''; // Only include if value exists
+      },
+      regPattern: (childCode) => {
+        return childCode && childCode.trim() !== '' ? '-E ' + childCode : '';
+      },
       showFiles: '-H',
-      print_context_before_match: '-B ',
-      print_context_after_match: '-A '
+      print_context_before_match: (fieldValues) => {
+        const value = fieldValues['print_context_before_match'];
+        return value ? '-B ' + value : ''; // Only include if value exists
+      },
+      print_context_after_match: (fieldValues) => {
+        const value = fieldValues['print_context_after_match'];
+        return value ? '-A ' + value : ''; // Only include if value exists
+      }
     }
   ],
   message0: '%{BKY_GREP}',
@@ -103,8 +113,7 @@ var grepBlock = {
   args11: [
     {
       type: 'input_statement',
-      name: 'regPattern',
-      check: 'String'
+      name: 'regPattern'
     }
   ],
   message12: '%{BKY_GREP_PRINT_CONTEXT_BEFORE_MATCH}',
@@ -139,3 +148,4 @@ var grepBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([grepBlock]);
+window.unixGenerator.forBlock['grep'] = window.unixGenerator.forBlock.generic;
