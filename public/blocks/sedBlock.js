@@ -5,7 +5,7 @@ var sedBlock = {
     {
       printName: true,
       regPattern: (fieldValues, childCode) => {
-        const doGlobal = (fieldValues['globally'] === 'TRUE');
+        const doGlobal = fieldValues['globally'] === 'TRUE';
         if (doGlobal) {
           if (!childCode || childCode.trim() === '') {
             return fieldValues['regReplaceText'] + "/g'";
@@ -19,7 +19,7 @@ var sedBlock = {
             return `-E 's/${childCode}/${fieldValues['regReplaceText']}/'`;
           }
         }
-      },
+      }
     }
   ],
   message0: '%{BKY_SED}',

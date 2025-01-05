@@ -132,8 +132,8 @@ class UnixGenerator extends Blockly.Generator {
     }
 
     // Iterate through each input and field to build command parts
-    block.inputList.forEach(input => {
-      input.fieldRow.forEach(field => {
+    block.inputList.forEach((input) => {
+      input.fieldRow.forEach((field) => {
         if (field instanceof Blockly.FieldTextInput) {
           if (description.hasOwnProperty(field.name)) {
             const value = this.getFieldValue(field, description, fieldValues);
@@ -213,7 +213,13 @@ class UnixGenerator extends Blockly.Generator {
    * @param {Array<string>} commandParts - The array of command parts.
    * @param {Array<Object>} metadata - The metadata array.
    */
-  processConnectedBlocks(block, description, commandParts, metadata, fieldValues = {}) {
+  processConnectedBlocks(
+    block,
+    description,
+    commandParts,
+    metadata,
+    fieldValues = {}
+  ) {
     fieldValues = this.collectFieldValues(block);
     block.inputList.forEach((input) => {
       if (input.connection && input.connection.isConnected()) {
@@ -230,7 +236,10 @@ class UnixGenerator extends Blockly.Generator {
 
             if (typeof processingFn === 'function') {
               if (processingFn.length === 2) {
-                processedChildCode = processingFn(fieldValues, childCode.trim());
+                processedChildCode = processingFn(
+                  fieldValues,
+                  childCode.trim()
+                );
               } else {
                 processedChildCode = processingFn(childCode.trim());
               }

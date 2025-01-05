@@ -15,7 +15,7 @@ var grepBlock = {
         return value ? '-m ' + value : ''; // Only include if value exists
       },
       regPattern: (childCode) => {
-        return (childCode && childCode.trim() !== '') ? '-E ' + childCode : '';
+        return childCode && childCode.trim() !== '' ? '-E ' + childCode : '';
       },
       showFiles: '-H',
       print_context_before_match: (fieldValues) => {
@@ -113,7 +113,7 @@ var grepBlock = {
   args11: [
     {
       type: 'input_statement',
-      name: 'regPattern',
+      name: 'regPattern'
     }
   ],
   message12: '%{BKY_GREP_PRINT_CONTEXT_BEFORE_MATCH}',
