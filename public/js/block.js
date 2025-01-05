@@ -125,7 +125,7 @@ class UnixGenerator extends Blockly.Generator {
     const blockType = block.type;
 
     // Add the command name if it exists in the description
-    if (description.printName && description[blockType]) {
+    if (!description.printName && description[blockType]) {
       const commandName = description[blockType];
       commandParts.push(commandName);
       metadata.push({ value: commandName, type: blockType });

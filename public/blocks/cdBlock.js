@@ -3,7 +3,10 @@ var cdBlock = {
   category: 'Filesystem Operations',
   unix_description: [
     {
-      printName: true
+      printName: true,
+      directory: (fieldValues) => {
+        return fieldValues['directory'];
+      }
     }
   ],
   message0: '%{BKY_CD} %1',

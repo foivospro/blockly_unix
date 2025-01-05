@@ -5,7 +5,9 @@ var sleepBlock = {
   unix_description: [
     {
       printName: true,
-      time: 'sleep %TIME'
+      TIME: (fieldValues) => {
+        return fieldValues['TIME'];
+      }
     }
   ],
   args0: [

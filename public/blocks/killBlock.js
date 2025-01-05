@@ -4,7 +4,10 @@ var killBlock = {
   message0: '%{BKY_KILL} %1',
   unix_description: [
     {
-      printName: true
+      printName: true,
+      PID: (fieldValues) => {
+        return fieldValues['PID'];
+      }
     }
   ],
   args0: [

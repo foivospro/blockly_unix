@@ -5,15 +5,15 @@ var regPatternBlock = {
   unix_description: [
     {
       printName: false,
-      regPattern: (fieldValues) => {
-        return fieldValues['regPattern'];
+      Pattern: (fieldValues) => {
+        return fieldValues['Pattern'];
       }
     }
   ],
   args0: [
     {
       type: 'field_input',
-      name: 'regPattern',
+      name: 'Pattern',
       text: 'string' // default text for the input
     }
   ],
