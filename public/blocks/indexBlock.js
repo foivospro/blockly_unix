@@ -1,5 +1,16 @@
 var indexBlock = {
   type: 'index',
+  unix_description: [
+    {
+      printName: false,
+      X: (childCode) => {
+        return 'index(' + childCode + ',';
+      },
+      Y: (childCode) => {
+        return childCode + ')';
+      }
+    }
+  ],
   message0: '%{BKY_INDEX}',
   args0: [
     {
@@ -16,13 +27,8 @@ var indexBlock = {
   output: 'Number',
   style: 'String Functions',
   tooltip: '%{BKY_INDEX_TOOLTIP}',
-  helpUrl: '%{BKY_INDEX_HELPURL}',
-
-  generateCommand: function (block) {
-    var x = handleBlockByType(block.getInputTargetBlock('X'));
-    var y = handleBlockByType(block.getInputTargetBlock('Y'));
-    return `index(${x}, ${y})`;
-  }
+  helpUrl: '%{BKY_INDEX_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([indexBlock]);
+window.unixGenerator.forBlock['index'] = window.unixGenerator.forBlock.generic;

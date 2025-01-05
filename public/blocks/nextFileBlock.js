@@ -1,16 +1,19 @@
 var nextFileBlock = {
   type: 'nextFile',
+  unix_description: [
+    {
+      printName: false,
+      nextFile: 'nextfile;'
+    }
+  ],
   message0: '%{BKY_NEXT_FILE}',
-  args0: [],
   previousStatement: true,
   nextStatement: true,
   style: 'Field Processing',
   tooltip: '%{BKY_NEXT_FILE_TOOLTIP}',
-  helpUrl: '%{BKY_NEXT_FILE_HELPURL}',
-
-  generateCommand: function (block) {
-    return `nextfile;`;
-  }
+  helpUrl: '%{BKY_NEXT_FILE_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([nextFileBlock]);
+window.unixGenerator.forBlock['nextFile'] =
+  window.unixGenerator.forBlock.concat;

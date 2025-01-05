@@ -4,7 +4,10 @@ var echoBlock = {
   category: 'Text Processing',
   unix_description: [
     {
-      command: 'str'
+      printName: true,
+      echoInput: (fieldValues) => {
+        return fieldValues['echoInput'];
+      }
     }
   ],
   message0: '%{BKY_ECHO} %1',
@@ -22,3 +25,4 @@ var echoBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([echoBlock]);
+window.unixGenerator.forBlock['echo'] = window.unixGenerator.forBlock.generic;

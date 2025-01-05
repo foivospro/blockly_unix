@@ -1,5 +1,13 @@
 var cosineBlock = {
-  type: 'cos',
+  type: 'cosine',
+  unix_description: [
+    {
+      printName: false,
+      X: (fieldValues) => {
+        return 'cos(' + fieldValues['X'] + ')';
+      }
+    }
+  ],
   message0: '%{BKY_COSINE}',
   args0: [
     {
@@ -11,12 +19,8 @@ var cosineBlock = {
   output: 'Number',
   style: 'math_blocks',
   tooltip: '%{BKY_COSINE_TOOLTIP}',
-  helpUrl: '%{BKY_COSINE_HELPURL}',
-
-  generateCommand: function (block) {
-    var x = handleBlockByType(block.getInputTargetBlock('X'));
-    return `cos(${x})`;
-  }
+  helpUrl: '%{BKY_COSINE_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([cosineBlock]);
+window.unixGenerator.forBlock['cosine'] = window.unixGenerator.forBlock.generic;

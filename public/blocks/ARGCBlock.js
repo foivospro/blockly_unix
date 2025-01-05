@@ -1,8 +1,9 @@
-var argumentCountBlock = {
+var ARGCBlock = {
   type: 'ARGC',
   category: 'Field Processing',
   unix_description: [
     {
+      printName: true,
       ARGC: 'ARGC'
     }
   ],
@@ -16,11 +17,8 @@ var argumentCountBlock = {
   style: 'Special Variables',
   output: null,
   tooltip: '%{BKY_ARGUMENT_COUNT_TOOLTIP}',
-  helpUrl: '%{BKY_ARGUMENT_COUNT_HELPURL}', // URL to further information or documentation.
-  generateCommand: function (block) {
-    var awkCommand = 'ARGC';
-    return awkCommand;
-  }
+  helpUrl: '%{BKY_ARGUMENT_COUNT_HELPURL}' // URL to further information or documentation.
 };
 
-Blockly.defineBlocksWithJsonArray([argumentCountBlock]);
+Blockly.defineBlocksWithJsonArray([ARGCBlock]);
+window.unixGenerator.forBlock['ARGC'] = window.unixGenerator.forBlock.concat;

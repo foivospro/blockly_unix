@@ -4,6 +4,7 @@ var duBlock = {
   category: 'System Monitoring',
   unix_description: [
     {
+      printName: true,
       allFiles: '-a',
       apparentSize: '--apparent-size',
       humanReadable: '-h',

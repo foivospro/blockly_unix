@@ -3,10 +3,23 @@ var sedBlock = {
   category: 'Text processing',
   unix_description: [
     {
-      regPattern: "'s/patt ",
-      regReplaceText: "str/'",
-      regex: '-E',
-      globally: 'g'
+      printName: true,
+      regPattern: (fieldValues, childCode) => {
+        const doGlobal = fieldValues['globally'] === 'TRUE';
+        if (doGlobal) {
+          if (!childCode || childCode.trim() === '') {
+            return fieldValues['regReplaceText'] + "/g'";
+          } else {
+            return `-E 's/${childCode}/${fieldValues['regReplaceText']}/g'`;
+          }
+        } else {
+          if (!childCode || childCode.trim() === '') {
+            return fieldValues['regReplaceText'] + "/'";
+          } else {
+            return `-E 's/${childCode}/${fieldValues['regReplaceText']}/'`;
+          }
+        }
+      }
     }
   ],
   message0: '%{BKY_SED}',
@@ -47,41 +60,7 @@ var sedBlock = {
   previousStatement: 'Action',
   nextStatement: 'Action',
   tooltip: '%{BKY_SED_TOOLTIP}',
-  helpUrl: '%{BKY_SED_HELPURL}', // URL to further information or documentation.
-  generateCommand: function (block) {
-    let sedCommand;
-
-    // Handle pattern and replacement
-    let patternBlock = block.getInputTargetBlock('regPattern');
-    let replacementText = block.getFieldValue('regReplaceText');
-
-    if (!patternBlock) {
-      console.error('Pattern block is missing');
-      return '';
-    }
-
-    let pattern = patternBlock.getFieldValue('regPattern');
-    if (typeof replacementText === 'undefined' || replacementText === '') {
-      console.error('Replacement text is missing or empty');
-      return '';
-    }
-
-    // Escape slashes in pattern and replacement
-    pattern = pattern.replace(/\//g, '\\/');
-    replacementText = replacementText.replace(/\//g, '\\/');
-    const hasGlobalFlag = block.getFieldValue('globally') === 'TRUE';
-
-    sedCommand = `sed -E 's/${pattern}/${replacementText}/${hasGlobalFlag ? 'g' : ''}'`;
-
-    let previousBlock = block.getPreviousBlock();
-    if (previousBlock && previousBlock.type === 'filenamesCreate') {
-      const filenames = handleFilenamesBlocks(previousBlock);
-      sedCommand += ` ${filenames}`;
-    }
-
-    generatedCommand = sedCommand;
-    return generatedCommand;
-  }
+  helpUrl: '%{BKY_SED_HELPURL}' // URL to further information or documentation.
 };
-
 Blockly.defineBlocksWithJsonArray([sedBlock]);
+window.unixGenerator.forBlock['sed'] = window.unixGenerator.forBlock.generic;

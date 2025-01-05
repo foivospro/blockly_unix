@@ -4,11 +4,18 @@ var psBlock = {
   category: 'System Commands',
   unix_description: [
     {
+      printName: true,
       desc: '-e',
       show_all_processes: '-e',
-      show_process_user: "-u'str'",
-      show_process_pid: "-p'str'",
-      format: '-o',
+      show_process_user: (fieldValues) => {
+        return "-u '" + fieldValues['show_process_user'] + "'";
+      },
+      show_process_pid: (fieldValues) => {
+        return "-p '" + fieldValues['show_process_pid'] + "'";
+      },
+      format: (fieldValues) => {
+        return "-o '" + fieldValues['format'] + "'";
+      },
       show_thread: '-L',
       sort_by: '--sort',
       filter_by: '--pid'
@@ -54,9 +61,6 @@ var psBlock = {
       checked: false // by default it's disabled
     }
   ],
-
-  extensions: ['integer_validation'],
-
   style: 'System Monitoring',
   nextStatement: 'Action',
   tooltip: '%{BKY_PS_TOOLTIP}',
@@ -64,3 +68,4 @@ var psBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([psBlock]);
+window.unixGenerator.forBlock['ps'] = window.unixGenerator.forBlock.generic;

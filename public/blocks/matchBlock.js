@@ -1,5 +1,16 @@
 var matchBlock = {
   type: 'match',
+  unix_description: [
+    {
+      printName: false,
+      X: (childCode) => {
+        return 'match(' + childCode + ',';
+      },
+      Y: (childCode) => {
+        return childCode + ')';
+      }
+    }
+  ],
   message0: '%{BKY_MATCH}',
   args0: [
     {
@@ -16,13 +27,8 @@ var matchBlock = {
   output: 'Number',
   style: 'String Functions',
   tooltip: '%{BKY_MATCH_TOOLTIP}',
-  helpUrl: '%{BKY_MATCH_HELPURL}',
-
-  generateCommand: function (block) {
-    var x = handleBlockByType(block.getInputTargetBlock('X'));
-    var y = handleBlockByType(block.getInputTargetBlock('Y'));
-    return `match(${x}, ${y})`;
-  }
+  helpUrl: '%{BKY_MATCH_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([matchBlock]);
+window.unixGenerator.forBlock['match'] = window.unixGenerator.forBlock.generic;

@@ -1,9 +1,23 @@
-var environBlock = {
+var ENVIRONBlock = {
   type: 'ENVIRON',
   category: 'Field Processing',
   unix_description: [
     {
-      ENVIRON: 'ENVIRON'
+      printName: false,
+      HOME: 'ENVIRON["HOME"]',
+      PATH: 'ENVIRON["PATH"]',
+      USER: 'ENVIRON["USER"]',
+      SHELL: 'ENVIRON["SHELL"]',
+      PWD: 'ENVIRON["PWD"]',
+      LANG: 'ENVIRON["LANG"]',
+      TERM: 'ENVIRON["TERM"]',
+      EDITOR: 'ENVIRON["EDITOR"]',
+      MAIL: 'ENVIRON["MAIL"]',
+      LOGNAME: 'ENVIRON["LOGNAME"]',
+      HOSTNAME: 'ENVIRON["HOSTNAME"]',
+      OLDPWD: 'ENVIRON["OLDPWD"]',
+      LINES: 'ENVIRON["LINES"]',
+      COLUMNS: 'ENVIRON["COLUMNS"]'
     }
   ],
   message0: '%{BKY_ENVIRONMENT_VARIABLE} %1\n',
@@ -32,11 +46,9 @@ var environBlock = {
   style: 'Special Variables',
   output: null,
   tooltip: '%{BKY_ENVIRONMENT_VARIABLE_TOOLTIP}',
-  helpUrl: '%{BKY_ENVIRONMENT_VARIABLE_HELPURL}', // URL to further information or documentation.
-  generateCommand: function (block) {
-    var envVar = block.getFieldValue('ENV_VAR');
-    return 'ENVIRON["' + envVar + '"]';
-  }
+  helpUrl: '%{BKY_ENVIRONMENT_VARIABLE_HELPURL}' // URL to further information or documentation.
 };
 
-Blockly.defineBlocksWithJsonArray([environBlock]);
+Blockly.defineBlocksWithJsonArray([ENVIRONBlock]);
+window.unixGenerator.forBlock['ENVIRON'] =
+  window.unixGenerator.forBlock.generic;

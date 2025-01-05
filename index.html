@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" translate="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,6 +14,7 @@
     <script src="https://unpkg.com/@blockly/workspace-backpack@latest"></script>
     <script src="https://unpkg.com/@blockly/plugin-cross-tab-copy-paste@latest"></script>
     <script src="msg/en.js"></script>
+    <script src="js/block.js"></script>
 
     <!-- <script src="https://unpkg.com/@blockly/block-plus-minus"></script> -->
 
@@ -111,14 +112,16 @@
     <script src="blocks/arrayGetIndexBlock.js"></script>
     <script src="blocks/arraySetIndexBlock.js"></script>
     <script src="blocks/filenameVariableBlock.js"></script>
-    <script src="blocks/argumentCountBlock.js"></script>
-    <script src="blocks/argumentArrayBlock.js"></script>
-    <script src="blocks/environmentVariablesBlock.js"></script>
+    <script src="blocks/ARGCBlock.js"></script>
+    <script src="blocks/ARGVBlock.js"></script>
+    <script src="blocks/ENVIRONBlock.js"></script>
     <script src="blocks/FNRBlock.js"></script>
     <script src="blocks/FSBlock.js"></script>
     <script src="blocks/OFSBlock.js"></script>
     <script src="blocks/RLENGTHBlock.js"></script>
     <script src="blocks/RSTARTBlock.js"></script>
+    <script src="blocks/builtinBlocks.js"></script>
+    <script src="blocks/mutators.js"></script>
     <!-- END OF BLOCK DEFINITION -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -590,13 +593,13 @@
                     }
                   },
                   { kind: 'block', type: 'atan2' },
-                  { kind: 'block', type: 'cos' },
-                  { kind: 'block', type: 'sin' },
-                  { kind: 'block', type: 'exp' },
-                  { kind: 'block', type: 'log' },
+                  { kind: 'block', type: 'cosine' },
+                  { kind: 'block', type: 'sine' },
+                  { kind: 'block', type: 'exponent' },
+                  { kind: 'block', type: 'logarithm' },
                   { kind: 'block', type: 'sqrt' },
-                  { kind: 'block', type: 'rand' },
-                  { kind: 'block', type: 'seed' },
+                  { kind: 'block', type: 'random' },
+                  { kind: 'block', type: 'setSeed' },
                   { kind: 'block', type: 'int' }
                 ]
               },
@@ -747,6 +750,5 @@
       ).weight = 3;
     </script>
     <script src="js/app.js"></script>
-    <script src="js/block.js"></script>
   </body>
 </html>

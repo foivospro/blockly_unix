@@ -4,6 +4,7 @@ var arrayCreateBlock = {
   message0: '%{BKY_ARRAY_CREATE_WITH} %1',
   args0: [
     {
+      printName: true,
       type: 'input_dummy',
       name: 'EMPTY'
     }

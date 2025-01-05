@@ -1,18 +1,22 @@
 var regAlternationBlock = {
-  type: 'regAlternation', // Ορισμός του τύπου του block
+  type: 'regAlternation',
   category: 'Regular Expressions',
   unix_description: [
     {
-      LEFT_PATTERN: 'stm | ',
-
-      RIGHT_PATTERN: 'stm'
+      printName: false,
+      LEFT_PATTERN: (childCode) => {
+        return childCode + ' |';
+      },
+      RIGHT_PATTERN: (childCode) => {
+        return childCode;
+      }
     }
   ],
-  message0: '%1', // Μήνυμα που εμφανίζει το | ανάμεσα στις δύο εισόδους
+  message0: '%1',
   args0: [
     {
       type: 'input_statement',
-      name: 'LEFT_PATTERN', // Πρώτη εσοχή για την αριστερή έκφραση
+      name: 'LEFT_PATTERN',
       check: 'String'
     }
   ],
@@ -23,7 +27,7 @@ var regAlternationBlock = {
   args2: [
     {
       type: 'input_statement',
-      name: 'RIGHT_PATTERN', // Δεύτερη εσοχή για τη δεξιά έκφραση
+      name: 'RIGHT_PATTERN',
       check: 'String'
     }
   ],
@@ -37,3 +41,5 @@ var regAlternationBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([regAlternationBlock]);
+window.unixGenerator.forBlock['regAlternation'] =
+  window.unixGenerator.forBlock.concat;

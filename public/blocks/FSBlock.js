@@ -3,7 +3,10 @@ var FSBlock = {
   category: 'Field Processing',
   unix_description: [
     {
-      FieldSeparator: 'FS'
+      printName: false,
+      FieldSeparator: (fieldValues) => {
+        return 'FS = "' + fieldValues['FieldSeparator'] + '"; ';
+      }
     }
   ],
   message0: '%{BKY_FIELD_SEPARATOR}',
@@ -14,13 +17,11 @@ var FSBlock = {
     }
   ],
   style: 'Special Variables',
-  output: null,
+  previousStatement: null,
+  nextStatement: null,
   tooltip: '%{BKY_FIELD_SEPARATOR_TOOLTIP}',
-  helpUrl: '%{BKY_FIELD_SEPARATOR_HELPURL}', // URL to further information or documentation.
-  generateCommand: function (block) {
-    var fieldSeparator = block.getFieldValue('FieldSeparator');
-    return 'FS = "' + fieldSeparator + '"';
-  }
+  helpUrl: '%{BKY_FIELD_SEPARATOR_HELPURL}' // URL to further information or documentation.
 };
 
 Blockly.defineBlocksWithJsonArray([FSBlock]);
+window.unixGenerator.forBlock['FS'] = window.unixGenerator.forBlock.concat;

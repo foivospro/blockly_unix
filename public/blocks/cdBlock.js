@@ -1,7 +1,14 @@
 var cdBlock = {
   type: 'cd',
   category: 'Filesystem Operations',
-  unix_description: [{}],
+  unix_description: [
+    {
+      printName: true,
+      directory: (fieldValues) => {
+        return fieldValues['directory'];
+      }
+    }
+  ],
   message0: '%{BKY_CD} %1',
   args0: [
     {
@@ -16,3 +23,5 @@ var cdBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([cdBlock]);
+
+window.unixGenerator.forBlock['cd'] = window.unixGenerator.forBlock.generic;

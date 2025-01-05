@@ -3,6 +3,7 @@ var regBackreferenceBlock = {
   category: 'Regular Expressions',
   unix_description: [
     {
+      printName: false,
       1: '\\1',
       2: '\\2',
       3: '\\3',
@@ -40,3 +41,5 @@ var regBackreferenceBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([regBackreferenceBlock]);
+window.unixGenerator.forBlock['regBackreference'] =
+  window.unixGenerator.forBlock.concat;

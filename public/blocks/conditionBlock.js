@@ -1,6 +1,17 @@
 var conditionBlock = {
   type: 'condition',
   category: 'Field Processing',
+  unix_description: [
+    {
+      printName: false,
+      left_part: (fieldValues, childCode) => {
+        return childCode + ' ' + fieldValues['operator'];
+      },
+      right_part: (childCode) => {
+        return childCode;
+      }
+    }
+  ],
   message0: '%1', // First message line for left_part
   args0: [
     {
@@ -36,39 +47,9 @@ var conditionBlock = {
     }
   ],
   style: 'Field Processing',
-  output: null,
-  generateCommand: function (block) {
-    var awkCondition = '';
-    const leftPartBlock = block.getInputTargetBlock('left_part');
-    const rightPartBlock = block.getInputTargetBlock('right_part');
-
-    const operator = block.getFieldValue('operator');
-    var leftPart = '';
-    var rightPart = '';
-
-    // Retrieve the command for the left part block, if it exists
-    if (leftPartBlock !== null) {
-      leftPart = handleBlockByType(leftPartBlock);
-    }
-    if (leftPart === '') {
-      leftPart = leftPartBlock.getFieldValue('TEXT');
-    }
-    console.log('leftPartBlock:', leftPart);
-
-    // Retrieve the command for the right part block, if it exists
-    if (rightPartBlock !== null) {
-      rightPart = handleBlockByType(rightPartBlock);
-    }
-
-    console.log('leftPart:', leftPart);
-    console.log('operator:', operator);
-    console.log('rightPart:', rightPart);
-
-    // Combine the parts to form the AWK condition
-    awkCondition = leftPart + ' ' + operator + ' ' + rightPart;
-
-    return awkCondition;
-  }
+  output: null
 };
 
 Blockly.defineBlocksWithJsonArray([conditionBlock]);
+window.unixGenerator.forBlock['condition'] =
+  window.unixGenerator.forBlock.generic;

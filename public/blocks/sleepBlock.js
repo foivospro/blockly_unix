@@ -4,7 +4,10 @@ var sleepBlock = {
   category: 'Other Commands',
   unix_description: [
     {
-      time: 'sleep %TIME'
+      printName: true,
+      TIME: (fieldValues) => {
+        return fieldValues['TIME'];
+      }
     }
   ],
   args0: [
@@ -20,3 +23,4 @@ var sleepBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([sleepBlock]);
+window.unixGenerator.forBlock['sleep'] = window.unixGenerator.forBlock.generic;

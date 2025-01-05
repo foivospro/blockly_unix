@@ -4,6 +4,7 @@ var scpBlock = {
   category: 'Network Operations',
   unix_description: [
     {
+      printName: true,
       source: 'scp %SOURCE %DESTINATION'
     }
   ],

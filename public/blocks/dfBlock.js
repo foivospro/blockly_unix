@@ -4,6 +4,7 @@ var dfBlock = {
   category: 'System Commands',
   unix_description: [
     {
+      printName: true,
       desc: '-h',
       show_fs_type: '-T',
       show_total_blocks: '-B',
@@ -46,8 +47,6 @@ var dfBlock = {
     }
   ],
 
-  extensions: ['integer_validation'],
-
   style: 'System Monitoring',
   nextStatement: 'Action',
   tooltip: '%{BKY_DF_TOOLTIP}',
@@ -55,3 +54,4 @@ var dfBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([dfBlock]);
+window.unixGenerator.forBlock['df'] = window.unixGenerator.forBlock.generic;
