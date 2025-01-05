@@ -901,10 +901,10 @@ Blockly.Msg['UNIQ_TOOLTIP'] = 'Report or filter out repeated lines in a file';
 Blockly.Msg['UNIQ_HELPURL'] = 'https://www.google.com/';
 
 Blockly.Msg['WC'] = 'Count in file';
-Blockly.Msg['WC_LINES'] = 'Lines count %1';
-Blockly.Msg['WC_WORDS'] = 'Words count %1';
-Blockly.Msg['WC_BYTES'] = 'Bytes count %1';
-Blockly.Msg['WC_CHARS'] = 'Chars count %1';
+Blockly.Msg['WC_LINES'] = 'Lines %1';
+Blockly.Msg['WC_WORDS'] = 'Words %1';
+Blockly.Msg['WC_BYTES'] = 'Bytes %1';
+Blockly.Msg['WC_CHARS'] = 'Characters %1';
 Blockly.Msg['WC_TOOLTIP'] = 'Word, line, character, and byte count in a file';
 Blockly.Msg['WC_HELPURL'] = 'https://www.google.com/';
 
