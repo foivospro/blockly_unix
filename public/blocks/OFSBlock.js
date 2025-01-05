@@ -5,7 +5,7 @@ var OFSBlock = {
     {
       printName: false,
       FieldSeparator: (fieldValues) => {
-        return 'OFS = "' + fieldValues['FieldSeparator'] + '"';
+        return 'OFS = "' + fieldValues['FieldSeparator'] + '"; ';
       }
     }
   ],
@@ -17,10 +17,11 @@ var OFSBlock = {
     }
   ],
   style: 'Special Variables',
-  output: null,
+  previousStatement: null,
+  nextStatement: null,
   tooltip: '%{BKY_OUTPUT_FIELD_SEPARATOR_TOOLTIP}',
   helpUrl: '%{BKY_OUTPUT_FIELD_SEPARATOR_HELPURL}' // URL to further information or documentation.
 };
 
 Blockly.defineBlocksWithJsonArray([OFSBlock]);
-window.unixGenerator.forBlock['OFS'] = window.unixGenerator.forBlock.generic;
+window.unixGenerator.forBlock['OFS'] = window.unixGenerator.forBlock.concat;

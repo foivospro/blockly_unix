@@ -3,8 +3,8 @@ var ARGVBlock = {
   unix_description: [
     {
       printName: false,
-      INDEX: (fieldValues) => {
-        return '${ARGV[' + fieldValues['INDEX'] + ']}';
+      INDEX: (childCode) => {
+        return 'ARGV[' + childCode + ']';
       }
     }
   ],

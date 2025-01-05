@@ -1,6 +1,16 @@
 var exitBlock = {
   type: 'exit',
   message0: '%{BKY_EXIT}',
+  unix_description: [
+    {
+      printName: false,
+      X: (childCode) => {
+        return !childCode || childCode.trim() === ''
+          ? 'exit;'
+          : 'exit ' + childCode + ';';
+      }
+    }
+  ],
   args0: [
     {
       printName: true,
@@ -17,3 +27,4 @@ var exitBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([exitBlock]);
+window.unixGenerator.forBlock['exit'] = window.unixGenerator.forBlock.concat;
