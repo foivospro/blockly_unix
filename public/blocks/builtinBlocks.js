@@ -171,8 +171,7 @@ window.unixGenerator.forBlock['text'] = function (block) {
 window.unixGenerator.forBlock['text_print'] = function (block) {
   const textBlock = block.getInputTargetBlock('TEXT');
   var textValue = window.unixGenerator.blockToCode(textBlock);
-  // split them based on space and join them with commas
-  textValue = textValue.split(' ').join(', ');
+  textValue = textValue.match(/"([^"]*)"/g).join(', '); // Use double quotes to wrap the text
   return `print ${textValue};`;
 };
 

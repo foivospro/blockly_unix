@@ -5,18 +5,24 @@ var sedBlock = {
     {
       printName: true,
       regPattern: (fieldValues, childCode) => {
-        const doGlobal = (fieldValues['globally'] === 'TRUE');
+        const doGlobal = fieldValues['globally'] === 'TRUE';
+        const escapedReplaceText = fieldValues['regReplaceText'].replace(
+          /\//g,
+          '\\/'
+        );
+        const escapedChildCode = childCode.replace(/\//g, '\\/');
         if (doGlobal) {
+          // replace slash characters on fieldValues['regReplaceText'] with escaped slash characters
           if (!childCode || childCode.trim() === '') {
-            return fieldValues['regReplaceText'] + "/g'";
+            return escapedReplaceText + "/g'";
           } else {
-            return `-E 's/${childCode}/${fieldValues['regReplaceText']}/g'`;
+            return `-E 's/${escapedChildCode}/${escapedReplaceText}/g'`;
           }
         } else {
-          if (!childCode || childCode.trim() === '') {
-            return fieldValues['regReplaceText'] + "/'";
+          if (!childCode || childCode.trim() === '') { 
+            return escapedReplaceText + "/'";
           } else {
-            return `-E 's/${childCode}/${fieldValues['regReplaceText']}/'`;
+            return `-E 's/${escapedChildCode}/${escapedReplaceText}/'`;
           }
         }
       },

@@ -30,7 +30,7 @@ a:focus {
 
 /* Flex and Container Adjustments */
 .container {
-  max-width: 100%;
+  max-width: 90%;
   padding-left: 10px;
   padding-right: 10px;
 }
