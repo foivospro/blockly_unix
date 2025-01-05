@@ -28,7 +28,6 @@ To ensure that code is properly formatted before committing, set up the pre-comm
 
    `chmod +x .git/hooks/pre-commit bin/pre-commit`
 
-
 # How to Create a New Block
 
 Below are the instructions on how to create a new block in a separate file (e.g., `[blockName]Block.js`), and how to integrate it into the existing code generation system (`UnixGenerator`) that we have already implemented.
@@ -154,10 +153,9 @@ unix_description: [
 ];
 ```
 
-In this case, if the block's type is 'foo' and you set 'foo': 'customFoo' in unix_description, the generated command will include 'customFoo' instead of 'foo'.
-3. Format the code by running the following command:
+In this case, if the block's type is 'foo' and you set 'foo': 'customFoo' in unix_description, the generated command will include 'customFoo' instead of 'foo'. 3. Format the code by running the following command:
 
-   `npm run prettier-fix`
+`npm run prettier-fix`
 
 # Further information
 
