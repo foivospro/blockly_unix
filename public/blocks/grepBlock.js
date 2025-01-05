@@ -1,21 +1,31 @@
 var grepBlock = {
   type: 'grep',
-  category: 'Data Processing',
+  category: 'Text Processing',
   unix_description: [
     {
-      regex: '-E',
+      printName: true,
       case_ins: '-i',
       whole_word: '-w',
       count_lines: '-c',
       inverted: '-v',
       recursive: '-r',
       show_line_nums: '-n',
-      stop_after_num_matches: '-m ',
-      multiple_patterns: '-e',
-      regPattern: '"patt"',
+      stop_after_num_matches: (fieldValues) => {
+        const value = fieldValues['stop_after_num_matches'];
+        return value ? '-m ' + value : ''; // Only include if value exists
+      },
+      regPattern: (childCode) => {
+        return childCode && childCode.trim() !== '' ? '-E ' + childCode : '';
+      },
       showFiles: '-H',
-      print_context_before_match: '-B ',
-      print_context_after_match: '-A '
+      print_context_before_match: (fieldValues) => {
+        const value = fieldValues['print_context_before_match'];
+        return value ? '-B ' + value : ''; // Only include if value exists
+      },
+      print_context_after_match: (fieldValues) => {
+        const value = fieldValues['print_context_after_match'];
+        return value ? '-A ' + value : ''; // Only include if value exists
+      }
     }
   ],
   message0: '%{BKY_GREP}',
@@ -24,7 +34,7 @@ var grepBlock = {
     {
       type: 'field_checkbox',
       name: 'regex',
-      checked: false // by default it's disabled
+      checked: false
     }
   ],
   message2: '%{BKY_GREP_CASE_INSENSITIVE}',
@@ -32,7 +42,7 @@ var grepBlock = {
     {
       type: 'field_checkbox',
       name: 'case_ins',
-      checked: false // by default it's disabled
+      checked: false
     }
   ],
   message3: '%{BKY_GREP_WHOLE_WORD_SEARCH}',
@@ -40,7 +50,7 @@ var grepBlock = {
     {
       type: 'field_checkbox',
       name: 'whole_word',
-      checked: false // by default it's disabled
+      checked: false
     }
   ],
   message4: '%{BKY_GREP_COUNT_MATCHES}',
@@ -48,7 +58,7 @@ var grepBlock = {
     {
       type: 'field_checkbox',
       name: 'count_lines',
-      checked: false // by default it's disabled
+      checked: false
     }
   ],
   message5: '%{BKY_GREP_PATTERN_NEGATION}',
@@ -56,7 +66,7 @@ var grepBlock = {
     {
       type: 'field_checkbox',
       name: 'inverted',
-      checked: false // by default it's disabled
+      checked: false
     }
   ],
   message6: '%{BKY_GREP_RECURSIVE_SEARCH}',
@@ -64,7 +74,7 @@ var grepBlock = {
     {
       type: 'field_checkbox',
       name: 'recursive',
-      checked: false // by default it's disabled
+      checked: false
     }
   ],
   message7: '%{BKY_GREP_DISPLAY_LINE_NUMBERS}',
@@ -72,7 +82,7 @@ var grepBlock = {
     {
       type: 'field_checkbox',
       name: 'show_line_nums',
-      checked: false // by default it's disabled
+      checked: false
     }
   ],
   message8: '%{BKY_GREP_STOP_AFTER_NUM_MATCHES}',
@@ -88,7 +98,7 @@ var grepBlock = {
     {
       type: 'field_checkbox',
       name: 'show_line_nums',
-      checked: false // by default it's disabled
+      checked: false
     }
   ],
   message10: '%{BKY_GREP_SHOW_FILENAME}',
@@ -96,15 +106,14 @@ var grepBlock = {
     {
       type: 'field_checkbox',
       name: 'showFiles',
-      checked: false // by default it's disabled
+      checked: false
     }
   ],
   message11: '%{BKY_GREP_PATTERN_DEFINE}',
   args11: [
     {
-      type: 'input_value',
-      name: 'regPattern',
-      check: 'String'
+      type: 'input_statement',
+      name: 'regPattern'
     }
   ],
   message12: '%{BKY_GREP_PRINT_CONTEXT_BEFORE_MATCH}',
@@ -116,7 +125,7 @@ var grepBlock = {
     },
     {
       type: 'field_checkbox',
-      checked: false // by default it's disabled
+      checked: false
     }
   ],
   message13: '%{BKY_GREP_PRINT_CONTEXT_AFTER_MATCH}',
@@ -128,14 +137,15 @@ var grepBlock = {
     },
     {
       type: 'field_checkbox',
-      checked: false // by default it's disabled
+      checked: false
     }
   ],
-  style: 'Data Processing',
+  style: 'Text Processing',
   previousStatement: 'Action',
   nextStatement: 'Action',
   tooltip: 'search in a file with a pattern',
-  helpUrl: '' // URL to further information or documentation.
+  helpUrl: ''
 };
 
 Blockly.defineBlocksWithJsonArray([grepBlock]);
+window.unixGenerator.forBlock['grep'] = window.unixGenerator.forBlock.generic;

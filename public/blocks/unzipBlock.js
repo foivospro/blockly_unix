@@ -4,6 +4,7 @@ var unzipBlock = {
   message0: 'unzip %1',
   unix_description: [
     {
+      printName: true,
       command: 'unzip %FILE'
     }
   ],

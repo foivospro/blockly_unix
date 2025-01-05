@@ -1,18 +1,27 @@
 var sortBlock = {
   type: 'sort',
-  message0: '%{BKY_SORT}',
   category: 'Text Processing',
   unix_description: [
     {
+      printName: true,
       desc: '-r',
       numeric_sorting: '-n',
-      sort_delimiter: "-t'str'",
-      sort_column: '-k ',
+      sort_delimiter: (fieldValues) => {
+        return fieldValues['sort_delimiter']
+          ? `-t'${fieldValues['sort_delimiter']}'`
+          : ''; // Include '-t' only if sort_delimiter exists
+      },
+      sort_column: (fieldValues) => {
+        return fieldValues['sort_column']
+          ? `-k ${fieldValues['sort_column']}`
+          : ''; // Only include '-k' if sort_column exists
+      },
       uniq_elements: '-u',
       ignore_nonPrintable: '-i',
       ignore_leading_blanks: '-b'
     }
   ],
+  message0: '%{BKY_SORT}',
   message1: '%{BKY_SORT_DESC}',
   args1: [
     {
@@ -40,15 +49,12 @@ var sortBlock = {
       text: ''
     }
   ],
-
   message4: '%{BKY_SORT_COLS}',
   args4: [
     {
       type: 'field_number',
       name: 'sort_column',
-      value: '', // default number of column
-      //min: 1, // minimum value
-      //max: 1000, // it should be the maximum of the length of the files columns
+      value: 0, // default number of column
       precision: 1 // allow only integers
     }
   ],
@@ -76,9 +82,6 @@ var sortBlock = {
       checked: false // by default it's disabled
     }
   ],
-
-  extensions: ['integer_validation'],
-
   style: 'Text Processing',
   previousStatement: 'Action',
   nextStatement: 'Action',
@@ -87,3 +90,5 @@ var sortBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([sortBlock]);
+
+window.unixGenerator.forBlock['sort'] = window.unixGenerator.forBlock.generic;

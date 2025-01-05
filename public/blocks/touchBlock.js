@@ -1,14 +1,28 @@
 var touchBlock = {
   type: 'touch',
-  message0: '%{BKY_TOUCH}',
-  category: 'File and Directory Operations',
+
+  category: 'Filesystem Operations',
   unix_description: [
     {
+      printName: true,
+      argument: 'arg',
       not_create_file: '-c',
-      change_time_t: '-t str',
-      change_time_d: '-d str',
+      change_time_t: (fieldValues) => {
+        return '-t ' + fieldValues['change_time_t'];
+      },
+      change_time_d: (fieldValues) => {
+        return '-d ' + fieldValues['change_time_d'];
+      },
       access_time: '-a',
-      modification_time: '-r'
+      modification_time: '-m'
+    }
+  ],
+  message0: '%{BKY_TOUCH}',
+  args0: [
+    {
+      type: 'input_value',
+      name: 'argument',
+      check: 'String'
     }
   ],
   message1: '%{BKY_TOUCH_NOT_CREATE_FILE}',
@@ -35,32 +49,20 @@ var touchBlock = {
       checked: false
     }
   ],
-
-  message4: '%{BKY_TOUCH_SPECIFY_TIME_FORMAT_T}',
-  args4: [
-    {
-      type: 'field_input',
-      name: 'change_time_t',
-      text: '',
-      check: 'String'
-    }
-  ],
-  message5: '%{BKY_TOUCH_PROPOSE_OTHER_FORMAT}',
-  message6: '%{BKY_TOUCH_SPECIFY_TIME_FORMAT_D}',
-  args6: [
+  message4: '%{BKY_TOUCH_SPECIFY_TIME_D}',
+  message5: '%{BKY_TOUCH_SPECIFY_TIME_FORMAT_D}',
+  args5: [
     {
       type: 'field_input',
       name: 'change_time_d',
-      text: '',
+      text: new Date().toISOString().slice(0, 19).replace('T', ' '),
       check: 'String'
     }
   ],
-  extensions: ['validate_touch_time_t', 'validate_touch_time_d'],
-  style: 'File and Directory Operations',
-  previousStatement: 'Action',
-  nextStatement: 'Action',
+  extensions: ['restrict_touch_to_argumentsCreate'],
+  style: 'Filesystem Operations',
   tooltip: '%{BKY_TOUCH_TOOLTIP}',
   helpUrl: '%{BKY_TOUCH_HELPURL}' // URL to further information or documentation.
 };
-
 Blockly.defineBlocksWithJsonArray([touchBlock]);
+window.unixGenerator.forBlock['touch'] = window.unixGenerator.forBlock.generic;

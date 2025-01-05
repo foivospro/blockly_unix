@@ -1,8 +1,9 @@
 var catBlock = {
   type: 'cat',
-  category: 'File and Directory Operations',
+  category: 'Text Processing',
   unix_description: [
     {
+      printName: true,
       lineNumbers: '-n',
       nonBlank_lineNumbers: '-b',
       squeezeEmptyLines: '-s',
@@ -38,7 +39,7 @@ var catBlock = {
       checked: false
     }
   ],
-  style: 'File and Directory Operations',
+  style: 'Text Processing',
   previousStatement: 'Action',
   nextStatement: 'Action',
   tooltip: '%{BKY_CAT_TOOLTIP}',
@@ -46,3 +47,5 @@ var catBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([catBlock]);
+
+window.unixGenerator.forBlock['cat'] = window.unixGenerator.forBlock.generic;

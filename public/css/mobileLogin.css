@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+/* General styling */
+body {
+  padding: 0;
+}
+
+/* Animations for smooth transitions */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.navbar-nav .nav-link-spacing {
+  margin-right: 15px; /* Adjust as needed for spacing */
+}
+
+.navbar-nav .nav-link-spacing:last-child {
+  margin-right: 0; /* Remove right margin on the last item */
+}
+
+/* Ensure responsive alignment */
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-wrap: wrap; /* Allow items to wrap to new lines if needed */
+    justify-content: center; /* Center items for smaller screens */
+  }
+}
+
+/* General styling for small screens */
+@media (max-width: 320px) {
+  /* Center and stack navbar items */
+  .navbar-nav {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+  }
+
+  /* Smaller font and padding for brand and links */
+  .navbar-brand {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 13px;
+    margin: 3px 0; /* Minimal margin to avoid overflow */
+    text-align: center;
+  }
+
+  /* Adjust padding for container */
+  .container-fluid {
+    padding: 0 5px;
+  }
+
+  /* Adjust image in navbar */
+  .navbar-brand img {
+    width: 20px;
+    margin-right: 3px;
+  }
+
+  /* Ensure toggler button shows up properly */
+  .navbar-toggler {
+    padding: 5px 8px;
+  }
+}
+
+/* Container for login and register forms */
+#container-login,
+#container-register {
+  background-color: #fff;
+  position: relative;
+  margin: auto;
+  margin-top: 2%;
+  width: 50%; /* Default width for larger screens */
+  padding: 20px;
+  border-radius: 0.35em;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.25);
+  text-align: center;
+  z-index: 1;
+}
+
+.collapse.show {
+  position: absolute;
+  width: 100%;
+  background-color: #fff; /* Adjust the color based on your theme */
+  z-index: 1030; /* Keep the navbar on top when collapsed */
+}
+
+.collapsing {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.01s ease; /* Faster transition */
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+  #container-login,
+  #container-register {
+    width: 90%; /* Make the form wider on mobile */
+    margin-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+/* Title styling */
+#title {
+  background-color: #2041f7;
+  padding: 20px;
+  border-top-left-radius: 0.22em;
+  border-top-right-radius: 0.22em;
+  font-size: 22px;
+  color: #fff;
+  margin: -20px -20px 20px -20px;
+}
+
+/* Mobile-friendly title size */
+@media (max-width: 768px) {
+  #title {
+    font-size: 18px;
+  }
+}
+
+.lock {
+  vertical-align: middle;
+}
+
+/* Input field styling */
+.input {
+  margin: auto;
+  width: 70%; /* Fixed width */
+  border-radius: 4px;
+  background-color: #ededed;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile input adjustments */
+@media (max-width: 768px) {
+  .input {
+    width: 100%; /* Full width on mobile */
+  }
+}
+
+.input-addon {
+  background-color: #ededed;
+  border: 1px solid #ededed;
+  padding: 4px 8px;
+  color: #000;
+  border-right: 1px solid #757575;
+  display: flex;
+  align-items: center;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'] {
+  color: #000;
+  margin: 0;
+  background-color: #ededed;
+  border: 1px solid #ededed;
+  padding: 6px 10px;
+  border-radius: 0 4px 4px 0;
+  flex: 1;
+}
+
+input[type='submit'] {
+  padding: 6px 20px;
+  background: #2041f7;
+  color: #fff;
+  margin-top: 2%;
+  font-weight: bold;
+  border: 0 none;
+  cursor: pointer;
+  border-radius: 3px;
+  width: 60%; /* Full width for mobile */
+}
+
+/* Custom divider styling */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.divider hr {
+  flex: 1;
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.divider span {
+  padding: 0 10px;
+  font-weight: bold;
+  color: #666;
+}
+
+.login-with-google {
+  margin-top: 10px;
+}
+
+#register-link {
+  margin-top: 10px;
+  margin-left: 2%;
+  padding: 6px 20px;
+  background: #2041f7;
+  color: #fff;
+  font-weight: bold;
+  border: 0 none;
+  cursor: pointer;
+  border-radius: 3px;
+  width: 60%; /* Full width on mobile */
+}
+
+/* Styling for register section */
+.register {
+  padding: 16px 0;
+  text-align: center;
+  margin-top: 40px;
+  border-top: 1px solid #c1c3c6;
+}
+
+.loginRegisterSpan {
+  font-size: medium;
+  color: #000;
+  font-weight: normal;
+}
+
+/* Remember me checkbox styling */
+.remember-me {
+  margin: 10px 0;
+  text-align: left;
+  width: 240px;
+  margin: 15px auto 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile-friendly adjustments for "Remember me" */
+@media (max-width: 768px) {
+  .remember-me {
+    width: 100%; /* Full width on mobile */
+  }
+}
+
+input[type='checkbox'] {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+/* Clearfix for proper alignment */
+.clearfix {
+  clear: both;
+}
+
+/* Mobile-specific font adjustments */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px; /* Slightly larger font for readability */
+  }
+
+  input[type='submit'],
+  #register-link {
+    font-size: 16px; /* Button text size */
+  }
+}

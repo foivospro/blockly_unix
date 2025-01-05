@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" translate="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blockly Demo: Unix</title>
+    <title>Ublocks</title>
     <meta name="x-auth-token" content="" />
     <script src="https://unpkg.com/blockly@latest/blockly_compressed.js"></script>
     <script src="https://unpkg.com/blockly@latest/blocks_compressed.js"></script>
@@ -13,13 +13,16 @@
     <script src="https://unpkg.com/@blockly/plugin-scroll-options@latest"></script>
     <script src="https://unpkg.com/@blockly/workspace-backpack@latest"></script>
     <script src="https://unpkg.com/@blockly/plugin-cross-tab-copy-paste@latest"></script>
-    <script src="js/el.js"></script>
     <script src="msg/en.js"></script>
+    <script src="js/block.js"></script>
 
     <!-- <script src="https://unpkg.com/@blockly/block-plus-minus"></script> -->
 
     <!-- BLOCKS DEFINITION -->
     <script src="blocks/psBlock.js"></script>
+    <script src="blocks/argumentsCreateBlock.js"></script>
+    <script src="blocks/argumentBlock.js"></script>
+    <script src="blocks/regBackreferenceBlock.js"></script>
     <script src="blocks/dfBlock.js"></script>
     <script src="blocks/killBlock.js"></script>
     <script src="blocks/chmodBlock.js"></script>
@@ -48,8 +51,7 @@
     <script src="blocks/wcBlock.js"></script>
     <script src="blocks/sortBlock.js"></script>
     <script src="blocks/uniqBlock.js"></script>
-    <script src="blocks/findDuplicatesBlock.js"></script>
-    <script src="blocks/showUniqsBlock.js"></script>
+    <script src="blocks/uniqBlock.js"></script>
     <script src="blocks/lsBlock.js"></script>
     <script src="blocks/cdBlock.js"></script>
     <script src="blocks/mkdirBlock.js"></script>
@@ -60,16 +62,14 @@
     <script src="blocks/catBlock.js"></script>
     <script src="blocks/saveBlock.js"></script>
     <script src="blocks/appendBlock.js"></script>
-    <script src="blocks/regOutputBlock.js"></script>
     <script src="blocks/regPatternBlock.js"></script>
-    <script src="blocks/regOrBlock.js"></script>
-    <script src="blocks/regNegationBlock.js"></script>
     <script src="blocks/regCapturingGroupBlock.js"></script>
     <script src="blocks/regStartBlock.js"></script>
     <script src="blocks/regEndBlock.js"></script>
     <script src="blocks/regForBlock.js"></script>
+    <script src="blocks/regAlternationBlock.js"></script>
+    <script src="blocks/regPatternBlock.js"></script>
     <script src="blocks/regRangeBlock.js"></script>
-    <script src="blocks/regQuantBlock.js"></script>
     <script src="blocks/regAnyOneBlock.js"></script>
     <script src="blocks/condOutputBlock.js"></script>
     <script src="blocks/multiplePrintBlock.js"></script>
@@ -79,12 +79,49 @@
     <script src="blocks/fileEndStartBlock.js"></script>
     <script src="blocks/echoBlock.js"></script>
     <script src="blocks/findBlock.js"></script>
-    <script src="blocks/regLookaheadBlock.js"></script>
     <script src="blocks/regCommonBlock.js"></script>
     <script src="blocks/touchBlock.js"></script>
     <script src="blocks/NRBlock.js"></script>
     <script src="blocks/NFBlock.js"></script>
     <script src="blocks/xargsBlock.js"></script>
+    <script src="blocks/conditionActionBlock.js"></script>
+    <script src="blocks/conditionBlock.js"></script>
+    <script src="blocks/arrayCreateBlock.js"></script>
+    <script src="blocks/atan2Block.js"></script>
+    <script src="blocks/cosineBlock.js"></script>
+    <script src="blocks/sineBlock.js"></script>
+    <script src="blocks/exponentBlock.js"></script>
+    <script src="blocks/logarithmBlock.js"></script>
+    <script src="blocks/sqrtBlock.js"></script>
+    <script src="blocks/lengthBlock.js"></script>
+    <script src="blocks/randBlock.js"></script>
+    <script src="blocks/setSeedBlock.js"></script>
+    <script src="blocks/toIntBlock.js"></script>
+    <script src="blocks/indexBlock.js"></script>
+    <script src="blocks/matchBlock.js"></script>
+    <script src="blocks/toLowerBlock.js"></script>
+    <script src="blocks/toUpperBlock.js"></script>
+    <script src="blocks/returnBlock.js"></script>
+    <script src="blocks/nextBlock.js"></script>
+    <script src="blocks/nextFileBlock.js"></script>
+    <script src="blocks/exitBlock.js"></script>
+    <script src="blocks/deleteArrayBlock.js"></script>
+    <script src="blocks/deleteArrayElementBlock.js"></script>
+    <script src="blocks/beginBlock.js"></script>
+    <script src="blocks/endBlock.js"></script>
+    <script src="blocks/arrayGetIndexBlock.js"></script>
+    <script src="blocks/arraySetIndexBlock.js"></script>
+    <script src="blocks/filenameVariableBlock.js"></script>
+    <script src="blocks/ARGCBlock.js"></script>
+    <script src="blocks/ARGVBlock.js"></script>
+    <script src="blocks/ENVIRONBlock.js"></script>
+    <script src="blocks/FNRBlock.js"></script>
+    <script src="blocks/FSBlock.js"></script>
+    <script src="blocks/OFSBlock.js"></script>
+    <script src="blocks/RLENGTHBlock.js"></script>
+    <script src="blocks/RSTARTBlock.js"></script>
+    <script src="blocks/builtinBlocks.js"></script>
+    <script src="blocks/mutators.js"></script>
     <!-- END OF BLOCK DEFINITION -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -127,8 +164,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
-    <link id="light-theme" rel="stylesheet" href="styles.css" />
-    <link id="dark-theme" rel="stylesheet" href="styledark.css" disabled />
+    <link id="light-theme" rel="stylesheet" href="css/styles.css" />
+    <link id="dark-theme" rel="stylesheet" href="css/styledark.css" disabled />
+    <link rel="icon" href="/img/favicon.png" />
   </head>
   <body>
     <div id="navbar">
@@ -224,7 +262,9 @@
     </div>
     <div id="resultsWrapper">
       <div id="resultsArea">
-        <div id="resultsText">Results will appear here...</div>
+        <div id="resultsText" style="user-select: text">
+          Results will appear here...
+        </div>
 
         <button id="copyButton" class="btn btn-light">
           <i class="fas fa-copy"></i>
@@ -239,17 +279,17 @@
           colourSecondary: '#FFCDD2',
           colourTertiary: '#CDB6E9'
         },
-        'File inputs': {
+        'Function inputs': {
           colourPrimary: '#5C81A6',
           colourSecondary: '#ff0000',
           colourTertiary: '#C5EAFF'
         },
-        'Data Processing': {
+        'Field Processing': {
           colourPrimary: '#3B7C09',
           colourSecondary: '#ff0000',
           colourTertiary: '#C5EAFF'
         },
-        'File and Directory Operations': {
+        'Filesystem Operations': {
           colourPrimary: '#FE9B13',
           colourSecondary: '#ff0000',
           colourTertiary: '#C5EAFF'
@@ -263,6 +303,11 @@
           colourPrimary: '#FF5733',
           colourSecondary: '#ff0000',
           colourTertiary: '#C5EAFF'
+        },
+        'String Functions': {
+          colourPrimary: '#9E9E10', // Primary color: yellowish-grey
+          colourSecondary: '#B0B030', // A lighter yellowish-grey for contrast
+          colourTertiary: '#D0D080' // A soft yellowish-grey for accents
         },
         'Text output': {
           colourPrimary: '#FF5733',
@@ -286,6 +331,16 @@
         },
         Variables: {
           colourPrimary: '#330',
+          colourSecondary: '#ff0000',
+          colourTertiary: '#C5EAFF'
+        },
+        'Special Variables': {
+          colourPrimary: '295',
+          colourSecondary: '295',
+          colourTertiary: '295'
+        },
+        Arrays: {
+          colourPrimary: '#260',
           colourSecondary: '#ff0000',
           colourTertiary: '#C5EAFF'
         },
@@ -334,9 +389,12 @@
               { kind: 'block', type: 'tail' },
               { kind: 'block', type: 'wc' },
               { kind: 'block', type: 'sort' },
+              { kind: 'block', type: 'cat' },
               { kind: 'block', type: 'uniq' },
               { kind: 'block', type: 'cut' },
-              { kind: 'block', type: 'sed' }
+              { kind: 'block', type: 'grep' },
+              { kind: 'block', type: 'sed' },
+              { kind: 'block', type: 'echo' }
             ]
           },
           {
@@ -344,12 +402,14 @@
           },
           {
             kind: 'category',
-            name: [MSG.FILE_INPUTS],
+            name: [MSG.FUCTION_INPUTS],
             colour: '#5C81A6',
             contents: [
               { kind: 'block', type: 'filename' },
               { kind: 'block', type: 'filenamesCreate' },
-              { kind: 'block', type: 'fileEndStart' }
+              { kind: 'block', type: 'fileEndStart' },
+              { kind: 'block', type: 'argument' },
+              { kind: 'block', type: 'argumentsCreate' }
             ]
           },
           {
@@ -357,18 +417,17 @@
           },
           {
             kind: 'category',
-            name: [MSG.FILE_DIR_OPERATIONS],
+            name: [MSG.FILESYSTEM_OPERATIONS],
             colour: '#FE9B13',
             contents: [
-              { kind: 'block', type: 'ls' },
-              { kind: 'block', type: 'find' },
-              { kind: 'block', type: 'mkdir' },
-              { kind: 'block', type: 'gzip' },
-              { kind: 'block', type: 'cat' },
               { kind: 'block', type: 'touch' },
               { kind: 'block', type: 'ln' },
               { kind: 'block', type: 'mv' },
-              { kind: 'block', type: 'rm' }
+              { kind: 'block', type: 'rm' },
+              { kind: 'block', type: 'ls' },
+              { kind: 'block', type: 'cd' },
+              //{ kind: 'block', type: 'find' },
+              { kind: 'block', type: 'mkdir' }
             ]
           },
           {
@@ -392,18 +451,15 @@
             name: [MSG.REGULAR_EXPRESSIONS],
             colour: '#FF5733',
             contents: [
-              { kind: 'block', type: 'regOutput' },
               { kind: 'block', type: 'regPattern' },
-              { kind: 'block', type: 'regOr' },
-              { kind: 'block', type: 'regNegation' },
-              { kind: 'block', type: 'regCapturingGroup' },
-              { kind: 'block', type: 'regStart' },
-              { kind: 'block', type: 'regEnd' },
               { kind: 'block', type: 'regFor' },
               { kind: 'block', type: 'regRange' },
-              { kind: 'block', type: 'regQuant' },
+              { kind: 'block', type: 'regStart' },
+              { kind: 'block', type: 'regEnd' },
               { kind: 'block', type: 'regAnyOne' },
-              { kind: 'block', type: 'regLookahead' },
+              { kind: 'block', type: 'regCapturingGroup' },
+              { kind: 'block', type: 'regAlternation' },
+              { kind: 'block', type: 'regBackreference' },
               { kind: 'block', type: 'regCommon' }
             ]
           },
@@ -442,17 +498,20 @@
           },
           {
             kind: 'category',
-            name: [MSG.DATA_PROCESSING],
+            name: [MSG.FIELD_PROCESSING],
             colour: '#3B7C09',
             contents: [
-              { kind: 'block', type: 'beginEnd' },
+              { kind: 'block', type: 'begin' },
+              { kind: 'block', type: 'end' },
               { kind: 'block', type: 'awk' },
-              { kind: 'block', type: 'condOutput' },
+              { kind: 'block', type: 'conditionAction' },
               { kind: 'block', type: 'column' },
-              { kind: 'block', type: 'grep' },
-              { kind: 'block', type: 'NR' },
-              { kind: 'block', type: 'NF' },
-              { kind: 'block', type: 'xargs' },
+              // { kind: 'block', type: 'xargs' },
+              { kind: 'block', type: 'condition' },
+              { kind: 'block', type: 'return' },
+              { kind: 'block', type: 'next' },
+              { kind: 'block', type: 'nextFile' },
+              { kind: 'block', type: 'exit' },
               {
                 kind: 'category',
                 name: [MSG.TEXT_OUTPUT],
@@ -478,14 +537,21 @@
               },
               {
                 kind: 'category',
+                name: [MSG.STRING_FUNCTIONS],
+                colour: '#9E9E10',
+                contents: [
+                  { kind: 'block', type: 'length' },
+                  { kind: 'block', type: 'index' },
+                  { kind: 'block', type: 'match' },
+                  { kind: 'block', type: 'toLower' },
+                  { kind: 'block', type: 'toUpper' }
+                ]
+              },
+              {
+                kind: 'category',
                 name: [MSG.LOGIC],
                 colour: '210',
-                contents: [
-                  { kind: 'block', type: 'controls_if' },
-                  { kind: 'block', type: 'logic_compare' },
-                  { kind: 'block', type: 'logic_operation' },
-                  { kind: 'block', type: 'logic_negate' }
-                ]
+                contents: [{ kind: 'block', type: 'controls_if' }]
               },
               {
                 kind: 'category',
@@ -493,7 +559,9 @@
                 colour: '120',
                 contents: [
                   { kind: 'block', type: 'controls_whileUntil' },
-                  { kind: 'block', type: 'controls_forEach' }
+                  { kind: 'block', type: 'controls_forEach' },
+                  { kind: 'block', type: 'controls_for' },
+                  { kind: 'block', type: 'controls_flow_statements' }
                 ]
               },
               {
@@ -523,7 +591,68 @@
                         }
                       }
                     }
+                  },
+                  { kind: 'block', type: 'atan2' },
+                  { kind: 'block', type: 'cosine' },
+                  { kind: 'block', type: 'sine' },
+                  { kind: 'block', type: 'exponent' },
+                  { kind: 'block', type: 'logarithm' },
+                  { kind: 'block', type: 'sqrt' },
+                  { kind: 'block', type: 'random' },
+                  { kind: 'block', type: 'setSeed' },
+                  { kind: 'block', type: 'int' }
+                ]
+              },
+              {
+                kind: 'category',
+                name: [MSG.VARIABLES], // Use the translated message for "Variables"
+                colour: '330',
+                custom: 'VARIABLE'
+              },
+              {
+                kind: 'category',
+                name: [MSG.SPECIAL_VARIABLES],
+                colour: '295',
+                contents: [
+                  { kind: 'block', type: 'NR' },
+                  { kind: 'block', type: 'NF' },
+                  { kind: 'block', type: 'FILENAME' },
+                  { kind: 'block', type: 'ARGC' },
+                  { kind: 'block', type: 'ARGV' },
+                  { kind: 'block', type: 'ENVIRON' },
+                  { kind: 'block', type: 'FNR' },
+                  { kind: 'block', type: 'FS' },
+                  { kind: 'block', type: 'OFS' },
+                  { kind: 'block', type: 'RLENGTH' },
+                  { kind: 'block', type: 'RSTART' }
+                ]
+              },
+              {
+                kind: 'category',
+                name: 'Arrays', // Reference to the translated message for "Lists"
+                colour: '260',
+                contents: [
+                  {
+                    kind: 'block',
+                    type: 'arrayGetIndex' // Block for getting an item from a list
+                  },
+                  {
+                    kind: 'block',
+                    type: 'arraySetIndex' // Block for setting an item in a list
+                  },
+                  {
+                    kind: 'block',
+                    type: 'deleteArray' // Block for deleting a list
+                  },
+                  {
+                    kind: 'block',
+                    type: 'deleteArrayElement' // Block for deleting an element from a list
                   }
+
+                  //{
+                  //  kind: 'block',
+                  //  type: 'lists_getSublist' // Block for getting a sublist from a list
+                  //}
                 ]
               }
             ]
@@ -533,22 +662,12 @@
           },
           {
             kind: 'category',
-            name: [MSG.VARIABLES],
-            colour: '330',
-            custom: 'VARIABLE'
-          },
-
-          {
-            kind: 'sep'
-          },
-          {
-            kind: 'category',
             name: [MSG.OTHER_COMMANDS],
             colour: '#009688',
             contents: [
               { kind: 'block', type: 'kill' },
-              { kind: 'block', type: 'echo' },
-              { kind: 'block', type: 'sleep' }
+              { kind: 'block', type: 'sleep' },
+              { kind: 'block', type: 'gzip' }
             ]
           }
         ]
@@ -583,7 +702,6 @@
         },
 
         plugins: {
-          blockDragger: ScrollBlockDragger,
           metricsManager: ScrollMetricsManager,
           toolboxSearch: true
         }
@@ -631,6 +749,6 @@
         'blockPasteFromStorage'
       ).weight = 3;
     </script>
-    <script src="main.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>

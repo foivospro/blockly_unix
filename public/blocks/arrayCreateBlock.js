@@ -4,12 +4,13 @@ var arrayCreateBlock = {
   message0: '%{BKY_ARRAY_CREATE_WITH} %1',
   args0: [
     {
+      printName: true,
       type: 'input_dummy',
       name: 'EMPTY'
     }
   ],
   output: 'Array',
-  style: 'list_blocks',
+  style: 'Field Processing',
   nextStatement: 'Action',
   helpUrl: '%{BKY_ARRAY_CREATE_WITH_HELPURL}',
   tooltip: '%{BKY_ARRAY_CREATE_WITH_TOOLTIP}',

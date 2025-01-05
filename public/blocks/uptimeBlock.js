@@ -4,6 +4,7 @@ var uptimeBlock = {
   category: 'System Monitoring',
   unix_description: [
     {
+      printName: true,
       desc: 'Displays how long the system has been running, the number of users, and the system load averages.',
       pretty: '-p',
       since: '-s',
@@ -36,13 +37,11 @@ var uptimeBlock = {
     }
   ],
 
-  extensions: ['integer_validation'],
-
   style: 'System Monitoring',
-  previousStatement: 'Action',
   nextStatement: 'Action',
   tooltip: '%{BKY_UPTIME_TOOLTIP}',
   helpUrl: '%{BKY_UPTIME_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([uptimeBlock]);
+window.unixGenerator.forBlock['uptime'] = window.unixGenerator.forBlock.generic;

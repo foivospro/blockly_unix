@@ -4,12 +4,15 @@ var uniqBlock = {
   category: 'Text Processing',
   unix_description: [
     {
+      printName: true,
       none: '',
       occurencies: '-c',
       caseInsensitive: '-i',
       outputNonRepeatedLines: '-u',
       outputSingleCopyOfRepeatedLines: '-d',
-      skipChars: '-s str'
+      skipChars: (fieldValues) => {
+        return '-s ' + fieldValues['skipChars'];
+      }
     }
   ],
 
@@ -61,3 +64,5 @@ var uniqBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([uniqBlock]);
+
+window.unixGenerator.forBlock['uniq'] = window.unixGenerator.forBlock.generic;

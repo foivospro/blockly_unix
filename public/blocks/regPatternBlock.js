@@ -1,25 +1,29 @@
 var regPatternBlock = {
   type: 'regPattern',
   category: 'Regular Expressions',
+  message0: '%{BKY_REGPATTERN}',
   unix_description: [
     {
-      //?????????
+      printName: false,
+      Pattern: (fieldValues) => {
+        return fieldValues['Pattern'];
+      }
     }
   ],
-  message0: '%{BKY_REGPATTERN}',
   args0: [
     {
       type: 'field_input',
-      name: 'regPattern',
-      text: 'type your pattern here...' // default text for the input
+      name: 'Pattern',
+      text: 'string' // default text for the input
     }
   ],
-  output: 'String',
+  previousStatement: null,
+  nextStatement: null,
   style: 'Regular Expressions',
-  output: 'String',
-  nextStatement: 'Action',
   tooltip: '%{BKY_REGPATTERN_TOOLTIP}',
   helpUrl: '%{BKY_REGPATTERN_HELPURL}' // URL to further information or documentation.
 };
 
 Blockly.defineBlocksWithJsonArray([regPatternBlock]);
+window.unixGenerator.forBlock['regPattern'] =
+  window.unixGenerator.forBlock.concat;

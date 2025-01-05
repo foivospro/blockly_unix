@@ -4,6 +4,7 @@ var wcBlock = {
   category: 'Text Processing',
   unix_description: [
     {
+      printName: true,
       lines: '-l',
       words: '-w',
       bytes: '-c',
@@ -55,3 +56,4 @@ var wcBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([wcBlock]);
+window.unixGenerator.forBlock['wc'] = window.unixGenerator.forBlock.generic;

@@ -3,14 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blockly Unix</title>
+    <title>Ublocks</title>
     <!-- Link to Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Link to custom CSS -->
-    <link rel="stylesheet" href="homePage.css">
+    <link rel="stylesheet" href="/css/homePage.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/favicon.png">
+    <style>
+        #mobileAlert {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 1050; /* Higher than default Bootstrap modals */
+          background-color: red;
+          color: white;
+          padding: 10px 40px 10px 10px; /* Extra right padding for the close button */
+          font-size: 16px;
+          text-align: center;
+      }
 
+      #closeAlertBtn {
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          color: white;
+          font-size: 20px;
+          cursor: pointer;
+      }
+    </style>
+    <script>
+
+        // Function to load stylesheets dynamically
+        function loadStylesheet(href) {
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.type = "text/css";
+            link.href = href;
+            document.head.appendChild(link);
+        }
+
+        // Check screen size on load
+        function checkScreenSize() {
+            if (window.innerWidth <= 768) {
+                loadStylesheet("/css/mobile.css");
+
+                // Show the mobile alert if user is on a mobile device and has not dismissed the alert
+                if (!sessionStorage.getItem("mobileAlertDismissed")) {
+                    document.getElementById("mobileAlert").style.display = "block";
+                }
+            } else {
+                loadStylesheet("/css/homePage.css");
+            }
+        }
+
+        // Close the mobile alert
+        function closeMobileAlert() {
+            document.getElementById("mobileAlert").style.display = "none";
+            sessionStorage.setItem("mobileAlertDismissed", true);
+        }
+
+        // Run the function on page load
+        document.addEventListener("DOMContentLoaded", checkScreenSize);
+
+        // Run the function again on window resize, but only show the alert if it hasn't been dismissed
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 768) {
+                document.getElementById("mobileAlert").style.display = "none";
+            }
+        });
+    </script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         fetch('/auth-token')
@@ -43,13 +111,15 @@
     </script>
 </head>
 <body class="d-flex flex-column min-vh-100">
-
+    <div id="mobileAlert">
+        <span>This application is not optimized for mobile devices. Please use a PC for the best experience.</span>
+        <button id="closeAlertBtn" onclick="closeMobileAlert()">&times;</button>
+    </div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <span class="navbar-brand d-flex align-items-center">
-                <img src="img/blockly_72.png" alt=""  class="me-2">
-                <a class="navbar-brand" href="/">Blockly Unix</a>
+                <a class="navbar-brand" href="/">Ublocks</a>
             </span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -60,7 +130,7 @@
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/blockly_unix">Blockly</a>
+                        <a class="nav-link active" aria-current="page" href="/blockly_unix">Ublocks</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/tutorials">Tutorials</a>
@@ -69,7 +139,6 @@
                 <div class="d-flex align-items-center">
                     <a href="/login" class="btn btn-primary me-2" id="loginHomePageButton" style="display: none;">Login</a>
                     <a href="/register" class="btn btn-outline-primary me-2" id="registerHomePageButton" style="display: none;">Register</a>
-
                 </div>
                 <div class="d-flex align-items-center">
                   <a href="/blockly_unix" class="btn btn-primary me-2" id="continueWithBlocklyButton" style="display: none;">Continue Where You Left Off</a>
@@ -83,28 +152,37 @@
     </nav>
 
     <!-- ======= Hero Section ======= -->
+    <!-- Hero Section -->
     <section id="hero">
-
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg- d-flex flex-column justify-content-center" data-aos="fade-up">
-              <div>
-                <h1>Build complex <span class="highlight"> Unix pipelines</span>, block by block</h1>
-                <h2>This platform allows you to construct powerful data processing pipelines visually. By dragging and dropping blocks, you can easily create Unix-based workflows for your data processing needs.</h2>
-                <a href="/blockly_unix" class="btn-get-started scrollto" id="getStartedButton" style="display: none;">Get Started</a>
-                <a href="/register" id="registerSecondButtonHomePage" class="btn-get-login" style="display: none;">Register</a>
-              </div>
-            </div>
-            <div class="col-lg-10 order-2 order-lg-2 hero-img" data-aos="fade-left">
-              <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+      <div class="container">
+        <div class="row align-items-center flex-column-reverse flex-lg-row">
+          <!-- Text Column -->
+          <div class="col-12 col-lg-6 text-content d-flex flex-column justify-content-center" data-aos="fade-up">
+            <h1>Build complex <span class="highlight">Unix pipelines</span>, block by block</h1>
+            <h2>This platform allows you to construct powerful data processing pipelines visually. By dragging and dropping blocks, you can easily create Unix-based workflows for your data processing needs.</h2>
+            <div class="button-group">
+              <a href="/blockly_unix" class="btn-get-started scrollto" id="getStartedButton">Get Started</a>
+              <a href="/register" id="registerSecondButtonHomePage" class="btn-get-login">Register</a>
             </div>
           </div>
+          <!-- Image Column -->
+          <div class="col-12 col-lg-6 hero-img text-center" data-aos="fade-left">
+            <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+          </div>
         </div>
+      </div>
+    </section>
+    <!-- End Hero -->
+    <!-- Mobile Hero-->
+    <section id="hero">
+      <div class="container">
 
-      </section><!-- End Hero -->
+      </div>
+    </section>
 
 
-        <!-- ======= About Section ======= -->
+    <!-- Mobile Hero End-->
+    <!-- ======= About Section ======= -->
     <section id="about" class="about">
         <div class="container">
 
@@ -114,14 +192,14 @@
             </div>
             <div class="col-lg-6 d-flex flex-column justify-contents-center" data-aos="fade-left">
               <div class="content pt-6 pt-lg-4">
-                <h3>Blockly for Unix in Web</h3>
+                <h3>Ublocks: Blockly for Unix in Web</h3>
                 <p class="fst-italic">
 
                 </p>
                 <ul>
                   <li><i class="bi bi-check-circle"></i> Lightweight and efficient</li>
                   <li><i class="bi bi-check-circle"></i> Compatible with all major browsers</li>
-                  <li><i class="bi bi-check-circle"></i> Blockly for Unix is nearly 100% client-side</li>
+                  <li><i class="bi bi-check-circle"></i> Ublocks is nearly 100% client-side</li>
                 </ul>
               </div>
             </div>
@@ -137,7 +215,7 @@
 
                     <div class="text-center">
                         <div class="text-center">
-                            <h1 >Create Your Unix Pipelines with Blockly Unix</h1>
+                            <h1 >Create Your Unix Pipelines with Ublocks</h1>
                             <p class="lead">Creating Unix pipelines has never been easier!</p>
                         </div>
                         <!-- Image Container -->
@@ -156,9 +234,9 @@
     <div class="container">
 
       <div class="section-title text-center" data-aos="fade-up">
-        <h1>Why Blockly Unix</h1>
+        <h1>Why Ublocks</h1>
         <br>
-        <p>Blockly Unix is the perfect starting point for those looking to learn Unix. It combines the power of Unix tools with an intuitive, block-based interface, making it easier than ever to grasp the fundamentals of Unix while building real-world data processing pipelines.</p>
+        <p>Ublocks is the perfect starting point for those looking to learn Unix. It combines the power of Unix tools with an intuitive, block-based interface, making it easier than ever to grasp the fundamentals of Unix while building real-world data processing pipelines.</p>
       </div>
       <br>
       <br>
@@ -187,7 +265,7 @@
             <div class="icon"><i class="bx bx-tachometer"></i></div>
             <img src="https://developers.google.com/static/blockly/images/icons/cross-platform.png" alt="Lorem Ipsum"  style="width: 50px; height: 50px;"/>
             <h4 class="title"><a href="">Cross-platform</a></h4>
-            <p class="description">Blockly for Unix provides cross-platform support, allowing users to create and execute commands across different operating systems without limitations.</p>
+            <p class="description">Ublocks provides cross-platform support, allowing users to create and execute commands across different operating systems without limitations.</p>
           </div>
         </div>
 
@@ -196,7 +274,7 @@
             <div class="icon"><i class="bx bx-world"></i></div>
             <img src="https://developers.google.com/static/blockly/images/icons/codelabs.svg" alt="Lorem Ipsum"  style="width: 50px; height: 50px;"/>
             <h4 class="title"><a href="">Visual interface</a></h4>
-            <p class="description">Blockly for Unix offers a visual interface, enabling users to build and execute commands easily without the need for complex scripting.</p>
+            <p class="description">Ublocks  offers a visual interface, enabling users to build and execute commands easily without the need for complex scripting.</p>
           </div>
         </div>
       </div>
@@ -218,7 +296,7 @@
           <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
         <div id="faq1" class="collapse" data-bs-parent=".faq-list">
           <p>
-            Whether you are a student, educator, or professional interested in learning Unix, Blockly Unix offers an intuitive, block-based approach to mastering Unix fundamentals.
+            Whether you are a student, educator, or professional interested in learning Unix, Ublocks offers an intuitive, block-based approach to mastering Unix fundamentals.
           </p>
         </div>
       </li>
@@ -255,38 +333,48 @@
       <div class="row justify-content-center">
 
         <!-- About Section -->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4">
           <div class="footer-info">
-            <h3>Blockly Unix</h3>
+            <h3>Ublocks</h3>
             <p>
               An open-source project designed to make learning Unix easy and accessible through block-based coding.
             </p>
             <p>
               <strong>Location:</strong> 76 Patision Street, Athens<br>
-              <strong>Email:</strong> <a href="mailto:blocklyunix@aueb.gr">blocklyunix@aueb.gr</a><br>
+              <strong>Email:</strong> <a href="mailto:ublocks.balab.aueb.gr">ublocks.balab.aueb.gr</a><br>
             </p>
           </div>
         </div>
 
         <!-- Useful Links Section -->
-        <div class="col-lg-4 col-md-6 mb-4 ms-lg-auto">
+        <div class="col offset-lg-1">
           <div class="footer-links">
-            <h4>Useful Links</h4>
+            <h4>Links</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="/index.html">Blockly Unix</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index.html">Ublocks</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/tutorials">Tutorials</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="https://github.com/simosathan9/blockly_unix">GitHub Repository</a></li>
             </ul>
           </div>
         </div>
 
+        <!-- Information Section -->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="footer-links">
+            <h4>Information</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#creatorsModal">Creators</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Use</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://github.com/AUEB-BALab/blockly_unix">GitHub Repository</a></li>
+            </ul>
+          </div>
+        </div>
 
         <!-- Contribute Section -->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4">
           <div class="footer-newsletter">
             <h4><i class="bx bxl-github"></i> Contribute on GitHub</h4>
-            <p>Blockly Unix is an open-source project. Visit our <a href="https://github.com/AUEB-BALab/blockly_unix">GitHub repository</a> to explore the source code, report issues, and contribute to the project.</p>
+            <p>Ublocks is an open-source project. Visit our <a href="https://github.com/AUEB-BALab/blockly_unix">GitHub repository</a> to explore the source code, report issues, and contribute to the project.</p>
             <a href="https://github.com/AUEB-BALab/blockly_unix" class="btn btn-outline-primary">Visit GitHub</a>
           </div>
         </div>
@@ -297,13 +385,65 @@
 
   <div class="container text-center">
     <div class="copyright">
-      &copy; <strong>Blockly Unix</strong>. All Rights Reserved
+      &copy; <strong>Ublocks</strong>. All Rights Reserved
     </div>
     <div class="credits">
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | Powered by GitHub
+      Designed by <a href="https://www.balab.aueb.gr/">AUEB-BALab</a>
     </div>
   </div>
 </footer><!-- End Footer -->
+
+<!-- Creators Modal -->
+<div class="modal fade" id="creatorsModal" tabindex="-1" aria-labelledby="creatorsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="creatorsModalLabel">Creators of Ublocks</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>This project was developed by students and researchers at the Business Analytics Lab of the Athens University of Economics and Business (AUEB). Its aim is to offer an interactive and educational tool designed to teach Unix through block-based coding, making learning more accessible and engaging for users of all levels.</p>
+
+        <p><strong>Scientific Supervisor:</strong></p>
+        <ul>
+          <li>Diomidis Spinellis - Professor</li>
+        </ul>
+
+        <p><strong>Developers:</strong></p>
+        <ul>
+          <li><a href="https://github.com/simosathan9" target="_blank">Athanasiadis Simos - Undergraduate student</a></li>
+          <li><a href="https://github.com/vcipi" target="_blank">Cipi Klenti - Graduate student</a></li>
+          <li><a href="https://github.com/Pantelis325" target="_blank">Kakavas Pantelis - Graduate student</a></li>
+          <li><a href="https://github.com/foivospro" target="_blank">Proestakis Foivos Timotheos - Undergraduate student</a></li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Terms of Use Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+  <div class="modal-dialog"> <!-- Changed to modal-lg for larger size -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="termsModalLabel">Terms of Use</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>By using Ublocks, you agree that the data generated in the workspace through the use of blocks will be utilized for academic research and the improvement of the application. All data collected will be anonymized and strictly used for educational, development, and research purposes.</p>
+        <p>This data helps us enhance the user experience and contribute to academic studies focused on the development of educational tools.</p>
+        <p>For further information regarding data privacy, please contact us at <a href="mailto:ublocks.balab.aueb.gr">ublocks.balab.aueb.gr</a>.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <!-- Bootstrap JS and Popper.js -->

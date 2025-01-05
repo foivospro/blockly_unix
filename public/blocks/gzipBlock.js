@@ -1,8 +1,9 @@
 var gzipBlock = {
   type: 'gzip',
-  category: 'File and Directory Operations',
+  category: 'Filesystem Operations',
   unix_description: [
     {
+      printName: true,
       keep: '-k',
       decompress: '-d',
       fast: '-1',
@@ -14,8 +15,9 @@ var gzipBlock = {
       five: '-5',
       seven: '-7',
       eight: '-8',
-      suffix: '-S str',
-      verbose: '-v'
+      suffix: (fieldValues) => {
+        return '-S ' + fieldValues['suffix'];
+      }
     }
   ],
   message0: '%{BKY_GZIP_FILE}',
@@ -34,7 +36,7 @@ var gzipBlock = {
     {
       type: 'field_checkbox',
       name: 'keep',
-      checked: true // by default it's disabled
+      checked: true
     }
   ],
   message2: '%{BKY_GZIP_LEVEL_OF_COMPRESSION}',
@@ -60,23 +62,16 @@ var gzipBlock = {
     {
       type: 'field_input',
       name: 'suffix',
-      text: '' // empty text for user to define path
+      text: ''
     }
   ],
-  message4: '%{BKY_GZIP_VERBOSE}',
-  args4: [
-    {
-      type: 'field_checkbox',
-      name: 'verbose',
-      checked: false // by default it's disabled
-    }
-  ],
-  style: 'File and Directory Operations',
-  extensions: ['integer_validation'],
+  style: 'Other Commands',
+
   previousStatement: 'Action',
   nextStatement: 'Action',
   tooltip: '%{BKY_GZIP_TOOLTIP}',
-  helpUrl: '' // URL to further information or documentation.
+  helpUrl: ''
 };
 
 Blockly.defineBlocksWithJsonArray([gzipBlock]);
+window.unixGenerator.forBlock['gzip'] = window.unixGenerator.forBlock.generic;
