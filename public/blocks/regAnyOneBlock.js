@@ -1,33 +1,39 @@
 var regAnyOneBlock = {
   type: 'regAnyOne',
+  category: 'Regular Expressions',
   unix_description: [
     {
-      regPattern: '[patt]',
-      notMatch: 'patt^'
+      printName: false,
+      Pattern: (fieldValues) => {
+        const userInput = fieldValues['Pattern'] || '';
+        return fieldValues['notMatch'] === 'TRUE'
+          ? '[^' + userInput + ']'
+          : '[' + userInput + ']';
+      }
     }
   ],
-  category: 'Regular Expressions',
-  message0: '%{BKY_REGANYONE}',
+
+  message0: '%{BKY_REGANYONE} \n %{BKY_REGANYONE_NOT}',
   args0: [
     {
-      type: 'input_value',
-      name: 'regPattern',
-      check: 'String'
-    }
-  ],
-  message1: '%{BKY_REGANYONE_NOT}',
-  args1: [
+      type: 'field_input',
+      name: 'Pattern',
+      text: 'String'
+    },
     {
       type: 'field_checkbox',
       name: 'notMatch',
       checked: false
     }
   ],
+
   tooltip: '%{BKY_REGANYONE_TOOLTIP}',
-  previousStatement: 'Action',
-  nextStatement: 'Action',
+  previousStatement: null,
+  nextStatement: null,
   style: 'Regular Expressions',
-  helpUrl: '%{BKY_REGANYONE_HELPURL}' // URL to further information or documentation.
+  helpUrl: '%{BKY_REGANYONE_HELPURL}'
 };
 
 Blockly.defineBlocksWithJsonArray([regAnyOneBlock]);
+window.unixGenerator.forBlock['regAnyOne'] =
+  window.unixGenerator.forBlock.concat;

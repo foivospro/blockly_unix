@@ -1,15 +1,15 @@
 var awkBlock = {
   type: 'awk',
-  category: 'Data Processing',
+  category: 'Field Processing',
   unix_description: [
     {
-      awkInput_delimiter: "-F'str' ", // Change to awk_delimiter
-      awkOutput_delimiter: 'OFS"str"', // Change to awk_delimiter
-      input_variable: '-v"',
-      regPattern: "'{patt",
-      awk_cols: "{print str}}'",
-      begin: 'BEGIN',
-      end: 'END'
+      printName: true,
+      awkInput_delimiter: (fieldValues) => {
+        return "-F '" + fieldValues['awkInput_delimiter'] + "'";
+      },
+      awkConditionAction: (childCode) => {
+        return "' " + childCode + " '";
+      }
     }
   ],
   message0: '%{BKY_AWK_TEXT_DATA_PROCESSING}',
@@ -17,60 +17,17 @@ var awkBlock = {
   args1: [
     {
       type: 'field_input',
-      name: 'awkInput_delimiter', // Change to awk_delimiter
-      text: ''
+      name: 'awkInput_delimiter' // Change to awk_delimiter
     }
   ],
-  message2: '%{BKY_AWK_OUTPUT_DELIMITER} %1',
+  message2: '%{BKY_AWK_CONDITION_ACTION} %1',
   args2: [
     {
-      type: 'field_input',
-      name: 'awkOutput_delimiter', // Change to output awk_delimiter
-      text: '',
-      align: 'RIGHT'
+      type: 'input_statement',
+      name: 'awkConditionAction'
     }
   ],
-  message3: '%{BKY_AWK_VARIABLE_INPUT} %1',
-  args3: [
-    {
-      type: 'field_checkbox',
-      name: 'input_variable',
-      checked: false // by default it's disabled
-    }
-  ],
-  message3: '%{BKY_AWK_BEGIN} %1',
-  args3: [
-    {
-      type: 'input_value',
-      name: 'begin',
-      check: 'String'
-    }
-  ],
-  message4: '%{BKY_AWK_ACTION} %1',
-  args4: [
-    {
-      type: 'input_value',
-      name: 'regPattern',
-      check: 'String'
-    }
-  ],
-  message5: '%{BKY_AWK_BEGIN} %1',
-  args5: [
-    {
-      type: 'input_value',
-      name: 'end',
-      check: 'String'
-    }
-  ],
-  message6: '%{BKY_AWK_PRINT} %1',
-  args6: [
-    {
-      type: 'input_value',
-      name: 'awk_cols',
-      text: ''
-    }
-  ],
-  style: 'Data Processing',
+  style: 'Field Processing',
   previousStatement: 'Action',
   nextStatement: 'Action',
   tooltip: '%{BKY_AWK_TOOLTIP}',
@@ -78,3 +35,4 @@ var awkBlock = {
 };
 
 Blockly.defineBlocksWithJsonArray([awkBlock]);
+window.unixGenerator.forBlock['awk'] = window.unixGenerator.forBlock.generic;
