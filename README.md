@@ -25,18 +25,6 @@ To ensure that code is properly formatted before committing, set up the pre-comm
 
    `chmod +x .git/hooks/pre-commit bin/pre-commit`
 
-### Setting up the .env File
-
-The application requires a `SECRET_KEY` for session management. This key must be securely generated and stored in a `.env` file.
-
-1. Generate `SECRET_KEY`: To generate a secure `SECRET_KEY`, run the following command in your terminal:
-
-   `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"`
-
-2. Create the `.env` File: In the root directory of your project, create a new file named `.env`.
-
-3. Set the `SECRET_KEY` Variable: Add the generated `SECRET_KEY` to the `.env` file using the following format: `SECRET_KEY=your_generated_secret_key_here`. Replace `your_generated_secret_key_here` with the actual key you generated from the previous step.
-
 ## How to Create a New Block
 
 Below are the instructions on how to create a new block in a separate file (e.g., `[blockName]Block.js`), and how to integrate it into the existing code generation system (`UnixGenerator`) that we have already implemented.

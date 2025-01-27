@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'production') {
   require('dotenv').config();
 }
 const crypto = require('crypto');
@@ -26,6 +26,24 @@ const db = new sqlite3.Database('db/blockly_unix_database.db', (err) => {
 });
 
 const { body, validationResult } = require('express-validator');
+const sessionDbPath = path.join(__dirname, 'db', 'session.db');
+const MemoryStore = require('memorystore')(session);
+const SQLiteStore = require('connect-sqlite3')(session);
+let sessionStore;
+if (process.env.NODE_ENV === 'production') {
+  sessionStore = new SQLiteStore({
+    dir: path.dirname(sessionDbPath),
+    db: path.basename(sessionDbPath)
+  });
+} else {
+  sessionStore = new MemoryStore({
+    checkPeriod: 86400000
+  });
+}
+const secretKey =
+  process.env.NODE_ENV === 'production'
+    ? process.env.SECRET_KEY
+    : crypto.randomBytes(32).toString('hex');
 
 initializePassport(
   passport,
@@ -46,18 +64,19 @@ initializePassport(
 );
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(
   session({
-    secret: process.env.SECRET_KEY,
+    store: sessionStore,
+    secret: secretKey,
     resave: false, // Don't save back to the session store if nothing has changed
     saveUninitialized: false // Don't save if there was no data
   })
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cookieParser());
 app.set('view engine', 'ejs');
 
 app.use((req, res, next) => {
@@ -106,7 +125,7 @@ app.listen(4000, () => {
 // Middleware to add auth token
 function addAuthToken(req, res, next) {
   if (req.isAuthenticated()) {
-    const token = jwt.sign({ user: req.user.id }, process.env.SECRET_KEY, {
+    const token = jwt.sign({ user: req.user.id }, secretKey, {
       expiresIn: '30m'
     }); // Token expires in 10 seconds for testing. When in production, set to 20 minutes
     req.authToken = token;
@@ -131,7 +150,7 @@ app.post('/login', checkNotAuthenticated, (req, res, next) => {
         return next(err);
       }
       req.flash('success', 'You have successfully logged in.');
-      const token = jwt.sign({ user: user.id }, process.env.SECRET_KEY, {
+      const token = jwt.sign({ user: user.id }, secretKey, {
         expiresIn: '20m'
       });
       res.cookie('remember_me', token, { httpOnly: true });
@@ -522,12 +541,12 @@ if (process.env.NODE_ENV === 'production') {
   );
 }
 
-/* To run on local server remove comment
-app.listen(3000, 'localhost', () => {
-  console.log('Server is running on http://localhost:3000');
-});
-*/
-
-app.listen(8443, () => {
-  console.log('Server is running on https://ublocks.balab.aueb.gr');
-});
+if (process.env.NODE_ENV === 'production') {
+  app.listen(8443, () => {
+    console.log('Server is running on https://ublocks.balab.aueb.gr');
+  });
+} else {
+  app.listen(3000, 'localhost', () => {
+    console.log('Server is running on http://localhost:3000');
+  });
+}
